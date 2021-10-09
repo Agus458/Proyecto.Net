@@ -32,5 +32,10 @@ namespace BusinessLayer.BusinessControllers
         {
             return this.Repository.GetUsers();
         }
+
+        public void UpdateUser(Guid Id, UpdateUserDataType Data)
+        {
+            this.Repository.UpdateUser(Id, Data);
+        }
     }
 }

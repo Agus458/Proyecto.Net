@@ -14,5 +14,7 @@ namespace BusinessLayer.BusinessControllersInterfaces
         UserDataType GetUser(Guid Id);
 
         UserDataType CreateUser(CreateUserDataType Data);
+
+        void UpdateUser(Guid Id, UpdateUserDataType Data);
     }
 }

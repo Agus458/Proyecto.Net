@@ -43,5 +43,11 @@ namespace BackEndAPI.Controllers
 
             return CreatedAtAction(nameof(GetUser), new { Id = User.Id }, User);
         }
+
+        [HttpPut]
+        public void UpdateUser(Guid Id, UpdateUserDataType Data)
+        {
+            this.Controller.UpdateUser(Id, Data);
+        }
     }
 }

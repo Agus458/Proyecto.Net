@@ -18,5 +18,14 @@ namespace DataAccessLayer.Extensions
 
             return Mapper.Map<UserDataType>(User);
         }
+
+        public static User AsignDataType(this User User, UpdateUserDataType UpdateDataType)
+        {
+            var Config = new MapperConfiguration(Conf => Conf.CreateMap<UpdateUserDataType, User>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null)));
+
+            var Mapper = new Mapper(Config);
+
+            return User = Mapper.Map<User>(UpdateDataType);
+        }
     }
 }

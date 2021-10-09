@@ -51,14 +51,13 @@ namespace DataAccessLayer.Repositories
 
         public void UpdateUser(Guid Id, UpdateUserDataType Data)
         {
-            var User = this.GetUser(Id);
+            var User = this.Users.FirstOrDefault(ExistingUser => ExistingUser.Id == Id);
 
             if (User != null)
             {
                 var Index = this.Users.FindIndex(ExistingUser => ExistingUser.Id == Id);
-                
+                this.Users[Index] = User.AsignDataType(Data);
             }
-            
         }
     }
 }

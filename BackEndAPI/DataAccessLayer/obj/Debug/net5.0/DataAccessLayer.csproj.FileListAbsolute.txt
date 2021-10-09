@@ -9,7 +9,6 @@ C:\Users\agusp\source\repos\BackEndAPI\DataAccessLayer\obj\Debug\net5.0\DataAcce
 C:\Users\agusp\source\repos\BackEndAPI\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.AssemblyInfoInputs.cache
 C:\Users\agusp\source\repos\BackEndAPI\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.AssemblyInfo.cs
 C:\Users\agusp\source\repos\BackEndAPI\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.csproj.CoreCompileInputs.cache
-C:\Users\agusp\source\repos\BackEndAPI\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.csproj.CopyComplete
 C:\Users\agusp\source\repos\BackEndAPI\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.dll
 C:\Users\agusp\source\repos\BackEndAPI\DataAccessLayer\obj\Debug\net5.0\ref\DataAccessLayer.dll
 C:\Users\agusp\source\repos\BackEndAPI\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.pdb
