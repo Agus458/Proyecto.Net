@@ -8,6 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
+import { InstitucionesComponent } from './components/instituciones/instituciones.component';
+import { NuevainstitucionComponent } from './components/instituciones/nuevainstitucion/nuevainstitucion.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
     NavbarComponent,
     LoginComponent,
     InicioComponent,
-    CarruselComponent
+    CarruselComponent,
+    InstitucionesComponent,
+    NuevainstitucionComponent
   ],
   imports: [
     BrowserModule,

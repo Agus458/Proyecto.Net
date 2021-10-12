@@ -15,4 +15,6 @@
     background-color: #3b5998;
   }
 
-  
+  .card {
+    border-radius: 20px;
+  }

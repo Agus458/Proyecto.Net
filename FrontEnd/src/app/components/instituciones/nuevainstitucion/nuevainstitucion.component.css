@@ -1,0 +1,15 @@
+.container {
+    margin-top: 20px;
+}
+
+.card{ 
+    padding: 20px 20px 20px 20px;
+    border-radius: 20px;
+}
+.btn {
+    max-width: 50%;
+}
+
+.nashe {
+    text-align: center !important;
+}
