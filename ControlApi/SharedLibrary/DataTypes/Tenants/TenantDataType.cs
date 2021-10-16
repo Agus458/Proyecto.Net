@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedLibrary.DataTypes.Institutions
+namespace SharedLibrary.DataTypes.Tenants
 {
-    public record InstitutionDataType
+    public record TenantDataType
     {
         public Guid Id { get; init; }
         

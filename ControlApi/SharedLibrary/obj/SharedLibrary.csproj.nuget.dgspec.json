@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {}
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
         "projectName": "SharedLibrary",
-        "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+        "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
         "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\obj\\",
+        "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",

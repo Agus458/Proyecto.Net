@@ -16,7 +16,7 @@ namespace DataAccessLibrary.Contexts
     /// </summary>
     public class ApiDbContext : IdentityDbContext<User>
     {
-        private readonly Guid InstitutionId;
+        private readonly Guid TenantId;
 
         /// <summary>
         /// Consturctor for the Api Context.
@@ -26,13 +26,13 @@ namespace DataAccessLibrary.Contexts
         {
             /*var CurrentInstitution = ContextAccessor.HttpContext?.GetTenant();*/
 
-            this.Filter<BaseEntity>(Filter => Filter.Where(ExistingEntity => ExistingEntity.InstitutionId == this.InstitutionId));
+            this.Filter<BaseEntity>(Filter => Filter.Where(ExistingEntity => ExistingEntity.TenantId == this.TenantId));
         }
 
         /// <summary>
         /// Represents all the Institutions saved in the DataBase.
         /// </summary>
-        public DbSet<Institution> Institutions { get; set; }
+        public DbSet<Tenant> Tenants { get; set; }
 
         /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
@@ -45,7 +45,20 @@ namespace DataAccessLibrary.Contexts
                 switch (Entry.State)
                 {
                     case EntityState.Added:
-                        Entry.Entity.InstitutionId = this.InstitutionId;
+                        Entry.Entity.TenantId = this.TenantId;
+                        Entry.Entity.CreatedDate = DateTime.UtcNow;
+                        break;
+                    case EntityState.Modified:
+                        Entry.Entity.UpdatedDate = DateTime.UtcNow;
+                        break;
+                }
+            }
+
+            foreach (var Entry in ChangeTracker.Entries<Tenant>())
+            {
+                switch (Entry.State)
+                {
+                    case EntityState.Added:
                         Entry.Entity.CreatedDate = DateTime.UtcNow;
                         break;
                     case EntityState.Modified:

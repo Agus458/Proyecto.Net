@@ -10,8 +10,25 @@ namespace DataAccessLibrary.Entities
     /// <summary>
     /// Institution Entity implementation.
     /// </summary>
-    public class Institution : BaseEntity
+    public class Tenant
     {
+        /// <summary>
+        /// Identifies the Entity in the table.
+        /// </summary>
+        [MaxLength(36)]
+        [Required]
+        public Guid Id { get; set; }
+
+        /// <summary>
+        /// The date in which the new entity was created.
+        /// </summary>
+        public DateTimeOffset CreatedDate { get; set; }
+
+        /// <summary>
+        /// The date in which the new entity was updated.
+        /// </summary>
+        public DateTimeOffset UpdatedDate { get; set; }
+
         /// <summary>
         /// The name that the Institution, "Tenant" will use to access to the system.
         /// </summary>

@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 namespace DataAccessLibrary.Contracts
 {
     /// <summary>
-    /// Allows specifing which entities will have to have the Institution id in them.
+    /// Allows specifing which entities will have to have the Tenant id in them.
     /// </summary>
-    public abstract class IMustHaveInstitution
+    public abstract class IMustHaveTenant
     {
         /// <summary>
-        /// Identifies the Institution in the database to which the entity is part.
+        /// The Tenant that the data will belong to.
         /// </summary>
-        [ForeignKey("InstitutionId")]
-        public Guid InstitutionId { get; set; }
+        [ForeignKey("TenantId")]
+        public Guid TenantId { get; set; }
     }
 }

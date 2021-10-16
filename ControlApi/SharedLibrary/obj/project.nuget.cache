@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wmp4NnsOdAvFSHGWli+7ISR4hkQetn34JyQfuAVWbdF9PuuZudylouVY7c+v78oDls5DjK4JCzvIFWG22KJmag==",
+  "dgSpecHash": "1V3ZKPqKWr+gOU3zldB/sh5uvCONlnheuAsJtbA1RIPHUbM+muGh6sCcdNI6GggD0B6fC6uCraoKH3LfgF999w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+  "projectFilePath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedLibrary.DataTypes.Institutions
+namespace SharedLibrary.DataTypes.Tenants
 {
-    public record CreateInstitutionRequestDataType
+    public record CreateTenantRequestDataType
     {
         [Required]
         [MaxLength(12)]

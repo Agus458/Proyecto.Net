@@ -3,7 +3,7 @@ using DataAccessLibrary.Extensions;
 using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Identity;
 using SharedLibrary;
-using SharedLibrary.DataTypes.Institutions;
+using SharedLibrary.DataTypes.Tenants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +12,19 @@ using System.Threading.Tasks;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
-    public class InstitutionsService : IInstitutionsService
+    public class InstitutionsService : ITenantsService
     {
-        private readonly IInstitutionsStore Store;
+        private readonly ITenantsStore Store;
 
         private readonly UserManager<User> UserManager;
 
-        public InstitutionsService(IInstitutionsStore Store, UserManager<User> UserManager)
+        public InstitutionsService(ITenantsStore Store, UserManager<User> UserManager)
         {
             this.Store = Store;
             this.UserManager = UserManager;
         }
 
-        public async Task<dynamic> Create(CreateInstitutionRequestDataType Data)
+        public async Task<dynamic> Create(CreateTenantRequestDataType Data)
         {
             if (Data == null) throw new ArgumentNullException();
 
@@ -32,12 +32,12 @@ namespace BusinessLibrary.Services.ServicesImplementation
             {
                 if (this.Store.GetBySocialReason(Data.SocialReason) == null && this.Store.GetByRut(Data.Rut) == null)
                 {
-                    var NewInstitution = new Institution() { Id = Guid.NewGuid() };
-                    NewInstitution.AssignDataType(Data);
+                    var NewTenant = new Tenant() { Id = Guid.NewGuid() };
+                    NewTenant.AssignDataType(Data);
 
-                    this.Store.Create(NewInstitution);
+                    this.Store.Create(NewTenant);
 
-                    var NewUser = new User() { Email = Data.Email, UserName = Data.Email, Institution = NewInstitution };
+                    var NewUser = new User() { Email = Data.Email, UserName = Data.Email, TenantId = NewTenant.Id };
                     var Result = await this.UserManager.CreateAsync(NewUser, Data.Password);
 
                     if (Result.Succeeded)
@@ -50,12 +50,12 @@ namespace BusinessLibrary.Services.ServicesImplementation
             return new ApiError("User Email Already in use");
         }
 
-        public IEnumerable<InstitutionDataType> GetAll()
+        public IEnumerable<TenantDataType> GetAll()
         {
             return this.Store.GetAll().Select(Institution => Institution.GetDataType());
         }
 
-        public InstitutionDataType GetById(Guid Id)
+        public TenantDataType GetById(Guid Id)
         {
             var Institution = this.Store.GetById(Id);
 

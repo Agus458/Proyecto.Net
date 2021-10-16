@@ -67,8 +67,6 @@ namespace ControlApi
                 });
             });
 
-            services.AddHttpContextAccessor();
-
             // Here is defined the connection to the sql server database.
             services.AddDbContext<ApiDbContext>(Options =>
             {
@@ -111,7 +109,7 @@ namespace ControlApi
             // Here we define all de dependency injection needed.
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IUsersService, UsersService>();
-            services.AddScoped<IInstitutionsStore, InstitutionsStore>();
+            services.AddScoped<ITenantsStore, TenantsStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

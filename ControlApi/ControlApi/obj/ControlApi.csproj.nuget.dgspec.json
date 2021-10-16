@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\agusp\\source\\repos\\ControlApi\\ControlApi\\ControlApi.csproj": {}
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\agusp\\source\\repos\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agusp\\source\\repos\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
         "projectName": "BusinessLibrary",
-        "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
+        "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
         "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\BusinessLibrary\\obj\\",
+        "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\agusp\\source\\repos\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-                "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+              "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+                "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
               },
-              "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
-                "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
+              "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+                "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
               }
             }
           }
@@ -71,14 +71,14 @@
         }
       }
     },
-    "C:\\Users\\agusp\\source\\repos\\ControlApi\\ControlApi\\ControlApi.csproj": {
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agusp\\source\\repos\\ControlApi\\ControlApi\\ControlApi.csproj",
+        "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
         "projectName": "ControlApi",
-        "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\ControlApi\\ControlApi.csproj",
+        "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
         "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\ControlApi\\obj\\",
+        "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -95,14 +95,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\agusp\\source\\repos\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
-                "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj"
+              "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
+                "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj"
               },
-              "C:\\Users\\agusp\\source\\repos\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-                "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+              "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+                "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
               },
-              "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
-                "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
+              "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+                "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
               }
             }
           }
@@ -154,14 +154,14 @@
         }
       }
     },
-    "C:\\Users\\agusp\\source\\repos\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agusp\\source\\repos\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
         "projectName": "DataAccessLibrary",
-        "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
+        "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
         "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\DataAccessLibrary\\obj\\",
+        "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -178,8 +178,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
-                "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
+              "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+                "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
               }
             }
           }
@@ -238,14 +238,14 @@
         }
       }
     },
-    "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
         "projectName": "SharedLibrary",
-        "projectPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+        "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
         "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\SharedLibrary\\obj\\",
+        "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",

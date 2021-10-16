@@ -9,6 +9,6 @@ namespace DataAccessLibrary.Entities
 {
     public class User : IdentityUser
     {
-        public Institution Institution { get; set; }
+        public Guid TenantId { get; set; }
     }
 }

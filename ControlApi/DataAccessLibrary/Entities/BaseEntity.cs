@@ -29,9 +29,6 @@ namespace DataAccessLibrary.Entities
         /// </summary>
         public DateTimeOffset UpdatedDate { get; set; }
 
-        /// <summary>
-        /// The Institution that the data will belong to.
-        /// </summary>
-        public Guid InstitutionId { get; set; }
+        public Guid TenantId { get; set; }
     }
 }

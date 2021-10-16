@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CbE8ufJSJG+ol7ZuttaJnyg4n+K2rMAI89x+ffoOv/wBE9HHfN4HYe25nTu+L6PjKq142nazhOKVBnlXpWsy9Q==",
+  "dgSpecHash": "36lv79gtHJAEBxuVB98t0tvV1vQMWy92XYduQ0EBe9tXtOmnTEa9Xp778Gj8oCqaNHNTEcny9AJ8II2x9Px48w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\agusp\\source\\repos\\ControlApi\\ControlApi\\ControlApi.csproj",
+  "projectFilePath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\agusp\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

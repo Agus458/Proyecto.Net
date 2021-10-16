@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SharedLibrary.DataTypes.Institutions;
+using SharedLibrary.DataTypes.Tenants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,23 +13,23 @@ namespace ControlApi.Controllers
     [Route("api/[controller]")]
     [Authorize(Roles = "SuperAdmin")]
     [ApiController]
-    public class InstitutionsController : ControllerBase
+    public class TenantsController : ControllerBase
     {
-        private readonly IInstitutionsService Service;
+        private readonly ITenantsService Service;
 
-        public InstitutionsController(IInstitutionsService Service)
+        public TenantsController(ITenantsService Service)
         {
             this.Service = Service;
         }
 
         [HttpGet]
-        public IEnumerable<InstitutionDataType> GetAll()
+        public IEnumerable<TenantDataType> GetAll()
         {
             return this.Service.GetAll();
         }
 
         [HttpGet("{Id}")]
-        public InstitutionDataType GetById(Guid Id)
+        public TenantDataType GetById(Guid Id)
         {
             return this.Service.GetById(Id);
         }
