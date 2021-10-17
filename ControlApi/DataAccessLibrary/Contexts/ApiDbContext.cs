@@ -17,6 +17,7 @@ namespace DataAccessLibrary.Contexts
     public class ApiDbContext : IdentityDbContext<User>
     {
         private readonly Guid TenantId;
+        private readonly HttpContext HttpContext;
 
         /// <summary>
         /// Consturctor for the Api Context.
@@ -24,7 +25,13 @@ namespace DataAccessLibrary.Contexts
         /// <param name="Options"></param>
         public ApiDbContext(DbContextOptions Options, IHttpContextAccessor ContextAccessor) : base(Options)
         {
-            /*var CurrentInstitution = ContextAccessor.HttpContext?.GetTenant();*/
+            this.HttpContext = ContextAccessor.HttpContext;
+
+            if (this.HttpContext is not null && this.HttpContext.Items.TryGetValue("Tenant", out var Aux))
+            {
+                var Tenant = Aux as Tenant;
+                this.TenantId = Tenant.Id;
+            }
 
             this.Filter<BaseEntity>(Filter => Filter.Where(ExistingEntity => ExistingEntity.TenantId == this.TenantId));
         }

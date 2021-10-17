@@ -483,7 +483,7 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/6.7.1": {
+      "Microsoft.IdentityModel.Logging/6.13.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {}
@@ -518,11 +518,11 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/6.7.1": {
+      "Microsoft.IdentityModel.Tokens/6.13.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
-          "Microsoft.IdentityModel.Logging": "6.7.1",
+          "Microsoft.IdentityModel.Logging": "6.13.1",
           "System.Security.Cryptography.Cng": "4.5.0"
         },
         "compile": {
@@ -1830,7 +1830,6 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "DataAccessLibrary": "1.0.0",
-          "Microsoft.AspNetCore.Http": "2.2.2",
           "SharedLibrary": "1.0.0"
         },
         "compile": {
@@ -1849,7 +1848,6 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
-          "SharedLibrary": "1.0.0",
           "Z.EntityFramework.Plus.EFCore": "5.2.14"
         },
         "compile": {
@@ -1862,6 +1860,12 @@
       "SharedLibrary/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "AutoMapper": "10.1.1",
+          "DataAccessLibrary": "1.0.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.IdentityModel.Tokens": "6.13.1"
+        },
         "compile": {
           "bin/placeholder/SharedLibrary.dll": {}
         },
@@ -2610,10 +2614,10 @@
         "microsoft.identitymodel.jsonwebtokens.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/6.7.1": {
-      "sha512": "WGtTiTy2ZikOz/I5GxCGbNPLOpyI9fPyuyG4Q5rfkhACK+Q0Ad6U8XajYZ2cJ2cFKse0IvHwm15HVrfwrX/89g==",
+    "Microsoft.IdentityModel.Logging/6.13.1": {
+      "sha512": "pUr0kicIy3cNgrapB7old+N+OithDcowO/uqOg/z9dMC8u25/1YS7QirJWKi/0z31fBOE/uEFBHfSfnRCKRxsA==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/6.7.1",
+      "path": "microsoft.identitymodel.logging/6.13.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2621,9 +2625,11 @@
         "lib/net45/Microsoft.IdentityModel.Logging.xml",
         "lib/net461/Microsoft.IdentityModel.Logging.dll",
         "lib/net461/Microsoft.IdentityModel.Logging.xml",
+        "lib/net472/Microsoft.IdentityModel.Logging.dll",
+        "lib/net472/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.6.7.1.nupkg.sha512",
+        "microsoft.identitymodel.logging.6.13.1.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -2661,10 +2667,10 @@
         "microsoft.identitymodel.protocols.openidconnect.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/6.7.1": {
-      "sha512": "Td9Vn9d/0eM1zlUUvaVQzjqdBkBLJ2oGtGL/LYPuiCUAALMeAHVDtpXGk8eYI8Gbduz5n+o7ifldsCIca4MWew==",
+    "Microsoft.IdentityModel.Tokens/6.13.1": {
+      "sha512": "tUTbP9/wMuOGDiTBPXEN24M9rVAEJ8EOvk4pwoo5UKRNUK3bAZYqkzFpcgNOAY3PHHjwZJ2stk4Gf5jvspz0yg==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/6.7.1",
+      "path": "microsoft.identitymodel.tokens/6.13.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2672,9 +2678,11 @@
         "lib/net45/Microsoft.IdentityModel.Tokens.xml",
         "lib/net461/Microsoft.IdentityModel.Tokens.dll",
         "lib/net461/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net472/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net472/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.6.7.1.nupkg.sha512",
+        "microsoft.identitymodel.tokens.6.13.1.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -6747,19 +6755,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\agusp\\.nuget\\packages\\": {}
+    "C:\\Users\\aschl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
+      "projectUniqueName": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
       "projectName": "ControlApi",
-      "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
-      "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\obj\\",
+      "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
+      "packagesPath": "C:\\Users\\aschl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aschl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6773,14 +6781,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
-              "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj"
+            "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
+              "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj"
             },
-            "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-              "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+            "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+              "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
             },
-            "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
-              "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
+            "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+              "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
             }
           }
         }
@@ -6828,7 +6836,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

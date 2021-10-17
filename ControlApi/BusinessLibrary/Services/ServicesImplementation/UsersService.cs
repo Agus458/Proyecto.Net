@@ -1,6 +1,6 @@
 ﻿using DataAccessLibrary.Contexts;
 using DataAccessLibrary.Entities;
-using DataAccessLibrary.Extensions;
+using SharedLibrary.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using SharedLibrary.DataTypes.Users;

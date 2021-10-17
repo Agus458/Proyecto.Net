@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLibrary.Extensions
+namespace SharedLibrary.Extensions
 {
     public static class TenantsExtensions
     {

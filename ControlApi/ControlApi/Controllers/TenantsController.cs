@@ -1,4 +1,5 @@
 ﻿using BusinessLibrary.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
     [ApiController]
     public class TenantsController : ControllerBase
     {

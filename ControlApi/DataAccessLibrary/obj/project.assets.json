@@ -1640,16 +1640,6 @@
         "runtime": {
           "lib/netstandard2.1/Z.Expressions.Eval.dll": {}
         }
-      },
-      "SharedLibrary/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "compile": {
-          "bin/placeholder/SharedLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SharedLibrary.dll": {}
-        }
       }
     }
   },
@@ -6267,11 +6257,6 @@
         "z.expressions.eval.4.0.58.nupkg.sha512",
         "z.expressions.eval.nuspec"
       ]
-    },
-    "SharedLibrary/1.0.0": {
-      "type": "project",
-      "path": "../SharedLibrary/SharedLibrary.csproj",
-      "msbuildProject": "../SharedLibrary/SharedLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6281,24 +6266,23 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.11",
-      "SharedLibrary >= 1.0.0",
       "Z.EntityFramework.Plus.EFCore >= 5.2.14"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\agusp\\.nuget\\packages\\": {}
+    "C:\\Users\\aschl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
       "projectName": "DataAccessLibrary",
-      "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
-      "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\obj\\",
+      "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
+      "packagesPath": "C:\\Users\\aschl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aschl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6311,11 +6295,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
-              "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -6368,7 +6348,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

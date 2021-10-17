@@ -1,7 +1,5 @@
 ﻿using DataAccessLibrary.Contexts;
 using DataAccessLibrary.Entities;
-using DataAccessLibrary.Extensions;
-using SharedLibrary.DataTypes.Tenants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,20 +54,20 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.Context = Context;
         }
 
-        public TenantDataType GetByRut(string Rut)
+        public Tenant GetByRut(string Rut)
         {
             var Institution = this.Context.Set<Tenant>().FirstOrDefault(ExistingInstitution => ExistingInstitution.Rut == Rut);
 
-            if (Institution != null) return Institution.GetDataType();
+            if (Institution != null) return Institution;
 
             return null;
         }
 
-        public TenantDataType GetBySocialReason(string SocialReason)
+        public Tenant GetBySocialReason(string SocialReason)
         {
             var Institution = this.Context.Set<Tenant>().FirstOrDefault(ExistingInstitution => ExistingInstitution.SocialReason == SocialReason);
 
-            if (Institution != null) return Institution.GetDataType();
+            if (Institution != null) return Institution;
 
             return null;
         }

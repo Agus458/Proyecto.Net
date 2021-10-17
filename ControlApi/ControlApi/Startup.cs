@@ -1,4 +1,4 @@
-using BusinessLibrary.Configuration;
+using SharedLibrary.Configuration;
 using BusinessLibrary.Services;
 using BusinessLibrary.Services.ServicesImplementation;
 using DataAccessLibrary.Contexts;
@@ -21,6 +21,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SharedLibrary.Extensions;
+using ControlApi.Middlewares;
 
 namespace ControlApi
 {
@@ -104,12 +106,11 @@ namespace ControlApi
                 };
             });
 
-
+            services.AddMultitenancy();
 
             // Here we define all de dependency injection needed.
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IUsersService, UsersService>();
-            services.AddScoped<ITenantsStore, TenantsStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -125,6 +126,8 @@ namespace ControlApi
             DataInitialization.SeedAsync(UserManager, RoleManager).Wait();
 
             app.UseHttpsRedirection();
+
+            app.UseMiddleware<TenantMiddleware>();
 
             app.UseRouting();
 

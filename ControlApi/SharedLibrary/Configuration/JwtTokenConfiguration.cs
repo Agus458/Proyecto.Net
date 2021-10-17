@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLibrary.Configuration
+namespace SharedLibrary.Configuration
 {
     public class JwtTokenConfiguration
     {

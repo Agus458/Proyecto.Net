@@ -1,5 +1,5 @@
 ﻿using DataAccessLibrary.Entities;
-using DataAccessLibrary.Extensions;
+using SharedLibrary.Extensions;
 using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Identity;
 using SharedLibrary;

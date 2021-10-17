@@ -1,5 +1,4 @@
 ﻿using DataAccessLibrary.Entities;
-using SharedLibrary.DataTypes.Tenants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,8 +46,8 @@ namespace DataAccessLibrary.Stores
         /// <returns></returns>
         void Delete(Tenant Entity);
 
-        TenantDataType GetByRut(string Rut);
+        Tenant GetByRut(string Rut);
 
-        TenantDataType GetBySocialReason(string Rut);
+        Tenant GetBySocialReason(string Rut);
     }
 }

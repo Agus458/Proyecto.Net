@@ -13,7 +13,6 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
-          "SharedLibrary": "1.0.0",
           "Z.EntityFramework.Plus.EFCore": "5.2.14"
         },
         "runtime": {
@@ -1165,11 +1164,6 @@
             "fileVersion": "4.0.58.0"
           }
         }
-      },
-      "SharedLibrary/1.0.0": {
-        "runtime": {
-          "SharedLibrary.dll": {}
-        }
       }
     }
   },
@@ -1934,11 +1928,6 @@
       "sha512": "sha512-8Tt5tE8RVV1c3r3t0Rti2giqSrf/qsbLuq8SErYIfHG5j/b78MSpJdG0wZor4/JqkiSOFCo/eLvKy+68p1lSCA==",
       "path": "z.expressions.eval/4.0.58",
       "hashPath": "z.expressions.eval.4.0.58.nupkg.sha512"
-    },
-    "SharedLibrary/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

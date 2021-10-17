@@ -1,4 +1,4 @@
-﻿using BusinessLibrary.Configuration;
+﻿using SharedLibrary.Configuration;
 using DataAccessLibrary.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
