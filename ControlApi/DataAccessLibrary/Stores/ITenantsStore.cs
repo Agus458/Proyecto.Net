@@ -30,7 +30,7 @@ namespace DataAccessLibrary.Stores
         /// </summary>
         /// <param name="Entity">he entity to create.</param>
         /// <returns></returns>
-        void Create(Tenant Entity);
+        Task CreateAsync(Tenant Entity, string Email, string Password);
 
         /// <summary>
         /// Updates the given entity.

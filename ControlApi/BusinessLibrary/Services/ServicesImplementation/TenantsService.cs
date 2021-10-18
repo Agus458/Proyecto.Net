@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
-    public class InstitutionsService : ITenantsService
+    public class TenantsService : ITenantsService
     {
         private readonly ITenantsStore Store;
 
         private readonly UserManager<User> UserManager;
 
-        public InstitutionsService(ITenantsStore Store, UserManager<User> UserManager)
+        public TenantsService(ITenantsStore Store, UserManager<User> UserManager)
         {
             this.Store = Store;
             this.UserManager = UserManager;
@@ -35,15 +35,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
                     var NewTenant = new Tenant() { Id = Guid.NewGuid() };
                     NewTenant.AssignDataType(Data);
 
-                    this.Store.Create(NewTenant);
-
-                    var NewUser = new User() { Email = Data.Email, UserName = Data.Email, TenantId = NewTenant.Id };
-                    var Result = await this.UserManager.CreateAsync(NewUser, Data.Password);
-
-                    if (Result.Succeeded)
-                    {
-                        await this.UserManager.AddToRoleAsync(NewUser, "Admin");
-                    }
+                    await this.Store.CreateAsync(NewTenant, Data.Email, Data.Password);
                 }
             }
 

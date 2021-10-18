@@ -34,5 +34,11 @@ namespace ControlApi.Controllers
         {
             return this.Service.GetById(Id);
         }
+
+        [HttpPost]
+        public async Task Create(CreateTenantRequestDataType Data)
+        {
+            await this.Service.Create(Data);
+        }
     }
 }

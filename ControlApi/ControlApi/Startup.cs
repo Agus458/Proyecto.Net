@@ -82,6 +82,7 @@ namespace ControlApi
                 Options.Password.RequireNonAlphanumeric = false;
                 Options.Password.RequireUppercase = false;
                 Options.Password.RequireDigit = false;
+                Options.Password.RequireLowercase = false;
                 Options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<ApiDbContext>();
 
@@ -111,6 +112,7 @@ namespace ControlApi
             // Here we define all de dependency injection needed.
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<ITenantsService, TenantsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

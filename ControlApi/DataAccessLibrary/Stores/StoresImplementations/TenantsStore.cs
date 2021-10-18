@@ -1,5 +1,7 @@
 ﻿using DataAccessLibrary.Contexts;
 using DataAccessLibrary.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +13,41 @@ namespace DataAccessLibrary.Stores.StoresImplementations
     public class TenantsStore : ITenantsStore
     {
         private readonly ApiDbContext Context;
+        private readonly UserManager<User> UserManager;
 
-        public void Create(Tenant Entity)
+        public TenantsStore(ApiDbContext Context, UserManager<User> UserManager)
         {
-            if (Entity == null) throw new ArgumentNullException();
+            this.Context = Context;
+            this.UserManager = UserManager;
+        }
 
-            this.Context.Set<Tenant>().Add(Entity);
+        public async Task CreateAsync(Tenant Entity, string Email, string Password)
+        {
+            if (Entity == null || Email == null || Password == null) throw new ArgumentNullException();
 
-            this.Context.SaveChanges();
+            using (IDbContextTransaction Transaction = this.Context.Database.BeginTransaction())
+            {
+                try
+                {
+                    this.Context.Set<Tenant>().Add(Entity);
+
+                    var NewUser = new User() { Email = Email, UserName = Email, TenantId = Entity.Id };
+                    var Result = await this.UserManager.CreateAsync(NewUser, Password);
+
+                    if (Result.Succeeded)
+                    {
+                        await this.UserManager.AddToRoleAsync(NewUser, "Admin");
+                    }
+
+                    this.Context.SaveChanges();
+
+                    Transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    Transaction.Rollback();
+                }
+            }
         }
 
         public void Delete(Tenant Entity)
@@ -47,11 +76,6 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.Context.Set<Tenant>().Update(Entity);
 
             this.Context.SaveChanges();
-        }
-
-        public TenantsStore(ApiDbContext Context)
-        {
-            this.Context = Context;
         }
 
         public Tenant GetByRut(string Rut)
