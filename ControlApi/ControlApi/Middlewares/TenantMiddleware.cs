@@ -1,5 +1,6 @@
 ﻿using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Http;
+using SharedLibrary.Configuration;
 using SharedLibrary.Configuration.Tenancy;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace ControlApi.Middlewares
 
         public async Task Invoke(HttpContext Context)
         {
-            if (!Context.Items.ContainsKey("Tenant"))
+            if (!Context.Items.ContainsKey(ApiConstants.HttpContextTenant))
             {
                 var ResolutionStrategy = Context.RequestServices.GetService(typeof(ITenantResolutionStrategy)) as ITenantResolutionStrategy;
                 var TenantsStore = Context.RequestServices.GetService(typeof(ITenantsStore)) as ITenantsStore;
@@ -27,7 +28,7 @@ namespace ControlApi.Middlewares
                 var Identifier = ResolutionStrategy.GetTenantIdentifier();
                 var Tenant = TenantsStore.GetBySocialReason(Identifier);
 
-                Context.Items.Add("Tenant", Tenant);
+                Context.Items.Add(ApiConstants.HttpContextTenant, Tenant);
             }
 
             if (next != null)

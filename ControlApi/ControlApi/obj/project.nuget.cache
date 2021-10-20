@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "o6Inj7cuxwYNHRhRyd/JREbuzRSfTTZeCdtLwkrhR8A2U8w/M8/lwAbCVmJd6izacfRp5IU+efJrI0EmiLsDwA==",
+  "dgSpecHash": "XZWFDF9to2G9Xc48oyCfIqGvslHKHwsTU8NTHgjJl1sXMRcEqqMaoRuSE4flVJ7AfnkzPZSnyqNYlumBOTxXAw==",
   "success": true,
   "projectFilePath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
   "expectedPackageFiles": [
@@ -53,8 +53,8 @@
     "C:\\Users\\agusp\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
-    "C:\\Users\\agusp\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
-    "C:\\Users\\agusp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\agusp\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\agusp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -20,15 +21,25 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         private readonly JwtTokenConfiguration Configuration;
 
-        public AuthenticationService(UserManager<User> UserManager, JwtTokenConfiguration Configuration)
+        private readonly HttpContext HttpContext;
+
+        public AuthenticationService(UserManager<User> UserManager, JwtTokenConfiguration Configuration, IHttpContextAccessor HttpContextAccessor)
         {
             this.UserManager = UserManager;
             this.Configuration = Configuration;
+            this.HttpContext = HttpContextAccessor.HttpContext;
         }
 
         public async Task<dynamic> Login(LoginRequestDataType Data)
         {
             if (Data == null) throw new ArgumentNullException();
+
+            Tenant Aux = null;
+
+            if (HttpContext.Items.TryGetValue(ApiConstants.HttpContextTenant, out var Tenant))
+            {
+                Aux = Tenant as Tenant;
+            }
 
             var User = await this.UserManager.FindByEmailAsync(Data.Email);
 
@@ -37,6 +48,14 @@ namespace BusinessLibrary.Services.ServicesImplementation
                 if (await this.UserManager.CheckPasswordAsync(User, Data.Password))
                 {
                     var Roles = await this.UserManager.GetRolesAsync(User);
+
+                    if (!await this.UserManager.IsInRoleAsync(User, "SuperAdmin"))
+                    {
+                        if (Tenant == null || User.TenantId != Aux.Id)
+                        {
+                            return new ApiError("Unautorized");
+                        }
+                    }
 
                     return this.GenerateToken(User, Roles);
                 }

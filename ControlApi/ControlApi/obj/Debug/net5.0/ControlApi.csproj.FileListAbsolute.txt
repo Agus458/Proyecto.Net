@@ -223,8 +223,8 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\staticwebassets\ControlApi.StaticWebAssets.xml
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\scopedcss\bundle\ControlApi.styles.css
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.RazorTargetAssemblyInfo.cache
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.CopyComplete
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ref\ControlApi.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.pdb
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.genruntimeconfig.cache
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.CopyComplete

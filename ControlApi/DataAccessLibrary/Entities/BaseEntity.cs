@@ -29,6 +29,9 @@ namespace DataAccessLibrary.Entities
         /// </summary>
         public DateTimeOffset UpdatedDate { get; set; }
 
+        /// <summary>
+        /// The Id of the tenant that the entity belongs to.
+        /// </summary>
         public Guid TenantId { get; set; }
     }
 }

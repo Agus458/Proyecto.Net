@@ -23,6 +23,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SharedLibrary.Extensions;
 using ControlApi.Middlewares;
+using SharedLibrary.Configuration.Tenancy;
 
 namespace ControlApi
 {
@@ -45,12 +46,13 @@ namespace ControlApi
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
+                    Description = @"JWT Authorization header using the Bearer scheme. \n\n 
+                      Enter 'Bearer' [space] and then your token in the text input below.
+                      \n\n Example: 'Bearer 12345abcdef'",
                     Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT",
                     In = ParameterLocation.Header,
-                    Description = "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
                 });
 
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -62,11 +64,16 @@ namespace ControlApi
                             {
                                 Type = ReferenceType.SecurityScheme,
                                 Id = "Bearer"
-                            }
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
                         },
                         new string[] {}
                     }
                 });
+
+                c.OperationFilter<SwaggerTenantFilter>();
             });
 
             // Here is defined the connection to the sql server database.
