@@ -42,6 +42,16 @@ namespace DataAccessLibrary.Contexts
         public DbSet<Tenant> Tenants { get; set; }
 
         /// <summary>
+        /// Represents all the Persons saved in the DataBase.
+        /// </summary>
+        public DbSet<Person> Persons { get; set; }
+
+        /// <summary>
+        /// Represents all the Buildings saved in the DataBase.
+        /// </summary>
+        public DbSet<Building> Buildings { get; set; }
+
+        /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
         /// </summary>
         /// <returns></returns>
@@ -52,6 +62,7 @@ namespace DataAccessLibrary.Contexts
                 switch (Entry.State)
                 {
                     case EntityState.Added:
+                        Entry.Entity.Id = Guid.NewGuid();
                         Entry.Entity.TenantId = this.TenantId;
                         Entry.Entity.CreatedDate = DateTime.UtcNow;
                         break;

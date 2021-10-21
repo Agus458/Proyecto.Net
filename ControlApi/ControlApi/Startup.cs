@@ -120,6 +120,8 @@ namespace ControlApi
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<ITenantsService, TenantsService>();
+            services.AddScoped<IPersonsService, PersonsService>();
+            services.AddScoped<IPersonsStore, PersonsStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
