@@ -17,8 +17,8 @@ namespace SharedLibrary.Extensions
         public static IServiceCollection AddMultitenancy(this IServiceCollection Services)
         {
             Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            Services.AddScoped<ITenantResolutionStrategy, HeaderResolutionStrategy>();
-            Services.AddScoped<ITenantsStore, TenantsStore>();
+            Services.AddTransient<ITenantResolutionStrategy, HeaderResolutionStrategy>();
+            Services.AddTransient<ITenantsStore, TenantsStore>();
 
             return Services;
         }

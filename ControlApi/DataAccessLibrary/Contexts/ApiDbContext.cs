@@ -16,24 +16,14 @@ namespace DataAccessLibrary.Contexts
     /// </summary>
     public class ApiDbContext : IdentityDbContext<User>
     {
-        private readonly Guid TenantId;
-        private readonly HttpContext HttpContext;
 
         /// <summary>
         /// Consturctor for the Api Context.
         /// </summary>
         /// <param name="Options"></param>
-        public ApiDbContext(DbContextOptions Options, IHttpContextAccessor ContextAccessor) : base(Options)
+        public ApiDbContext(DbContextOptions<ApiDbContext> Options) : base(Options)
         {
-            this.HttpContext = ContextAccessor.HttpContext;
 
-            if (this.HttpContext is not null && this.HttpContext.Items.TryGetValue("Tenant", out var Aux))
-            {
-                var Tenant = Aux as Tenant;
-                this.TenantId = Tenant.Id;
-            }
-
-            this.Filter<BaseEntity>(Filter => Filter.Where(ExistingEntity => ExistingEntity.TenantId == this.TenantId));
         }
 
         /// <summary>
@@ -42,36 +32,11 @@ namespace DataAccessLibrary.Contexts
         public DbSet<Tenant> Tenants { get; set; }
 
         /// <summary>
-        /// Represents all the Persons saved in the DataBase.
-        /// </summary>
-        public DbSet<Person> Persons { get; set; }
-
-        /// <summary>
-        /// Represents all the Buildings saved in the DataBase.
-        /// </summary>
-        public DbSet<Building> Buildings { get; set; }
-
-        /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
         /// </summary>
         /// <returns></returns>
         public override int SaveChanges()
         {
-            foreach (var Entry in ChangeTracker.Entries<BaseEntity>())
-            {
-                switch (Entry.State)
-                {
-                    case EntityState.Added:
-                        Entry.Entity.Id = Guid.NewGuid();
-                        Entry.Entity.TenantId = this.TenantId;
-                        Entry.Entity.CreatedDate = DateTime.UtcNow;
-                        break;
-                    case EntityState.Modified:
-                        Entry.Entity.UpdatedDate = DateTime.UtcNow;
-                        break;
-                }
-            }
-
             foreach (var Entry in ChangeTracker.Entries<Tenant>())
             {
                 switch (Entry.State)

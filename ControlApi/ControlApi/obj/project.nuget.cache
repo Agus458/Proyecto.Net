@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XZWFDF9to2G9Xc48oyCfIqGvslHKHwsTU8NTHgjJl1sXMRcEqqMaoRuSE4flVJ7AfnkzPZSnyqNYlumBOTxXAw==",
+  "dgSpecHash": "uaTjBa38qdqlD5DzE6Rdccg0OxAHmpceLm+Z+pSJFH4zugEDLv0H3gqdJHUOm4BFYXpEJB8k0vl1ehXh/YuE1w==",
   "success": true,
   "projectFilePath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
   "expectedPackageFiles": [
@@ -51,6 +51,7 @@
     "C:\\Users\\agusp\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\agusp\\.nuget\\packages\\paypal\\1.9.1\\paypal.1.9.1.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
@@ -128,5 +129,16 @@
     "C:\\Users\\agusp\\.nuget\\packages\\z.entityframework.plus.efcore\\5.2.14\\z.entityframework.plus.efcore.5.2.14.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\z.expressions.eval\\4.0.58\\z.expressions.eval.4.0.58.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PayPal 1.9.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PayPal",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

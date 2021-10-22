@@ -20,15 +20,17 @@ namespace ControlApi.Middlewares
 
         public async Task Invoke(HttpContext Context)
         {
-            if (!Context.Items.ContainsKey(ApiConstants.HttpContextTenant))
-            {
-                var ResolutionStrategy = Context.RequestServices.GetService(typeof(ITenantResolutionStrategy)) as ITenantResolutionStrategy;
-                var TenantsStore = Context.RequestServices.GetService(typeof(ITenantsStore)) as ITenantsStore;
+            var ResolutionStrategy = Context.RequestServices.GetService(typeof(ITenantResolutionStrategy)) as ITenantResolutionStrategy;
+            var Identifier = ResolutionStrategy.GetTenantIdentifier();
 
-                var Identifier = ResolutionStrategy.GetTenantIdentifier();
-                var Tenant = TenantsStore.GetBySocialReason(Identifier);
+            var TenantsStore = Context.RequestServices.GetService(typeof(ITenantsStore)) as ITenantsStore;
+            var Tenant = TenantsStore.GetBySocialReason(Identifier);
 
+            if (Tenant != null) {
                 Context.Items.Add(ApiConstants.HttpContextTenant, Tenant);
+            } else
+            {
+                Context.Items.Remove(ApiConstants.HttpContextTenant);
             }
 
             if (next != null)

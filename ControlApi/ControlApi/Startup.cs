@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 using SharedLibrary.Extensions;
 using ControlApi.Middlewares;
 using SharedLibrary.Configuration.Tenancy;
+using SharedLibrary.Configuration.PayPal;
 
 namespace ControlApi
 {
@@ -40,6 +41,9 @@ namespace ControlApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.Configure<PayPalApiConfiguration>(Configuration.GetSection("PayPal"));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ControlApi", Version = "v1" });
@@ -82,6 +86,11 @@ namespace ControlApi
                 Options.UseSqlServer(Configuration.GetConnectionString("DefaultDbConnection"));
             });
 
+            services.AddDbContext<MultiTenantDbContext>(Options =>
+            {
+                Options.UseSqlServer(Configuration.GetConnectionString("DefaultDbConnection"));
+            });
+
             // Here is defined the user identity class and the context that will use.
             services.AddIdentity<User, IdentityRole>(Options =>
             {
@@ -117,11 +126,11 @@ namespace ControlApi
             services.AddMultitenancy();
 
             // Here we define all de dependency injection needed.
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
-            services.AddScoped<IUsersService, UsersService>();
-            services.AddScoped<ITenantsService, TenantsService>();
-            services.AddScoped<IPersonsService, PersonsService>();
-            services.AddScoped<IPersonsStore, PersonsStore>();
+            services.AddTransient<IAuthenticationService, AuthenticationService>();
+            services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<ITenantsService, TenantsService>();
+            services.AddTransient<IPersonsService, PersonsService>();
+            services.AddTransient<IPersonsStore, PersonsStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
