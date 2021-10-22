@@ -123,7 +123,10 @@
             },
             "PayPal": {
               "target": "Package",
-              "version": "[1.9.1, )"
+              "version": "[1.9.1, )",
+              "noWarn": [
+                "NU1701"
+              ]
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

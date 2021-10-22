@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uaTjBa38qdqlD5DzE6Rdccg0OxAHmpceLm+Z+pSJFH4zugEDLv0H3gqdJHUOm4BFYXpEJB8k0vl1ehXh/YuE1w==",
+  "dgSpecHash": "1Noe3rO15QrbtNEOrFjs/Kgnxus2Cy+8jWe0T2ivOccNr5KIeCvYfF8hZrYwnhdI3yEFePLMYvWh5oaRWm0/Cg==",
   "success": true,
   "projectFilePath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
   "expectedPackageFiles": [
@@ -129,16 +129,5 @@
     "C:\\Users\\agusp\\.nuget\\packages\\z.entityframework.plus.efcore\\5.2.14\\z.entityframework.plus.efcore.5.2.14.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\z.expressions.eval\\4.0.58\\z.expressions.eval.4.0.58.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'PayPal 1.9.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
-      "libraryId": "PayPal",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  "logs": []
 }

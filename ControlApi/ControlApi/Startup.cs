@@ -44,6 +44,15 @@ namespace ControlApi
 
             services.Configure<PayPalApiConfiguration>(Configuration.GetSection("PayPal"));
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "FrontEndOrigin",
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                                  });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ControlApi", Version = "v1" });
@@ -150,6 +159,8 @@ namespace ControlApi
             app.UseMiddleware<TenantMiddleware>();
 
             app.UseRouting();
+
+            app.UseCors("FrontEndOrigin");
 
             app.UseAuthorization();
 

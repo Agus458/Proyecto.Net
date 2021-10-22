@@ -73,6 +73,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             {
                 new Claim(ClaimTypes.Email, User.Email),
                 new Claim(ClaimTypes.NameIdentifier, User.Id.ToString()),
+                new Claim("tenant", User.TenantId.ToString()),
             };
 
             foreach (var Role in Roles)
@@ -95,7 +96,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var Token = JwtTokenHandler.CreateToken(TokenDescription);
             var JwtToken = JwtTokenHandler.WriteToken(Token);
 
-            return JwtToken;
+            return new { Token = JwtToken, User.Email, Roles, User.TenantId };
         }
     }
 }

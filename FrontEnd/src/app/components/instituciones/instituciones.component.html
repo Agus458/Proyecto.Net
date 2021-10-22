@@ -1,1 +1,49 @@
-<p>instituciones works!</p>
+<!-- Modal -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{selectedTenant.socialReason}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-warning"
+            [routerLink]="'/nuevainstitucion/' + selectedTenant.id" (click)="modal.close()">Editar</button>
+            <button type="button" class="btn btn-danger" (click)="modal.close()">Eliminar</button>
+        <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
+    </div>
+</ng-template>
+
+<div class="card border-0 shadow rounded-3 my-5">
+    <div class="card-body p-4 p-sm-5">
+        <h4 class="card-title fw-light fs-5">Instituciones</h4>
+        <hr class="my-4">
+        <button type="button" class="btn btn-warning"
+            [routerLink]="'/nuevainstitucion'">Agregar</button>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Rut</th>
+                    <th scope="col">Razon Social</th>
+                    <th scope="col">-.-</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tenant of tenants; index as i">
+                    <th scope="row">{{i}}</th>
+                    <td>{{tenant.rut}}</td>
+                    <td>{{tenant.socialReason}}</td>
+                    <td>
+                        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="open(content, tenant)">Menu</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

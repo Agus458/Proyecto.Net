@@ -6855,7 +6855,10 @@
           },
           "PayPal": {
             "target": "Package",
-            "version": "[1.9.1, )"
+            "version": "[1.9.1, )",
+            "noWarn": [
+              "NU1701"
+            ]
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
@@ -6883,17 +6886,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'PayPal 1.9.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
-      "libraryId": "PayPal",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  }
 }
