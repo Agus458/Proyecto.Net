@@ -14,5 +14,9 @@ namespace BusinessLibrary.Services
         TenantDataType GetById(Guid Id);
 
         Task<dynamic> Create(CreateTenantRequestDataType Data);
+
+        Task Delete(Guid Id);
+
+        void Update(Guid Id, UpdateTenantRequestDataType Data);
     }
 }

@@ -42,6 +42,15 @@ namespace BusinessLibrary.Services.ServicesImplementation
             return new ApiError("User Email Already in use");
         }
 
+        public async Task Delete(Guid Id)
+        {
+            var Tenant = this.Store.GetById(Id);
+            if (Tenant != null)
+            {
+                await this.Store.Delete(Tenant);
+            }
+        }
+
         public IEnumerable<TenantDataType> GetAll()
         {
             return this.Store.GetAll().Select(Institution => Institution.GetDataType());
@@ -54,6 +63,16 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (Institution != null) return Institution.GetDataType();
 
             return null;
+        }
+
+        public void Update(Guid Id, UpdateTenantRequestDataType Data)
+        {
+            var Tenant = this.Store.GetById(Id);
+            if (Tenant != null)
+            {
+                Tenant.AssignDataType(Data);
+                this.Store.Update(Tenant);
+            }
         }
     }
 }

@@ -19,12 +19,15 @@ namespace SharedLibrary.Extensions
             return Mapper.Map<TenantDataType>(Institution);
         }
 
-        public static void AssignDataType(this Tenant Institution, CreateTenantRequestDataType Data)
+        public static void AssignDataType<SDataType>(this Tenant Tenant, SDataType Data)
         {
-            var Config = new MapperConfiguration(Conf => Conf.CreateMap<CreateTenantRequestDataType, Tenant>());
+            var Config = new MapperConfiguration(Conf =>
+            {
+                Conf.CreateMap<SDataType, Tenant>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
+            });
             var Mapper = new Mapper(Config);
 
-            Mapper.Map(Data,Institution);
+            Mapper.Map(Data, Tenant);
         }
     }
 }

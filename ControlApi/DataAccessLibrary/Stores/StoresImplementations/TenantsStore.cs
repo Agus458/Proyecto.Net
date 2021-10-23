@@ -50,13 +50,36 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             }
         }
 
-        public void Delete(Tenant Entity)
+        public async Task Delete(Tenant Entity)
         {
             if (Entity == null) throw new ArgumentNullException();
 
-            this.Context.Set<Tenant>().Remove(Entity);
+            using (IDbContextTransaction Transaction = this.Context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var User = this.UserManager.Users.FirstOrDefault(ExistingUser => ExistingUser.TenantId == Entity.Id);
 
-            this.Context.SaveChanges();
+                    if (User != null)
+                    {
+                        var Result = await this.UserManager.DeleteAsync(User);
+
+                        if (Result.Succeeded)
+                        {
+                            this.Context.Set<Tenant>().Remove(Entity);
+                        }
+
+                    }
+
+                    this.Context.SaveChanges();
+
+                    Transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    Transaction.Rollback();
+                }
+            }
         }
 
         public IEnumerable<Tenant> GetAll()

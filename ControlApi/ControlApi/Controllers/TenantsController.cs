@@ -35,6 +35,18 @@ namespace ControlApi.Controllers
             return this.Service.GetById(Id);
         }
 
+        [HttpDelete("{Id}")]
+        public async Task Delete(Guid Id)
+        {
+            await this.Service.Delete(Id);
+        }
+
+        [HttpPut("{Id}")]
+        public void Update(Guid Id, UpdateTenantRequestDataType Data)
+        {
+            this.Service.Update(Id, Data);
+        }
+
         [HttpPost]
         public async Task Create(CreateTenantRequestDataType Data)
         {

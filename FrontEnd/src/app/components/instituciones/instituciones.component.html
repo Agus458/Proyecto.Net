@@ -10,9 +10,9 @@
 
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-warning"
-            [routerLink]="'/nuevainstitucion/' + selectedTenant.id" (click)="modal.close()">Editar</button>
-            <button type="button" class="btn btn-danger" (click)="modal.close()">Eliminar</button>
+        <button type="button" class="btn btn-warning" [routerLink]="'/nuevainstitucion/' + selectedTenant.id"
+            (click)="modal.close()">Editar</button>
+        <button type="button" class="btn btn-danger" (click)="delete(selectedTenant.id)">Eliminar</button>
         <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
     </div>
 </ng-template>
@@ -21,15 +21,13 @@
     <div class="card-body p-4 p-sm-5">
         <h4 class="card-title fw-light fs-5">Instituciones</h4>
         <hr class="my-4">
-        <button type="button" class="btn btn-warning"
-            [routerLink]="'/nuevainstitucion'">Agregar</button>
-        <table class="table table-dark table-striped">
+        <button type="button" class="btn btn-warning mb-4" [routerLink]="'/nuevainstitucion'">Agregar</button>
+        <table class="table table-borderless table-dark table-striped m-0">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Rut</th>
                     <th scope="col">Razon Social</th>
-                    <th scope="col">-.-</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,8 +36,8 @@
                     <td>{{tenant.rut}}</td>
                     <td>{{tenant.socialReason}}</td>
                     <td>
-                        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                            (click)="open(content, tenant)">Menu</button>
+                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="open(content, tenant)"><i class="bi bi-list"></i></button>
                     </td>
                 </tr>
             </tbody>

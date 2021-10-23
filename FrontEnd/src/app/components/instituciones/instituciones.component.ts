@@ -33,4 +33,9 @@ export class InstitucionesComponent implements OnInit {
     this.selectedTenant = tenant;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
+
+  delete(id: string){
+    this.TenantsService.delete(id).subscribe();
+    window.location.reload();
+  }
 }

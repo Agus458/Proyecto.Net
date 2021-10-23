@@ -12,3 +12,7 @@ body {
 .card {
     border-radius: 20px;
 }
+
+table {
+    border-radius: 10px;
+}

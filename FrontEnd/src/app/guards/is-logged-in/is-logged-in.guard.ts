@@ -20,7 +20,7 @@ export class IsLoggedInGuard implements CanActivate {
       this.AuthenticationService.logOut();
       console.log("Acceso Denegado");
       
-      this.router.navigateByUrl("/");
+      this.router.navigate(["/"]);
       return false;
     }
 

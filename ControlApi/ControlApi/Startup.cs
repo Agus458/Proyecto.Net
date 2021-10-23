@@ -25,6 +25,7 @@ using SharedLibrary.Extensions;
 using ControlApi.Middlewares;
 using SharedLibrary.Configuration.Tenancy;
 using SharedLibrary.Configuration.PayPal;
+using SharedLibrary.Configuration.FacePlusPlus;
 
 namespace ControlApi
 {
@@ -44,6 +45,8 @@ namespace ControlApi
 
             services.Configure<PayPalApiConfiguration>(Configuration.GetSection("PayPal"));
 
+            services.Configure<FacePlusPlusConfiguration>(Configuration.GetSection("FacePlusPlus"));
+
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "FrontEndOrigin",
@@ -52,6 +55,8 @@ namespace ControlApi
                                       builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
                                   });
             });
+
+            services.AddHttpClient();
 
             services.AddSwaggerGen(c =>
             {

@@ -44,7 +44,7 @@ namespace DataAccessLibrary.Stores
         /// </summary>
         /// <param name="Id">The entity to delete</param>
         /// <returns></returns>
-        void Delete(Tenant Entity);
+        Task Delete(Tenant Entity);
 
         Tenant GetByRut(string Rut);
 

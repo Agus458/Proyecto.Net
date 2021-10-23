@@ -1,20 +1,27 @@
 <div class="card border-0 shadow rounded-3 my-5">
     <div class="card-body p-4 p-sm-5">
-        <h4>Nueva Institución</h4>
-        <form>
+        <h4>Institución</h4>
+        <form [formGroup]="institucionForm" (ngSubmit)="submit()">
             <div class="form-group">
-                <label for="formGroupExampleInput">Razon Social</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                <label>Razon Social</label>
+                <input type="text" class="form-control" formControlName="socialReason">
             </div>
             <div class="form-group">
-                <label for="formGroupExampleInput2">RUT</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                <label>RUT</label>
+                <input type="text" class="form-control" formControlName="rut">
             </div>
+            <ng-container *ngIf="!tenant">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                </div>
+            </ng-container>
             <hr class="my-4">
+            <button class="btn btn-warning btn-block" type="submit">Confirmar</button>
         </form>
-        <div class="nashe">
-            <button class="btn btn-warning fw-bold"
-                type="submit">Confirmar</button>
-        </div>
     </div>
 </div>

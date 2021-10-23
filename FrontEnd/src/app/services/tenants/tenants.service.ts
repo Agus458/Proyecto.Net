@@ -23,4 +23,16 @@ export class TenantsService {
   getById(id: string) {
     return this.Http.get<TenantDataType>(this.Url + "/" + id);
   }
+
+  update(id: string, data: any) {
+    return this.Http.put(this.Url + "/" + id, data);
+  }
+
+  delete(id: string) {
+    return this.Http.delete(this.Url + "/" + id);
+  }
+
+  create(data: any) {
+    return this.Http.post(this.Url, data);
+  }
 }
