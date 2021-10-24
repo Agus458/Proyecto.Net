@@ -10,5 +10,7 @@ namespace SharedLibrary.Configuration.FacePlusPlus
     {
         public string ApiKey { get; set; }
         public string ApiSecret { get; set; }
+        public string OuterId { get; set; }
+        public string DisplayName { get; set; }
     }
 }

@@ -16,8 +16,57 @@ namespace SharedLibrary.Configuration.FacePlusPlus
                 using (var RequestMessage = new HttpRequestMessage(HttpMethod.Post, "https://api-us.faceplusplus.com/facepp/v3/faceset/getfacesets"))
                 {
                     var Content = new MultipartFormDataContent();
-                    Content.Add(new StringContent(Configuration.ApiKey), String.Format("\"{0}\"", "api_key"));
-                    Content.Add(new StringContent(Configuration.ApiSecret), String.Format("\"{0}\"", "api_secret"));
+                    Content.Add(new StringContent(Configuration.ApiKey), "\"api_key\"");
+                    Content.Add(new StringContent(Configuration.ApiSecret), "\"api_secret\"");
+
+                    RequestMessage.Content = Content;
+
+                    var Result = await Client.SendAsync(RequestMessage);
+
+                    return await Result.Content.ReadAsStringAsync();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<dynamic> CreateFaceSet(HttpClient Client, FacePlusPlusConfiguration Configuration)
+        {
+            try
+            {
+                using (var RequestMessage = new HttpRequestMessage(HttpMethod.Post, "https://api-us.faceplusplus.com/facepp/v3/faceset/create"))
+                {
+                    var Content = new MultipartFormDataContent();
+                    Content.Add(new StringContent(Configuration.ApiKey), "\"api_key\"");
+                    Content.Add(new StringContent(Configuration.ApiSecret), "\"api_secret\"");
+                    Content.Add(new StringContent(Configuration.OuterId), "\"outer_id\"");
+                    Content.Add(new StringContent(Configuration.DisplayName), "\"display_name\"");
+
+                    RequestMessage.Content = Content;
+
+                    var Result = await Client.SendAsync(RequestMessage);
+
+                    return await Result.Content.ReadAsStringAsync();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<dynamic> DeleteFaceSet(HttpClient Client, FacePlusPlusConfiguration Configuration)
+        {
+            try
+            {
+                using (var RequestMessage = new HttpRequestMessage(HttpMethod.Post, "https://api-us.faceplusplus.com/facepp/v3/faceset/delete"))
+                {
+                    var Content = new MultipartFormDataContent();
+                    Content.Add(new StringContent(Configuration.ApiKey), "\"api_key\"");
+                    Content.Add(new StringContent(Configuration.ApiSecret), "\"api_secret\"");
+                    Content.Add(new StringContent(Configuration.OuterId), "\"outer_id\"");
 
                     RequestMessage.Content = Content;
 
