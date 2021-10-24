@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLibrary.Migrations.MultiTenantDb
 {
     [DbContext(typeof(MultiTenantDbContext))]
-    [Migration("20211021210948_Initial")]
-    partial class Initial
+    [Migration("20211024023831_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

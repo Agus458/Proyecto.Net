@@ -2,13 +2,14 @@
 using SharedLibrary.Extensions;
 using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Identity;
-using SharedLibrary;
+using SharedLibrary.Error;
 using SharedLibrary.DataTypes.Tenants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -39,7 +40,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
                 }
             }
 
-            return new ApiError("User Email Already in use");
+            throw new ApiError("User Email Already in use", (int)HttpStatusCode.BadRequest);
         }
 
         public async Task Delete(Guid Id)

@@ -43,9 +43,7 @@ namespace ControlApi
         {
             services.AddControllers();
 
-            services.Configure<PayPalApiConfiguration>(Configuration.GetSection("PayPal"));
-
-            services.Configure<FacePlusPlusConfiguration>(Configuration.GetSection("FacePlusPlus"));
+            services.AddApiConfiguration(Configuration);
 
             services.AddCors(options =>
             {
@@ -156,6 +154,8 @@ namespace ControlApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ControlApi v1"));
             }
+
+            app.ConfigureApiExceptionMiddleware();
 
             DataInitialization.SeedAsync(UserManager, RoleManager).Wait();
 

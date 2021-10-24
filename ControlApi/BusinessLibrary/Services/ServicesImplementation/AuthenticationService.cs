@@ -2,7 +2,6 @@
 using DataAccessLibrary.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using SharedLibrary;
 using SharedLibrary.DataTypes.Authentication;
 using System;
 using System.Collections.Generic;
@@ -12,6 +11,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using SharedLibrary.Error;
+using System.Net;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -53,27 +54,27 @@ namespace BusinessLibrary.Services.ServicesImplementation
                     {
                         if (Tenant == null || User.TenantId != Aux.Id)
                         {
-                            return new ApiError("Unautorized");
+                            throw new ApiError("Unautorized", (int)HttpStatusCode.Unauthorized);
                         }
                     }
 
-                    return this.GenerateToken(User, Roles);
+                    return this.GenerateToken(User, Roles, Aux?.SocialReason);
                 }
 
-                return new ApiError("Incorrect Password");
+                throw new ApiError("Incorrect Password", (int)HttpStatusCode.BadRequest);
             }
 
-            return new ApiError("User Not Found");
+            throw new ApiError("User Not Found", (int)HttpStatusCode.NotFound);
         }
 
-        private dynamic GenerateToken(User User, IList<string> Roles)
+        private dynamic GenerateToken(User User, IList<string> Roles, string SocialReason)
         {
             // Payload for the token.
             var Claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, User.Email),
                 new Claim(ClaimTypes.NameIdentifier, User.Id.ToString()),
-                new Claim("tenant", User.TenantId.ToString()),
+                new Claim("Tenant", SocialReason ?? ""),
             };
 
             foreach (var Role in Roles)
@@ -96,7 +97,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var Token = JwtTokenHandler.CreateToken(TokenDescription);
             var JwtToken = JwtTokenHandler.WriteToken(Token);
 
-            return new { Token = JwtToken, User.Email, Roles, User.TenantId };
+            return new { Token = JwtToken, User.Email, Roles, Tenant = SocialReason };
         }
     }
 }
