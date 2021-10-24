@@ -16,6 +16,7 @@ namespace BusinessLibrary.Services
 
         PersonDataType GetById(Guid Id);
 
-        void Create(CreatePersonDataType Data);
+        Task<dynamic> Create(CreatePersonDataType Data);
+
     }
 }
