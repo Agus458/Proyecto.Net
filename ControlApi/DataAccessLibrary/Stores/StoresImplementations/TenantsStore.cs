@@ -21,33 +21,15 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.UserManager = UserManager;
         }
 
-        public async Task CreateAsync(Tenant Entity, string Email, string Password)
+        public Tenant Create(Tenant Entity)
         {
-            if (Entity == null || Email == null || Password == null) throw new ArgumentNullException();
+            if (Entity == null) throw new ArgumentNullException();
 
-            using (IDbContextTransaction Transaction = this.Context.Database.BeginTransaction())
-            {
-                try
-                {
-                    this.Context.Set<Tenant>().Add(Entity);
+            this.Context.Set<Tenant>().Add(Entity);
 
-                    var NewUser = new User() { Email = Email, UserName = Email, TenantId = Entity.Id };
-                    var Result = await this.UserManager.CreateAsync(NewUser, Password);
+            this.Context.SaveChanges();
 
-                    if (Result.Succeeded)
-                    {
-                        await this.UserManager.AddToRoleAsync(NewUser, "Admin");
-                    }
-
-                    this.Context.SaveChanges();
-
-                    Transaction.Commit();
-                }
-                catch (Exception)
-                {
-                    Transaction.Rollback();
-                }
-            }
+            return Entity;
         }
 
         public async Task Delete(Tenant Entity)
@@ -103,20 +85,12 @@ namespace DataAccessLibrary.Stores.StoresImplementations
 
         public Tenant GetByRut(string Rut)
         {
-            var Institution = this.Context.Set<Tenant>().FirstOrDefault(ExistingInstitution => ExistingInstitution.Rut == Rut);
-
-            if (Institution != null) return Institution;
-
-            return null;
+            return this.Context.Set<Tenant>().SingleOrDefault(Entity => Entity.Rut == Rut);
         }
 
         public Tenant GetBySocialReason(string SocialReason)
         {
-            var Institution = this.Context.Set<Tenant>().FirstOrDefault(ExistingInstitution => ExistingInstitution.SocialReason == SocialReason);
-
-            if (Institution != null) return Institution;
-
-            return null;
+            return this.Context.Set<Tenant>().SingleOrDefault(Entity => Entity.SocialReason == SocialReason);
         }
     }
 }

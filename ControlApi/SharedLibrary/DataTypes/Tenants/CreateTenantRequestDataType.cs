@@ -16,12 +16,5 @@ namespace SharedLibrary.DataTypes.Tenants
         [Required]
         [MaxLength(200)]
         public string SocialReason { get; init; }
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; init; }
-
-        [Required]
-        public string Password { get; init; }
     }
 }

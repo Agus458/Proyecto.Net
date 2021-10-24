@@ -13,7 +13,7 @@ namespace BusinessLibrary.Services
         
         TenantDataType GetById(Guid Id);
 
-        Task<dynamic> Create(CreateTenantRequestDataType Data);
+        TenantDataType Create(CreateTenantRequestDataType Data);
 
         Task Delete(Guid Id);
 

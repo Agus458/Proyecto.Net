@@ -15,8 +15,11 @@ namespace SharedLibrary.Configuration.FacePlusPlus
             {
                 using (var RequestMessage = new HttpRequestMessage(HttpMethod.Post, "https://api-us.faceplusplus.com/facepp/v3/faceset/getfacesets"))
                 {
-                    RequestMessage.Headers.Add("api_key", Configuration.ApiKey);
-                    RequestMessage.Headers.Add("api_secret", Configuration.ApiSecret);
+                    var Content = new MultipartFormDataContent();
+                    Content.Add(new StringContent(Configuration.ApiKey), String.Format("\"{0}\"", "api_key"));
+                    Content.Add(new StringContent(Configuration.ApiSecret), String.Format("\"{0}\"", "api_secret"));
+
+                    RequestMessage.Content = Content;
 
                     var Result = await Client.SendAsync(RequestMessage);
 

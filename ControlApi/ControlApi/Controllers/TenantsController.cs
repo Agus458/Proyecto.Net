@@ -24,33 +24,36 @@ namespace ControlApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<TenantDataType> GetAll()
+        public IActionResult GetAll()
         {
-            return this.Service.GetAll();
+            return Ok(this.Service.GetAll());
         }
 
         [HttpGet("{Id}")]
-        public TenantDataType GetById(Guid Id)
+        public IActionResult GetById(Guid Id)
         {
-            return this.Service.GetById(Id);
+            return Ok(this.Service.GetById(Id));
         }
 
         [HttpDelete("{Id}")]
-        public async Task Delete(Guid Id)
+        public async Task<IActionResult> Delete(Guid Id)
         {
             await this.Service.Delete(Id);
+            return NoContent();
         }
 
         [HttpPut("{Id}")]
-        public void Update(Guid Id, UpdateTenantRequestDataType Data)
+        public IActionResult Update(Guid Id, UpdateTenantRequestDataType Data)
         {
             this.Service.Update(Id, Data);
+            return NoContent();
         }
 
         [HttpPost]
-        public async Task Create(CreateTenantRequestDataType Data)
+        public IActionResult Create(CreateTenantRequestDataType Data)
         {
-            await this.Service.Create(Data);
+            var result = this.Service.Create(Data);
+            return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
         }
     }
 }

@@ -25,22 +25,19 @@ namespace BusinessLibrary.Services.ServicesImplementation
             this.UserManager = UserManager;
         }
 
-        public async Task<dynamic> Create(CreateTenantRequestDataType Data)
+        public TenantDataType Create(CreateTenantRequestDataType Data)
         {
             if (Data == null) throw new ArgumentNullException();
 
-            if (await this.UserManager.FindByEmailAsync(Data.Email) == null)
+            if (this.Store.GetBySocialReason(Data.SocialReason) == null && this.Store.GetByRut(Data.Rut) == null)
             {
-                if (this.Store.GetBySocialReason(Data.SocialReason) == null && this.Store.GetByRut(Data.Rut) == null)
-                {
-                    var NewTenant = new Tenant() { Id = Guid.NewGuid() };
-                    NewTenant.AssignDataType(Data);
+                var NewTenant = new Tenant() { Id = Guid.NewGuid() };
+                NewTenant.AssignDataType(Data);
 
-                    await this.Store.CreateAsync(NewTenant, Data.Email, Data.Password);
-                }
+                return this.Store.Create(NewTenant).GetDataType();
             }
 
-            throw new ApiError("User Email Already in use", (int)HttpStatusCode.BadRequest);
+            throw new ApiError("Tenant SocialReason or Rut in use", (int)HttpStatusCode.BadRequest);
         }
 
         public async Task Delete(Guid Id)

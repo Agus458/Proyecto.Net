@@ -12,14 +12,12 @@ namespace DataAccessLibrary.Contexts
     {
         public static async Task SeedAsync(UserManager<User> UserManager, RoleManager<IdentityRole> RoleManager)
         {
-            if (!await RoleManager.RoleExistsAsync("SuperAdmin"))
+            if (!RoleManager.Roles.Any())
             {
                 await RoleManager.CreateAsync(new IdentityRole() { Name = "SuperAdmin" });
-            }
-
-            if (!await RoleManager.RoleExistsAsync("Admin"))
-            {
                 await RoleManager.CreateAsync(new IdentityRole() { Name = "Admin" });
+                await RoleManager.CreateAsync(new IdentityRole() { Name = "Portero" });
+                await RoleManager.CreateAsync(new IdentityRole() { Name = "Guard" });
             }
 
             if (await UserManager.FindByEmailAsync("admin@admin.com") == null)
