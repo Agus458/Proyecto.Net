@@ -22,7 +22,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SharedLibrary.Extensions;
-using ControlApi.Middlewares;
 using SharedLibrary.Configuration.Tenancy;
 using SharedLibrary.Configuration.PayPal;
 using SharedLibrary.Configuration.FacePlusPlus;
@@ -55,6 +54,8 @@ namespace ControlApi
             });
 
             services.AddHttpClient();
+
+            services.AddAutoMapper();
 
             services.AddSwaggerGen(c =>
             {
@@ -161,8 +162,6 @@ namespace ControlApi
 
             app.UseHttpsRedirection();
 
-            app.UseMiddleware<TenantMiddleware>();
-
             app.UseRouting();
 
             app.UseCors("FrontEndOrigin");
@@ -170,6 +169,8 @@ namespace ControlApi
             app.UseAuthorization();
 
             app.UseAuthentication();
+
+            app.UseTenancy();
 
             app.UseEndpoints(endpoints =>
             {

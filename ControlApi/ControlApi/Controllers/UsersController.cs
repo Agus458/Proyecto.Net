@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -21,25 +22,31 @@ namespace ControlApi.Controllers
             this.Service = Service;
         }
 
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
         [HttpGet]
-        public ActionResult<IEnumerable<UserDataType>> GetAll()
+        public IActionResult GetAll()
         {
             return Ok(this.Service.GetAll());
         }
 
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
         [HttpGet("{Id}")]
-        public ActionResult<UserDataType> GetById(string Id)
+        public async Task<IActionResult> GetById(string Id)
         {
-            return Ok(this.Service.GetById(Id));
+            return Ok(await this.Service.GetById(Id));
         }
 
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
         [HttpPost]
-        public ActionResult<UserDataType> Create(CreateUserRequestDataType Data)
+        public async Task<IActionResult> Create(CreateUserRequestDataType Data)
         {
-            throw new NotImplementedException();
+            var Result = await this.Service.Create(Data);
+            if(Result != null) return CreatedAtAction(nameof(GetById), new { Id = Result.Id }, Result);
+            return BadRequest();
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete(string Id)
+        {
+            await this.Service.Delete(Id);
+            return NoContent();
         }
     }
 }

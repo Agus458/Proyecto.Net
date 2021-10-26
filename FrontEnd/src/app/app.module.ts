@@ -14,6 +14,9 @@ import { NuevainstitucionComponent } from './components/instituciones/nuevainsti
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 import { AuthInterceptor } from './middlewares/auth.interceptor';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { EditUsuarioComponent } from './components/usuarios/edit-usuario/edit-usuario.component';
+import { TenantInterceptor } from './middlewares/tenant.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { AuthInterceptor } from './middlewares/auth.interceptor';
     InstitucionesComponent,
     NuevainstitucionComponent,
     DashBoardComponent,
+    UsuariosComponent,
+    EditUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,7 @@ import { AuthInterceptor } from './middlewares/auth.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TenantInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

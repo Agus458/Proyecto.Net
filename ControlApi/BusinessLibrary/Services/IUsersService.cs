@@ -23,13 +23,15 @@ namespace BusinessLibrary.Services
         /// </summary>
         /// <param name="Id">The Id of the user.</param>
         /// <returns>The user with the passed Id.</returns>
-        UserDataType GetById(string Id);
+        Task<UserDataType> GetById(string Id);
 
         /// <summary>
         /// Crates a new User in the system.
         /// </summary>
         /// <param name="Data">The Data of the user to create.</param>
         /// <returns></returns>
-        Task Create(CreateUserRequestDataType Data);
+        Task<UserDataType> Create(CreateUserRequestDataType Data);
+
+        Task Delete(string Id);
     }
 }

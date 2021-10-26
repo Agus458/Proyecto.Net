@@ -1,13 +1,13 @@
 ﻿using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Http;
-using SharedLibrary.Configuration;
-using SharedLibrary.Configuration.Tenancy;
+using SharedLibrary.Error;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
-namespace ControlApi.Middlewares
+namespace SharedLibrary.Configuration.Tenancy.Middlewares
 {
     public class TenantMiddleware
     {

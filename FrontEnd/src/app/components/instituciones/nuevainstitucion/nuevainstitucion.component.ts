@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TenantDataType } from 'src/app/models/TenantDataType';
 import { TenantsService } from 'src/app/services/tenants/tenants.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-nuevainstitucion',
@@ -18,7 +19,8 @@ export class NuevainstitucionComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private TenantService: TenantsService,
-    private FormBuilder: FormBuilder
+    private FormBuilder: FormBuilder,
+    public location: Location
   ) { }
 
   async ngOnInit() {
@@ -27,19 +29,12 @@ export class NuevainstitucionComponent implements OnInit {
 
     this.institucionForm = this.FormBuilder.group({
       rut: ["", [Validators.required]],
-      socialReason: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required]]
+      socialReason: ["", [Validators.required]]
     });
 
     if (IdFromRoute) {
       try {
         this.tenant = await this.TenantService.getById(IdFromRoute).toPromise();
-
-        if (this.tenant) {
-          this.institucionForm.removeControl("password");
-          this.institucionForm.removeControl("email");
-        }
 
         this.institucionForm.patchValue(this.tenant);
       } catch (error) {

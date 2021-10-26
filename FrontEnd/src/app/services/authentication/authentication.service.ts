@@ -35,13 +35,23 @@ export class AuthenticationService {
     return null;
   }
 
+  getTenant(): string | null {
+    const tenant = localStorage.getItem("tenant");
+
+    if (tenant) return JSON.parse(tenant);
+
+    return null;
+  }
+
+
   isLogged(): boolean {
     return localStorage.getItem("email") != null;
   }
 
   login(email: string, password: string, tenant: string): void {
     let headers = new HttpHeaders();
-    headers = headers.set("TenantIdentifier", tenant)
+    headers = headers.set("TenantIdentifier", tenant);
+    headers = headers.set("skip", "1");
 
     this.Http.post<any>(this.Url + "/Login", { email, password }, {
       headers: headers
@@ -50,7 +60,7 @@ export class AuthenticationService {
         localStorage.setItem("token", result.token);
         localStorage.setItem("roles", JSON.stringify(result.roles));
         localStorage.setItem("email", JSON.stringify(result.email));
-        localStorage.setItem("tenant", JSON.stringify(result.tenantId));
+        localStorage.setItem("tenant", JSON.stringify(result.tenant));
 
         this.Router.navigateByUrl("/");
       },

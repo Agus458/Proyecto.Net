@@ -7,18 +7,18 @@
                     <hr class="my-4">
                     <form [formGroup]="LoginForm" (ngSubmit)="submit()">
                         <div class="form-floating mb-3">
-                            <label for="floatingInput">Institucion</label>
-                            <input type="text" class="form-control" id="floatingInput"
-                                placeholder="Empresa SA" formControlName="tenant">
+                            <label>Institucion</label>
+                            <input type="text" class="form-control"
+                                placeholder="Empresa SA" name="tenat" formControlName="tenant">
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="floatingInput">Correo Electronico</label>
-                            <input type="email" class="form-control" id="floatingInput"
-                                placeholder="nombre@example.com" formControlName="email">
+                            <label>Correo Electronico</label>
+                            <input type="email" class="form-control"
+                                placeholder="nombre@example.com" name="email" formControlName="email">
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="floatingPassword">Contraseña</label>
-                            <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="Contraseña">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
                         </div>
                         <div class="d-grid">
                             <button class="btn btn-block btn-warning btn-login text-uppercase fw-bold" [disabled]="LoginForm.invalid"

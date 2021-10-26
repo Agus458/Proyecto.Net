@@ -15,6 +15,20 @@
           "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/8.1.1": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "[10.1.1, 11.0.0)",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0",
+          "Microsoft.Extensions.Options": "3.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/5.0.11": {
         "type": "package",
         "compile": {
@@ -1760,6 +1774,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "AutoMapper": "10.1.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "DataAccessLibrary": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.IdentityModel.Tokens": "6.13.1",
@@ -1789,6 +1804,19 @@
         "lib/net461/AutoMapper.xml",
         "lib/netstandard2.0/AutoMapper.dll",
         "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/8.1.1": {
+      "sha512": "xSWoVzOipuDU4PeZcUfaZQ+xqXU8QmGv5jrdlxt3MYm9xaOmrefqcfzGQ3SQ+D+8wfBa/ZwSuL0qKOVj080inA==",
+      "type": "package",
+      "path": "automapper.extensions.microsoft.dependencyinjection/8.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+        "automapper.extensions.microsoft.dependencyinjection.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/5.0.11": {
@@ -6547,19 +6575,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aschl\\.nuget\\packages\\": {}
+    "C:\\Users\\agusp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
       "projectName": "BusinessLibrary",
-      "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
-      "packagesPath": "C:\\Users\\aschl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\obj\\",
+      "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
+      "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\aschl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6573,11 +6601,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-              "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+            "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+              "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
             },
-            "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
-              "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
+            "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+              "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
             }
           }
         }
@@ -6606,7 +6634,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

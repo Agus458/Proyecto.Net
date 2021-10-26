@@ -17,7 +17,7 @@ namespace DataAccessLibrary.Contexts
                 await RoleManager.CreateAsync(new IdentityRole() { Name = "SuperAdmin" });
                 await RoleManager.CreateAsync(new IdentityRole() { Name = "Admin" });
                 await RoleManager.CreateAsync(new IdentityRole() { Name = "Portero" });
-                await RoleManager.CreateAsync(new IdentityRole() { Name = "Guard" });
+                await RoleManager.CreateAsync(new IdentityRole() { Name = "Gestor" });
             }
 
             if (await UserManager.FindByEmailAsync("admin@admin.com") == null)

@@ -16,6 +16,7 @@ namespace SharedLibrary.DataTypes.Users
         [Required]
         public string Password { get; init; }
 
-        public IList<string> Roles { get; init; }
+        [Required]
+        public string Role { get; init; }
     }
 }

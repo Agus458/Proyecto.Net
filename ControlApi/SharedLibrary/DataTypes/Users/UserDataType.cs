@@ -12,6 +12,6 @@ namespace SharedLibrary.DataTypes.Users
 
         public string Email { get; init; }
 
-        public IList<string> Roles { get; init; }
+        public IList<string> Roles { get; set; }
     }
 }

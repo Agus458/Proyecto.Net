@@ -35,13 +35,13 @@ namespace SharedLibrary.Configuration.Error
         {
             Context.Response.ContentType = "application/json";
 
-            object Message;
+            object Msg;
 
             if (Exeption is ApiError)
             {
                 var Aux = Exeption as ApiError;
                 Context.Response.StatusCode = Aux.StatusCode;
-                Message = new
+                Msg = new
                 {
                     Aux.StatusCode,
                     Exeption.Message
@@ -51,14 +51,14 @@ namespace SharedLibrary.Configuration.Error
             {
                 Console.WriteLine(Exeption);
                 Context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                Message = new
+                Msg = new
                 {
                     Context.Response.StatusCode,
-                    Message = "Internal Server Error"
+                    Msg = "Internal Server Error"
                 };
             }
 
-            await Context.Response.WriteAsync(JsonConvert.SerializeObject(Message));
+            await Context.Response.WriteAsync(JsonConvert.SerializeObject(Msg));
         }
     }
 }

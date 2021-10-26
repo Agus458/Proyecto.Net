@@ -1,9 +1,11 @@
-﻿using DataAccessLibrary.Stores;
+﻿using AutoMapper;
+using DataAccessLibrary.Stores;
 using DataAccessLibrary.Stores.StoresImplementations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using SharedLibrary.Configuration;
 using SharedLibrary.Configuration.FacePlusPlus;
 using SharedLibrary.Configuration.PayPal;
 using SharedLibrary.Configuration.Tenancy;
@@ -30,6 +32,20 @@ namespace SharedLibrary.Extensions
         {
             Services.Configure<PayPalApiConfiguration>(Configuration.GetSection("PayPal"));
             Services.Configure<FacePlusPlusConfiguration>(Configuration.GetSection("FacePlusPlus"));
+
+            return Services;
+        }
+
+        public static IServiceCollection AddAutoMapper(this IServiceCollection Services)
+        {
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            Services.AddSingleton(mapper);
 
             return Services;
         }
