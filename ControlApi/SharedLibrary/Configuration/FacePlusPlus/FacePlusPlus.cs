@@ -80,5 +80,28 @@ namespace SharedLibrary.Configuration.FacePlusPlus
                 throw;
             }
         }
+
+        public static async Task<dynamic> Detect(HttpClient Client, FacePlusPlusConfiguration Configuration)
+        {
+            try
+            {
+                using (var RequestMessage = new HttpRequestMessage(HttpMethod.Post, "https://api-us.faceplusplus.com/facepp/v3/detect"))
+                {
+                    var Content = new MultipartFormDataContent();
+                    Content.Add(new StringContent(Configuration.ApiKey), "\"api_key\"");
+                    Content.Add(new StringContent(Configuration.ApiSecret), "\"api_secret\"");
+
+                    RequestMessage.Content = Content;
+
+                    var Result = await Client.SendAsync(RequestMessage);
+
+                    return await Result.Content.ReadAsStringAsync();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

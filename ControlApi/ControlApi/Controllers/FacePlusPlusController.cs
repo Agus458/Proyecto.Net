@@ -29,16 +29,24 @@ namespace ControlApi.Controllers
             return await FacePlusPlus.GetFaceSets(this.HttpClient, this.Configuration);
         }
 
-        [HttpGet("CreateFaceSet")]
+        [HttpPost("CreateFaceSet")]
         public async Task<dynamic> CreateFaceSet()
         {
             return await FacePlusPlus.CreateFaceSet(this.HttpClient, this.Configuration);
         }
 
-        [HttpGet("DeleteFaceSet")]
+        [HttpDelete("DeleteFaceSet")]
         public async Task<dynamic> DeleteFaceSet()
         {
             return await FacePlusPlus.DeleteFaceSet(this.HttpClient, this.Configuration);
+        }
+
+        [HttpPost("Detect")]
+        public async Task<dynamic> Detect()
+        {
+            /*return await FacePlusPlus.Detect(this.HttpClient, this.Configuration);*/
+
+            return null;
         }
     }
 }
