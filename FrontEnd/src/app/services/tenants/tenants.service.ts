@@ -16,8 +16,13 @@ export class TenantsService {
     private Router: Router
   ) { }
 
-  getAll() {
-    return this.Http.get<TenantDataType[]>(this.Url);
+  getAll(skip: number, take: number) {
+    return this.Http.get<{ collection: TenantDataType[], size: number }>(this.Url, {
+      params: {
+        skip,
+        take
+      }
+    });
   }
 
   getById(id: string) {

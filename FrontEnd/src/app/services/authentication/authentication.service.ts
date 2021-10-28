@@ -43,24 +43,27 @@ export class AuthenticationService {
     return null;
   }
 
+  getSocialReason(): string | null {
+    const socialReason = localStorage.getItem("socialReason");
+
+    if (socialReason) return JSON.parse(socialReason);
+
+    return null;
+  }
+
 
   isLogged(): boolean {
     return localStorage.getItem("email") != null;
   }
 
   login(email: string, password: string, tenant: string): void {
-    let headers = new HttpHeaders();
-    headers = headers.set("TenantIdentifier", tenant);
-    headers = headers.set("skip", "1");
-
-    this.Http.post<any>(this.Url + "/Login", { email, password }, {
-      headers: headers
-    }).subscribe(
+    this.Http.post<any>(this.Url + "/Login", { email, password, socialReason: tenant }).subscribe(
       result => {
         localStorage.setItem("token", result.token);
         localStorage.setItem("roles", JSON.stringify(result.roles));
         localStorage.setItem("email", JSON.stringify(result.email));
         localStorage.setItem("tenant", JSON.stringify(result.tenant));
+        localStorage.setItem("socialReason", JSON.stringify(result.socialReason));
 
         this.Router.navigateByUrl("/");
       },

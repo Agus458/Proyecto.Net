@@ -1,6 +1,6 @@
 <nav class="navbar-collapse navbar navbar-dark bg-dark navbar-expand-lg shadow">
     <div class="container">
-        <a class="navbar-brand" routerLink="" href="#">AccessApp <small *ngIf="AuthenticationService.getTenant()" class="text-muted">// {{AuthenticationService.getTenant()}}</small></a>
+        <a class="navbar-brand" routerLink="" href="#">AccessApp <small *ngIf="AuthenticationService.getSocialReason()" class="text-muted">// {{AuthenticationService.getSocialReason()}}</small></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
