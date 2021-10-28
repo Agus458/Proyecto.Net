@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H9cDdBNlDek3gzuykV7C2bgolHXUfdakRaIdyul9elUFljJGH2mH6Ugrbsg2FG2zM3Cu7cfU//FtcH84dZibaQ==",
+  "dgSpecHash": "eurTe7K4oSpsU5hn+17WL9pujvol8vyZ+aOTtPUoPzT8a0YjbByZ8v3aT9hkbaQqCHMzLskL/l8RlDowNsS3bg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
+  "projectFilePath": "C:\\Users\\agusp\\Desktop\\ControlApi\\ControlApi\\ControlApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\agusp\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

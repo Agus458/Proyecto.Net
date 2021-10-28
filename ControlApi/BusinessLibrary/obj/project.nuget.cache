@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cR/1YUw+Z5UrMJTCLEfY5qEc+GL/HGaENziqveyJyN1oxJtXbWr8llRHjqvWOJ+QhgUI/0K4bAxdAttmaZgdgg==",
+  "dgSpecHash": "duTftURo1LySG946UADDe8Pk20hru/go2uHR/gduqRh16TADkZ3LqrXHB5mOjiXPvrmTO5niaBMz4PcKq6X2iw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
+  "projectFilePath": "C:\\Users\\agusp\\Desktop\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\agusp\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

@@ -23,7 +23,7 @@ namespace SharedLibrary.Configuration.Tenancy.Middlewares
         {
             var Tenant = Context.GetTenant();
 
-            if (next != null && (Context.User.IsInRole("SuperAdmin") || Context.User.FindFirst(c => c.Type.Equals("Tenant"))?.Value == Tenant.SocialReason))
+            if (next != null && (Context.User.IsInRole("SuperAdmin") || (Tenant != Guid.Empty && Context.User.FindFirst(c => c.Type.Equals("Tenant"))?.Value == Tenant.ToString())))
             {
                 await next(Context);
             }

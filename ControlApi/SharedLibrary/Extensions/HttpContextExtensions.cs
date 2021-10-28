@@ -11,14 +11,17 @@ namespace SharedLibrary.Extensions
 {
     public static class HttpContextExtensions
     {
-        public static Tenant GetTenant(this HttpContext HttpContext)
+        public static Guid GetTenant(this HttpContext HttpContext)
         {
             if (HttpContext.Items.TryGetValue(ApiConstants.HttpContextTenant, out var Tenant))
             {
-                return Tenant as Tenant;
+                if (Guid.TryParse(Tenant as string, out var Id))
+                {
+                    return Id;
+                }
             }
 
-            return null;
+            return Guid.Empty;
         }
     }
 }

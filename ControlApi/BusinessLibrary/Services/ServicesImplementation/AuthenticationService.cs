@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using SharedLibrary.Error;
 using System.Net;
+using SharedLibrary.Extensions;
+using DataAccessLibrary.Stores;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -24,23 +26,19 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         private readonly HttpContext HttpContext;
 
-        public AuthenticationService(UserManager<User> UserManager, JwtTokenConfiguration Configuration, IHttpContextAccessor HttpContextAccessor)
+        private readonly ITenantsStore TenantsStore;
+
+        public AuthenticationService(UserManager<User> UserManager, JwtTokenConfiguration Configuration, IHttpContextAccessor HttpContextAccessor, ITenantsStore TenantsStore)
         {
             this.UserManager = UserManager;
             this.Configuration = Configuration;
             this.HttpContext = HttpContextAccessor.HttpContext;
+            this.TenantsStore = TenantsStore;
         }
 
         public async Task<dynamic> Login(LoginRequestDataType Data)
         {
             if (Data == null) throw new ArgumentNullException();
-
-            Tenant Aux = null;
-
-            if (HttpContext.Items.TryGetValue(ApiConstants.HttpContextTenant, out var Tenant))
-            {
-                Aux = Tenant as Tenant;
-            }
 
             var User = await this.UserManager.FindByEmailAsync(Data.Email);
 
@@ -50,15 +48,19 @@ namespace BusinessLibrary.Services.ServicesImplementation
                 {
                     var Roles = await this.UserManager.GetRolesAsync(User);
 
+                    Tenant Tenant = null;
+
+                    if (Data.SocialReason != null) Tenant = this.TenantsStore.GetBySocialReason(Data.SocialReason);
+
                     if (!await this.UserManager.IsInRoleAsync(User, "SuperAdmin"))
                     {
-                        if (Tenant == null || User.TenantId != Aux.Id)
+                        if (Tenant == null || User.TenantId != Tenant.Id)
                         {
                             throw new ApiError("Unautorized", (int)HttpStatusCode.Unauthorized);
                         }
                     }
 
-                    return this.GenerateToken(User, Roles, Aux?.SocialReason);
+                    return this.GenerateToken(User, Roles, Tenant);
                 }
 
                 throw new ApiError("Incorrect Password", (int)HttpStatusCode.BadRequest);
@@ -67,14 +69,14 @@ namespace BusinessLibrary.Services.ServicesImplementation
             throw new ApiError("User Not Found", (int)HttpStatusCode.NotFound);
         }
 
-        private dynamic GenerateToken(User User, IList<string> Roles, string SocialReason)
+        private dynamic GenerateToken(User User, IList<string> Roles, Tenant Tenant)
         {
             // Payload for the token.
             var Claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, User.Email),
                 new Claim(ClaimTypes.NameIdentifier, User.Id.ToString()),
-                new Claim("Tenant", SocialReason ?? ""),
+                new Claim("Tenant", Tenant != null ? Tenant.Id.ToString() : ""),
             };
 
             foreach (var Role in Roles)
@@ -97,7 +99,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var Token = JwtTokenHandler.CreateToken(TokenDescription);
             var JwtToken = JwtTokenHandler.WriteToken(Token);
 
-            return new { Token = JwtToken, User.Email, Roles, Tenant = SocialReason };
+            return new { Token = JwtToken, User.Email, Roles, Tenant = Tenant?.Id, Tenant?.SocialReason };
         }
     }
 }

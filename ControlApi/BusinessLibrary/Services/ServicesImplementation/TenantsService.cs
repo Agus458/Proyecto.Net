@@ -1,5 +1,4 @@
 ﻿using DataAccessLibrary.Entities;
-using SharedLibrary.Extensions;
 using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Identity;
 using SharedLibrary.Error;
@@ -10,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using AutoMapper;
+using SharedLibrary.DataTypes;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -19,10 +20,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         private readonly UserManager<User> UserManager;
 
-        public TenantsService(ITenantsStore Store, UserManager<User> UserManager)
+        private readonly IMapper Mapper;
+
+        public TenantsService(ITenantsStore Store, UserManager<User> UserManager, IMapper Mapper)
         {
             this.Store = Store;
             this.UserManager = UserManager;
+            this.Mapper = Mapper;
         }
 
         public TenantDataType Create(CreateTenantRequestDataType Data)
@@ -32,9 +36,11 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (this.Store.GetBySocialReason(Data.SocialReason) == null && this.Store.GetByRut(Data.Rut) == null)
             {
                 var NewTenant = new Tenant() { Id = Guid.NewGuid() };
-                NewTenant.AssignDataType(Data);
+                Mapper.Map(Data, NewTenant);
 
-                return this.Store.Create(NewTenant).GetDataType();
+                var Result = this.Store.Create(NewTenant);
+                
+                return Mapper.Map<TenantDataType>(Result);
             }
 
             throw new ApiError("Tenant SocialReason or Rut in use", (int)HttpStatusCode.BadRequest);
@@ -49,16 +55,21 @@ namespace BusinessLibrary.Services.ServicesImplementation
             }
         }
 
-        public IEnumerable<TenantDataType> GetAll()
+        public PaginationDataType<TenantDataType> GetAll(int Skip, int Take)
         {
-            return this.Store.GetAll().Select(Institution => Institution.GetDataType());
+            var Result = this.Store.GetAll(Skip, Take);
+
+            return new PaginationDataType<TenantDataType>() {
+                Collection = Result.Collection.Select(Tenant => Mapper.Map<TenantDataType>(Tenant)),
+                Size = Result.Size
+            };
         }
 
         public TenantDataType GetById(Guid Id)
         {
-            var Institution = this.Store.GetById(Id);
+            var Tenant = this.Store.GetById(Id);
 
-            if (Institution != null) return Institution.GetDataType();
+            if (Tenant != null) return Mapper.Map<TenantDataType>(Tenant);
 
             return null;
         }
@@ -68,7 +79,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var Tenant = this.Store.GetById(Id);
             if (Tenant != null)
             {
-                Tenant.AssignDataType(Data);
+                Mapper.Map(Data, Tenant);
                 this.Store.Update(Tenant);
             }
         }

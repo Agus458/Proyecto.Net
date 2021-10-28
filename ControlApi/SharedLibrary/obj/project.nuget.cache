@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PHAUCbZOHdvz3UbE//dnxXsHVO4VZrkyuX7IurHsYB/eYhRaLE43wF4Z9vNsLPzSJ8EoYKW5vqzGwtezL4z9PA==",
+  "dgSpecHash": "aBlHdI2Zh9w62GSsPxrAgaNEjc1valw26AOQJfm3gtqdHOtQfHYQ6YKnjpECVawFezPB9PLkXnqMDbP28dPVSQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+  "projectFilePath": "C:\\Users\\agusp\\Desktop\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\agusp\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\agusp\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

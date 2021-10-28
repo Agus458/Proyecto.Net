@@ -10,9 +10,9 @@ namespace DataAccessLibrary.Stores.StoresImplementations
 {
     public class Store<Target> : IStore<Target> where Target : BaseEntity
     {
-        private readonly MultiTenantDbContext Context;
+        private readonly ApiDbContext Context;
 
-        public Store(MultiTenantDbContext Context)
+        public Store(ApiDbContext Context)
         {
             this.Context = Context;
         }

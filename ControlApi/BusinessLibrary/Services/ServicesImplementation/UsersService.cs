@@ -13,6 +13,7 @@ using AutoMapper;
 using SharedLibrary.Error;
 using System.Net;
 using System.Security.Claims;
+using DataAccessLibrary.Stores;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -22,13 +23,15 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly HttpContext Context;
         private readonly IMapper Mapper;
         private readonly ApiDbContext ApiContext;
+        private readonly ITenantsStore TenantsStore;
 
-        public UsersService(UserManager<User> UserManager, IHttpContextAccessor Context, IMapper Mapper, ApiDbContext ApiContext)
+        public UsersService(UserManager<User> UserManager, IHttpContextAccessor Context, IMapper Mapper, ApiDbContext ApiContext, ITenantsStore TenantsStore)
         {
             this.UserManager = UserManager;
             this.Context = Context.HttpContext;
             this.Mapper = Mapper;
             this.ApiContext = ApiContext;
+            this.TenantsStore = TenantsStore;
         }
 
         public async Task<UserDataType> Create(CreateUserRequestDataType Data)
@@ -39,9 +42,10 @@ namespace BusinessLibrary.Services.ServicesImplementation
             {
                 try
                 {
-                    var Tenant = this.Context.GetTenant();
+                    var TenantId = this.Context.GetTenant();
+                    if (TenantId == Guid.Empty) throw new ApiError("No se ingreso la institucion", (int)HttpStatusCode.BadRequest);
 
-                    if (Tenant == null) throw new ApiError("No se ingreso la institucion", (int)HttpStatusCode.BadRequest);
+                    if(this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
 
                     if (Context.User.IsInRole("SuperAdmin") && Data.Role.ToLower() != "admin" || Context.User.IsInRole("Admin") && (Data.Role.ToLower() != "portero" && Data.Role.ToLower() != "gestor"))
                     {
@@ -54,7 +58,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
                     {
                         Email = Data.Email,
                         UserName = Data.Email,
-                        TenantId = Tenant.Id
+                        TenantId = TenantId
                     };
 
                     var Result = await this.UserManager.CreateAsync(NewUser, Data.Password);
@@ -77,20 +81,19 @@ namespace BusinessLibrary.Services.ServicesImplementation
                 catch (Exception e)
                 {
                     Transaction.Rollback();
+                    throw;
                 }
             }
-
-            return null;
         }
 
         public IEnumerable<UserDataType> GetAll()
         {
             var Users = this.UserManager.Users.ToList();
 
-            var Tenant = this.Context.GetTenant();
-            if (Tenant != null)
+            var TenantId = this.Context.GetTenant();
+            if (TenantId != Guid.Empty)
             {
-                Users = Users.Where(ExistingUser => ExistingUser.TenantId == Tenant.Id).ToList();
+                Users = Users.Where(ExistingUser => ExistingUser.TenantId == TenantId).ToList();
             }
 
             return Users.Select(User =>
@@ -112,9 +115,9 @@ namespace BusinessLibrary.Services.ServicesImplementation
         public async Task Delete(string Id)
         {
             var User = await this.UserManager.FindByIdAsync(Id);
-            if(User == null) throw new ApiError("User not found", (int)HttpStatusCode.NotFound);
+            if (User == null) throw new ApiError("User not found", (int)HttpStatusCode.NotFound);
 
-            if(this.Context.User.FindFirst(ClaimTypes.Email)?.Value == User.Email) throw new ApiError("You can not delete yourself", (int)HttpStatusCode.BadRequest);
+            if (this.Context.User.FindFirst(ClaimTypes.Email)?.Value == User.Email) throw new ApiError("You can not delete yourself", (int)HttpStatusCode.BadRequest);
 
             await this.UserManager.DeleteAsync(User);
         }

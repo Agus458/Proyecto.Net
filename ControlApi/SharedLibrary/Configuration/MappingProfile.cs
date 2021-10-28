@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataAccessLibrary.Entities;
+using SharedLibrary.DataTypes.Tenants;
 using SharedLibrary.DataTypes.Users;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,11 @@ namespace SharedLibrary.Configuration
         {
             // Add as many of these lines as you need to map your objects.
             CreateMap<User, UserDataType>();
-            CreateMap<CreateUserRequestDataType, User>();
+            CreateMap<CreateUserRequestDataType, User>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
 
+            CreateMap<Tenant, TenantDataType>();
+            CreateMap<CreateTenantRequestDataType, Tenant>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
+            CreateMap<UpdateTenantRequestDataType, Tenant>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
         }
     }
 }

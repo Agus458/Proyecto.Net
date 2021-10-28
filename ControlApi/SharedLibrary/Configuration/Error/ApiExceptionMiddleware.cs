@@ -54,7 +54,7 @@ namespace SharedLibrary.Configuration.Error
                 Message = new
                 {
                     Context.Response.StatusCode,
-                    Msg = "Internal Server Error"
+                    Message = "Internal Server Error"
                 };
             }
 

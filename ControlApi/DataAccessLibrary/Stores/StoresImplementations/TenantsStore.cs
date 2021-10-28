@@ -3,9 +3,7 @@ using DataAccessLibrary.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Stores.StoresImplementations
@@ -19,13 +17,15 @@ namespace DataAccessLibrary.Stores.StoresImplementations
         {
             this.Context = Context;
             this.UserManager = UserManager;
+
+            this.Context.Set<Tenant>();
         }
 
         public Tenant Create(Tenant Entity)
         {
             if (Entity == null) throw new ArgumentNullException();
 
-            this.Context.Set<Tenant>().Add(Entity);
+            this.Context.Add(Entity);
 
             this.Context.SaveChanges();
 
@@ -48,7 +48,7 @@ namespace DataAccessLibrary.Stores.StoresImplementations
 
                         if (Result.Succeeded)
                         {
-                            this.Context.Set<Tenant>().Remove(Entity);
+                            this.Context.Remove(Entity);
                         }
 
                     }
@@ -64,9 +64,10 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             }
         }
 
-        public IEnumerable<Tenant> GetAll()
+        public PaginationDataType<Tenant> GetAll(int Skip, int Take)
         {
-            return this.Context.Set<Tenant>().AsEnumerable();
+            var Tenants = this.Context.Set<Tenant>();
+            return new PaginationDataType<Tenant> { Collection = Tenants.Skip(Skip).Take(Take > 0 ? Take : 10).AsEnumerable(), Size = Tenants.Count() };
         }
 
         public Tenant GetById(Guid Id)
@@ -78,7 +79,7 @@ namespace DataAccessLibrary.Stores.StoresImplementations
         {
             if (Entity == null) throw new ArgumentNullException();
 
-            this.Context.Set<Tenant>().Update(Entity);
+            this.Context.Update(Entity);
 
             this.Context.SaveChanges();
         }

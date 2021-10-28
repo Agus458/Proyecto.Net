@@ -38,8 +38,7 @@ namespace ControlApi.Controllers
         public async Task<IActionResult> Create(CreateUserRequestDataType Data)
         {
             var Result = await this.Service.Create(Data);
-            if(Result != null) return CreatedAtAction(nameof(GetById), new { Id = Result.Id }, Result);
-            return BadRequest();
+            return CreatedAtAction(nameof(GetById), new { Id = Result.Id }, Result);
         }
 
         [HttpDelete("{Id}")]

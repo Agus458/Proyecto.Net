@@ -16,20 +16,42 @@ namespace DataAccessLibrary.Contexts
     /// </summary>
     public class ApiDbContext : IdentityDbContext<User>
     {
+        private readonly Guid TenantId;
+        private readonly HttpContext HttpContext;
 
         /// <summary>
         /// Consturctor for the Api Context.
         /// </summary>
         /// <param name="Options"></param>
-        public ApiDbContext(DbContextOptions<ApiDbContext> Options) : base(Options)
+        public ApiDbContext(DbContextOptions Options, IHttpContextAccessor ContextAccessor) : base(Options)
         {
+            this.HttpContext = ContextAccessor.HttpContext;
 
+            if (this.HttpContext is not null && this.HttpContext.Items.TryGetValue("Tenant", out var Tenant))
+            {
+                if (Guid.TryParse(Tenant as string, out var Id))
+                {
+                    this.TenantId = Id;
+                }
+            }
+
+            this.Filter<BaseEntity>(Filter => Filter.Where(ExistingEntity => ExistingEntity.TenantId == this.TenantId));
         }
 
         /// <summary>
         /// Represents all the Institutions saved in the DataBase.
         /// </summary>
         public DbSet<Tenant> Tenants { get; set; }
+
+        /// <summary>
+        /// Represents all the Persons saved in the DataBase.
+        /// </summary>
+        public DbSet<Person> Persons { get; set; }
+
+        /// <summary>
+        /// Represents all the Buildings saved in the DataBase.
+        /// </summary>
+        public DbSet<Building> Buildings { get; set; }
 
         /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
@@ -42,6 +64,21 @@ namespace DataAccessLibrary.Contexts
                 switch (Entry.State)
                 {
                     case EntityState.Added:
+                        Entry.Entity.CreatedDate = DateTime.UtcNow;
+                        break;
+                    case EntityState.Modified:
+                        Entry.Entity.UpdatedDate = DateTime.UtcNow;
+                        break;
+                }
+            }
+
+            foreach (var Entry in ChangeTracker.Entries<BaseEntity>())
+            {
+                switch (Entry.State)
+                {
+                    case EntityState.Added:
+                        Entry.Entity.Id = Guid.NewGuid();
+                        Entry.Entity.TenantId = this.TenantId;
                         Entry.Entity.CreatedDate = DateTime.UtcNow;
                         break;
                     case EntityState.Modified:

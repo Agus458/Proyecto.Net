@@ -1,4 +1,5 @@
-﻿using SharedLibrary.DataTypes.Tenants;
+﻿using SharedLibrary.DataTypes;
+using SharedLibrary.DataTypes.Tenants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace BusinessLibrary.Services
 {
     public interface ITenantsService
     {
-        IEnumerable<TenantDataType> GetAll();
+        PaginationDataType<TenantDataType> GetAll(int Skip, int Take);
         
         TenantDataType GetById(Guid Id);
 

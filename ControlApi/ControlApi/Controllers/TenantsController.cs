@@ -24,9 +24,9 @@ namespace ControlApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take)
         {
-            return Ok(this.Service.GetAll());
+            return Ok(this.Service.GetAll(Skip, Take));
         }
 
         [HttpGet("{Id}")]

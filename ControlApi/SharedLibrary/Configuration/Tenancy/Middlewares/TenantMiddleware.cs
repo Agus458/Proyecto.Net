@@ -23,11 +23,8 @@ namespace SharedLibrary.Configuration.Tenancy.Middlewares
             var ResolutionStrategy = Context.RequestServices.GetService(typeof(ITenantResolutionStrategy)) as ITenantResolutionStrategy;
             var Identifier = ResolutionStrategy.GetTenantIdentifier();
 
-            var TenantsStore = Context.RequestServices.GetService(typeof(ITenantsStore)) as ITenantsStore;
-            var Tenant = TenantsStore.GetBySocialReason(Identifier);
-
-            if (Tenant != null) {
-                Context.Items.Add(ApiConstants.HttpContextTenant, Tenant);
+            if (Identifier != null) {
+                Context.Items.Add(ApiConstants.HttpContextTenant, Identifier);
             } else
             {
                 Context.Items.Remove(ApiConstants.HttpContextTenant);

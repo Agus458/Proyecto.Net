@@ -15,5 +15,6 @@ namespace SharedLibrary.DataTypes.Authentication
 
         [Required]
         public string Password { get; init; }
+        public string SocialReason { get; init; }
     }
 }

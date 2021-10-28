@@ -99,11 +99,6 @@ namespace ControlApi
                 Options.UseSqlServer(Configuration.GetConnectionString("DefaultDbConnection"));
             });
 
-            services.AddDbContext<MultiTenantDbContext>(Options =>
-            {
-                Options.UseSqlServer(Configuration.GetConnectionString("DefaultDbConnection"));
-            });
-
             // Here is defined the user identity class and the context that will use.
             services.AddIdentity<User, IdentityRole>(Options =>
             {

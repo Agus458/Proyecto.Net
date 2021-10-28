@@ -6561,11 +6561,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\agusp\\Desktop\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
       "projectName": "SharedLibrary",
-      "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+      "projectPath": "C:\\Users\\agusp\\Desktop\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
       "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\obj\\",
+      "outputPath": "C:\\Users\\agusp\\Desktop\\ControlApi\\SharedLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6582,8 +6582,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-              "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+            "C:\\Users\\agusp\\Desktop\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+              "projectPath": "C:\\Users\\agusp\\Desktop\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
             }
           }
         }

@@ -33,5 +33,6 @@ namespace DataAccessLibrary.Entities
         /// The Id of the tenant that the entity belongs to.
         /// </summary>
         public Guid TenantId { get; set; }
+        public Tenant Tenant { get; set; }
     }
 }
