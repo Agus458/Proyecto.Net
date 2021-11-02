@@ -310,3 +310,4 @@ C:\Users\agusp\Desktop\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.dll
 C:\Users\agusp\Desktop\ControlApi\ControlApi\obj\Debug\net5.0\ref\ControlApi.dll
 C:\Users\agusp\Desktop\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.pdb
 C:\Users\agusp\Desktop\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.genruntimeconfig.cache
+C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

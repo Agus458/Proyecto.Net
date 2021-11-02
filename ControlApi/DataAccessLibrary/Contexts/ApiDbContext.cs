@@ -35,7 +35,7 @@ namespace DataAccessLibrary.Contexts
                 }
             }
 
-            this.Filter<BaseEntity>(Filter => Filter.Where(ExistingEntity => ExistingEntity.TenantId == this.TenantId));
+            this.Filter<MustHaveTenantEntity>(Filter => Filter.Where(ExistingEntity => ExistingEntity.TenantId == this.TenantId));
         }
 
         /// <summary>
@@ -52,6 +52,11 @@ namespace DataAccessLibrary.Contexts
         /// Represents all the Buildings saved in the DataBase.
         /// </summary>
         public DbSet<Building> Buildings { get; set; }
+
+        /// <summary>
+        /// Represents all the Doors saved in the DataBase.
+        /// </summary>
+        public DbSet<Door> Doors { get; set; }
 
         /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
@@ -72,7 +77,7 @@ namespace DataAccessLibrary.Contexts
                 }
             }
 
-            foreach (var Entry in ChangeTracker.Entries<BaseEntity>())
+            foreach (var Entry in ChangeTracker.Entries<MustHaveTenantEntity>())
             {
                 switch (Entry.State)
                 {

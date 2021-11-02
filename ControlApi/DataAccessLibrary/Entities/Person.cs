@@ -10,7 +10,7 @@ namespace DataAccessLibrary.Entities
     /// <summary>
     /// Person entity implementation. The people that enter to the building of an institution.
     /// </summary>
-    public class Person : BaseEntity
+    public class Person : MustHaveTenantEntity
     {
         /// <summary>
         /// Document of the person.

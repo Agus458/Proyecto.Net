@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataAccessLibrary.Entities;
+using SharedLibrary.DataTypes.Buildings;
 using SharedLibrary.DataTypes.Tenants;
 using SharedLibrary.DataTypes.Users;
 using System;
@@ -21,6 +22,10 @@ namespace SharedLibrary.Configuration
             CreateMap<Tenant, TenantDataType>();
             CreateMap<CreateTenantRequestDataType, Tenant>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
             CreateMap<UpdateTenantRequestDataType, Tenant>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
+
+            CreateMap<Building, BuildingDataType>();
+            CreateMap<CreateBuildingRequestDataType, Building>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
+            CreateMap<UpdateBuildingRequestDataType, Building>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
         }
     }
 }

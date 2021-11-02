@@ -30,10 +30,16 @@ namespace DataAccessLibrary.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Latitude")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Length")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<Guid>("TenantId")
                         .HasColumnType("uniqueidentifier");
@@ -46,6 +52,32 @@ namespace DataAccessLibrary.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("Buildings");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Door", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BuildingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BuildingId");
+
+                    b.ToTable("Doors");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Person", b =>
@@ -333,6 +365,17 @@ namespace DataAccessLibrary.Migrations
                         .IsRequired();
 
                     b.Navigation("Tenant");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Door", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Building", "Building")
+                        .WithMany()
+                        .HasForeignKey("BuildingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Building");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Person", b =>

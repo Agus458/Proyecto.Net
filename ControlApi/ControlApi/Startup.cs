@@ -135,10 +135,16 @@ namespace ControlApi
 
             // Here we define all de dependency injection needed.
             services.AddTransient<IAuthenticationService, AuthenticationService>();
+
             services.AddTransient<IUsersService, UsersService>();
+
             services.AddTransient<ITenantsService, TenantsService>();
+
             services.AddTransient<IPersonsService, PersonsService>();
             services.AddTransient<IPersonsStore, PersonsStore>();
+
+            services.AddTransient<IBuildingsStore, BuildingsStore>();
+            services.AddTransient<IBuildingsService, BuildingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

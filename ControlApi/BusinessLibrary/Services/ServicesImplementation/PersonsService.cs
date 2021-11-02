@@ -31,7 +31,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public IEnumerable<PersonDataType> GetAll()
         {
-            return this.Store.GetAll().Select(Person => Person.GetDataType());
+            throw new NotImplementedException();
         }
 
         public PersonDataType GetById(Guid Id)

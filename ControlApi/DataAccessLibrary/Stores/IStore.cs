@@ -17,7 +17,7 @@ namespace DataAccessLibrary.Stores
         /// Returns All the entities that corrispond with the target class.
         /// </summary>
         /// <returns>A collection of the target entity.</returns>
-        IEnumerable<Target> GetAll();
+        PaginationDataType<Target> GetAll(int Skip, int Take);
 
         /// <summary>
         /// Gets the target entity with the passed Id.

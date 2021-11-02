@@ -35,9 +35,10 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.Context.SaveChanges();
         }
 
-        public IEnumerable<Target> GetAll()
+        public PaginationDataType<Target> GetAll(int Skip, int Take)
         {
-            return this.Context.Set<Target>().AsEnumerable();
+            var Collection = this.Context.Set<Target>();
+            return new PaginationDataType<Target> { Collection = Collection.Skip(Skip).Take(Take > 0 ? Take : 10).AsEnumerable(), Size = Collection.Count() };
         }
 
         public Target GetById(Guid Id)

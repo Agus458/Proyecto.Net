@@ -28,11 +28,5 @@ namespace DataAccessLibrary.Entities
         /// The date in which the new entity was updated.
         /// </summary>
         public DateTimeOffset UpdatedDate { get; set; }
-
-        /// <summary>
-        /// The Id of the tenant that the entity belongs to.
-        /// </summary>
-        public Guid TenantId { get; set; }
-        public Tenant Tenant { get; set; }
     }
 }
