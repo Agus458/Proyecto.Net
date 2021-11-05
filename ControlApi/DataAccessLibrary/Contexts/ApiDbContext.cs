@@ -2,9 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Z.EntityFramework.Plus;
@@ -18,14 +21,16 @@ namespace DataAccessLibrary.Contexts
     {
         private readonly Guid TenantId;
         private readonly HttpContext HttpContext;
+        private readonly ILogger<ApiDbContext> Logger;
 
         /// <summary>
         /// Consturctor for the Api Context.
         /// </summary>
         /// <param name="Options"></param>
-        public ApiDbContext(DbContextOptions Options, IHttpContextAccessor ContextAccessor) : base(Options)
+        public ApiDbContext(DbContextOptions Options, IHttpContextAccessor ContextAccessor, ILogger<ApiDbContext> Logger) : base(Options)
         {
             this.HttpContext = ContextAccessor.HttpContext;
+            this.Logger = Logger;
 
             if (this.HttpContext is not null && this.HttpContext.Items.TryGetValue("Tenant", out var Tenant))
             {
@@ -90,6 +95,16 @@ namespace DataAccessLibrary.Contexts
                         Entry.Entity.UpdatedDate = DateTime.UtcNow;
                         break;
                 }
+            }
+
+            foreach (var Entry in ChangeTracker.Entries())
+            {
+                var Data = new {
+                    Entry.Entity,
+                    User = HttpContext.User.FindFirst(c => c.Type.Equals(ClaimTypes.NameIdentifier))?.Value,
+                    Method = Entry.State
+                };
+                Logger.LogInformation(JsonConvert.SerializeObject(Data));
             }
 
             return base.SaveChanges();
