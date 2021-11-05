@@ -18,9 +18,9 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.Context = Context;
         }
 
-        public new PaginationDataType<Door> GetAll(int Skip, int Take)
+        public PaginationDataType<Door> GetAll(int Skip, int Take, Guid BuildingId)
         {
-            var Collection = this.Context.Set<Door>().Include(Door => Door.Building);
+            var Collection = this.Context.Set<Door>().Include(Door => Door.Building).Where(Door => Door.BuildingId == BuildingId);
             return new PaginationDataType<Door> { Collection = Collection.Skip(Skip).Take(Take > 0 ? Take : 10).AsEnumerable(), Size = Collection.Count() };
         }
 

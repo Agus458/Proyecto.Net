@@ -15,6 +15,6 @@ namespace DataAccessLibrary.Entities
 
         public Guid BuildingId { get; set; }
 
-        public Building Building { get; set; }
+        public virtual Building Building { get; set; }
     }
 }

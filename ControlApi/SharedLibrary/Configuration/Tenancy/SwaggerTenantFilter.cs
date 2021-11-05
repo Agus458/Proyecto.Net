@@ -19,7 +19,7 @@ namespace SharedLibrary.Configuration.Tenancy
             {
                 Name = "TenantIdentifier",
                 In = ParameterLocation.Header,
-                Description = "Social reson of the Tenant",
+                Description = "Id of the Tenant",
                 Schema = new OpenApiSchema
                 {
                     Type = "string"

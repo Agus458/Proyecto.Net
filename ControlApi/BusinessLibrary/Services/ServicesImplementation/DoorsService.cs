@@ -34,7 +34,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var Building = this.BuildingsStore.GetById(Data.BuildingId);
             if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
 
-            var NewDoor = new Door() { Id = Guid.NewGuid(), TenantId = Building.TenantId };
+            var NewDoor = new Door() { Id = Guid.NewGuid() };
             Mapper.Map(Data, NewDoor);
 
             this.Store.Create(NewDoor);
@@ -52,9 +52,12 @@ namespace BusinessLibrary.Services.ServicesImplementation
             this.Store.Delete(Door);
         }
 
-        public PaginationDataType<DoorDataType> GetAll(int Skip, int Take)
+        public PaginationDataType<DoorDataType> GetAll(int Skip, int Take, Guid BuildingId)
         {
-            var Result = this.Store.GetAll(Skip, Take);
+            var Building = this.BuildingsStore.GetById(BuildingId);
+            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
+
+            var Result = this.Store.GetAll(Skip, Take, BuildingId);
 
             return new PaginationDataType<DoorDataType>()
             {

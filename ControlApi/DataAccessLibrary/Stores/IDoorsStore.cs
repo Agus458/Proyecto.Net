@@ -9,5 +9,6 @@ namespace DataAccessLibrary.Stores
 {
     public interface IDoorsStore : IStore<Door>
     {
+        PaginationDataType<Door> GetAll(int Skip, int Take, Guid BuildingId);
     }
 }

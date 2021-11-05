@@ -10,7 +10,7 @@ namespace BusinessLibrary.Services
 {
     public interface IDoorsService
     {
-        PaginationDataType<DoorDataType> GetAll(int Skip, int Take);
+        PaginationDataType<DoorDataType> GetAll(int Skip, int Take, Guid BuildingId);
 
         DoorDataType GetById(Guid Id);
 
