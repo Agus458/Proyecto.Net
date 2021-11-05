@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SharedLibrary.DataTypes.Persons
 {
-    public record CreatePersonDataType
+    public record CreatePersonRequestDataType
     {
         /// <summary>
         /// Document of the document of the person.

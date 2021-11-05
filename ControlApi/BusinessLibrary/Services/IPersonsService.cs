@@ -1,4 +1,5 @@
-﻿using SharedLibrary.DataTypes.Persons;
+﻿using DataAccessLibrary;
+using SharedLibrary.DataTypes.Persons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,14 @@ namespace BusinessLibrary.Services
     /// </summary>
     public interface IPersonsService
     {
-        IEnumerable<PersonDataType> GetAll();
+        PaginationDataType<PersonDataType> GetAll(int Skip, int Take);
 
         PersonDataType GetById(Guid Id);
 
-        void Create(CreatePersonDataType Data);
+        PersonDataType Create(CreatePersonRequestDataType Data);
+
+        void Delete(Guid Id);
+
+        void Update(Guid Id, UpdatePersonRequestDataType Data);
     }
 }

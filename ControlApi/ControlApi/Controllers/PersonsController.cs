@@ -27,21 +27,36 @@ namespace ControlApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<PersonDataType> GetAll()
+        public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take)
         {
-            return this.Service.GetAll();
+            return Ok(this.Service.GetAll(Skip, Take));
         }
 
         [HttpGet("{Id}")]
-        public PersonDataType GetById(Guid Id)
+        public IActionResult GetById(Guid Id)
         {
-            return this.Service.GetById(Id);
+            return Ok(this.Service.GetById(Id));
+        }
+
+        [HttpDelete("{Id}")]
+        public IActionResult Delete(Guid Id)
+        {
+            this.Service.Delete(Id);
+            return NoContent();
+        }
+
+        [HttpPut("{Id}")]
+        public IActionResult Update(Guid Id, UpdatePersonRequestDataType Data)
+        {
+            this.Service.Update(Id, Data);
+            return NoContent();
         }
 
         [HttpPost]
-        public void Create(CreatePersonDataType Data)
+        public IActionResult Create(CreatePersonRequestDataType Data)
         {
-            this.Service.Create(Data);
+            var result = this.Service.Create(Data);
+            return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
         }
     }
 }
