@@ -147,6 +147,7 @@ namespace ControlApi
             services.AddTransient<IBuildingsService, BuildingsService>();
 
             services.AddTransient<IDoorsStore, DoorsStore>();
+            services.AddTransient<IDoorsService, DoorsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

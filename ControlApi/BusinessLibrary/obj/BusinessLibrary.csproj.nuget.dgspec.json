@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {}
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
         "projectName": "BusinessLibrary",
-        "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
-        "packagesPath": "C:\\Users\\aschl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\obj\\",
+        "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
+        "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aschl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,11 +28,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-                "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+              "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+                "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
               },
-              "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
-                "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
+              "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+                "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
               }
             }
           }
@@ -61,21 +61,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
         "projectName": "DataAccessLibrary",
-        "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
-        "packagesPath": "C:\\Users\\aschl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\obj\\",
+        "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
+        "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aschl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -141,21 +141,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+    "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
         "projectName": "SharedLibrary",
-        "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
-        "packagesPath": "C:\\Users\\aschl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\obj\\",
+        "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+        "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aschl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -169,8 +169,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-                "projectPath": "C:\\Users\\aschl\\OneDrive\\Documents\\Agustin\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+              "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+                "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
               }
             }
           }
@@ -221,7 +221,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

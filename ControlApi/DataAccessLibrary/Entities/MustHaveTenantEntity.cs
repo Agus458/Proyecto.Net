@@ -14,11 +14,11 @@ namespace DataAccessLibrary.Entities
         /// <summary>
         /// The Id of the tenant that the entity belongs to.
         /// </summary>
-        public Guid TenantId { get; set; }
+        public virtual Guid TenantId { get; set; }
         
         /// <summary>
         /// The Tenant entity to which belongs.
         /// </summary>
-        public Tenant Tenant { get; set; }
+        public virtual Tenant Tenant { get; set; }
     }
 }

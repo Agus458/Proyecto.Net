@@ -42,6 +42,7 @@ namespace SharedLibrary.Extensions
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
+                mc.ForAllMaps((obj, cnfg) => cnfg.ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null)));
             });
 
             IMapper mapper = mappingConfig.CreateMapper();

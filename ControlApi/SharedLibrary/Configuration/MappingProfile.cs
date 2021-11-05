@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DataAccessLibrary.Entities;
 using SharedLibrary.DataTypes.Buildings;
+using SharedLibrary.DataTypes.Doors;
 using SharedLibrary.DataTypes.Tenants;
 using SharedLibrary.DataTypes.Users;
 using System;
@@ -17,15 +18,19 @@ namespace SharedLibrary.Configuration
         {
             // Add as many of these lines as you need to map your objects.
             CreateMap<User, UserDataType>();
-            CreateMap<CreateUserRequestDataType, User>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
+            CreateMap<CreateUserRequestDataType, User>();
 
             CreateMap<Tenant, TenantDataType>();
-            CreateMap<CreateTenantRequestDataType, Tenant>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
-            CreateMap<UpdateTenantRequestDataType, Tenant>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
+            CreateMap<CreateTenantRequestDataType, Tenant>();
+            CreateMap<UpdateTenantRequestDataType, Tenant>();
 
             CreateMap<Building, BuildingDataType>();
-            CreateMap<CreateBuildingRequestDataType, Building>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
-            CreateMap<UpdateBuildingRequestDataType, Building>().ForAllMembers(Options => Options.Condition((Source, Destination, SrcMember) => SrcMember != null));
+            CreateMap<CreateBuildingRequestDataType, Building>();
+            CreateMap<UpdateBuildingRequestDataType, Building>();
+
+            CreateMap<Door, DoorDataType>();
+            CreateMap<CreateDoorRequestDataType, Door>();
+            CreateMap<UpdateDoorRequestDataType, Door>();
         }
     }
 }
