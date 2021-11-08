@@ -65,4 +65,3 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debu
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\ref\BusinessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.pdb
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.CopyComplete
