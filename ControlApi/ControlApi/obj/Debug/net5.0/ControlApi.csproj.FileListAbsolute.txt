@@ -336,3 +336,4 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.genruntimeconfig.cache
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\ExcelDataReader.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\ExcelDataReader.DataSet.dll
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.CopyComplete

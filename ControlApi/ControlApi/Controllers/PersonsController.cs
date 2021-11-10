@@ -55,7 +55,7 @@ namespace ControlApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreatePersonRequestDataType Data)
+        public IActionResult Create([FromForm] CreatePersonRequestDataType Data)
         {
             var result = this.Service.Create(Data);
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
@@ -64,7 +64,7 @@ namespace ControlApi.Controllers
         [HttpPost("csv")]
         public IActionResult CSV()
         {
-            var Users = new List<dynamic>();
+            var Persons = new List<CreatePersonRequestDataType>();
             try
             {
                 var file = Request.Form.Files[0];
@@ -85,22 +85,30 @@ namespace ControlApi.Controllers
 
                         foreach (DataRow Row in dataSet.Tables[0].Rows)
                         {
-                            Users.Add(new
+                            Persons.Add(new CreatePersonRequestDataType()
                             {
-                                Apellido = Row["Apellido"],
-                                Nombre = Row["Nombre"]
+                                Name = Row["Name"]?.ToString(),
+                                LastName = Row["LastName"]?.ToString(),
+                                Document = Row["Document"]?.ToString(),
+                                DocumentType = Row["DocumentType"]?.ToString(),
+                                Email = Row["Email"]?.ToString(),
+                                Phone = Row["Phone"]?.ToString()
                             });
                         }
                     }
                 }
+
+                foreach (var item in Persons)
+                {
+                    this.Service.Create(item);
+                }
             }
             catch (Exception)
             {
-
                 throw;
             }
 
-            return Ok(Users);
+            return Ok(Persons);
         }
     }
 }

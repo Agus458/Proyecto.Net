@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using SharedLibrary.Configuration.FacePlusPlus;
+using SharedLibrary.Error;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,11 +43,18 @@ namespace ControlApi.Controllers
         }
 
         [HttpPost("Detect")]
-        public async Task<dynamic> Detect()
+        public async Task<IActionResult> Detect(IFormFile File)
         {
-            /*return await FacePlusPlus.Detect(this.HttpClient, this.Configuration);*/
+            try
+            {
+                if (File == null || File.ContentType != "image/jpeg") throw new ApiError("Archivo invalido");
 
-            return null;
+                return Ok(await FacePlusPlus.Detect(this.HttpClient, this.Configuration, File.OpenReadStream(), File.FileName));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

@@ -49,7 +49,7 @@ namespace ControlApi
                 options.AddPolicy(name: "FrontEndOrigin",
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:57479").AllowAnyHeader().AllowAnyMethod();
+                                      builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
                                   });
             });
 
@@ -175,6 +175,8 @@ namespace ControlApi
             app.UseAuthentication();
 
             app.UseTenancy();
+
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {

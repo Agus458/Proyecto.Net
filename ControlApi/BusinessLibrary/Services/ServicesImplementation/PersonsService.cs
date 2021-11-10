@@ -2,12 +2,16 @@
 using DataAccessLibrary;
 using DataAccessLibrary.Entities;
 using DataAccessLibrary.Stores;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using SharedLibrary.Configuration.FacePlusPlus;
 using SharedLibrary.DataTypes.Persons;
 using SharedLibrary.Error;
 using SharedLibrary.Extensions;
+using SharedLibrary.Helpers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -17,20 +21,22 @@ namespace BusinessLibrary.Services.ServicesImplementation
 {
     public class PersonsService : IPersonsService
     {
+        private readonly IWebHostEnvironment Environment;
         private readonly IPersonsStore Store;
         private readonly IMapper Mapper;
         private readonly ITenantsStore TenantsStore;
         private readonly HttpContext Context;
 
-        public PersonsService(IPersonsStore Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context)
+        public PersonsService(IPersonsStore Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context, IWebHostEnvironment Environment)
         {
             this.Store = Store;
             this.Mapper = Mapper;
             this.Context = Context.HttpContext;
             this.TenantsStore = TenantsStore;
+            this.Environment = Environment;
         }
 
-        public PersonDataType Create(CreatePersonRequestDataType Data)
+        public async Task<PersonDataType> Create(CreatePersonRequestDataType Data)
         {
             var TenantId = this.Context.GetTenant();
             if (TenantId == Guid.Empty) throw new ApiError("No se ingreso la institucion", (int)HttpStatusCode.BadRequest);
@@ -38,9 +44,17 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
 
             var NewPerson = new Person() { Id = Guid.NewGuid() };
+
+            if (Data.FileImage != null && Data.FileImage.Length > 0)
+            {
+                await FacePlusPlus.UploadImage(Data.FileImage);
+
+                FileHelper.Upload(Data.FileImage, this.Environment, NewPerson.Id.ToString());
+            }
+
             Mapper.Map(Data, NewPerson);
 
-            this.Store.Create(NewPerson);
+            /*this.Store.Create(NewPerson);*/
 
             return Mapper.Map<PersonDataType>(NewPerson);
         }

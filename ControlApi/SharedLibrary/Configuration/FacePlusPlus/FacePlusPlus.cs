@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -81,7 +82,7 @@ namespace SharedLibrary.Configuration.FacePlusPlus
             }
         }
 
-        public static async Task<dynamic> Detect(HttpClient Client, FacePlusPlusConfiguration Configuration)
+        public static async Task<dynamic> Detect(HttpClient Client, FacePlusPlusConfiguration Configuration, System.IO.Stream File, string FileName)
         {
             try
             {
@@ -90,6 +91,7 @@ namespace SharedLibrary.Configuration.FacePlusPlus
                     var Content = new MultipartFormDataContent();
                     Content.Add(new StringContent(Configuration.ApiKey), "\"api_key\"");
                     Content.Add(new StringContent(Configuration.ApiSecret), "\"api_secret\"");
+                    Content.Add(new StreamContent(File), "\"image_file\"", FileName);
 
                     RequestMessage.Content = Content;
 
@@ -102,6 +104,11 @@ namespace SharedLibrary.Configuration.FacePlusPlus
             {
                 throw;
             }
+        }
+
+        public static async Task UploadImage(IFormFile ImageFile)
+        {
+
         }
     }
 }
