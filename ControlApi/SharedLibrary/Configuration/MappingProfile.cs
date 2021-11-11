@@ -2,6 +2,7 @@
 using DataAccessLibrary.Entities;
 using SharedLibrary.DataTypes.Buildings;
 using SharedLibrary.DataTypes.Doors;
+using SharedLibrary.DataTypes.Novelties;
 using SharedLibrary.DataTypes.Persons;
 using SharedLibrary.DataTypes.Tenants;
 using SharedLibrary.DataTypes.Users;
@@ -32,6 +33,10 @@ namespace SharedLibrary.Configuration
             CreateMap<Door, DoorDataType>();
             CreateMap<CreateDoorRequestDataType, Door>();
             CreateMap<UpdateDoorRequestDataType, Door>();
+
+            CreateMap<Novelty, NoveltyDataType>();
+            CreateMap<CreateNoveltyRequestDataType, Novelty>();
+            CreateMap<UpdateNoveltyRequestDataType, Novelty>();
 
             CreateMap<Person, PersonDataType>();
             CreateMap<CreatePersonRequestDataType, Person>();
