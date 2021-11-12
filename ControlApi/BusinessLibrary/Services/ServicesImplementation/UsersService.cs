@@ -78,7 +78,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
                     return DataType;
 
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Transaction.Rollback();
                     throw;

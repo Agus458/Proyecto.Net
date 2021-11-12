@@ -244,7 +244,10 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\DnsClient.dll
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\ExcelDataReader.dll
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\ExcelDataReader.DataSet.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Humanizer.dll
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\System.Net.Http.Formatting.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -271,6 +274,7 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\MongoDB.Driver.Core.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\MongoDB.Libmongocrypt.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\PayPal.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Serilog.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Serilog.AspNetCore.dll
@@ -330,10 +334,8 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\staticwebassets\ControlApi.StaticWebAssets.xml
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\scopedcss\bundle\ControlApi.styles.css
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.RazorTargetAssemblyInfo.cache
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.CopyComplete
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ref\ControlApi.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.pdb
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.genruntimeconfig.cache
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\ExcelDataReader.dll
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\ExcelDataReader.DataSet.dll
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.CopyComplete

@@ -47,4 +47,3 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\De
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\ref\DataAccessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.pdb
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.AssemblyReference.cache

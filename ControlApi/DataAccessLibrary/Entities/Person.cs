@@ -47,5 +47,10 @@ namespace DataAccessLibrary.Entities
         /// </summary>
         [MaxLength(200)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Image path of the person.
+        /// </summary>
+        public string Image { get; set; }
     }
 }

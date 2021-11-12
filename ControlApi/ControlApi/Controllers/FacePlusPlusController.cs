@@ -24,10 +24,10 @@ namespace ControlApi.Controllers
             this.HttpClient = HttpClientFactory.CreateClient();
         }
 
-        [HttpGet("GetFaceSets")]
-        public async Task<dynamic> GetFaceSets()
+        [HttpGet("GetDetail")]
+        public async Task<dynamic> GetDetail()
         {
-            return await FacePlusPlus.GetFaceSets(this.HttpClient, this.Configuration);
+            return await FacePlusPlus.GetDetail(this.HttpClient, this.Configuration);
         }
 
         [HttpPost("CreateFaceSet")]
