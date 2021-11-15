@@ -66,6 +66,12 @@ namespace DataAccessLibrary.Contexts
         /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
         /// </summary>
+       
+        public DbSet<Novelty> Novelties { get; set; }
+
+        /// <summary>
+        /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
+        /// </summary>
         /// <returns></returns>
         public override int SaveChanges()
         {
