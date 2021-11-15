@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TenantDataType } from 'src/app/models/TenantDataType';
 import { TenantsService } from 'src/app/services/tenants/tenants.service';
 import { Location } from '@angular/common';
@@ -18,6 +18,7 @@ export class NuevainstitucionComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private TenantService: TenantsService,
     private FormBuilder: FormBuilder,
     public location: Location
@@ -48,6 +49,7 @@ export class NuevainstitucionComponent implements OnInit {
       this.TenantService.create(this.institucionForm.value).subscribe(
         ok => {
           console.log(ok);
+          this.router.navigateByUrl("/instituciones")
         },
         error => {
           console.log(error);
@@ -63,7 +65,5 @@ export class NuevainstitucionComponent implements OnInit {
         }
       );
     }
-
-    window.location.reload();
   }
 }

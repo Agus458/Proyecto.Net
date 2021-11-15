@@ -1,15 +1,23 @@
 <!-- Modal -->
 <ng-template #content let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">{{selectedPerson.email}}</h4>
+        <h4 class="modal-title" id="modal-basic-title">{{selectedPerson.name}} {{selectedPerson.lastName}}</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <strong>Roles:</strong>
-        <ul class="list-group">
-            <li >falta dato</li>
+        <strong>Documento:</strong>
+        <ul>
+            <li >{{selectedPerson.document}}</li>
+        </ul>
+        <strong>Telefono:</strong>
+        <ul >
+            <li >{{selectedPerson.phone}}</li>
+        </ul>
+        <strong>Email:</strong>
+        <ul >
+            <li >{{selectedPerson.email}}</li>
         </ul>
     </div>
     <div class="modal-footer">
@@ -31,14 +39,14 @@
                         <th scope="col">Documento</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
-                        <th scope="col">Telefono</th>
-                        <th scope="col">Email</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let persona of personas; index as i" class="align-middle">
                         <th scope="row">{{i}}</th>
-                        <td>hola</td>
+                        <td>{{persona.document}}</td>
+                        <td>{{persona.name}}</td>
+                        <td>{{persona.lastName}}</td>
                         <td>
                             <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                 (click)="open(content, persona)"><i class="bi bi-list"></i></button>

@@ -19,6 +19,7 @@ import { EditUsuarioComponent } from './components/usuarios/edit-usuario/edit-us
 import { TenantInterceptor } from './middlewares/tenant.interceptor';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PersonasComponent } from './components/personas/personas.component';
+import { NuevapersonaComponent } from './components/personas/nuevapersona/nuevapersona.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { PersonasComponent } from './components/personas/personas.component';
     EditUsuarioComponent,
     PageNotFoundComponent,
     PersonasComponent,
+    NuevapersonaComponent,
   ],
   imports: [
     BrowserModule,

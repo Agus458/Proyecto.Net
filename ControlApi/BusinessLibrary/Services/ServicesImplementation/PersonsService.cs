@@ -62,7 +62,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var NewPerson = new Person() { Id = Id, Image = Image };
             Mapper.Map(Data, NewPerson);
 
-            /*this.Store.Create(NewPerson);*/
+            this.Store.Create(NewPerson);
 
             return Mapper.Map<PersonDataType>(NewPerson);
         }

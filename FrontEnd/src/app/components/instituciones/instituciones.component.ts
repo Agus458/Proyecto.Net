@@ -44,8 +44,15 @@ export class InstitucionesComponent implements OnInit {
   }
 
   delete(id: string) {
-    this.TenantsService.delete(id).subscribe();
-    window.location.reload();
+    this.TenantsService.delete(id).subscribe(
+      ok => {
+        console.log("eliminado");
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.getTenants(0,10);
   }
 
   onPageChange(pageNum: number): void {

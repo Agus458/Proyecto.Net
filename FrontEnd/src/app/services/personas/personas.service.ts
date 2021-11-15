@@ -16,7 +16,7 @@ export class PersonasService {
   ) { }
 
   getAll() {
-    return this.Http.get<PersonDataType[]>(this.Url);
+    return this.Http.get<{ collection: PersonDataType[], size: number }>(this.Url);
   }
 
   getById(id: string) {
