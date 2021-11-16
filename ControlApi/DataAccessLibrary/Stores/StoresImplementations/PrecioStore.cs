@@ -1,0 +1,32 @@
+﻿using DataAccessLibrary.Contexts;
+using DataAccessLibrary.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataAccessLibrary.Stores.StoresImplementations
+{
+    public class PrecioStore : Store<Precio>, IPrecioStore
+    {
+        private readonly ApiDbContext Context;
+
+        public PrecioStore(ApiDbContext Context) : base(Context)
+        {
+            this.Context = Context;
+        }
+
+        public PaginationDataType<Precio> GetAll(int Skip, int Take, Guid BuildingId)
+        {
+            var Collection = this.Context.Set<Precio>().Include(Precio => Precio.Building).Where(Precio => Precio.BuildingId == BuildingId);
+            return new PaginationDataType<Precio> { Collection = Collection.Skip(Skip).Take(Take > 0 ? Take : 10).AsEnumerable(), Size = Collection.Count() };
+        }
+
+        public new Precio GetById(Guid Id)
+        {
+            return this.Context.Set<Precio>().Include(Precio => Precio.Building).SingleOrDefault(Entity => Entity.Id == Id);
+        }
+    }
+}

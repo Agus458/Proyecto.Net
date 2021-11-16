@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedLibrary.DataTypes.Precio
+namespace SharedLibrary.DataTypes.Pago
 {
-    public record PrecioDataType
+    public record CreatePagoRequestDataType
     {
         public float precio { set; get; }
 
-        public DateTime Fecha{ set; get; }
-        
+        public DateTime fecha { set; get; }
     }
 }

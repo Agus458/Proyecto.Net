@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLibrary.Stores
+namespace SharedLibrary.DataTypes.Pago
 {
-    class PrecioStore
+    public record PagoDataType
     {
+        public DateTime fecha;
+        public float monto;
     }
 }

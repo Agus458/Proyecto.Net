@@ -7883,28 +7883,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alexz\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\alexz\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyecto\\Agustin\\git\\ControlApi\\ControlApi\\ControlApi.csproj",
+      "projectUniqueName": "E:\\Proyecto\\Agustin\\git\\ControlApi\\ControlApi\\ControlApi.csproj",
       "projectName": "ControlApi",
-      "projectPath": "C:\\Proyecto\\Agustin\\git\\ControlApi\\ControlApi\\ControlApi.csproj",
+      "projectPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\ControlApi\\ControlApi.csproj",
       "packagesPath": "C:\\Users\\alexz\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyecto\\Agustin\\git\\ControlApi\\ControlApi\\obj\\",
+      "outputPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\ControlApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\alexz\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7917,14 +7909,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
-              "projectPath": "C:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj"
+            "E:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
+              "projectPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj"
             },
-            "C:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-              "projectPath": "C:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+            "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+              "projectPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
             },
-            "C:\\Proyecto\\Agustin\\git\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
-              "projectPath": "C:\\Proyecto\\Agustin\\git\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
+            "E:\\Proyecto\\Agustin\\git\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+              "projectPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
             }
           }
         }

@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace SharedLibrary.DataTypes.Precio
 {
-    public record PrecioDataType
+    public record UpdatePreciosRequestDataType
     {
-        public float precio { set; get; }
-
-        public DateTime Fecha{ set; get; }
-        
+        public float Precio { get; init; }
+        public DateTime fecha { get; init; }
     }
 }

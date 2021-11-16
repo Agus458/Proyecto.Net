@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WlomrUdYAZXc4ginkLl/Wr4B2F2K9knQivTpVKHGX/qY0ewd5nSpr2VcgY8Lrh3ATAth72SjbzNhkz9v3OiqNQ==",
+  "dgSpecHash": "pJ8aUDb8iZnbdMjCyuGXzqH5gwp6U0vKAso2kx3um+pJY8LEDzEPq2JOE36wNL2khXm8PFLLI6FLXe2iBuwnuw==",
   "success": true,
-  "projectFilePath": "C:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
+  "projectFilePath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexz\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\alexz\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
