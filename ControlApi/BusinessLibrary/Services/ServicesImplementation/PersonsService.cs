@@ -24,14 +24,14 @@ namespace BusinessLibrary.Services.ServicesImplementation
     public class PersonsService : IPersonsService
     {
         private readonly IWebHostEnvironment Environment;
-        private readonly IPersonsStore Store;
+        private readonly IStore<Person> Store;
         private readonly IMapper Mapper;
         private readonly ITenantsStore TenantsStore;
         private readonly HttpContext Context;
         private readonly FacePlusPlusConfiguration Configuration;
         private readonly HttpClient HttpClient;
 
-        public PersonsService(IPersonsStore Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context, IWebHostEnvironment Environment, IOptions<FacePlusPlusConfiguration> Configuration, IHttpClientFactory HttpClientFactory)
+        public PersonsService(IStore<Person> Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context, IWebHostEnvironment Environment, IOptions<FacePlusPlusConfiguration> Configuration, IHttpClientFactory HttpClientFactory)
         {
             this.Store = Store;
             this.Mapper = Mapper;
@@ -62,7 +62,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var NewPerson = new Person() { Id = Id, Image = Image };
             Mapper.Map(Data, NewPerson);
 
-            this.Store.Create(NewPerson);
+            /*this.Store.Create(NewPerson);*/
 
             return Mapper.Map<PersonDataType>(NewPerson);
         }

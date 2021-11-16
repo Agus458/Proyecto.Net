@@ -19,9 +19,9 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly INoveltyStore Store;
         private readonly IMapper Mapper;
         private readonly HttpContext Context;
-        private readonly IBuildingsStore BuildingsStore;
+        private readonly IStore<Building> BuildingsStore;
 
-        public NoveltyService(INoveltyStore Store, IMapper Mapper, IHttpContextAccessor Context, IBuildingsStore BuildingsStore)
+        public NoveltyService(INoveltyStore Store, IMapper Mapper, IHttpContextAccessor Context, IStore<Building> BuildingsStore)
         {
             this.Store = Store;
             this.Mapper = Mapper;
