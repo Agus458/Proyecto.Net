@@ -32,6 +32,8 @@ namespace BusinessLibrary.Services
         /// <returns></returns>
         Task<UserDataType> Create(CreateUserRequestDataType Data);
 
+        Task Update(string Id);
+
         Task Delete(string Id);
     }
 }

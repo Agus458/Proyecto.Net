@@ -66,7 +66,7 @@ namespace DataAccessLibrary.Contexts
         /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
         /// </summary>
-       
+
         public DbSet<Novelty> Novelties { get; set; }
 
         /// <summary>
@@ -103,14 +103,21 @@ namespace DataAccessLibrary.Contexts
                 }
             }
 
-            foreach (var Entry in ChangeTracker.Entries())
+            try
             {
-                var Data = new {
-                    Entry.Entity,
-                    User = HttpContext.User.FindFirst(c => c.Type.Equals(ClaimTypes.NameIdentifier))?.Value,
-                    Method = Entry.State
-                };
-                Logger.LogInformation(JsonConvert.SerializeObject(Data));
+                foreach (var Entry in ChangeTracker.Entries())
+                {
+                    var Data = new
+                    {
+                        Entry.Entity,
+                        User = HttpContext.User.FindFirst(c => c.Type.Equals(ClaimTypes.NameIdentifier))?.Value,
+                        Method = Entry.State
+                    };
+                    Logger.LogInformation(JsonConvert.SerializeObject(Data));
+                }
+            }
+            catch (Exception)
+            {
             }
 
             return base.SaveChanges();

@@ -14,10 +14,10 @@ namespace DataAccessLibrary.Contexts
         {
             if (!RoleManager.Roles.Any())
             {
-                await RoleManager.CreateAsync(new IdentityRole() { Name = "SuperAdmin" });
-                await RoleManager.CreateAsync(new IdentityRole() { Name = "Admin" });
                 await RoleManager.CreateAsync(new IdentityRole() { Name = "Portero" });
                 await RoleManager.CreateAsync(new IdentityRole() { Name = "Gestor" });
+                await RoleManager.CreateAsync(new IdentityRole() { Name = "Admin" });
+                await RoleManager.CreateAsync(new IdentityRole() { Name = "SuperAdmin" });
             }
 
             if (await UserManager.FindByEmailAsync("admin@admin.com") == null)

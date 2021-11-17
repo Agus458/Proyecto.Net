@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace SharedLibrary.DataTypes.Novelties
 
         [Required]
         public Guid BuildingId { get; init; }
+
+        public IFormFile FileImage { get; init; }
     }
 }

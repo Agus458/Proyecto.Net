@@ -134,10 +134,12 @@ namespace ControlApi
             services.AddTransient<BusinessLibrary.Services.IDoorsService, BusinessLibrary.Services.ServicesImplementation.DoorsService>();
             services.AddTransient<BusinessLibrary.Services.IPersonsService, BusinessLibrary.Services.ServicesImplementation.PersonsService>();
             services.AddTransient<BusinessLibrary.Services.IBuildingsService, BusinessLibrary.Services.ServicesImplementation.BuildingsService>();
+            services.AddTransient<BusinessLibrary.Services.INoveltyService, BusinessLibrary.Services.ServicesImplementation.NoveltyService>();
 
             // DataAccesLibray Stores
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStore<>), typeof(DataAccessLibrary.Stores.StoresImplementations.Store<>));
             services.AddTransient<DataAccessLibrary.Stores.IDoorsStore, DataAccessLibrary.Stores.StoresImplementations.DoorsStore>();
+            services.AddTransient<DataAccessLibrary.Stores.INoveltyStore, DataAccessLibrary.Stores.StoresImplementations.NoveltyStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

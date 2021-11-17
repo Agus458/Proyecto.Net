@@ -50,7 +50,7 @@ namespace ControlApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateNoveltyRequestDataType Data)
+        public IActionResult Create([FromForm] CreateNoveltyRequestDataType Data)
         {
             var result = this.Service.Create(Data);
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);

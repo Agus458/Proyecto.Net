@@ -2,9 +2,11 @@
 using DataAccessLibrary;
 using DataAccessLibrary.Entities;
 using DataAccessLibrary.Stores;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using SharedLibrary.DataTypes.Novelties;
 using SharedLibrary.Error;
+using SharedLibrary.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,21 +22,30 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly IMapper Mapper;
         private readonly HttpContext Context;
         private readonly IStore<Building> BuildingsStore;
+        private readonly IWebHostEnvironment Environment;
 
-        public NoveltyService(INoveltyStore Store, IMapper Mapper, IHttpContextAccessor Context, IStore<Building> BuildingsStore)
+        public NoveltyService(INoveltyStore Store, IMapper Mapper, IHttpContextAccessor Context, IStore<Building> BuildingsStore, IWebHostEnvironment Environment)
         {
             this.Store = Store;
             this.Mapper = Mapper;
             this.Context = Context.HttpContext;
             this.BuildingsStore = BuildingsStore;
+            this.Environment = Environment;
         }
 
         public NoveltyDataType Create(CreateNoveltyRequestDataType Data)
         {
             var Building = this.BuildingsStore.GetById(Data.BuildingId);
-            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
+            if (Building == null) throw new ApiError("Edificio Invalido", (int)HttpStatusCode.BadRequest);
 
-            var NewNovelty = new Novelty () { Id = Guid.NewGuid() };
+            Guid Id = Guid.NewGuid();
+            string Image = "";
+            if (Data.FileImage != null && Data.FileImage.Length > 0 && Data.FileImage.ContentType == "image/jpeg")
+            {
+                Image = FileHelper.Upload(Data.FileImage, this.Environment, Id.ToString());
+            }
+
+            var NewNovelty = new Novelty () { Id = Id, Image = Image };
             Mapper.Map(Data, NewNovelty);
 
             this.Store.Create(NewNovelty);
@@ -59,7 +70,11 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
             var Result = this.Store.GetAll(Skip, Take, BuildingId);
 
-            return new PaginationDataType<NoveltyDataType>();
+            return new PaginationDataType<NoveltyDataType>()
+            {
+                Collection = Result.Collection.Select(Door => Mapper.Map<NoveltyDataType>(Door)),
+                Size = Result.Size
+            };
         }
 
         public NoveltyDataType GetById(Guid Id)
