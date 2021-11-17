@@ -138,6 +138,7 @@ namespace ControlApi
             // DataAccesLibray Stores
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStore<>), typeof(DataAccessLibrary.Stores.StoresImplementations.Store<>));
             services.AddTransient<DataAccessLibrary.Stores.IDoorsStore, DataAccessLibrary.Stores.StoresImplementations.DoorsStore>();
+            services.AddTransient<DataAccessLibrary.Stores.IRoomsStore, DataAccessLibrary.Stores.StoresImplementations.RoomsStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

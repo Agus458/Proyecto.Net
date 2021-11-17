@@ -67,7 +67,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
 
             var Novelty = this.Store.GetById(Id);
-            if (Novelty == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Novelty == null) throw new ApiError("Novelty Not Found", (int)HttpStatusCode.NotFound);
 
             return Mapper.Map<NoveltyDataType>(Novelty);
         }
