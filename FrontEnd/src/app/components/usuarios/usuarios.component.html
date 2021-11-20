@@ -1,0 +1,47 @@
+<!-- Modal -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{selectedUser.email}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <strong>Roles:</strong>
+        <ul class="list-group">
+            <li *ngFor="let role of selectedUser.roles" class="list-group-item">{{role}}</li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" *ngIf="AuthenticationService.hasRole('Admin')" (click)="delete(selectedUser.id)">Eliminar</button>
+        <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
+    </div>
+</ng-template>
+
+<div class="card border-0 shadow rounded-3 my-5">
+    <div class="card-body p-4 p-sm-5">
+        <h4 class="card-title fw-light fs-5">Usuarios</h4>
+        <hr class="my-4">
+        <button type="button" class="btn btn-warning mb-4" [routerLink]="'nuevo'">Agregar</button>
+        <div class="table-responsive">
+            <table class="table table-borderless table-dark table-striped align-middle table-hover m-0">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; index as i" class="align-middle">
+                        <th scope="row">{{i}}</th>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                (click)="open(content, user)"><i class="bi bi-list"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
