@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Stores
 {
-    public interface IBuildingsStore : IStore<Building>
+    public interface INoveltyStore : IStore<Novelty>
     {
-
+        PaginationDataType<Novelty> GetAll(int Skip, int Take, Guid BuildingId);
     }
 }

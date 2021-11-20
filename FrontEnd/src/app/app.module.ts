@@ -17,6 +17,9 @@ import { AuthInterceptor } from './middlewares/auth.interceptor';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { EditUsuarioComponent } from './components/usuarios/edit-usuario/edit-usuario.component';
 import { TenantInterceptor } from './middlewares/tenant.interceptor';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PersonasComponent } from './components/personas/personas.component';
+import { NuevapersonaComponent } from './components/personas/nuevapersona/nuevapersona.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { TenantInterceptor } from './middlewares/tenant.interceptor';
     DashBoardComponent,
     UsuariosComponent,
     EditUsuarioComponent,
+    PageNotFoundComponent,
+    PersonasComponent,
+    NuevapersonaComponent,
   ],
   imports: [
     BrowserModule,

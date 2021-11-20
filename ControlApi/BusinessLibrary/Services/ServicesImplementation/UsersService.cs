@@ -14,6 +14,7 @@ using SharedLibrary.Error;
 using System.Net;
 using System.Security.Claims;
 using DataAccessLibrary.Stores;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -45,7 +46,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
                     var TenantId = this.Context.GetTenant();
                     if (TenantId == Guid.Empty) throw new ApiError("No se ingreso la institucion", (int)HttpStatusCode.BadRequest);
 
-                    if(this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
+                    if (this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
 
                     if (Context.User.IsInRole("SuperAdmin") && Data.Role.ToLower() != "admin" || Context.User.IsInRole("Admin") && (Data.Role.ToLower() != "portero" && Data.Role.ToLower() != "gestor"))
                     {
@@ -78,7 +79,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
                     return DataType;
 
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Transaction.Rollback();
                     throw;
@@ -120,6 +121,11 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (this.Context.User.FindFirst(ClaimTypes.Email)?.Value == User.Email) throw new ApiError("You can not delete yourself", (int)HttpStatusCode.BadRequest);
 
             await this.UserManager.DeleteAsync(User);
+        }
+
+        public Task Update(string Id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,10 +1,3 @@
-using SharedLibrary.Configuration;
-using BusinessLibrary.Services;
-using BusinessLibrary.Services.ServicesImplementation;
-using DataAccessLibrary.Contexts;
-using DataAccessLibrary.Entities;
-using DataAccessLibrary.Stores;
-using DataAccessLibrary.Stores.StoresImplementations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -94,13 +87,13 @@ namespace ControlApi
             });
 
             // Here is defined the connection to the sql server database.
-            services.AddDbContext<ApiDbContext>(Options =>
+            services.AddDbContext<DataAccessLibrary.Contexts.ApiDbContext>(Options =>
             {
                 Options.UseSqlServer(Configuration.GetConnectionString("DefaultDbConnection"));
             });
 
             // Here is defined the user identity class and the context that will use.
-            services.AddIdentity<User, IdentityRole>(Options =>
+            services.AddIdentity<DataAccessLibrary.Entities.User, IdentityRole>(Options =>
             {
                 Options.Password.RequiredLength = 0;
                 Options.Password.RequireNonAlphanumeric = false;
@@ -108,10 +101,10 @@ namespace ControlApi
                 Options.Password.RequireDigit = false;
                 Options.Password.RequireLowercase = false;
                 Options.User.RequireUniqueEmail = true;
-            }).AddEntityFrameworkStores<ApiDbContext>();
+            }).AddEntityFrameworkStores<DataAccessLibrary.Contexts.ApiDbContext>();
 
             // Here is defined the key that is going to be used to generate JwtTokens.
-            var JwtBearerConfiguration = new JwtTokenConfiguration(Configuration.GetValue<string>("JwtSecretKey"));
+            var JwtBearerConfiguration = new SharedLibrary.Configuration.JwtTokenConfiguration(Configuration.GetValue<string>("JwtSecretKey"));
             services.AddSingleton(JwtBearerConfiguration);
 
             services.AddAuthentication(Options =>
@@ -134,24 +127,23 @@ namespace ControlApi
             services.AddMultitenancy();
 
             // Here we define all de dependency injection needed.
-            services.AddTransient<IAuthenticationService, AuthenticationService>();
+            // Buiseness library Services
+            services.AddTransient<BusinessLibrary.Services.IAuthenticationService, BusinessLibrary.Services.ServicesImplementation.AuthenticationService>();
+            services.AddTransient<BusinessLibrary.Services.IUsersService, BusinessLibrary.Services.ServicesImplementation.UsersService>();
+            services.AddTransient<BusinessLibrary.Services.ITenantsService, BusinessLibrary.Services.ServicesImplementation.TenantsService>();
+            services.AddTransient<BusinessLibrary.Services.IDoorsService, BusinessLibrary.Services.ServicesImplementation.DoorsService>();
+            services.AddTransient<BusinessLibrary.Services.IPersonsService, BusinessLibrary.Services.ServicesImplementation.PersonsService>();
+            services.AddTransient<BusinessLibrary.Services.IBuildingsService, BusinessLibrary.Services.ServicesImplementation.BuildingsService>();
+            services.AddTransient<BusinessLibrary.Services.INoveltyService, BusinessLibrary.Services.ServicesImplementation.NoveltyService>();
 
-            services.AddTransient<IUsersService, UsersService>();
-
-            services.AddTransient<ITenantsService, TenantsService>();
-
-            services.AddTransient<IPersonsService, PersonsService>();
-            services.AddTransient<IPersonsStore, PersonsStore>();
-
-            services.AddTransient<IBuildingsStore, BuildingsStore>();
-            services.AddTransient<IBuildingsService, BuildingsService>();
-
-            services.AddTransient<IDoorsStore, DoorsStore>();
-            services.AddTransient<IDoorsService, DoorsService>();
+            // DataAccesLibray Stores
+            services.AddTransient(typeof(DataAccessLibrary.Stores.IStore<>), typeof(DataAccessLibrary.Stores.StoresImplementations.Store<>));
+            services.AddTransient<DataAccessLibrary.Stores.IDoorsStore, DataAccessLibrary.Stores.StoresImplementations.DoorsStore>();
+            services.AddTransient<DataAccessLibrary.Stores.INoveltyStore, DataAccessLibrary.Stores.StoresImplementations.NoveltyStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<User> UserManager, RoleManager<IdentityRole> RoleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<DataAccessLibrary.Entities.User> UserManager, RoleManager<IdentityRole> RoleManager)
         {
             if (env.IsDevelopment())
             {
@@ -162,7 +154,7 @@ namespace ControlApi
 
             app.ConfigureApiExceptionMiddleware();
 
-            DataInitialization.SeedAsync(UserManager, RoleManager).Wait();
+            DataAccessLibrary.Contexts.DataInitialization.SeedAsync(UserManager, RoleManager).Wait();
 
             app.UseHttpsRedirection();
 
@@ -175,6 +167,8 @@ namespace ControlApi
             app.UseAuthentication();
 
             app.UseTenancy();
+
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {

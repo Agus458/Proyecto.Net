@@ -49,6 +49,27 @@ C:\Users\agusp\Desktop\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibra
 C:\Users\agusp\Desktop\ControlApi\BusinessLibrary\obj\Debug\net5.0\ref\BusinessLibrary.dll
 C:\Users\agusp\Desktop\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.pdb
 C:\Users\agusp\Desktop\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.CopyComplete
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\BusinessLibrary.deps.json
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\BusinessLibrary.dll
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\ref\BusinessLibrary.dll
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\BusinessLibrary.pdb
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\DataAccessLibrary.dll
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\SharedLibrary.dll
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\DataAccessLibrary.pdb
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\SharedLibrary.pdb
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.AssemblyReference.cache
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.AssemblyInfoInputs.cache
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.AssemblyInfo.cs
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.CoreCompileInputs.cache
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.CopyComplete
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.dll
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\ref\BusinessLibrary.dll
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.pdb
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.AssemblyInfoInputs.cache
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.AssemblyInfo.cs
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.CoreCompileInputs.cache
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\BusinessLibrary.deps.json
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\BusinessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\ref\BusinessLibrary.dll
@@ -58,13 +79,11 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debu
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\DataAccessLibrary.pdb
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\bin\Debug\net5.0\SharedLibrary.pdb
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.AssemblyReference.cache
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.AssemblyInfoInputs.cache
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.AssemblyInfo.cs
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.CoreCompileInputs.cache
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.CopyComplete
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\ref\BusinessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.pdb
+<<<<<<< HEAD
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.CopyComplete
 C:\Proyecto\Agustin\git\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.csproj.AssemblyReference.cache
 C:\Proyecto\Agustin\git\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.GeneratedMSBuildEditorConfig.editorconfig
@@ -100,3 +119,5 @@ E:\Proyecto\Agustin\git\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibr
 E:\Proyecto\Agustin\git\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.dll
 E:\Proyecto\Agustin\git\ControlApi\BusinessLibrary\obj\Debug\net5.0\ref\BusinessLibrary.dll
 E:\Proyecto\Agustin\git\ControlApi\BusinessLibrary\obj\Debug\net5.0\BusinessLibrary.pdb
+=======
+>>>>>>> Agustin
