@@ -10,7 +10,7 @@ namespace BusinessLibrary.Services
 {
    public interface IProductsService
     {
-        PaginationDataType<ProductsDataType> GetAll(int skup, int Take, Guid BuildingId);
+        PaginationDataType<ProductsDataType> GetAll(int skip, int Take, Guid BuildingId);
 
         ProductsDataType GetBuId(Guid Id);
 
@@ -19,5 +19,6 @@ namespace BusinessLibrary.Services
         void Delete(Guid Id);
 
         void Update(Guid Id, UpdateProductsRequestDataType Data);
+        object GetById(Guid id);
     }
 }
