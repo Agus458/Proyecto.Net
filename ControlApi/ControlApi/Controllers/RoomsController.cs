@@ -1,6 +1,4 @@
 ﻿using BusinessLibrary.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SharedLibrary.DataTypes.Novelties;
@@ -13,12 +11,11 @@ namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-    public class NoveltiesController : ControllerBase
+    public class RoomsController : ControllerBase
     {
-        private readonly INoveltyService Service;
+        private readonly IRoomsService Service;
 
-        public NoveltiesController(INoveltyService Service)
+        public RoomsController(IRoomsService Service)
         {
             this.Service = Service;
         }
@@ -50,7 +47,7 @@ namespace ControlApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromForm] CreateNoveltyRequestDataType Data)
+        public IActionResult Create(CreateRoomRequestDataType Data)
         {
             var result = this.Service.Create(Data);
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
