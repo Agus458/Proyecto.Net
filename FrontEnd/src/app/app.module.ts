@@ -23,6 +23,7 @@ import { NuevapersonaComponent } from './components/personas/nuevapersona/nuevap
 import { BuildingsComponent } from './components/buildings/buildings.component';
 import { EditBuildingComponent } from './components/buildings/edit-building/edit-building.component';
 import { AgmCoreModule } from '@agm/core';
+import { DoorsComponent } from './components/doors/doors.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AgmCoreModule } from '@agm/core';
     NuevapersonaComponent,
     BuildingsComponent,
     EditBuildingComponent,
+    DoorsComponent,
   ],
   imports: [
     BrowserModule,

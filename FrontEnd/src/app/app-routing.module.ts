@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BuildingsComponent } from './components/buildings/buildings.component';
 import { EditBuildingComponent } from './components/buildings/edit-building/edit-building.component';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
+import { DoorsComponent } from './components/doors/doors.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { InstitucionesComponent } from './components/instituciones/instituciones.component';
 import { NuevainstitucionComponent } from './components/instituciones/nuevainstitucion/nuevainstitucion.component';
@@ -34,6 +35,8 @@ const routes: Routes = [
   { path: "buildings", component: BuildingsComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
   { path: "buildings/nuevo", component: EditBuildingComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
   { path: "buildings/editar/:id", component: EditBuildingComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+
+  { path: "doors/building/:id", component: DoorsComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
 
   { path: "personas", component: PersonasComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
   { path: "presonas/nuevo", component: NuevapersonaComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
