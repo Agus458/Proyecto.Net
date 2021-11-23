@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Entities
 {
-    public class Room : MustHaveTenantEntity
+    public class Room : BaseEntity
     {
         public Guid BuildingId { get; set; }
+
         public virtual Building Building { get; set; }
     }
 }

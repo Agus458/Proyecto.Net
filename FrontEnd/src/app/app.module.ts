@@ -20,6 +20,9 @@ import { TenantInterceptor } from './middlewares/tenant.interceptor';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PersonasComponent } from './components/personas/personas.component';
 import { NuevapersonaComponent } from './components/personas/nuevapersona/nuevapersona.component';
+import { BuildingsComponent } from './components/buildings/buildings.component';
+import { EditBuildingComponent } from './components/buildings/edit-building/edit-building.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { NuevapersonaComponent } from './components/personas/nuevapersona/nuevap
     PageNotFoundComponent,
     PersonasComponent,
     NuevapersonaComponent,
+    BuildingsComponent,
+    EditBuildingComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,9 @@ import { NuevapersonaComponent } from './components/personas/nuevapersona/nuevap
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCA22WX7c4qIzJRKwnbvG8_2gqlSrMfk1E'
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

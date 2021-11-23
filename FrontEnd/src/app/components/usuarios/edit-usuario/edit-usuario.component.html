@@ -5,19 +5,38 @@
         <form [formGroup]="usuarioForm" (ngSubmit)="submit()">
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control" formControlName="email">
+                <input type="email" name="email" class="form-control" formControlName="email">
             </div>
             <div class="form-group">
                 <label>Contraseña</label>
-                <input type="password" class="form-control" formControlName="password">
+                <input type="password" name="password" class="form-control" formControlName="password">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" name="name" class="form-control" formControlName="name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        <input type="text" name="lastName" class="form-control" formControlName="lastName">
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label>Role</label>
-                <input type="text" class="form-control" formControlName="role">
+                <select class="form-control" formControlName="role">
+                    <option *ngIf="AuthenticationService.hasRole('SuperAdmin')" value="Admin">Admin</option>
+                    <option *ngIf="AuthenticationService.hasRole('Admin')" value="Portero">Portero</option>
+                    <option *ngIf="AuthenticationService.hasRole('Admin')" value="Gestor">Gestor</option>
+                </select>
             </div>
             <hr class="my-4">
             <div class="row">
-                <div class="col"><button class="btn btn-dark btn-block" (click)="location.back()" type="button">Cancelar</button></div>
+                <div class="col"><button class="btn btn-dark btn-block" (click)="location.back()"
+                        type="button">Cancelar</button></div>
                 <div class="col"><button class="btn btn-warning btn-block" type="submit">Confirmar</button></div>
             </div>
         </form>

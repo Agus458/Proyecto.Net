@@ -29,13 +29,11 @@ namespace DataAccessLibrary.Migrations
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Latitude")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                    b.Property<float>("Latitude")
+                        .HasColumnType("real");
 
-                    b.Property<string>("Length")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                    b.Property<float>("Longitude")
+                        .HasColumnType("real");
 
                     b.Property<string>("Name")
                         .HasMaxLength(200)
@@ -71,17 +69,12 @@ namespace DataAccessLibrary.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<Guid>("TenantId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTimeOffset>("UpdatedDate")
                         .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BuildingId");
-
-                    b.HasIndex("TenantId");
 
                     b.ToTable("Doors");
                 });
@@ -105,9 +98,6 @@ namespace DataAccessLibrary.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("TenantId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -117,8 +107,6 @@ namespace DataAccessLibrary.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BuildingId");
-
-                    b.HasIndex("TenantId");
 
                     b.ToTable("Novelties");
                 });
@@ -171,6 +159,29 @@ namespace DataAccessLibrary.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("Persons");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Room", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BuildingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BuildingId");
+
+                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Tenant", b =>
@@ -427,15 +438,7 @@ namespace DataAccessLibrary.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
-                        .WithMany()
-                        .HasForeignKey("TenantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Building");
-
-                    b.Navigation("Tenant");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Novelty", b =>
@@ -446,15 +449,7 @@ namespace DataAccessLibrary.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
-                        .WithMany()
-                        .HasForeignKey("TenantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Building");
-
-                    b.Navigation("Tenant");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Person", b =>
@@ -466,6 +461,17 @@ namespace DataAccessLibrary.Migrations
                         .IsRequired();
 
                     b.Navigation("Tenant");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Room", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Building", "Building")
+                        .WithMany()
+                        .HasForeignKey("BuildingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Building");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.User", b =>

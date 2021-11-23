@@ -43,7 +43,7 @@ namespace ControlApi.Controllers
         }
 
         [HttpPut("{Id}")]
-        public IActionResult Update(Guid Id, UpdateRoomRequestDataType Data)
+        public IActionResult Update(Guid Id, UpdateNoveltyRequestDataType Data)
         {
             this.Service.Update(Id, Data);
             return NoContent();

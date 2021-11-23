@@ -4,6 +4,7 @@ using SharedLibrary.DataTypes.Buildings;
 using SharedLibrary.DataTypes.Doors;
 using SharedLibrary.DataTypes.Novelties;
 using SharedLibrary.DataTypes.Persons;
+using SharedLibrary.DataTypes.Rooms;
 using SharedLibrary.DataTypes.Tenants;
 using SharedLibrary.DataTypes.Users;
 using System;

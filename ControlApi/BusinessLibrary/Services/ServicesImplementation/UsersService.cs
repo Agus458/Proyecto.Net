@@ -15,6 +15,8 @@ using System.Net;
 using System.Security.Claims;
 using DataAccessLibrary.Stores;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
+using DataAccessLibrary;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -57,10 +59,11 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
                     var NewUser = new User()
                     {
-                        Email = Data.Email,
                         UserName = Data.Email,
                         TenantId = TenantId
                     };
+
+                    Mapper.Map(Data, NewUser);
 
                     var Result = await this.UserManager.CreateAsync(NewUser, Data.Password);
                     if (Result.Succeeded)
@@ -87,7 +90,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             }
         }
 
-        public IEnumerable<UserDataType> GetAll()
+        public PaginationDataType<UserDataType> GetAll()
         {
             var Users = this.UserManager.Users.ToList();
 
@@ -97,14 +100,18 @@ namespace BusinessLibrary.Services.ServicesImplementation
                 Users = Users.Where(ExistingUser => ExistingUser.TenantId == TenantId).ToList();
             }
 
-            return Users.Select(User =>
+            return new PaginationDataType<UserDataType>()
             {
-                var Data = Mapper.Map<UserDataType>(User);
+                Collection = Users.Select(User =>
+                {
+                    var Data = Mapper.Map<UserDataType>(User);
 
-                Data.Roles = this.UserManager.GetRolesAsync(User).Result;
+                    Data.Roles = this.UserManager.GetRolesAsync(User).Result;
 
-                return Data;
-            });
+                    return Data;
+                }),
+                Size = Users.Count
+            };
         }
 
         public async Task<UserDataType> GetById(string Id)

@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-edit-usuario',
@@ -19,13 +20,16 @@ export class EditUsuarioComponent implements OnInit {
     private FormBuilder: FormBuilder,
     public location: Location,
     private router: Router,
-    private toastService: ToastService
+    private toastService: ToastService,
+    public AuthenticationService: AuthenticationService
   ) { }
 
   async ngOnInit() {
     this.usuarioForm = this.FormBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required]],
+      name: ["", [Validators.required]],
+      lastName: ["", [Validators.required]],
       role: ["", [Validators.required]]
     });
   }

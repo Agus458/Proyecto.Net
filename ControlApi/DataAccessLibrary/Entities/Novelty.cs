@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Entities
 {
-    public class Novelty : MustHaveTenantEntity
+    public class Novelty : BaseEntity
     {
         public string Title { get; set; }
 

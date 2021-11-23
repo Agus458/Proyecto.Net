@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SharedLibrary.DataTypes.Novelties;
+using SharedLibrary.DataTypes.Rooms;
 using System;
 using System.Collections.Generic;
 using System.Linq;

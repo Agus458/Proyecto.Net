@@ -14,11 +14,9 @@ namespace SharedLibrary.DataTypes.Buildings
         public string Name { get; init; }
 
         [Required]
-        [MaxLength(200)]
-        public string Latitude { get; init; }
+        public float Latitude { get; init; }
 
         [Required]
-        [MaxLength(200)]
-        public string Length { get; init; }
+        public float Longitude { get; init; }
     }
 }

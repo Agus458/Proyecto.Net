@@ -14,8 +14,13 @@ export class UsuariosService {
     private Http: HttpClient
   ) { }
 
-  getAll() {
-    return this.Http.get<UserDataType[]>(this.Url);
+  getAll(skip: number, take: number) {
+    return this.Http.get<{ collection: UserDataType[], size: number }>(this.Url, {
+      params: {
+        skip,
+        take
+      }
+    });
   }
 
   getById(id: string) {

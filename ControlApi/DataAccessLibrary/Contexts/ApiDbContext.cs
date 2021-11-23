@@ -64,10 +64,14 @@ namespace DataAccessLibrary.Contexts
         public DbSet<Door> Doors { get; set; }
 
         /// <summary>
-        /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
+        /// Represents all the Novelties saved in the DataBase.
         /// </summary>
-
         public DbSet<Novelty> Novelties { get; set; }
+
+        /// <summary>
+        /// Represents all the Rooms saved in the DataBase.
+        /// </summary>
+        public DbSet<Room> Rooms { get; set; }
 
         /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
