@@ -29,7 +29,7 @@ export class EditBuildingComponent implements OnInit {
     this.buildingForm = this.FormBuilder.group({
       name: ["", [Validators.required]],
       latitude: ["", [Validators.required]],
-      length: ["", [Validators.required]],
+      longitude: ["", [Validators.required]],
     });
 
     const routeParams = this.route.snapshot.paramMap;
