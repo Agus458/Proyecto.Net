@@ -13,7 +13,9 @@
         </ul>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" *ngIf="AuthenticationService.hasRole('Admin')" (click)="delete(selectedUser.id)">Eliminar</button>
+        <button type="button" class="btn btn-danger" (click)="delete(selectedUser.id)">Eliminar</button>
+        <button type="button" class="btn btn-success" [routerLink]="'/usuarios/editar/' + selectedUser.id"
+            (click)="modal.close()">Editar</button>
         <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
     </div>
 </ng-template>

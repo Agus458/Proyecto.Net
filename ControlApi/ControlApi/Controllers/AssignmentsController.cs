@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SharedLibrary.DataTypes.Buildings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +12,12 @@ namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-    public class BuildingsController : ControllerBase
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Portero")]
+    public class AssignmentsController : ControllerBase
     {
-        private readonly IBuildingsService Service;
+        private readonly IAssignmentsService Service;
 
-        public BuildingsController(IBuildingsService Service)
+        public AssignmentsController(IAssignmentsService Service)
         {
             this.Service = Service;
         }
@@ -29,36 +28,16 @@ namespace ControlApi.Controllers
             return Ok(this.Service.GetAll(Skip, Take));
         }
 
-        [HttpGet("List")]
-        public IActionResult Get()
-        {
-            return Ok(this.Service.Get());
-        }
-
         [HttpGet("{Id}")]
         public IActionResult GetById(Guid Id)
         {
             return Ok(this.Service.GetById(Id));
         }
 
-        [HttpDelete("{Id}")]
-        public IActionResult Delete(Guid Id)
-        {
-            this.Service.Delete(Id);
-            return NoContent();
-        }
-
-        [HttpPut("{Id}")]
-        public IActionResult Update(Guid Id, UpdateBuildingRequestDataType Data)
-        {
-            this.Service.Update(Id, Data);
-            return NoContent();
-        }
-
         [HttpPost]
-        public IActionResult Create(CreateBuildingRequestDataType Data)
+        public IActionResult Create(Guid DoorId)
         {
-            var result = this.Service.Create(Data);
+            var result = this.Service.Create(DoorId);
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
         }
     }

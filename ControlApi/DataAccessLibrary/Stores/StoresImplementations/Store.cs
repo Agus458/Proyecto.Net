@@ -36,6 +36,11 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.Context.SaveChanges();
         }
 
+        public IEnumerable<Target> Get()
+        {
+            return this.Context.Set<Target>();
+        }
+
         public PaginationDataType<Target> GetAll(int Skip, int Take)
         {
             var Collection = this.Context.Set<Target>();

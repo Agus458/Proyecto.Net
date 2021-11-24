@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataAccessLibrary.Entities;
+using SharedLibrary.DataTypes.Assignment;
 using SharedLibrary.DataTypes.Buildings;
 using SharedLibrary.DataTypes.Doors;
 using SharedLibrary.DataTypes.Novelties;
@@ -22,6 +23,7 @@ namespace SharedLibrary.Configuration
             // Add as many of these lines as you need to map your objects.
             CreateMap<User, UserDataType>();
             CreateMap<CreateUserRequestDataType, User>();
+            CreateMap<UpdateUserRequestDataType, User>();
 
             CreateMap<Tenant, TenantDataType>();
             CreateMap<CreateTenantRequestDataType, Tenant>();
@@ -42,6 +44,8 @@ namespace SharedLibrary.Configuration
             CreateMap<Person, PersonDataType>();
             CreateMap<CreatePersonRequestDataType, Person>();
             CreateMap<UpdatePersonRequestDataType, Person>();
+
+            CreateMap<Assignment, AssignmentDataType>();
         }
     }
 }

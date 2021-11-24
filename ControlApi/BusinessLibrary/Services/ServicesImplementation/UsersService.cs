@@ -55,6 +55,14 @@ namespace BusinessLibrary.Services.ServicesImplementation
                         throw new ApiError("Invalid user role", (int)HttpStatusCode.BadRequest);
                     }
 
+                    if (Data.Role.ToLower() == "portero")
+                    {
+                        if(Data.BuildingId == null || Data.BuildingId == Guid.Empty)
+                        {
+                            throw new ApiError("No se ingreso el edificio del portero", (int)HttpStatusCode.BadRequest);
+                        }
+                    }
+
                     if (await this.UserManager.FindByEmailAsync(Data.Email) != null) throw new ApiError("Email already in use", (int)HttpStatusCode.BadRequest);
 
                     var NewUser = new User()
@@ -130,9 +138,14 @@ namespace BusinessLibrary.Services.ServicesImplementation
             await this.UserManager.DeleteAsync(User);
         }
 
-        public Task Update(string Id)
+        public async Task Update(string Id, UpdateUserRequestDataType Data)
         {
-            throw new NotImplementedException();
+            var User = await this.UserManager.FindByIdAsync(Id);
+            if (User == null) throw new ApiError("User not found", (int)HttpStatusCode.NotFound);
+
+            Mapper.Map(Data, User);
+
+            await this.UserManager.UpdateAsync(User);
         }
     }
 }

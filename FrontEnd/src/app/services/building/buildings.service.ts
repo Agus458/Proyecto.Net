@@ -23,6 +23,10 @@ export class BuildingsService {
     });
   }
 
+  getList(){
+    return this.Http.get<BuildingDataType[]>(this.Url + "/List");
+  }
+
   getById(id: string) {
     return this.Http.get<BuildingDataType>(this.Url + "/" + id);
   }

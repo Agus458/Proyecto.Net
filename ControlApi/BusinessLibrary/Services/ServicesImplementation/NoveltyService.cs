@@ -18,13 +18,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
 {
     public class NoveltyService : INoveltyService
     {
-        private readonly INoveltyStore Store;
+        private readonly IStoreByBuilding<Novelty> Store;
         private readonly IMapper Mapper;
         private readonly HttpContext Context;
         private readonly IStore<Building> BuildingsStore;
         private readonly IWebHostEnvironment Environment;
 
-        public NoveltyService(INoveltyStore Store, IMapper Mapper, IHttpContextAccessor Context, IStore<Building> BuildingsStore, IWebHostEnvironment Environment)
+        public NoveltyService(IStoreByBuilding<Novelty> Store, IMapper Mapper, IHttpContextAccessor Context, IStore<Building> BuildingsStore, IWebHostEnvironment Environment)
         {
             this.Store = Store;
             this.Mapper = Mapper;

@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin, Portero, Gestor")]
     [ApiController]
     public class PersonsController : ControllerBase
     {

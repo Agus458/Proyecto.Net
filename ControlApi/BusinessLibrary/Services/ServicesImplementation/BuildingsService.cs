@@ -55,6 +55,11 @@ namespace BusinessLibrary.Services.ServicesImplementation
             this.Store.Delete(Building);
         }
 
+        public IEnumerable<BuildingDataType> Get()
+        {
+            return this.Store.Get().Select(Building => Mapper.Map<BuildingDataType>(Building));
+        }
+
         public PaginationDataType<BuildingDataType> GetAll(int Skip, int Take)
         {
             var Result = this.Store.GetAll(Skip, Take);

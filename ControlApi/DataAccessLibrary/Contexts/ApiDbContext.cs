@@ -74,6 +74,11 @@ namespace DataAccessLibrary.Contexts
         public DbSet<Room> Rooms { get; set; }
 
         /// <summary>
+        /// Represents all the Assignments saved in the DataBase.
+        /// </summary>
+        public DbSet<Assignment> Assignments { get; set; }
+
+        /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
         /// </summary>
         /// <returns></returns>

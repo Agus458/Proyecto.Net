@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { BuildingDataType } from 'src/app/models/BuildingDataType';
+import { BuildingsService } from 'src/app/services/building/buildings.service';
 
 @Component({
   selector: 'app-edit-usuario',
@@ -14,11 +16,15 @@ import { AuthenticationService } from 'src/app/services/authentication/authentic
 export class EditUsuarioComponent implements OnInit {
 
   usuarioForm: FormGroup;
+  editing = false;
+  buildings: BuildingDataType[];
 
   constructor(
     private UsuariosService: UsuariosService,
+    private BuildingsService: BuildingsService,
     private FormBuilder: FormBuilder,
     public location: Location,
+    private route: ActivatedRoute,
     private router: Router,
     private toastService: ToastService,
     public AuthenticationService: AuthenticationService
@@ -32,19 +38,65 @@ export class EditUsuarioComponent implements OnInit {
       lastName: ["", [Validators.required]],
       role: ["", [Validators.required]]
     });
+
+    const routeParams = this.route.snapshot.paramMap;
+    const IdFromRoute = routeParams.get('id');
+
+    if (IdFromRoute) {
+      this.UsuariosService.getById(IdFromRoute).subscribe(
+        ok => {
+          this.usuarioForm.addControl("id", new FormControl('', [Validators.required]));
+          this.usuarioForm.patchValue(ok);
+          this.editing = true;
+          this.usuarioForm.removeControl("email");
+          this.usuarioForm.removeControl("password");
+          this.usuarioForm.removeControl("role");
+        }
+      );
+    }
+
   }
 
   submit() {
-    this.UsuariosService.create(this.usuarioForm.value).subscribe(
-      ok => {
-        this.toastService.show("Success", "Usuario creado");
-        this.router.navigateByUrl("/usuarios");
-      },
-      error => {
-        console.log(error);
+    console.log(this.usuarioForm.value);
 
-        this.toastService.show("Error", "Algo salio mal");
-      }
-    );
+    if (this.usuarioForm.contains("id")) {
+      const id = this.usuarioForm.controls.id.value;
+      this.UsuariosService.update(id, this.usuarioForm.value).subscribe(
+        ok => {
+          this.toastService.show("Success", "Usuario actualizado");
+          this.router.navigateByUrl("/usuarios");
+        },
+        error => {
+          this.toastService.show("Error", "Algo salio mal");
+        }
+      );
+    } else {
+      this.UsuariosService.create(this.usuarioForm.value).subscribe(
+        ok => {
+          this.toastService.show("Success", "Usuario creado");
+          this.router.navigateByUrl("/usuarios");
+        },
+        error => {
+          this.toastService.show("Error", "Algo salio mal");
+        }
+      );
+    }
+  }
+
+  onChangeRole(){
+    if(this.usuarioForm.controls.role.value == "Portero"){
+      this.BuildingsService.getList().subscribe(
+        ok => {
+          this.buildings = ok;
+          console.log(ok);
+          
+        }
+      )
+      this.usuarioForm.addControl("buildingId", new FormControl("", [Validators.required]));
+    } else {
+      this.buildings = [];
+      this.usuarioForm.removeControl("buildingId");
+    }
   }
 }

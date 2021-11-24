@@ -33,7 +33,7 @@ namespace BusinessLibrary.Services
         /// <returns></returns>
         Task<UserDataType> Create(CreateUserRequestDataType Data);
 
-        Task Update(string Id);
+        Task Update(string Id, UpdateUserRequestDataType Data);
 
         Task Delete(string Id);
     }
