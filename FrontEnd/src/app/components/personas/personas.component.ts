@@ -13,7 +13,8 @@ import { PersonasService } from 'src/app/services/personas/personas.service';
 })
 export class PersonasComponent implements OnInit {
   
-
+  page = 1;
+  size: number;
   personas: PersonDataType[];
   selectedPerson: PersonDataType;
 
@@ -23,16 +24,7 @@ export class PersonasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.PersonasService.getAll().subscribe(
-      ok => {
-        this.personas = ok.collection;
-        console.log(ok);
-        
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.getPersons(0, 10);
   }
 
   open(content: any, persona: PersonDataType) {
@@ -43,6 +35,22 @@ export class PersonasComponent implements OnInit {
   delete(id: string){
     this.PersonasService.delete(id).subscribe();
     window.location.reload();
+  }
+
+  getPersons(skip: number, take: number) {
+    this.PersonasService.getAll(skip, take).subscribe(
+      ok => {
+        this.personas = ok.collection;
+        this.size = ok.size;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  onPageChange(pageNum: number): void {
+    this.getPersons((pageNum - 1) * 10, 10);
   }
 
 }

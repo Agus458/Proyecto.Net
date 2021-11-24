@@ -5,6 +5,7 @@ using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using SharedLibrary.Configuration.FaceApi;
 using SharedLibrary.Configuration.FacePlusPlus;
 using SharedLibrary.DataTypes.Persons;
 using SharedLibrary.Error;
@@ -28,18 +29,16 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly IMapper Mapper;
         private readonly ITenantsStore TenantsStore;
         private readonly HttpContext Context;
-        private readonly FacePlusPlusConfiguration Configuration;
-        private readonly HttpClient HttpClient;
+        private readonly FaceApi FaceApi;
 
-        public PersonsService(IStore<Person> Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context, IWebHostEnvironment Environment, IOptions<FacePlusPlusConfiguration> Configuration, IHttpClientFactory HttpClientFactory)
+        public PersonsService(IStore<Person> Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context, IWebHostEnvironment Environment, FaceApi FaceApi)
         {
             this.Store = Store;
             this.Mapper = Mapper;
             this.Context = Context.HttpContext;
             this.TenantsStore = TenantsStore;
             this.Environment = Environment;
-            this.Configuration = Configuration.Value;
-            this.HttpClient = HttpClientFactory.CreateClient();
+            this.FaceApi = FaceApi;
         }
 
         public async Task<PersonDataType> Create(CreatePersonRequestDataType Data)
@@ -54,7 +53,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
             if (Data.FileImage != null && Data.FileImage.Length > 0 && Data.FileImage.ContentType == "image/jpeg")
             {
-                await FacePlusPlus.UploadImage(HttpClient, Configuration, Data.FileImage, Id.ToString());
+                await FaceApi.AddPerson(Data.FileImage, Id.ToString());
 
                 Image = FileHelper.Upload(Data.FileImage, this.Environment, Id.ToString());
             }

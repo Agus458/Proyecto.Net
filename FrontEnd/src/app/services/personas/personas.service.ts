@@ -15,7 +15,7 @@ export class PersonasService {
     private Http: HttpClient
   ) { }
 
-  getAll() {
+  getAll(skip: number, take: number) {
     return this.Http.get<{ collection: PersonDataType[], size: number }>(this.Url);
   }
 
@@ -24,7 +24,13 @@ export class PersonasService {
   }
 
   update(id: string, data: any) {
-    return this.Http.put(this.Url + "/" + id, data);
+    let form = new FormData();
+    
+    Object.keys(data).forEach(key => {
+      form.append(key, data[key]);
+    });
+
+    return this.Http.put(this.Url + "/" + id, form);
   }
 
   delete(id: string) {
@@ -32,7 +38,13 @@ export class PersonasService {
   }
 
   create(data: any) {
-    return this.Http.post(this.Url, data);
+    let form = new FormData();
+    
+    Object.keys(data).forEach(key => {
+      form.append(key, data[key]);
+    });
+
+    return this.Http.post(this.Url, form);
   }
   
 }

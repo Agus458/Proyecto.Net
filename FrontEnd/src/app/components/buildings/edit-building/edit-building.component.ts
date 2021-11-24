@@ -57,7 +57,7 @@ export class EditBuildingComponent implements OnInit {
       this.BuildingsService.update(id, this.buildingForm.value).subscribe(
         ok => {
           this.toastService.show("Success", "Edificio actualizado");
-          this.router.navigateByUrl("/buildings");
+          this.router.navigateByUrl("/edificios");
         },
         err => this.toastService.show("Error", "Algo salio mal")
       );
@@ -65,7 +65,7 @@ export class EditBuildingComponent implements OnInit {
       this.BuildingsService.create(this.buildingForm.value).subscribe(
         ok => {
           this.toastService.show("Success", "Edificio creado");
-          this.router.navigateByUrl("/buildings");
+          this.router.navigateByUrl("/edificios");
         },
         error => {
           console.log(error);

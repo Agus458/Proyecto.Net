@@ -24,6 +24,8 @@ import { BuildingsComponent } from './components/buildings/buildings.component';
 import { EditBuildingComponent } from './components/buildings/edit-building/edit-building.component';
 import { AgmCoreModule } from '@agm/core';
 import { DoorsComponent } from './components/doors/doors.component';
+import { WebcamModule } from 'ngx-webcam';
+import { CameraComponent } from './components/camera/camera.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { DoorsComponent } from './components/doors/doors.component';
     BuildingsComponent,
     EditBuildingComponent,
     DoorsComponent,
+    CameraComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { DoorsComponent } from './components/doors/doors.component';
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCA22WX7c4qIzJRKwnbvG8_2gqlSrMfk1E'
-    })
+    }),
+    WebcamModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

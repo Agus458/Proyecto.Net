@@ -9,7 +9,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item" *ngIf="AuthenticationService.hasRole('SuperAdmin') || AuthenticationService.hasRole('Admin')">
                     <a class="nav-link" aria-current="page" routerLinkActive="active"
-                        routerLink="/dashboard">Dashboard</a>
+                        routerLink="/dashboard"><i class="fas fa-toolbox"></i> Dashboard</a>
                 </li>
             </ul>
 

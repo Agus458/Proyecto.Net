@@ -1,1 +1,61 @@
-<p>nuevapersona works!</p>
+<div class="card border-0 shadow rounded-3 my-5">
+    <div class="card-body p-4 p-sm-5">
+        <h4>Persona</h4>
+        <hr class="my-4">
+        <form [formGroup]="personForm" (ngSubmit)="submit()">
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label>Documento</label>
+                        <input type="text" name="document" class="form-control" formControlName="document">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Tipo de Documento</label>
+                        <input type="text" name="documentType" class="form-control" formControlName="documentType">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" name="name" class="form-control" formControlName="name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        <input type="text" name="lastName" class="form-control" formControlName="lastName">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Telefono</label>
+                <input type="text" name="phone" class="form-control" formControlName="phone">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" name="email" class="form-control" formControlName="email">
+            </div>
+
+            <app-camera (pictureTaken)="handleImage($event)"></app-camera>
+            <div class="snapshot" *ngIf="webcamImage">
+                <img [src]="webcamImage.imageAsDataUrl" />
+            </div>
+
+            <hr class="my-4">
+            <div class="row">
+                <div class="col"><button class="btn btn-dark btn-block" (click)="location.back()"
+                        type="button">Cancelar</button></div>
+                <div class="col"><button class="btn btn-warning btn-block" type="submit">Confirmar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
