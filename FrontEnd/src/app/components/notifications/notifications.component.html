@@ -7,17 +7,24 @@
         </button>
     </div>
     <div class="modal-body">
-        <ul class="list-group pb-4">
-            <li *ngFor="let notification of notifications" class="list-group-item">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{notification.message}}</h5>
-                    <small>3 days ago</small>
-                </div>
-                <small>And some small print.</small>
-            </li>
-        </ul>
-        <ngb-pagination class="d-flex justify-content-end" [collectionSize]="size" [(page)]="page"
-            [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
+        <ng-container *ngIf="notifications.length > 0; else elseBlock">
+            <ul class="list-group pb-4">
+                <li *ngFor="let notification of notifications" class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{notification.message}}</h5>
+                        <small>{{notification.createdDate}}</small>
+                    </div>
+                    <small class="card-link" routerLink="/personas/nuevo">Agregar Persona</small>
+                </li>
+            </ul>
+            <ngb-pagination class="d-flex justify-content-end" [collectionSize]="size" [(page)]="page"
+                [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
+        </ng-container>
+        <ng-template #elseBlock>
+            <ul class="list-group">
+                <li class="list-group-item">No hay Notificaciones</li>
+            </ul>
+        </ng-template>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>

@@ -46,4 +46,10 @@ export class PersonasService {
     return this.Http.post(this.Url, form);
   }
 
+  identify(image: File){
+    let form = new FormData();
+    form.append("fileImage", image);
+
+    return this.Http.post<PersonDataType>(this.Url + "/Identify", form);
+  }
 }

@@ -58,10 +58,10 @@ namespace ControlApi.Controllers
         }
 
         [HttpPost("Identify")]
-        [AllowAnonymous]
-        public async Task<IActionResult> Identify(IFormFile fileImage, Guid BuildingId)
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Portero")]
+        public async Task<IActionResult> Identify(IFormFile fileImage)
         {
-            return Ok(await this.Service.Identify(fileImage, BuildingId));
+            return Ok(await this.Service.Identify(fileImage));
         }
 
         [HttpPost("CSV")]

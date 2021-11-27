@@ -84,6 +84,11 @@ namespace DataAccessLibrary.Contexts
         public DbSet<Notification> Notifications { get; set; }
 
         /// <summary>
+        /// Represents all the Entries saved in the DataBase.
+        /// </summary>
+        public DbSet<Entry> Entries { get; set; }
+
+        /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
         /// </summary>
         /// <returns></returns>
@@ -108,6 +113,19 @@ namespace DataAccessLibrary.Contexts
                 {
                     case EntityState.Added:
                         Entry.Entity.TenantId = this.TenantId;
+                        Entry.Entity.CreatedDate = DateTime.UtcNow;
+                        break;
+                    case EntityState.Modified:
+                        Entry.Entity.UpdatedDate = DateTime.UtcNow;
+                        break;
+                }
+            }
+
+            foreach (var Entry in ChangeTracker.Entries<BaseEntity>())
+            {
+                switch (Entry.State)
+                {
+                    case EntityState.Added:
                         Entry.Entity.CreatedDate = DateTime.UtcNow;
                         break;
                     case EntityState.Modified:

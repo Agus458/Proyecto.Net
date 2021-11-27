@@ -4,6 +4,7 @@ using DataAccessLibrary.Entities;
 using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using SharedLibrary.Configuration.FacePlusPlus;
 using SharedLibrary.DataTypes.Persons;
 using SharedLibrary.Error;
@@ -12,6 +13,7 @@ using SharedLibrary.Helpers;
 using System;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BusinessLibrary.Services.ServicesImplementation
@@ -20,13 +22,15 @@ namespace BusinessLibrary.Services.ServicesImplementation
     {
         private readonly IWebHostEnvironment Environment;
         private readonly IStore<Person> Store;
+        private readonly IStoreByBuilding<Entry> EntryStore;
         private readonly IMapper Mapper;
         private readonly ITenantsStore TenantsStore;
         private readonly HttpContext Context;
         private readonly FacePlusPlus FaceApi;
         private readonly INotificationService NotificationService;
+        private readonly UserManager<User> UserManager;
 
-        public PersonsService(IStore<Person> Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context, IWebHostEnvironment Environment, FacePlusPlus FaceApi, INotificationService NotificationService)
+        public PersonsService(IStore<Person> Store, IMapper Mapper, ITenantsStore TenantsStore, IStoreByBuilding<Entry> EntryStore, IHttpContextAccessor Context, IWebHostEnvironment Environment, FacePlusPlus FaceApi, INotificationService NotificationService, UserManager<User> UserManager)
         {
             this.Store = Store;
             this.Mapper = Mapper;
@@ -35,6 +39,8 @@ namespace BusinessLibrary.Services.ServicesImplementation
             this.Environment = Environment;
             this.FaceApi = FaceApi;
             this.NotificationService = NotificationService;
+            this.UserManager = UserManager;
+            this.EntryStore = EntryStore;
         }
 
         public async Task<PersonDataType> Create(CreatePersonRequestDataType Data)
@@ -72,8 +78,16 @@ namespace BusinessLibrary.Services.ServicesImplementation
             this.Store.Delete(Person);
         }
 
-        public async Task<PersonDataType> Identify(IFormFile fileImage, Guid BuildingId)
+        public async Task<PersonDataType> Identify(IFormFile fileImage)
         {
+            var UserId = this.Context.User.FindFirst(c => c.Type.Equals(ClaimTypes.NameIdentifier))?.Value;
+            if (UserId == null) throw new ApiError("Usuario no ingresado");
+
+            var User = await this.UserManager.FindByIdAsync(UserId);
+            if (User == null) throw new ApiError("Usuario no encontrado");
+
+            var BuildingId = User.BuildingId;
+
             var result = await this.FaceApi.Identify(fileImage);
 
             if (result.results != null && result.results.Count() > 0)
@@ -83,12 +97,24 @@ namespace BusinessLibrary.Services.ServicesImplementation
                     if (Guid.TryParse(result.results[0].user_id, out var Id))
                     {
                         var Person = this.Store.GetById(Id);
-                        if (Person != null) return Mapper.Map<PersonDataType>(Person);
+                        if (Person != null)
+                        {
+                            Entry NewEntry = new Entry()
+                            {
+                                Id = Guid.NewGuid(),
+                                PersonId = Person.Id,
+                                BuildingId = BuildingId.Value
+                            };
+
+                            this.EntryStore.Create(NewEntry);
+
+                            return Mapper.Map<PersonDataType>(Person);
+                        }
                     }
                 }
             }
 
-            await this.NotificationService.SendNotification("Person Not Found", BuildingId);
+            await this.NotificationService.SendNotification("Person Not Found", BuildingId.Value);
 
             throw new ApiError("Person Not Found", (int)HttpStatusCode.NotFound);
         }

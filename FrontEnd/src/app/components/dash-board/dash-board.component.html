@@ -17,6 +17,9 @@
         <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/asignaciones"><i
             class="fas fa-toolbox"></i> Asignaciones</a>
       </li>
+      <li class="nav-item" *ngIf="AuthenticationService.hasRole('Portero')">
+        <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/ingresar"><i class="fas fa-walking"></i> Ingreso</a>
+      </li>
       <li class="nav-item" *ngIf="AuthenticationService.hasRole('Admin')">
         <a class="nav-link" routerLink="/edificios"><i class="fas fa-building"></i> Edificios</a>
       </li>
