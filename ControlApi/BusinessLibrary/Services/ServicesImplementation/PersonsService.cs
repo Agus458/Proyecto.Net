@@ -5,7 +5,6 @@ using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using SharedLibrary.Configuration.FaceApi;
 using SharedLibrary.Configuration.FacePlusPlus;
 using SharedLibrary.DataTypes.Persons;
 using SharedLibrary.Error;
@@ -29,9 +28,9 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly IMapper Mapper;
         private readonly ITenantsStore TenantsStore;
         private readonly HttpContext Context;
-        private readonly FaceApi FaceApi;
+        private readonly FacePlusPlus FaceApi;
 
-        public PersonsService(IStore<Person> Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context, IWebHostEnvironment Environment, FaceApi FaceApi)
+        public PersonsService(IStore<Person> Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context, IWebHostEnvironment Environment, FacePlusPlus FaceApi)
         {
             this.Store = Store;
             this.Mapper = Mapper;
@@ -53,7 +52,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
             if (Data.FileImage != null && Data.FileImage.Length > 0 && Data.FileImage.ContentType == "image/jpeg")
             {
-                await FaceApi.AddPerson(Data.FileImage, Id.ToString());
+                await FaceApi.UploadImage(Data.FileImage, Id.ToString());
 
                 Image = FileHelper.Upload(Data.FileImage, this.Environment, Id.ToString());
             }
@@ -74,6 +73,11 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (Person == null) throw new ApiError("Person Not Found", (int)HttpStatusCode.NotFound);
 
             this.Store.Delete(Person);
+        }
+
+        public async Task<dynamic> Identify(IFormFile fileImage)
+        {
+            return await this.FaceApi.Identify(fileImage);
         }
 
         public PaginationDataType<PersonDataType> GetAll(int Skip, int Take)

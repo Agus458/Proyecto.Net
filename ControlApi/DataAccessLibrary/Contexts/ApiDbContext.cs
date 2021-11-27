@@ -102,7 +102,6 @@ namespace DataAccessLibrary.Contexts
                 switch (Entry.State)
                 {
                     case EntityState.Added:
-                        Entry.Entity.Id = Guid.NewGuid();
                         Entry.Entity.TenantId = this.TenantId;
                         Entry.Entity.CreatedDate = DateTime.UtcNow;
                         break;

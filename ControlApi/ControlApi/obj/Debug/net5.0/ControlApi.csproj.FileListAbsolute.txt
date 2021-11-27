@@ -359,7 +359,6 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.Azure.CognitiveServices.Vision.Face.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -377,8 +376,6 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.OpenApi.dll
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.Rest.ClientRuntime.dll
-C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Microsoft.Rest.ClientRuntime.Azure.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\MongoDB.Bson.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\MongoDB.Driver.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\MongoDB.Driver.Core.dll

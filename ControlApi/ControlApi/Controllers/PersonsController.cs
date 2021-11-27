@@ -10,6 +10,7 @@ using SharedLibrary.DataTypes.Persons;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -55,10 +56,17 @@ namespace ControlApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromForm] CreatePersonRequestDataType Data)
+        public async Task<IActionResult> Create([FromForm] CreatePersonRequestDataType Data)
         {
-            var result = this.Service.Create(Data);
+            var result = await this.Service.Create(Data);
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
+        }
+
+        [HttpPost("Identify")]
+        public async Task<IActionResult> Identify(IFormFile fileImage)
+        {
+            var result = await this.Service.Identify(fileImage);
+            return Ok(result);
         }
 
         [HttpPost("csv")]

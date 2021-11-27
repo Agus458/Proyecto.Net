@@ -141,7 +141,7 @@ namespace ControlApi
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStore<>), typeof(DataAccessLibrary.Stores.StoresImplementations.Store<>));
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStoreByBuilding<>), typeof(DataAccessLibrary.Stores.StoresImplementations.StoreByBuilding<>));
 
-            services.AddSingleton<SharedLibrary.Configuration.FaceApi.FaceApi>();
+            services.AddSingleton<SharedLibrary.Configuration.FacePlusPlus.FacePlusPlus>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

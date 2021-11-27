@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SharedLibrary.Configuration;
-using SharedLibrary.Configuration.FaceApi;
 using SharedLibrary.Configuration.FacePlusPlus;
 using SharedLibrary.Configuration.PayPal;
 using SharedLibrary.Configuration.Tenancy;
@@ -33,7 +32,6 @@ namespace SharedLibrary.Extensions
         {
             Services.Configure<PayPalApiConfiguration>(Configuration.GetSection("PayPal"));
             Services.Configure<FacePlusPlusConfiguration>(Configuration.GetSection("FacePlusPlus"));
-            Services.Configure<FaceApiConfiguration>(Configuration.GetSection("FaceApi"));
 
             return Services;
         }

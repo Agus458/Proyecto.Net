@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using SharedLibrary.Configuration.FacePlusPlus.Returns;
 using SharedLibrary.Error;
 using System;
@@ -13,9 +14,18 @@ using System.Threading.Tasks;
 
 namespace SharedLibrary.Configuration.FacePlusPlus
 {
-    public static class FacePlusPlus
+    public class FacePlusPlus
     {
-        public static async Task<GetDetailResponse> GetDetail(HttpClient Client, FacePlusPlusConfiguration Configuration)
+        private readonly HttpClient Client;
+        private readonly FacePlusPlusConfiguration Configuration;
+
+        public FacePlusPlus(IOptions<FacePlusPlusConfiguration> ConfigurationOptions, IHttpClientFactory clientFactory)
+        {
+            this.Configuration = ConfigurationOptions.Value;
+            this.Client = clientFactory.CreateClient();
+        }
+
+        public async Task<GetDetailResponse> GetDetail()
         {
             try
             {
@@ -39,7 +49,7 @@ namespace SharedLibrary.Configuration.FacePlusPlus
             }
         }
 
-        public static async Task<dynamic> CreateFaceSet(HttpClient Client, FacePlusPlusConfiguration Configuration)
+        public async Task<dynamic> CreateFaceSet(HttpClient Client, FacePlusPlusConfiguration Configuration)
         {
             try
             {
@@ -64,7 +74,7 @@ namespace SharedLibrary.Configuration.FacePlusPlus
             }
         }
 
-        public static async Task<dynamic> DeleteFaceSet(HttpClient Client, FacePlusPlusConfiguration Configuration)
+        public async Task<dynamic> DeleteFaceSet()
         {
             try
             {
@@ -88,7 +98,7 @@ namespace SharedLibrary.Configuration.FacePlusPlus
             }
         }
 
-        public static async Task<SetUserIDResponse> SetUserID(HttpClient Client, FacePlusPlusConfiguration Configuration, string FaceToken, string UserId)
+        public async Task<SetUserIDResponse> SetUserID(string FaceToken, string UserId)
         {
             try
             {
@@ -113,7 +123,7 @@ namespace SharedLibrary.Configuration.FacePlusPlus
             }
         }
 
-        public static async Task<AddFaceResponse> AddFace(HttpClient Client, FacePlusPlusConfiguration Configuration, string FaceToken)
+        public async Task<AddFaceResponse> AddFace(string FaceToken)
         {
             try
             {
@@ -133,7 +143,7 @@ namespace SharedLibrary.Configuration.FacePlusPlus
                     if(Result.error_message != null && Result.error_message == ApiConstants.InvalidOuterId)
                     {
                         await CreateFaceSet(Client, Configuration);
-                        return await AddFace(Client, Configuration, FaceToken);
+                        return await AddFace(FaceToken);
                     }
 
                     return Result;
@@ -145,7 +155,7 @@ namespace SharedLibrary.Configuration.FacePlusPlus
             }
         }
 
-        public static async Task<DetectResponse> Detect(HttpClient Client, FacePlusPlusConfiguration Configuration, System.IO.Stream File, string FileName)
+        public async Task<DetectResponse> Detect(System.IO.Stream File, string FileName)
         {
             try
             {
@@ -169,20 +179,60 @@ namespace SharedLibrary.Configuration.FacePlusPlus
             }
         }
 
-        public static async Task UploadImage(HttpClient Client, FacePlusPlusConfiguration Configuration, IFormFile ImageFile, string UserId)
+        public async Task<SearchResponse> Search(System.IO.Stream File, string FileName)
         {
             try
             {
-                var DetectResponse = await Detect(Client, Configuration, ImageFile.OpenReadStream(), UserId + Path.GetExtension(ImageFile.FileName));
+                using (var RequestMessage = new HttpRequestMessage(HttpMethod.Post, "https://api-us.faceplusplus.com/facepp/v3/search"))
+                {
+                    var Content = new MultipartFormDataContent();
+                    Content.Add(new StringContent(Configuration.ApiKey), "\"api_key\"");
+                    Content.Add(new StringContent(Configuration.ApiSecret), "\"api_secret\"");
+                    Content.Add(new StreamContent(File), "\"image_file\"", FileName);
+                    Content.Add(new StringContent(Configuration.OuterId), "\"outer_id\"");
+
+                    RequestMessage.Content = Content;
+
+                    var Response = await Client.SendAsync(RequestMessage);
+
+                    return await Response.Content.ReadAsAsync<SearchResponse>(new[] { new JsonMediaTypeFormatter() });
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<SearchResponse> Identify(IFormFile ImageFile)
+        {
+            try
+            {
+                var SearchResponse = await Search(ImageFile.OpenReadStream(), ImageFile.FileName);
+                if (SearchResponse.error_message != null) throw new ApiError(SearchResponse.error_message, (int)HttpStatusCode.BadRequest);
+
+                return SearchResponse;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task UploadImage(IFormFile ImageFile, string UserId)
+        {
+            try
+            {
+                var DetectResponse = await Detect(ImageFile.OpenReadStream(), UserId + Path.GetExtension(ImageFile.FileName));
                 if (DetectResponse.error_message != null) throw new ApiError(DetectResponse.error_message, (int)HttpStatusCode.BadRequest);
 
                 var FaceToken = DetectResponse.faces[0]?.face_token;
                 if (FaceToken == null) throw new ApiError("Face not found", (int)HttpStatusCode.BadRequest);
 
-                var SetUserIDResponse = await SetUserID(Client, Configuration, FaceToken, UserId);
+                var SetUserIDResponse = await SetUserID(FaceToken, UserId);
                 if (SetUserIDResponse.error_message != null) throw new ApiError(DetectResponse.error_message, (int)HttpStatusCode.BadRequest);
 
-                var AddFaceResponse = await AddFace(Client, Configuration, FaceToken);
+                var AddFaceResponse = await AddFace(FaceToken);
                 if (AddFaceResponse.error_message != null) throw new ApiError(DetectResponse.error_message, (int)HttpStatusCode.BadRequest);
             }
             catch (Exception)
