@@ -12,7 +12,7 @@
                 <li *ngFor="let notification of notifications" class="list-group-item">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{notification.message}}</h5>
-                        <small>{{notification.createdDate}}</small>
+                        <small>{{notification.createdDate | date:'medium' }}</small>
                     </div>
                     <small class="card-link" routerLink="/personas/nuevo">Agregar Persona</small>
                 </li>

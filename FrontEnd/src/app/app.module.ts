@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -30,6 +30,10 @@ import { AssignmentsComponent } from './components/assignments/assignments.compo
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { IngresarComponent } from './components/ingresar/ingresar.component';
 import { HomeComponent } from './components/home/home.component';
+import { registerLocaleData } from '@angular/common';
+
+import localeES from "@angular/common/locales/es";
+registerLocaleData(localeES, "es");
 
 @NgModule({
   declarations: [
@@ -69,6 +73,7 @@ import { HomeComponent } from './components/home/home.component';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TenantInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: "es" }
   ],
   bootstrap: [AppComponent]
 })

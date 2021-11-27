@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as signalR from '@microsoft/signalr';
 import { environment } from 'src/environments/environment';
 import { NotificationsService } from 'src/app/services/notifications/notifications.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-notifications',
@@ -17,7 +18,8 @@ export class NotificationsComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +37,7 @@ export class NotificationsComponent implements OnInit {
     });
 
     connection.on("BroadcastMessage", () => {
+      this.toastService.show("Info", "Nueva Notificacion");
       this.getNotifications(0, 10);
     });
   }
