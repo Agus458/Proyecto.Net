@@ -57,7 +57,16 @@ namespace DataAccessLibrary.Contexts
         /// Represents all the Buildings saved in the DataBase.
         /// </summary>
         public DbSet<Building> Buildings { get; set; }
+        /// <summary>
+        /// Represents all the Pago saved in the DataBase.
+        /// </summary>
+        public DbSet<Pago> Pagos { get; set;  }
 
+        public DbSet<Factura> Facturas { get; set; }
+
+        public DbSet<Product> Productos { get; set; }
+
+        public DbSet<Precio> Precios { get; set; }
         /// <summary>
         /// Represents all the Doors saved in the DataBase.
         /// </summary>

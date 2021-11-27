@@ -19,14 +19,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly IPagoStore Store;
         private readonly IMapper Mapper;
         private readonly HttpContext context;
-        private readonly IBuildingsStore BuildingsStore;
-
-        public PagoService(IPagoStore Store, IMapper Mapper, IHttpContextAccessor Context, IBuildingsStore BuildingsStore)
+        //private readonly IFacturaStore FacturaStore;
+        public PagoService(IPagoStore Store, IMapper Mapper, IHttpContextAccessor Context)
         {
             this.Store = Store;
             this.Mapper = Mapper;
             this.context = Context.HttpContext;
-            this.BuildingsStore = BuildingsStore;
+           
         }
         public void Delete(Guid Id)
         {
@@ -36,16 +35,15 @@ namespace BusinessLibrary.Services.ServicesImplementation
             this.Store.Delete(Pago);
         }
 
-        public PaginationDataType<PagoDataType> GetAll(int Skip, int Take, Guid BuildingId)
+        public PaginationDataType<PagoDataType> GetAll(int Skip, int Take)
         {
-            var Building = this.BuildingsStore.GetById(BuildingId);
-            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
+           
 
-            var Result = this.Store.GetAll(Skip, Take, BuildingId);
+            var Result = this.Store.GetAll(Skip, Take);
 
             return new PaginationDataType<PagoDataType>()
             {
-                Collection = Result.Collection.Select(Pago => Mapper.Map<PagoDataType >(Pago))
+                Collection = Result.Collection.Select(Pago => Mapper.Map<PagoDataType>(Pago))
             };
         }
 
@@ -62,8 +60,6 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public PagoDataType Create(CreatePagoRequestDataType Data)
         {
-            var Building = this.BuildingsStore.GetById(Data.BuildingId);
-            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
 
             var NewPago = new Pago() { Id = Guid.NewGuid() };
             Mapper.Map(Data, NewPago);
@@ -73,7 +69,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             return Mapper.Map<PagoDataType>(NewPago);
         }
 
-        public PagoDataType GuiById(Guid Id)
+        public PagoDataType GutById(Guid Id)
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Pago = this.Store.GetById(Id);

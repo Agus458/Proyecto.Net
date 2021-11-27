@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using SharedLibrary.Extensions;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -18,15 +19,17 @@ namespace BusinessLibrary.Services.ServicesImplementation
     {
         private readonly IFacturaStore Store;
         private readonly IMapper Mapper;
-        private readonly HttpContext context;
-        private readonly IBuildingsStore BuildingsStore;
+        private readonly HttpContext Context;
+        ///private readonly ITenantsStore TenantsStore;
 
-        public FacturaService(IFacturaStore Store, IMapper Mapper, IHttpContextAccessor Context, IBuildingsStore BuildingsStore)
+     
+
+        public FacturaService(IFacturaStore Store, IMapper Mapper, IHttpContextAccessor Context)
         {
             this.Store = Store;
             this.Mapper = Mapper;
-            this.context = Context.HttpContext;
-            this.BuildingsStore = BuildingsStore;
+            this.Context = Context.HttpContext;
+            //this.TenantsStore = TenantsStore;
         }
 
 
@@ -34,16 +37,15 @@ namespace BusinessLibrary.Services.ServicesImplementation
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Factura = this.Store.GetById(Id);
-            if (Factura == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Factura == null) throw new ApiError("Factura Not Found", (int)HttpStatusCode.NotFound);
             this.Store.Delete(Factura);
         }
 
-        public PaginationDataType<FacturaDataType> GetAll(int Skip, int Take, Guid BuildingId)
+        public PaginationDataType<FacturaDataType> GetAll(int Skip, int Take )
         {
-            var Building = this.BuildingsStore.GetById(BuildingId);
-            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
+         
 
-            var Result = this.Store.GetAll(Skip, Take, BuildingId);
+            var Result = this.Store.GetAll(Skip, Take);
 
             return new PaginationDataType<FacturaDataType>()
             {
@@ -59,21 +61,15 @@ namespace BusinessLibrary.Services.ServicesImplementation
             return Mapper.Map<FacturaDataType>(Factura);
         }
 
-        public void Update(Guid Id, UpdateFacturaRequestDataType Data)
-        {
-            if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
-
-            var Factura = this.Store.GetById(Id);
-            if (Factura == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
-
-            Mapper.Map(Data, Factura);
-            this.Store.Update(Factura);
-        }
+     
 
         public FacturaDataType Create(CreateFacturaRequestDataType Data)
         {
-            var Building = this.BuildingsStore.GetById(Data.BuildingId);
-            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
+            /*
+            var TenantId = this.Context.GetTenant();
+            if (TenantId == Guid.Empty) throw new ApiError("No se ingreso la institucion", (int)HttpStatusCode.BadRequest);
+            */
+            //if (this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
 
             var NewFactura = new Factura() { Id = Guid.NewGuid() };
             Mapper.Map(Data, NewFactura);
@@ -83,6 +79,31 @@ namespace BusinessLibrary.Services.ServicesImplementation
             return Mapper.Map<FacturaDataType>(NewFactura);
         }
 
-        
+        public void Pagar(Guid IdFactura)
+        {
+            if (IdFactura == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
+            var Factura = this.Store.GetById(IdFactura);
+            if (Factura == null) throw new ApiError("Factura Not Found", (int)HttpStatusCode.NotFound);
+            Factura.Pago = new Pago() { Id = Guid.NewGuid(), Monto=Factura.Monto };
+            Factura.Pagada = true;
+            this.Store.Update(Factura);
+
+           
+            
+
+        }
+
+   
+        public void Update(Guid Id, UpdateFacturaRequestDataType Data)
+        {
+            if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
+
+            var Factura = this.Store.GetById(Id);
+            if (Factura == null) throw new ApiError("Factura Not Found", (int)HttpStatusCode.NotFound);
+
+            Mapper.Map(Data, Factura);
+            this.Store.Update(Factura);
+        }
+
     }
 }

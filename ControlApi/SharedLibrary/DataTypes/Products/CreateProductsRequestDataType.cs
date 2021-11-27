@@ -14,7 +14,6 @@ namespace SharedLibrary.DataTypes.Products
     [MaxLength(200)]
     public string Name { get; init; }
 
-     [Required]
-     public Guid BuildingId { get; init; }
+   
     }
 }

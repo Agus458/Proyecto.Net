@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLibrary.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20211105143350_door-v2")]
-    partial class doorv2
+    [Migration("20211127204132_Alexpepe")]
+    partial class Alexpepe
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,6 +73,9 @@ namespace DataAccessLibrary.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTimeOffset>("UpdatedDate")
                         .HasColumnType("datetimeoffset");
 
@@ -80,7 +83,76 @@ namespace DataAccessLibrary.Migrations
 
                     b.HasIndex("BuildingId");
 
+                    b.HasIndex("TenantId");
+
                     b.ToTable("Doors");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Factura", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<float>("Monto")
+                        .HasColumnType("real");
+
+                    b.Property<bool>("Pagada")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("fecha")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId");
+
+                    b.ToTable("Facturas");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Pago", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("FacturaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float>("Monto")
+                        .HasColumnType("real");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacturaId")
+                        .IsUnique();
+
+                    b.HasIndex("TenantId");
+
+                    b.ToTable("Pagos");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Person", b =>
@@ -128,6 +200,68 @@ namespace DataAccessLibrary.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("Persons");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Precio", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<Guid>("PrecioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<float>("precio")
+                        .HasMaxLength(200)
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("TenantId");
+
+                    b.ToTable("Precios");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId");
+
+                    b.ToTable("Productos");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Tenant", b =>
@@ -378,10 +512,76 @@ namespace DataAccessLibrary.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
+                        .WithMany()
+                        .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Building");
+
+                    b.Navigation("Tenant");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Factura", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
+                        .WithMany()
+                        .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tenant");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Pago", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Factura", "Factura")
+                        .WithOne("Pago")
+                        .HasForeignKey("DataAccessLibrary.Entities.Pago", "FacturaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
+                        .WithMany()
+                        .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Factura");
+
+                    b.Navigation("Tenant");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Person", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
+                        .WithMany()
+                        .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tenant");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Precio", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
+                        .WithMany()
+                        .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Tenant");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Product", b =>
                 {
                     b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
                         .WithMany()
@@ -450,6 +650,11 @@ namespace DataAccessLibrary.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Factura", b =>
+                {
+                    b.Navigation("Pago");
                 });
 #pragma warning restore 612, 618
         }

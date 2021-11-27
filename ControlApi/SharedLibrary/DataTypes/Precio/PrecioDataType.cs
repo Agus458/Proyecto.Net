@@ -14,7 +14,5 @@ namespace SharedLibrary.DataTypes.Precio
 
         public DateTime Fecha{ set; get; }
 
-        public BuildingDataType Building { get; init; }
-
     }
 }

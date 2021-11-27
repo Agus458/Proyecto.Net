@@ -11,17 +11,13 @@ namespace BusinessLibrary.Services
 {
     public interface IPrecioService
     {
-        PaginationDataType<PrecioDataType> GetAll(int skup, int Take, Guid BuildingId);
-
-
-        PrecioDataType GetBuId(Guid Id);
+        PaginationDataType<PrecioDataType> GetAll(int skup, int Take);
 
         PrecioDataType Create(CreatePrecioRequestDataType Data);
 
         void Delete(Guid Id);
 
         void Update(Guid Id, UpdatePreciosRequestDataType Data);
-        
-
+        PrecioDataType GetBuId(Guid Id);
     }
 }

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
+
 namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
@@ -24,10 +25,11 @@ namespace ControlApi.Controllers
         {
             this.Service = Service;
         }
-        [HttpGet("Building/{BuildingId}")]
-        public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take, Guid BuildingId)
+
+        [HttpGet]
+        public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take)
         {
-            return Ok(this.Service.GetAll(Skip, Take, BuildingId));
+            return Ok(this.Service.GetAll(Skip, Take));
         }
         [HttpGet("{Id}")]
         public IActionResult GetById(Guid Id)
@@ -55,6 +57,10 @@ namespace ControlApi.Controllers
             var result = this.Service.Create(Data);
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
         }
-
-    }
+        [HttpPost("Pagar")]
+        public void Pagar(Guid IdFactura)
+        {
+            this.Service.Pagar(IdFactura);
+        }
+       }
 }

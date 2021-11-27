@@ -17,15 +17,15 @@ namespace DataAccessLibrary.Stores.StoresImplementations
         {
             this.Context = Context;
         }
-        public PaginationDataType<Pago> GetAll(int Skip, int Take, Guid BuildingId)
+        public PaginationDataType<Pago> GetAll(int Skip, int Take, Guid FacturaId)
         {
-            var Collection = this.Context.Set<Pago>().Include(Pago => Pago.Building).Where(Pago => Pago.BuildingId == BuildingId);
+            var Collection = this.Context.Set<Pago>().Include(Pago => Pago.Factura).Where(Pago => Pago.FacturaId == FacturaId);
             return new PaginationDataType<Pago> { Collection = Collection.Skip(Skip).Take(Take > 0 ? Take : 10).AsEnumerable(), Size = Collection.Count() };
         }
 
         public new Precio GetById(Guid Id)
         {
-            return this.Context.Set<Precio>().Include(Precio => Precio.Building).SingleOrDefault(Entity => Entity.Id == Id);
+            return this.Context.Set<Precio>().Include(Precio => Precio).SingleOrDefault(Entity => Entity.Id == Id);
         }
     }
 }

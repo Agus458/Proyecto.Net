@@ -16,7 +16,6 @@ namespace SharedLibrary.DataTypes.Factura
         [Required]
         public float monto { get; init; }
 
-        [Required]
-        public Guid BuildingId { get; init; }
+        
     }
 }

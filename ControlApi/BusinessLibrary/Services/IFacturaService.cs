@@ -6,12 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccessLibrary.Entities;
+using SharedLibrary.DataTypes.Pago;
 
 namespace BusinessLibrary.Services
 {
     public interface IFacturaService
     {
-        PaginationDataType<FacturaDataType> GetAll(int skup, int Take, Guid BuildingId);
+        PaginationDataType<FacturaDataType> GetAll(int skip, int Take);
 
 
         FacturaDataType GetBuId(Guid Id);
@@ -22,6 +23,8 @@ namespace BusinessLibrary.Services
 
         void Update(Guid Id, UpdateFacturaRequestDataType Data);
 
-
+        void Pagar(Guid Id);
+       // void Update(Guid id, UpdatePagoRequestDateType data);
+       // FacturaDataType Update(Guid id, UpdateFacturaRequestDataType Data);
     }
 }

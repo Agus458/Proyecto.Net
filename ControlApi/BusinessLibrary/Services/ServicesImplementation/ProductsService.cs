@@ -19,21 +19,17 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly IProductsStore Store;
         private readonly IMapper Mapper;
         private readonly HttpContext context;
-        private readonly IBuildingsStore BuildingsStore;
 
-        public ProductsService(IProductsStore Store, IMapper Mapper,IHttpContextAccessor Context, IBuildingsStore BuildingsStore)
+        public ProductsService(IProductsStore Store, IMapper Mapper,IHttpContextAccessor Context)
         {
             this.Store = Store;
             this.Mapper = Mapper;
             this.context = Context.HttpContext;
-            this.BuildingsStore = BuildingsStore;
         }
         
         public ProductsDataType Create(CreateProductsRequestDataType Data)
         {
-            var Building = this.BuildingsStore.GetById(Data.BuildingId);
-            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
-
+   
             var NewProduct = new Product() { Id = Guid.NewGuid() };
             Mapper.Map(Data, NewProduct);
 
@@ -51,12 +47,9 @@ namespace BusinessLibrary.Services.ServicesImplementation
             this.Store.Delete(Products);
         }
 
-        public PaginationDataType<ProductsDataType> GetAll(int Skip, int Take, Guid BuildingId)
+        public PaginationDataType<ProductsDataType> GetAll(int Skip, int Take)
         {
-            var Building = this.BuildingsStore.GetById(BuildingId);
-            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
-
-            var Result = this.Store.GetAll(Skip, Take, BuildingId);
+            var Result = this.Store.GetAll(Skip, Take);
 
             return new PaginationDataType<ProductsDataType>()
             {
@@ -64,7 +57,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             };
         }
 
-        public ProductsDataType GetBuId(Guid Id)
+        public ProductsDataType GetById(Guid Id)
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Product = this.Store.GetById(Id);

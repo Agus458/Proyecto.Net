@@ -11,9 +11,9 @@ namespace BusinessLibrary.Services
 {
     public interface IPagoService
     {
-        PaginationDataType<PagoDataType> GetAll(int skup, int Take, Guid BuildingId);
+        PaginationDataType<PagoDataType> GetAll(int skup, int Take);
 
-        PagoDataType GuiById(Guid Id);
+        PagoDataType GutById(Guid Id);
 
         PagoDataType Create(CreatePagoRequestDataType Data);
 

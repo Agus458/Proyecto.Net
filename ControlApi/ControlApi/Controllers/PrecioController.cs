@@ -24,10 +24,10 @@ namespace ControlApi.Controllers
             this.Service = Service;
     }
 
-    [HttpGet("Building/{BuildingId}")]
-    public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take, Guid BuildingId)
+    [HttpGet]
+    public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take)
     {
-            return Ok(this.Service.GetAll(Skip, Take, BuildingId));
+            return Ok(this.Service.GetAll(Skip, Take));
     }
 
     [HttpGet("{Id}")]

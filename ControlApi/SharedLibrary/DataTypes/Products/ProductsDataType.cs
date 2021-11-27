@@ -14,7 +14,6 @@ namespace SharedLibrary.DataTypes.Products
 
         public float precio { set; get; }
 
-        public BuildingDataType Building { get; init; }
         //Agregar una coleccion de precios
         // public List<DataPrecio>
     }

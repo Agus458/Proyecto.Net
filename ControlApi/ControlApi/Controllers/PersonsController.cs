@@ -58,5 +58,7 @@ namespace ControlApi.Controllers
             var result = this.Service.Create(Data);
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
         }
+
+
     }
 }

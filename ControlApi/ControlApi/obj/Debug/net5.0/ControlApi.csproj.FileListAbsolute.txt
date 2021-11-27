@@ -438,6 +438,12 @@ C:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\scopedcss\bundle\
 C:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.RazorTargetAssemblyInfo.cache
 C:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.CopyComplete
 C:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.genruntimeconfig.cache
+E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.AssemblyReference.cache
+E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.AssemblyInfoInputs.cache
+E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.AssemblyInfo.cs
+E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.CoreCompileInputs.cache
+E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.MvcApplicationPartsAssemblyInfo.cache
 E:\Proyecto\Agustin\git\ControlApi\ControlApi\bin\Debug\net5.0\appsettings.Development.json
 E:\Proyecto\Agustin\git\ControlApi\ControlApi\bin\Debug\net5.0\appsettings.json
 E:\Proyecto\Agustin\git\ControlApi\ControlApi\bin\Debug\net5.0\ControlApi.exe
@@ -525,13 +531,6 @@ E:\Proyecto\Agustin\git\ControlApi\ControlApi\bin\Debug\net5.0\SharedLibrary.dll
 E:\Proyecto\Agustin\git\ControlApi\ControlApi\bin\Debug\net5.0\BusinessLibrary.pdb
 E:\Proyecto\Agustin\git\ControlApi\ControlApi\bin\Debug\net5.0\DataAccessLibrary.pdb
 E:\Proyecto\Agustin\git\ControlApi\ControlApi\bin\Debug\net5.0\SharedLibrary.pdb
-E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.AssemblyReference.cache
-E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.GeneratedMSBuildEditorConfig.editorconfig
-E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.AssemblyInfoInputs.cache
-E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.AssemblyInfo.cs
-E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.CoreCompileInputs.cache
-E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.MvcApplicationPartsAssemblyInfo.cs
-E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.MvcApplicationPartsAssemblyInfo.cache
 E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\staticwebassets\ControlApi.StaticWebAssets.Manifest.cache
 E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\staticwebassets\ControlApi.StaticWebAssets.xml
 E:\Proyecto\Agustin\git\ControlApi\ControlApi\obj\Debug\net5.0\scopedcss\bundle\ControlApi.styles.css

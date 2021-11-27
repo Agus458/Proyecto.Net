@@ -9,6 +9,6 @@ namespace DataAccessLibrary.Stores
 {
     public interface IPrecioStore : IStore<Precio>
     {
-        PaginationDataType<Precio> GetAll(int Skip, int Take, Guid BuildingId);
+        PaginationDataType<Precio> GetAll(int Skip, int Take);
     }
 }

@@ -27,9 +27,9 @@ namespace ControlApi.Controllers
         }
 
         [HttpGet("Building/{BuildingId}")]
-        public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take, Guid BuildingId)
+        public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take)
         {
-            return Ok(this.Service.GetAll(Skip, Take, BuildingId));
+            return Ok(this.Service.GetAll(Skip, Take));
         }
 
 
@@ -38,8 +38,8 @@ namespace ControlApi.Controllers
         {
             return Ok(this.Service.GetById(Id));
         }
-
-        public IActionResult Delete(Guid Id)
+        [HttpDelete("{Id}")]
+       public IActionResult Delete(Guid Id)
         {
             this.Service.Delete(Id);
             return NoContent();

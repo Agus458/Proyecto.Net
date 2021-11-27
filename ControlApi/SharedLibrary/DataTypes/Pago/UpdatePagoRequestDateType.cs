@@ -10,6 +10,7 @@ namespace SharedLibrary.DataTypes.Pago
     {
         public float monto { set; get; }
         
+        public bool pagada { set; get; }
         public DateTime fecha { set; get; }
     }
 }

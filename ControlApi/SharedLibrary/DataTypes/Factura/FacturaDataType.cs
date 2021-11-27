@@ -1,4 +1,5 @@
-﻿using SharedLibrary.DataTypes.Buildings;
+﻿using SharedLibrary.DataTypes.Tenants;
+using SharedLibrary.DataTypes.Pago;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace SharedLibrary.DataTypes.Factura
         public DateTime fecha { set; get; }
         public float monto { set; get; }
 
-        public BuildingDataType Building { get; init; }
+        public bool Pagada { set; get; }
+
+        public PagoDataType Pago { init; get; }
     }
 }

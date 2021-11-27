@@ -2,7 +2,7 @@
 
 namespace DataAccessLibrary.Migrations
 {
-    public partial class AlexMigration : Migration
+    public partial class Alexpepe : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

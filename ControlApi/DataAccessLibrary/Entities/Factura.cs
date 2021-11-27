@@ -13,9 +13,12 @@ namespace DataAccessLibrary.Entities
         public DateTime fecha { get; set; }
 
         public float Monto { get; set; }
-        public Guid BuildingId { get; set; }
+        public bool Pagada { set; get; }
+        public virtual Pago Pago { get; set; }
 
-        public virtual Building Building{ get; set;}
+       
+
+
     }
 
 }

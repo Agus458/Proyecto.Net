@@ -17,6 +17,8 @@ namespace SharedLibrary.DataTypes.Pago
         public DateTime fecha { set; get; }
 
         [Required]
-        public Guid BuildingId { get; init; }
+        public bool Pagada { set; get; }
+
+       
     }
 }

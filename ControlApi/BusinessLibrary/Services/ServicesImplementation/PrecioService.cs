@@ -20,14 +20,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly IPrecioStore Store;
         private readonly IMapper Mapper;
         private readonly HttpContext context;
-        private readonly IBuildingsStore BuildingsStore;
+  
 
-        public PrecioService(IPrecioStore Store, IMapper Mapper, IHttpContextAccessor Context, IBuildingsStore BuildingsStore)
+        public PrecioService(IPrecioStore Store, IMapper Mapper, IHttpContextAccessor Context)
         {
             this.Store = Store;
             this.Mapper = Mapper;
             this.context = Context.HttpContext;
-            this.BuildingsStore = BuildingsStore;
         }
 
       
@@ -39,12 +38,10 @@ namespace BusinessLibrary.Services.ServicesImplementation
             this.Store.Delete(Precio);
         }
 
-        public PaginationDataType<PrecioDataType> GetAll(int Skip, int Take, Guid BuildingId)
+        public PaginationDataType<PrecioDataType> GetAll(int Skip, int Take)
         {
-            var Building = this.BuildingsStore.GetById(BuildingId);
-            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
 
-            var Result = this.Store.GetAll(Skip, Take, BuildingId);
+            var Result = this.Store.GetAll(Skip, Take);
 
             return new PaginationDataType<PrecioDataType>()
             {
@@ -73,9 +70,6 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
        public PrecioDataType Create(CreatePrecioRequestDataType Data)
         {
-            var Building = this.BuildingsStore.GetById(Data.BuildingId);
-            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
-
             var NewPrecio = new Precio() { Id = Guid.NewGuid() };
             Mapper.Map(Data, NewPrecio);
 

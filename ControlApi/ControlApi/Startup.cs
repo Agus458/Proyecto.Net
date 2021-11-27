@@ -148,6 +148,19 @@ namespace ControlApi
 
             services.AddTransient<IDoorsStore, DoorsStore>();
             services.AddTransient<IDoorsService, DoorsService>();
+            
+            services.AddTransient<IProductsStore,ProductStore>();
+            services.AddTransient<IProductsService, ProductsService>();
+
+
+            services.AddTransient<IPrecioStore, PrecioStore>();
+            services.AddTransient<IPrecioService, PrecioService>();
+
+            services.AddTransient<IPagoStore, PagoStore>();
+            services.AddTransient<IPagoService, PagoService>();
+           
+            services.AddTransient<IFacturaStore, FacturaStore>();
+            services.AddTransient<IFacturaService, FacturaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

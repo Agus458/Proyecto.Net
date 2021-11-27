@@ -14,8 +14,7 @@ namespace SharedLibrary.DataTypes.Precio
         [Required]
         public float Precio { get; init; }
 
-        [Required]
-        public Guid BuildingId { get; init; }
+        
 }
        
 }

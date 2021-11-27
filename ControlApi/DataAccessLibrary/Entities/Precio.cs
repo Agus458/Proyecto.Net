@@ -11,11 +11,11 @@ namespace DataAccessLibrary.Entities
     public class Precio : MustHaveTenantEntity
     {
         [MaxLength(200)]
-        public string Name { get; set; }
+        public float precio { get; set; }
 
-        public Guid BuildingId { get; set; }
+        public Guid PrecioId { get; set; }
 
-        public virtual Building Building { get; set; }
+        public virtual Product Product { get; set; }
 
     }
    

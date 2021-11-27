@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Entities
 {
-    public class Product : MustHaveTenantEntity
+   public  class Portero : MustHaveTenantEntity
     {
         [MaxLength(200)]
         public string Name { get; set; }
 
-      
 
-     
+        [MaxLength(200)]
+        public string Apellido{ get; set; }
 
+        public Guid PersonsId { get; set; }
+
+        public virtual Person Person { get; set; }
     }
-    
-
-
 }

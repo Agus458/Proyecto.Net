@@ -1,4 +1,4 @@
-﻿using SharedLibrary.DataTypes.Buildings;
+﻿using SharedLibrary.DataTypes.Factura;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,5 @@ namespace SharedLibrary.DataTypes.Pago
         
         public float monto { set; get; }
 
-
-        public BuildingDataType Building { get; init; }
     }
 }

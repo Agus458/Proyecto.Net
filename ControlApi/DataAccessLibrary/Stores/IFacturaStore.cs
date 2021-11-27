@@ -9,6 +9,6 @@ namespace DataAccessLibrary.Stores
 {
     public interface IFacturaStore : IStore<Factura>
     {
-        PaginationDataType<Factura> GetAll(int Skip, int Take, Guid BuildingId);
+        PaginationDataType<Factura> GetAll(int Skip, int Take);
     }
 }
