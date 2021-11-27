@@ -24,6 +24,6 @@ namespace BusinessLibrary.Services
 
         void Update(Guid Id, UpdatePersonRequestDataType Data);
 
-        Task<dynamic> Identify(IFormFile fileImage);
+        Task<PersonDataType> Identify(IFormFile fileImage, Guid BuildingId);
     }
 }

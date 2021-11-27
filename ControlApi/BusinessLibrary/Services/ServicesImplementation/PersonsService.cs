@@ -4,19 +4,14 @@ using DataAccessLibrary.Entities;
 using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
 using SharedLibrary.Configuration.FacePlusPlus;
 using SharedLibrary.DataTypes.Persons;
 using SharedLibrary.Error;
 using SharedLibrary.Extensions;
 using SharedLibrary.Helpers;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessLibrary.Services.ServicesImplementation
@@ -29,8 +24,9 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly ITenantsStore TenantsStore;
         private readonly HttpContext Context;
         private readonly FacePlusPlus FaceApi;
+        private readonly INotificationService NotificationService;
 
-        public PersonsService(IStore<Person> Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context, IWebHostEnvironment Environment, FacePlusPlus FaceApi)
+        public PersonsService(IStore<Person> Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context, IWebHostEnvironment Environment, FacePlusPlus FaceApi, INotificationService NotificationService)
         {
             this.Store = Store;
             this.Mapper = Mapper;
@@ -38,6 +34,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             this.TenantsStore = TenantsStore;
             this.Environment = Environment;
             this.FaceApi = FaceApi;
+            this.NotificationService = NotificationService;
         }
 
         public async Task<PersonDataType> Create(CreatePersonRequestDataType Data)
@@ -75,9 +72,25 @@ namespace BusinessLibrary.Services.ServicesImplementation
             this.Store.Delete(Person);
         }
 
-        public async Task<dynamic> Identify(IFormFile fileImage)
+        public async Task<PersonDataType> Identify(IFormFile fileImage, Guid BuildingId)
         {
-            return await this.FaceApi.Identify(fileImage);
+            var result = await this.FaceApi.Identify(fileImage);
+
+            if (result.results != null && result.results.Count() > 0)
+            {
+                if (result.results[0].confidence >= 80)
+                {
+                    if (Guid.TryParse(result.results[0].user_id, out var Id))
+                    {
+                        var Person = this.Store.GetById(Id);
+                        if (Person != null) return Mapper.Map<PersonDataType>(Person);
+                    }
+                }
+            }
+
+            await this.NotificationService.SendNotification("Person Not Found", BuildingId);
+
+            throw new ApiError("Person Not Found", (int)HttpStatusCode.NotFound);
         }
 
         public PaginationDataType<PersonDataType> GetAll(int Skip, int Take)

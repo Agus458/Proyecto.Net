@@ -107,6 +107,35 @@ namespace DataAccessLibrary.Migrations
                     b.ToTable("Doors");
                 });
 
+            modelBuilder.Entity("DataAccessLibrary.Entities.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BuildingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<bool>("Viewed")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BuildingId");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("DataAccessLibrary.Entities.Novelty", b =>
                 {
                     b.Property<Guid>("Id")
@@ -481,6 +510,17 @@ namespace DataAccessLibrary.Migrations
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Door", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Building", "Building")
+                        .WithMany()
+                        .HasForeignKey("BuildingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Building");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Notification", b =>
                 {
                     b.HasOne("DataAccessLibrary.Entities.Building", "Building")
                         .WithMany()

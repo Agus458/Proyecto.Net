@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProyectConfig } from 'proyectConfig';
 import { TenantDataType } from 'src/app/models/TenantDataType';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TenantsService {
 
-  Url: string = ProyectConfig.ControlApiUrl + "api/Tenants";
+  Url: string = environment.controlApiUrl + "api/Tenants";
 
   constructor(
     private Http: HttpClient,

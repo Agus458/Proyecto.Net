@@ -79,6 +79,11 @@ namespace DataAccessLibrary.Contexts
         public DbSet<Assignment> Assignments { get; set; }
 
         /// <summary>
+        /// Represents all the Notifications saved in the DataBase.
+        /// </summary>
+        public DbSet<Notification> Notifications { get; set; }
+
+        /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
         /// </summary>
         /// <returns></returns>

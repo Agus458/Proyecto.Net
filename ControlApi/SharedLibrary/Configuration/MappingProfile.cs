@@ -3,6 +3,7 @@ using DataAccessLibrary.Entities;
 using SharedLibrary.DataTypes.Assignment;
 using SharedLibrary.DataTypes.Buildings;
 using SharedLibrary.DataTypes.Doors;
+using SharedLibrary.DataTypes.Notifications;
 using SharedLibrary.DataTypes.Novelties;
 using SharedLibrary.DataTypes.Persons;
 using SharedLibrary.DataTypes.Rooms;
@@ -46,6 +47,8 @@ namespace SharedLibrary.Configuration
             CreateMap<UpdatePersonRequestDataType, Person>();
 
             CreateMap<Assignment, AssignmentDataType>();
+
+            CreateMap<Notification, NotificationDataType>();
         }
     }
 }

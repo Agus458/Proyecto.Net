@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ProyectConfig } from 'proyectConfig';
 import { BuildingDataType } from 'src/app/models/BuildingDataType';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuildingsService {
 
-  Url: string = ProyectConfig.ControlApiUrl + "api/Buildings";
+  Url: string = environment.controlApiUrl + "api/Buildings";
 
   constructor(
     private Http: HttpClient

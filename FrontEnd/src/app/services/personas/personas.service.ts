@@ -1,15 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ProyectConfig } from 'proyectConfig';
 import { PersonDataType } from 'src/app/models/PersonDataType';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonasService {
 
-  Url: string = ProyectConfig.ControlApiUrl + "api/Persons";
+  Url: string = environment.controlApiUrl + "api/Persons";
 
   constructor(
     private Http: HttpClient
@@ -25,7 +24,7 @@ export class PersonasService {
 
   update(id: string, data: any) {
     let form = new FormData();
-    
+
     Object.keys(data).forEach(key => {
       form.append(key, data[key]);
     });
@@ -39,12 +38,12 @@ export class PersonasService {
 
   create(data: any) {
     let form = new FormData();
-    
+
     Object.keys(data).forEach(key => {
       form.append(key, data[key]);
     });
 
     return this.Http.post(this.Url, form);
   }
-  
+
 }

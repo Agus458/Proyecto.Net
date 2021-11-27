@@ -4,15 +4,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using SharedLibrary.Configuration.FacePlusPlus;
 using SharedLibrary.DataTypes.Persons;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ControlApi.Controllers
@@ -63,13 +58,13 @@ namespace ControlApi.Controllers
         }
 
         [HttpPost("Identify")]
-        public async Task<IActionResult> Identify(IFormFile fileImage)
+        [AllowAnonymous]
+        public async Task<IActionResult> Identify(IFormFile fileImage, Guid BuildingId)
         {
-            var result = await this.Service.Identify(fileImage);
-            return Ok(result);
+            return Ok(await this.Service.Identify(fileImage, BuildingId));
         }
 
-        [HttpPost("csv")]
+        [HttpPost("CSV")]
         public IActionResult CSV()
         {
             var Persons = new List<CreatePersonRequestDataType>();

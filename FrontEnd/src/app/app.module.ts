@@ -27,6 +27,7 @@ import { DoorsComponent } from './components/doors/doors.component';
 import { WebcamModule } from 'ngx-webcam';
 import { CameraComponent } from './components/camera/camera.component';
 import { AssignmentsComponent } from './components/assignments/assignments.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AssignmentsComponent } from './components/assignments/assignments.compo
     DoorsComponent,
     CameraComponent,
     AssignmentsComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,

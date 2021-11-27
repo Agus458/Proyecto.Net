@@ -18,6 +18,7 @@ using SharedLibrary.Extensions;
 using SharedLibrary.Configuration.Tenancy;
 using SharedLibrary.Configuration.PayPal;
 using SharedLibrary.Configuration.FacePlusPlus;
+using BusinessLibrary.SignalR;
 
 namespace ControlApi
 {
@@ -42,7 +43,7 @@ namespace ControlApi
                 options.AddPolicy(name: "FrontEndOrigin",
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                                      builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
                                   });
             });
 
@@ -136,12 +137,15 @@ namespace ControlApi
             services.AddTransient<BusinessLibrary.Services.IBuildingsService, BusinessLibrary.Services.ServicesImplementation.BuildingsService>();
             services.AddTransient<BusinessLibrary.Services.INoveltyService, BusinessLibrary.Services.ServicesImplementation.NoveltyService>();
             services.AddTransient<BusinessLibrary.Services.IAssignmentsService, BusinessLibrary.Services.ServicesImplementation.AssignmentsService>();
+            services.AddTransient<BusinessLibrary.Services.INotificationService, BusinessLibrary.Services.ServicesImplementation.NotificationService>();
 
             // DataAccesLibray Stores
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStore<>), typeof(DataAccessLibrary.Stores.StoresImplementations.Store<>));
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStoreByBuilding<>), typeof(DataAccessLibrary.Stores.StoresImplementations.StoreByBuilding<>));
 
             services.AddSingleton<SharedLibrary.Configuration.FacePlusPlus.FacePlusPlus>();
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -171,6 +175,11 @@ namespace ControlApi
             app.UseTenancy();
 
             app.UseStaticFiles();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<BroadcastHub>("/Notify");
+            });
 
             app.UseEndpoints(endpoints =>
             {

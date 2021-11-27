@@ -1,0 +1,27 @@
+<!-- Modal -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Notificaciones</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <ul class="list-group pb-4">
+            <li *ngFor="let notification of notifications" class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{notification.message}}</h5>
+                    <small>3 days ago</small>
+                </div>
+                <small>And some small print.</small>
+            </li>
+        </ul>
+        <ngb-pagination class="d-flex justify-content-end" [collectionSize]="size" [(page)]="page"
+            [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
+    </div>
+</ng-template>
+
+<div class="nav-link" (click)="open(content)"><i class="fa fa-bell"></i> {{size}}</div>
