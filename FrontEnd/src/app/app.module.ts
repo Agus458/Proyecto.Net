@@ -33,6 +33,10 @@ import { HomeComponent } from './components/home/home.component';
 import { registerLocaleData } from '@angular/common';
 
 import localeES from "@angular/common/locales/es";
+import { ProductosComponent } from './components/productos/productos.component';
+import { PreciosComponent } from './components/precios/precios.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
+import { PagosComponent } from './components/pagos/pagos.component';
 registerLocaleData(localeES, "es");
 
 @NgModule({
@@ -58,6 +62,10 @@ registerLocaleData(localeES, "es");
     NotificationsComponent,
     IngresarComponent,
     HomeComponent,
+    ProductosComponent,
+    PreciosComponent,
+    FacturasComponent,
+    PagosComponent,
   ],
   imports: [
     BrowserModule,
