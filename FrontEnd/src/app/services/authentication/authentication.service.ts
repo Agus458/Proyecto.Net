@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProyectConfig } from 'proyectConfig';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  Url: string = ProyectConfig.ControlApiUrl + "api/Authentication";
+  Url: string = environment.controlApiUrl + "api/Authentication";
 
   constructor(
     private Http: HttpClient,

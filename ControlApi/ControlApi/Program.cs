@@ -22,6 +22,7 @@ namespace ControlApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseSerilog((context, config) => config.ReadFrom.Configuration(context.Configuration));
+                    webBuilder.UseWebRoot("wwwroot");
                     webBuilder.UseStartup<Startup>();
                 });
     }

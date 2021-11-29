@@ -12,8 +12,8 @@ namespace SharedLibrary.DataTypes.Buildings
 
         public string Name { get; init; }
 
-        public string Latitude { get; init; }
+        public float Latitude { get; init; }
 
-        public string Length { get; init; }
+        public float Longitude { get; init; }
     }
 }

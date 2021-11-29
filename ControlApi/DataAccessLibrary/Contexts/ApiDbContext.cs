@@ -73,6 +73,31 @@ namespace DataAccessLibrary.Contexts
         public DbSet<Door> Doors { get; set; }
 
         /// <summary>
+        /// Represents all the Novelties saved in the DataBase.
+        /// </summary>
+        public DbSet<Novelty> Novelties { get; set; }
+
+        /// <summary>
+        /// Represents all the Rooms saved in the DataBase.
+        /// </summary>
+        public DbSet<Room> Rooms { get; set; }
+
+        /// <summary>
+        /// Represents all the Assignments saved in the DataBase.
+        /// </summary>
+        public DbSet<Assignment> Assignments { get; set; }
+
+        /// <summary>
+        /// Represents all the Notifications saved in the DataBase.
+        /// </summary>
+        public DbSet<Notification> Notifications { get; set; }
+
+        /// <summary>
+        /// Represents all the Entries saved in the DataBase.
+        /// </summary>
+        public DbSet<Entry> Entries { get; set; }
+
+        /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
         /// </summary>
         /// <returns></returns>
@@ -96,7 +121,6 @@ namespace DataAccessLibrary.Contexts
                 switch (Entry.State)
                 {
                     case EntityState.Added:
-                        Entry.Entity.Id = Guid.NewGuid();
                         Entry.Entity.TenantId = this.TenantId;
                         Entry.Entity.CreatedDate = DateTime.UtcNow;
                         break;
@@ -106,14 +130,34 @@ namespace DataAccessLibrary.Contexts
                 }
             }
 
-            foreach (var Entry in ChangeTracker.Entries())
+            foreach (var Entry in ChangeTracker.Entries<BaseEntity>())
             {
-                var Data = new {
-                    Entry.Entity,
-                    User = HttpContext.User.FindFirst(c => c.Type.Equals(ClaimTypes.NameIdentifier))?.Value,
-                    Method = Entry.State
-                };
-                Logger.LogInformation(JsonConvert.SerializeObject(Data));
+                switch (Entry.State)
+                {
+                    case EntityState.Added:
+                        Entry.Entity.CreatedDate = DateTime.UtcNow;
+                        break;
+                    case EntityState.Modified:
+                        Entry.Entity.UpdatedDate = DateTime.UtcNow;
+                        break;
+                }
+            }
+
+            try
+            {
+                foreach (var Entry in ChangeTracker.Entries())
+                {
+                    var Data = new
+                    {
+                        Entry.Entity,
+                        User = HttpContext.User.FindFirst(c => c.Type.Equals(ClaimTypes.NameIdentifier))?.Value,
+                        Method = Entry.State
+                    };
+                    Logger.LogInformation(JsonConvert.SerializeObject(Data));
+                }
+            }
+            catch (Exception)
+            {
             }
 
             return base.SaveChanges();

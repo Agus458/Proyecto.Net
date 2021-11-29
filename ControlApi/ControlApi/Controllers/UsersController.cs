@@ -47,5 +47,12 @@ namespace ControlApi.Controllers
             await this.Service.Delete(Id);
             return NoContent();
         }
+
+        [HttpPut("{Id}")]
+        public async Task<IActionResult> Update(string Id, UpdateUserRequestDataType Data)
+        {
+            await this.Service.Update(Id, Data);
+            return NoContent();
+        }
     }
 }

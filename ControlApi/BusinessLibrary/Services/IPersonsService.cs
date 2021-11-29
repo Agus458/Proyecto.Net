@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using Microsoft.AspNetCore.Http;
 using SharedLibrary.DataTypes.Persons;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,12 @@ namespace BusinessLibrary.Services
 
         PersonDataType GetById(Guid Id);
 
-        PersonDataType Create(CreatePersonRequestDataType Data);
+        Task<PersonDataType> Create(CreatePersonRequestDataType Data);
 
         void Delete(Guid Id);
 
         void Update(Guid Id, UpdatePersonRequestDataType Data);
+
+        Task<PersonDataType> Identify(IFormFile fileImage);
     }
 }

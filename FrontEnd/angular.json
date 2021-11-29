@@ -9,6 +9,13 @@
     "y": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:component": {
+          "path": "src/app/components",
+          "style": "css"
+        },
+        "@schematics/angular:service": {
+          "path": "src/app/services"
+        },
         "@schematics/angular:application": {
           "strict": true
         }

@@ -17,12 +17,12 @@ namespace BusinessLibrary.Services.ServicesImplementation
 {
     public class BuildingsService : IBuildingsService
     {
-        private readonly IBuildingsStore Store;
+        private readonly IStore<Building> Store;
         private readonly IMapper Mapper;
         private readonly ITenantsStore TenantsStore;
         private readonly HttpContext Context;
 
-        public BuildingsService(IBuildingsStore Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context)
+        public BuildingsService(IStore<Building> Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context)
         {
             this.Store = Store;
             this.Mapper = Mapper;
@@ -53,6 +53,11 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (Building == null) throw new ApiError("Building Not Found", (int)HttpStatusCode.NotFound);
 
             this.Store.Delete(Building);
+        }
+
+        public IEnumerable<BuildingDataType> Get()
+        {
+            return this.Store.Get().Select(Building => Mapper.Map<BuildingDataType>(Building));
         }
 
         public PaginationDataType<BuildingDataType> GetAll(int Skip, int Take)

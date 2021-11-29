@@ -36,10 +36,23 @@ C:\Users\agusp\Desktop\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessL
 C:\Users\agusp\Desktop\ControlApi\DataAccessLibrary\obj\Debug\net5.0\ref\DataAccessLibrary.dll
 C:\Users\agusp\Desktop\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.pdb
 C:\Users\agusp\Desktop\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.AssemblyReference.cache
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.deps.json
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.dll
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\ref\DataAccessLibrary.dll
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.pdb
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.AssemblyReference.cache
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.AssemblyInfoInputs.cache
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.AssemblyInfo.cs
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.CoreCompileInputs.cache
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.dll
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\ref\DataAccessLibrary.dll
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.pdb
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.deps.json
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\ref\DataAccessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.pdb
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.AssemblyReference.cache
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.AssemblyInfoInputs.cache
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.AssemblyInfo.cs
@@ -47,6 +60,7 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\De
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\ref\DataAccessLibrary.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.pdb
+<<<<<<< HEAD
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.AssemblyReference.cache
 C:\Proyecto\Agustin\git\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.deps.json
 C:\Proyecto\Agustin\git\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.dll
@@ -72,3 +86,5 @@ E:\Proyecto\Agustin\git\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccess
 E:\Proyecto\Agustin\git\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.dll
 E:\Proyecto\Agustin\git\ControlApi\DataAccessLibrary\obj\Debug\net5.0\ref\DataAccessLibrary.dll
 E:\Proyecto\Agustin\git\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.pdb
+=======
+>>>>>>> Agustin

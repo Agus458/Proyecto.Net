@@ -1,4 +1,5 @@
-﻿using SharedLibrary.DataTypes.Users;
+﻿using DataAccessLibrary;
+using SharedLibrary.DataTypes.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace BusinessLibrary.Services
         /// Gets all the users in the system.
         /// </summary>
         /// <returns></returns>
-        IEnumerable<UserDataType> GetAll();
+        PaginationDataType<UserDataType> GetAll();
 
         /// <summary>
         /// Gets a user from the sistem that has the passed Id.
@@ -31,6 +32,8 @@ namespace BusinessLibrary.Services
         /// <param name="Data">The Data of the user to create.</param>
         /// <returns></returns>
         Task<UserDataType> Create(CreateUserRequestDataType Data);
+
+        Task Update(string Id, UpdateUserRequestDataType Data);
 
         Task Delete(string Id);
     }

@@ -16,12 +16,12 @@ namespace BusinessLibrary.Services.ServicesImplementation
 {
     public class DoorsService : IDoorsService
     {
-        private readonly IDoorsStore Store;
+        private readonly IStoreByBuilding<Door> Store;
         private readonly IMapper Mapper;
         private readonly HttpContext Context;
-        private readonly IBuildingsStore BuildingsStore;
+        private readonly IStore<Building> BuildingsStore;
 
-        public DoorsService(IDoorsStore Store, IMapper Mapper, IHttpContextAccessor Context, IBuildingsStore BuildingsStore)
+        public DoorsService(IStoreByBuilding<Door> Store, IMapper Mapper, IHttpContextAccessor Context, IStore<Building> BuildingsStore)
         {
             this.Store = Store;
             this.Mapper = Mapper;

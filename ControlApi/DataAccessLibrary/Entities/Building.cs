@@ -15,10 +15,8 @@ namespace DataAccessLibrary.Entities
         [MaxLength(200)]
         public string Name { get; set; }
 
-        [MaxLength(200)]
-        public string Latitude { get; set; }
+        public float Latitude { get; set; }
 
-        [MaxLength(200)]
-        public string Length { get; set; }
+        public float Longitude { get; set; }
     }
 }
