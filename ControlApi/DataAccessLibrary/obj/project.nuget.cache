@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "mmWvSLupGmWisOeyvGCHPcZ0RBJQ+oH5DEuAq60m2me5rxXPGuo2b/2nvmTC3d3iFS7AyImnYUc4CV9ZuML8xw==",
+=======
+  "dgSpecHash": "g+8NbqUs8KrBoyZPoTWtiiKgz2SkQpfO4GF0SbXy8VbYHsldiKVwfpVxqf5d0W3HSPkKqKgL2aO06XmPBe5wSA==",
+>>>>>>> Agustin
   "success": true,
   "projectFilePath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
   "expectedPackageFiles": [

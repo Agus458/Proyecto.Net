@@ -8,13 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Entities
 {
-    public class Door : MustHaveTenantEntity
+    public class Door : MustHaveBuildingEntity
     {
         [MaxLength(200)]
         public string Name { get; set; }
-
-        public Guid BuildingId { get; set; }
-
-        public virtual Building Building { get; set; }
     }
 }

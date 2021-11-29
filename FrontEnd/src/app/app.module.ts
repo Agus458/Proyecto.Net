@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -17,6 +17,23 @@ import { AuthInterceptor } from './middlewares/auth.interceptor';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { EditUsuarioComponent } from './components/usuarios/edit-usuario/edit-usuario.component';
 import { TenantInterceptor } from './middlewares/tenant.interceptor';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PersonasComponent } from './components/personas/personas.component';
+import { NuevapersonaComponent } from './components/personas/nuevapersona/nuevapersona.component';
+import { BuildingsComponent } from './components/buildings/buildings.component';
+import { EditBuildingComponent } from './components/buildings/edit-building/edit-building.component';
+import { AgmCoreModule } from '@agm/core';
+import { DoorsComponent } from './components/doors/doors.component';
+import { WebcamModule } from 'ngx-webcam';
+import { CameraComponent } from './components/camera/camera.component';
+import { AssignmentsComponent } from './components/assignments/assignments.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { IngresarComponent } from './components/ingresar/ingresar.component';
+import { HomeComponent } from './components/home/home.component';
+import { registerLocaleData } from '@angular/common';
+
+import localeES from "@angular/common/locales/es";
+registerLocaleData(localeES, "es");
 
 @NgModule({
   declarations: [
@@ -30,6 +47,17 @@ import { TenantInterceptor } from './middlewares/tenant.interceptor';
     DashBoardComponent,
     UsuariosComponent,
     EditUsuarioComponent,
+    PageNotFoundComponent,
+    PersonasComponent,
+    NuevapersonaComponent,
+    BuildingsComponent,
+    EditBuildingComponent,
+    DoorsComponent,
+    CameraComponent,
+    AssignmentsComponent,
+    NotificationsComponent,
+    IngresarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,10 +65,15 @@ import { TenantInterceptor } from './middlewares/tenant.interceptor';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCA22WX7c4qIzJRKwnbvG8_2gqlSrMfk1E'
+    }),
+    WebcamModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TenantInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: "es" }
   ],
   bootstrap: [AppComponent]
 })

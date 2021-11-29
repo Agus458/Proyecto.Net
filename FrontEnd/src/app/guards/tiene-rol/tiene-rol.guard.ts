@@ -27,6 +27,14 @@ export class TieneRolGuard implements CanActivate {
       if (roles.find((rol) => rol == "Admin") && this.AuthenticationService.hasRole("Admin")) {
         return true;
       }
+
+      if (roles.find((rol) => rol == "Portero") && this.AuthenticationService.hasRole("Portero")) {
+        return true;
+      }
+
+      if (roles.find((rol) => rol == "Gestor") && this.AuthenticationService.hasRole("Gestor")) {
+        return true;
+      }
     }
 
     console.log("Acceso denegado");

@@ -13,7 +13,9 @@
         </ul>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" *ngIf="AuthenticationService.hasRole('Admin')" (click)="delete(selectedUser.id)">Eliminar</button>
+        <button type="button" class="btn btn-danger" (click)="delete(selectedUser.id)">Eliminar</button>
+        <button type="button" class="btn btn-success" [routerLink]="'/usuarios/editar/' + selectedUser.id"
+            (click)="modal.close()">Editar</button>
         <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
     </div>
 </ng-template>
@@ -37,11 +39,13 @@
                         <td>{{user.email}}</td>
                         <td>
                             <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                (click)="open(content, user)"><i class="bi bi-list"></i></button>
+                                (click)="open(content, user)"><i class="fas fa-bars"></i></button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <br>
+            <ngb-pagination class="d-flex justify-content-end" [collectionSize]="size" [(page)]="page" [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
         </div>
     </div>
 </div>

@@ -1,21 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ProyectConfig } from 'proyectConfig';
 import { UserDataType } from 'src/app/models/UserDataType';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
 
-  Url: string = ProyectConfig.ControlApiUrl + "api/Users";
+  Url: string = environment.controlApiUrl + "api/Users";
 
   constructor(
     private Http: HttpClient
   ) { }
 
-  getAll() {
-    return this.Http.get<UserDataType[]>(this.Url);
+  getAll(skip: number, take: number) {
+    return this.Http.get<{ collection: UserDataType[], size: number }>(this.Url, {
+      params: {
+        skip,
+        take
+      }
+    });
   }
 
   getById(id: string) {
@@ -33,5 +38,5 @@ export class UsuariosService {
   create(data: any) {
     return this.Http.post(this.Url, data);
   }
-  
+
 }

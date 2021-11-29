@@ -9,5 +9,7 @@ namespace SharedLibrary.Configuration
     public static class ApiConstants
     {
         public static string HttpContextTenant => "Tenant";
+
+        public static string InvalidOuterId => "INVALID_OUTER_ID";
     }
 }
