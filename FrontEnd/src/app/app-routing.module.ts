@@ -5,6 +5,8 @@ import { BuildingsComponent } from './components/buildings/buildings.component';
 import { EditBuildingComponent } from './components/buildings/edit-building/edit-building.component';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 import { DoorsComponent } from './components/doors/doors.component';
+import { EditEventoComponent } from './components/eventos/edit-evento/edit-evento.component';
+import { EventosComponent } from './components/eventos/eventos.component';
 import { HomeComponent } from './components/home/home.component';
 import { IngresarComponent } from './components/ingresar/ingresar.component';
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -44,6 +46,10 @@ const routes: Routes = [
       { path: "edificios/editar/:id", component: EditBuildingComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
 
       { path: "puertas/edificio/:id", component: DoorsComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+
+      { path: "eventos/edificio/:id", component: EventosComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+      { path: "eventos/edificio/:id/nuevo", component: EditEventoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+      { path: "eventos/edificio/:id/editar/:eventId", component: EditEventoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
 
       { path: "personas", component: PersonasComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin', 'Portero', 'Gestor'] } },
       { path: "personas/nuevo", component: NuevapersonaComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin', 'Portero', 'Gestor'] } },

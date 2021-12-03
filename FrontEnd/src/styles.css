@@ -16,3 +16,7 @@ body {
 table {
     border-radius: 10px;
 }
+
+.custom-control-label::after, .custom-control-label::before {
+    z-index: -2;
+}

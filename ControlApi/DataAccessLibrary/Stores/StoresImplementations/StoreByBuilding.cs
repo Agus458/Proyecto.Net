@@ -24,9 +24,9 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             return new PaginationDataType<Target> { Collection = Collection.Skip(Skip).Take(Take > 0 ? Take : 10).AsEnumerable(), Size = Collection.Count() };
         }
 
-        public new Target GetById(Guid Id)
+        public Target GetById(Guid Id, Guid BuildingId)
         {
-            return this.Context.Set<Target>().Include(Entity => Entity.Building).SingleOrDefault(Entity => Entity.Id == Id);
+            return this.Context.Set<Target>().Include(Entity => Entity.Building).Where(Entity => Entity.BuildingId == BuildingId).SingleOrDefault(Entity => Entity.Id == Id);
         }
     }
 }

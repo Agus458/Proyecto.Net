@@ -10,5 +10,7 @@ namespace DataAccessLibrary.Stores
     public interface IStoreByBuilding<Target> : IStore<Target> where Target : MustHaveBuildingEntity
     {
         PaginationDataType<Target> GetAll(int Skip, int Take, Guid BuildingId);
+
+        Target GetById(Guid Id, Guid BuildingId);
     }
 }
