@@ -339,3 +339,4 @@ C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ref\ControlApi.dll
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.pdb
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.genruntimeconfig.cache
+C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\System.Net.WebSockets.WebSocketProtocol.dll

@@ -15,7 +15,8 @@
         <button type="button" class="btn btn-danger" (click)="delete(selectedBuilding.id)">Eliminar</button>
         <button type="button" class="btn btn-success" [routerLink]="'/edificios/editar/' + selectedBuilding.id"
             (click)="modal.close()">Editar</button>
-        <button class="btn btn-info" [routerLink]="'/puertas/edificio/' + selectedBuilding.id"><i class="fas fa-door-open"></i> Puertas</button>
+        <button class="btn btn-info" [routerLink]="'/puertas/edificio/' + selectedBuilding.id"><i
+                class="fas fa-door-open"></i> Puertas</button>
         <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
     </div>
 </ng-template>
@@ -38,9 +39,15 @@
                         <th scope="row">{{i}}</th>
                         <td>{{building.name}}</td>
                         <td>
-                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                (click)="open(content, building)"><i class="fas fa-bars"></i></button>
+                            <button class="btn btn-warning" style="margin-right: 5px;" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" (click)="open(content, building)"><i
+                                    class="fas fa-bars"></i></button>
+
+                            <button class="btn btn-warning" [routerLink]="'/puertas/edificio/:id' + selectedBuilding.id"><i
+                                    class="fas fa-door-open"></i></button>
+
                         </td>
+
                     </tr>
                 </tbody>
             </table>
