@@ -3,6 +3,7 @@ using DataAccessLibrary.Entities;
 using SharedLibrary.DataTypes.Assignment;
 using SharedLibrary.DataTypes.Buildings;
 using SharedLibrary.DataTypes.Doors;
+using SharedLibrary.DataTypes.Entries;
 using SharedLibrary.DataTypes.Events;
 using SharedLibrary.DataTypes.Notifications;
 using SharedLibrary.DataTypes.Novelties;
@@ -54,6 +55,9 @@ namespace SharedLibrary.Configuration
             CreateMap<Event, EventDataType>();
             CreateMap<CreateEventRequestDataType, Event>();
             CreateMap<UpdateEventRequestDataType, Event>();
+
+            CreateMap<Entry, EntryDataType>();
+            CreateMap<CreateEntryRequestDataType, Entry>();
         }
     }
 }

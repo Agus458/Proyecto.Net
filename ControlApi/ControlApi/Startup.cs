@@ -132,6 +132,7 @@ namespace ControlApi
             services.AddTransient<BusinessLibrary.Services.IAssignmentsService, BusinessLibrary.Services.ServicesImplementation.AssignmentsService>();
             services.AddTransient<BusinessLibrary.Services.INotificationService, BusinessLibrary.Services.ServicesImplementation.NotificationService>();
             services.AddTransient<BusinessLibrary.Services.IEventsService, BusinessLibrary.Services.ServicesImplementation.EventsService>();
+            services.AddTransient<BusinessLibrary.Services.IEntriesService, BusinessLibrary.Services.ServicesImplementation.EntriesService>();
 
             // DataAccesLibray Stores
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStore<>), typeof(DataAccessLibrary.Stores.StoresImplementations.Store<>));

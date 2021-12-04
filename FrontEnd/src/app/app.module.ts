@@ -42,6 +42,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { EditEventoComponent } from './components/eventos/edit-evento/edit-evento.component';
 import { CustomDateParserFormatter, DateAdapterService } from './services/date-adapter/date-adapter.service';
 import { TimeAdapterService } from './services/time-adapter/time-adapter.service';
+import { IngresosComponent } from './components/ingresos/ingresos.component';
+import { EditIngresoComponent } from './components/ingresos/edit-ingreso/edit-ingreso.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -75,6 +77,8 @@ registerLocaleData(localeES, "es");
     EventosComponent,
     CalendarComponent,
     EditEventoComponent,
+    IngresosComponent,
+    EditIngresoComponent,
   ],
   imports: [
     BrowserModule,
