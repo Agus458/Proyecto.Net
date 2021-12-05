@@ -6,4 +6,5 @@ export class BuildingDataType {
     latitude: number;
 
     longitude: number;
+
 }

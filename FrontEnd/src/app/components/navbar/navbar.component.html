@@ -13,6 +13,30 @@
                             class="fas fa-toolbox"></i> Dashboard</a>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="AuthenticationService.hasRole('SuperAdmin')">
+                    <a class="nav-link" routerLink="/facturas" routerLinkActive="active">Facturas</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="AuthenticationService.hasRole('SuperAdmin')">
+                    <a class="nav-link" routerLink="/precios" routerLinkActive="active">Precios</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="AuthenticationService.hasRole('SuperAdmin')">
+                    <a class="nav-link" routerLink="/pago" routerLinkActive="active">pago</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="AuthenticationService.hasRole('SuperAdmin')">
+                    <a class="nav-link" routerLink="/productos" routerLinkActive="active">productos</a>
+                </li>
+            </ul>
+
 
             <ul class="navbar-nav ml-auto">
                 <div *ngIf="!AuthenticationService.isLogged(); else sesioniniciada">
@@ -25,6 +49,7 @@
                     <li class="nav-item" *ngIf="AuthenticationService.hasRole('Portero')">
                         <app-notifications></app-notifications>
                     </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link">{{AuthenticationService.getUser()}}</a>
                     </li>

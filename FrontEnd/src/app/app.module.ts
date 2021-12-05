@@ -37,6 +37,7 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { PreciosComponent } from './components/precios/precios.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
 import { PagosComponent } from './components/pagos/pagos.component';
+import { ListarFacturasComponent } from './components/listar-facturas/listar-facturas.component';
 registerLocaleData(localeES, "es");
 
 @NgModule({
@@ -66,6 +67,7 @@ registerLocaleData(localeES, "es");
     PreciosComponent,
     FacturasComponent,
     PagosComponent,
+    ListarFacturasComponent,
   ],
   imports: [
     BrowserModule,

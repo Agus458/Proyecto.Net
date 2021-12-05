@@ -59,10 +59,8 @@ export class BuildingsComponent implements OnInit {
       }
     );
   }
-
   onPageChange(pageNum: number): void {
     this.getBuildings((pageNum - 1) * 10, 10);
   }
-
 
 }
