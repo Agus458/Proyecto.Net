@@ -5,6 +5,8 @@ import { ProductosService } from 'src/app/services/productos/productos.service';
 import {ProductosDataType} from 'src/app/models/ProductosDataType';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { PreciosService } from 'src/app/services/precios/precios.service';
+import { PrecioDataType } from 'src/app/models/PrecioDatatype';
 
 @Component({
   selector: 'app-productos',
@@ -12,22 +14,28 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
+ 
   ProductosForm:FormGroup;
 
   productos: ProductosDataType[]
   selectProductos: ProductosDataType;
+  selectPrecio:PrecioDataType;
+
   page=9;
   size: number;
 
   constructor(
+    private FormBuilder:FormBuilder,
     private ProductosService: ProductosService,
     private modalService:  NgbModal,
     private router: Router,
     private toastService:ToastService) { }
 
   ngOnInit(): void {
-    
+  
   }
+
+
   getProducts(skip: number, take: number) {
     this.ProductosService.getAll(skip, take).subscribe(
       ok => {

@@ -5,6 +5,8 @@ import { PreciosService } from 'src/app/services/precios/precios.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { PrecioDataType } from 'src/app/models/PrecioDatatype';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { FacturasService } from 'src/app/services/facturas/facturas.service';
+import { FacturaDataType } from 'src/app/models/FacturaDataType';
 
 @Component({
   selector: 'app-precios',
@@ -16,11 +18,14 @@ export class PreciosComponent implements OnInit {
 
   precios: PrecioDataType[]
   selectPrecio: PrecioDataType;
+  factura: FacturaDataType;
   page=8;
   size: number;
   constructor(
+
     private FormBuilder:FormBuilder,
     private PreciosService: PreciosService,
+    private FacturaService:FacturasService,
     private modalService:  NgbModal,
     private router: Router,
     private toastService:ToastService
@@ -30,7 +35,8 @@ export class PreciosComponent implements OnInit {
   ngOnInit(): void {
     this.getPagos(0, 10);
     this.PreciosForm = this.FormBuilder.group({
-      
+      facturaId:[''],
+      precio:['']
     })
   }
   getPagos(skip: number, take: number) {

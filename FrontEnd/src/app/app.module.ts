@@ -38,6 +38,9 @@ import { PreciosComponent } from './components/precios/precios.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
 import { PagosComponent } from './components/pagos/pagos.component';
 import { ListarFacturasComponent } from './components/listar-facturas/listar-facturas.component';
+import { MostrarProductosPrecioComponent } from './components/mostrar-productos-precio/mostrar-productos-precio.component';
+import { PagoVentanaComponent } from './components/pago-ventana/pago-ventana.component';
+import { RealizarPagoComponent } from './components/realizar-pago/realizar-pago.component';
 registerLocaleData(localeES, "es");
 
 @NgModule({
@@ -68,6 +71,9 @@ registerLocaleData(localeES, "es");
     FacturasComponent,
     PagosComponent,
     ListarFacturasComponent,
+    MostrarProductosPrecioComponent,
+    PagoVentanaComponent,
+    RealizarPagoComponent,
   ],
   imports: [
     BrowserModule,

@@ -32,8 +32,20 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="AuthenticationService.hasRole('Admin')">
+                    <a class="nav-link" routerLink="/listar-facturas" routerLinkActive="active">listar facturas</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="AuthenticationService.hasRole('Admin')">
+                    <a class="nav-link" routerLink="/mostrar-productos" routerLinkActive="active">Planes de productos</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item" *ngIf="AuthenticationService.hasRole('SuperAdmin')">
-                    <a class="nav-link" routerLink="/productos" routerLinkActive="active">productos</a>
+                    <a class="nav-link" routerLink="/productos" routerLinkActive="active">agregar productos</a>
                 </li>
             </ul>
 
