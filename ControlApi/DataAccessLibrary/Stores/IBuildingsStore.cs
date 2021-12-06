@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using DataAccessLibrary.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLibrary.SignalR
+namespace DataAccessLibrary.Stores
 {
-    public class BroadcastHub : Hub<IHubClient>
+    public interface IBuildingsStore : IStore<Building>
     {
+
     }
 }

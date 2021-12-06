@@ -24,9 +24,6 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             return new PaginationDataType<Factura> { Collection = Collection.Skip(Skip).Take(Take > 0 ? Take : 10).AsEnumerable(), Size = Collection.Count() };
         }
 
-        public new Factura GetById(Guid Id)
-        {
-            return this.Context.Set<Factura>().Include(Factura => Factura.TenantId).SingleOrDefault(Entity => Entity.Id == Id);
-        }
+      
     }
 }

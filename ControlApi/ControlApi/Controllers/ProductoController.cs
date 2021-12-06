@@ -14,7 +14,7 @@ namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
     public class ProductoController :ControllerBase
     {
 
@@ -26,7 +26,7 @@ namespace ControlApi.Controllers
             this.Service = Service;
         }
 
-        [HttpGet("Building/{BuildingId}")]
+        [HttpGet]
         public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take)
         {
             return Ok(this.Service.GetAll(Skip, Take));

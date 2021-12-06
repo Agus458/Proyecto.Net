@@ -1,16 +1,18 @@
-﻿using AutoMapper;
-using DataAccessLibrary;
-using DataAccessLibrary.Entities;
+﻿using DataAccessLibrary.Entities;
 using DataAccessLibrary.Stores;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using SharedLibrary.Error;
 using SharedLibrary.DataTypes.Pago;
 using System;
-using SharedLibrary.Error;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using AutoMapper;
+using SharedLibrary.DataTypes;
+using Microsoft.AspNetCore.Http;
+using SharedLibrary.Extensions;
 namespace BusinessLibrary.Services.ServicesImplementation
 {
     public class PagoService : IPagoService
@@ -18,20 +20,21 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         private readonly IPagoStore Store;
         private readonly IMapper Mapper;
-        private readonly HttpContext context;
-        //private readonly IFacturaStore FacturaStore;
-        public PagoService(IPagoStore Store, IMapper Mapper, IHttpContextAccessor Context)
+        private readonly HttpContext Context;
+        private readonly IFacturaStore FacturaStore;
+        public PagoService(IPagoStore Store, IMapper Mapper,IFacturaStore FacturaStore ,IHttpContextAccessor Context)
         {
             this.Store = Store;
             this.Mapper = Mapper;
-            this.context = Context.HttpContext;
+            this.Context = Context.HttpContext;
+            this.FacturaStore = FacturaStore;
            
         }
         public void Delete(Guid Id)
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Pago = this.Store.GetById(Id);
-            if (Pago == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Pago == null) throw new ApiError("Pago Not Found", (int)HttpStatusCode.NotFound);
             this.Store.Delete(Pago);
         }
 
@@ -43,7 +46,8 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
             return new PaginationDataType<PagoDataType>()
             {
-                Collection = Result.Collection.Select(Pago => Mapper.Map<PagoDataType>(Pago))
+                Collection = Result.Collection.Select(Pago => Mapper.Map<PagoDataType>(Pago)),
+                Size = Result.Size
             };
         }
 
@@ -52,7 +56,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
 
             var Pago = this.Store.GetById(Id);
-            if (Pago == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Pago == null) throw new ApiError("Pago Not Found", (int)HttpStatusCode.NotFound);
 
             Mapper.Map(Data, Pago);
             this.Store.Update(Pago);
@@ -61,20 +65,27 @@ namespace BusinessLibrary.Services.ServicesImplementation
         public PagoDataType Create(CreatePagoRequestDataType Data)
         {
 
+            var Factura = this.FacturaStore.GetById(Data.FacturaId);
+            if (Factura == null) throw new ApiError("Factura Invalida", (int)HttpStatusCode.BadRequest);
+
+            // if (this.Store.GetBySocialReason(Data.SocialReason) == null && this.Store.GetByRut(Data.Rut) == null)
+            // {
             var NewPago = new Pago() { Id = Guid.NewGuid() };
-            Mapper.Map(Data, NewPago);
+                Mapper.Map(Data, NewPago);
 
-            this.Store.Create(NewPago);
+                this.Store.Create(NewPago);
 
-            return Mapper.Map<PagoDataType>(NewPago);
+                return Mapper.Map<PagoDataType>(NewPago);
         }
 
         public PagoDataType GutById(Guid Id)
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Pago = this.Store.GetById(Id);
-            if (Pago == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Pago == null) throw new ApiError("Pago Not Found", (int)HttpStatusCode.NotFound);
             return Mapper.Map<PagoDataType>(Pago);
         }
+
+      
     }
 }

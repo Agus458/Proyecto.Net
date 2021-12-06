@@ -14,8 +14,6 @@ namespace SharedLibrary.DataTypes.Factura
         public DateTime fecha { set; get; }
         public float monto { set; get; }
 
-        public bool Pagada { set; get; }
-
-        public PagoDataType Pago { init; get; }
+        public PagoDataType PagoFactura { init; get; }
     }
 }

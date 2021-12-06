@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {}
+    "E:\\Proyecto\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {}
   },
   "projects": {
-    "E:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
+    "E:\\Proyecto\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
+        "projectUniqueName": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
         "projectName": "BusinessLibrary",
-        "projectPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
+        "projectPath": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj",
         "packagesPath": "C:\\Users\\alexz\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\BusinessLibrary\\obj\\",
+        "outputPath": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\BusinessLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-                "projectPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+              "E:\\Proyecto\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+                "projectPath": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
               },
-              "E:\\Proyecto\\Agustin\\git\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
-                "projectPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
+              "E:\\Proyecto\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+                "projectPath": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+    "E:\\Proyecto\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
+        "projectUniqueName": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
         "projectName": "DataAccessLibrary",
-        "projectPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
+        "projectPath": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
         "packagesPath": "C:\\Users\\alexz\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\obj\\",
+        "outputPath": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -153,14 +153,14 @@
         }
       }
     },
-    "E:\\Proyecto\\Agustin\\git\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+    "E:\\Proyecto\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyecto\\Agustin\\git\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+        "projectUniqueName": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
         "projectName": "SharedLibrary",
-        "projectPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
+        "projectPath": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj",
         "packagesPath": "C:\\Users\\alexz\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\SharedLibrary\\obj\\",
+        "outputPath": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\SharedLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -181,8 +181,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-                "projectPath": "E:\\Proyecto\\Agustin\\git\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+              "E:\\Proyecto\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+                "projectPath": "E:\\Proyecto\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
               }
             }
           }
@@ -204,10 +204,6 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.1.1, )"
-            },
-            "Microsoft.AspNet.WebApi.Client": {
-              "target": "Package",
-              "version": "[5.2.7, )"
             },
             "Microsoft.AspNetCore.Http": {
               "target": "Package",

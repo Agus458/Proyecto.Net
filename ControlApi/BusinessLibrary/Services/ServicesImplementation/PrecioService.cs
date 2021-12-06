@@ -1,17 +1,16 @@
-﻿using AutoMapper;
-using DataAccessLibrary;
-using DataAccessLibrary.Entities;
+﻿using DataAccessLibrary.Entities;
 using DataAccessLibrary.Stores;
-using Microsoft.AspNetCore.Http;
+using SharedLibrary.Error;
 using SharedLibrary.DataTypes.Precio;
 using System;
-using SharedLibrary.Error;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Net;
+using AutoMapper;
+using SharedLibrary.DataTypes;
+using Microsoft.AspNetCore.Http;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -20,13 +19,15 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly IPrecioStore Store;
         private readonly IMapper Mapper;
         private readonly HttpContext context;
-  
+        private readonly IProductsStore ProductStore;
 
-        public PrecioService(IPrecioStore Store, IMapper Mapper, IHttpContextAccessor Context)
+
+        public PrecioService(IPrecioStore Store, IMapper Mapper, IHttpContextAccessor Context,IProductsStore ProductStore)
         {
             this.Store = Store;
             this.Mapper = Mapper;
             this.context = Context.HttpContext;
+            this.ProductStore = ProductStore;
         }
 
       
@@ -34,18 +35,22 @@ namespace BusinessLibrary.Services.ServicesImplementation
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Precio = this.Store.GetById(Id);
-            if (Precio == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Precio == null) throw new ApiError("Precio Not Found", (int)HttpStatusCode.NotFound);
             this.Store.Delete(Precio);
         }
 
-        public PaginationDataType<PrecioDataType> GetAll(int Skip, int Take)
+        public PaginationDataType<PrecioDataType> GetAll(int Skip, int Take,Guid ProductId)
         {
+
+            var product = this.ProductStore.GetById(ProductId);
+            if (product == null) throw new ApiError("Prouct Invalid", (int)HttpStatusCode.BadRequest);
 
             var Result = this.Store.GetAll(Skip, Take);
 
             return new PaginationDataType<PrecioDataType>()
             {
-                Collection = Result.Collection.Select(Precio => Mapper.Map<PrecioDataType>(Precio))
+                Collection = Result.Collection.Select(Precio => Mapper.Map<PrecioDataType>(Precio)),
+                Size = Result.Size
             };
         }
 
@@ -53,7 +58,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Precio = this.Store.GetById(Id);
-            if (Precio == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Precio == null) throw new ApiError("Precio Not Found", (int)HttpStatusCode.NotFound);
             return Mapper.Map<PrecioDataType>(Precio);
         }
 
@@ -62,7 +67,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
 
             var Precio = this.Store.GetById(Id);
-            if (Precio == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Precio == null) throw new ApiError("Precio Not Found", (int)HttpStatusCode.NotFound);
 
             Mapper.Map(Data, Precio);
             this.Store.Update(Precio);
@@ -70,6 +75,9 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
        public PrecioDataType Create(CreatePrecioRequestDataType Data)
         {
+            var product = this.ProductStore.GetById(Data.ProductId);
+            if (product == null) throw new ApiError("Prouct Invalid", (int)HttpStatusCode.BadRequest);
+
             var NewPrecio = new Precio() { Id = Guid.NewGuid() };
             Mapper.Map(Data, NewPrecio);
 

@@ -29,12 +29,6 @@ namespace ControlApi.Controllers
             return Ok(this.Service.GetAll(Skip, Take));
         }
 
-        [HttpGet("List")]
-        public IActionResult Get()
-        {
-            return Ok(this.Service.Get());
-        }
-
         [HttpGet("{Id}")]
         public IActionResult GetById(Guid Id)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Entities
 {
-    public class Pago : MustHaveTenantEntity
+    public class Pago : BaseEntity
     {
     public DateTime Date { get; set; }
 

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace DataAccessLibrary.Stores.StoresImplementations
 {
     public class ProductStore:Store<Product>, IProductsStore

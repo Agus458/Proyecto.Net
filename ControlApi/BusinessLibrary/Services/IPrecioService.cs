@@ -1,17 +1,16 @@
 ﻿using System;
-using DataAccessLibrary;
+using SharedLibrary.DataTypes;
 using SharedLibrary.DataTypes.Precio;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLibrary.Entities;
 
 namespace BusinessLibrary.Services
 {
     public interface IPrecioService
     {
-        PaginationDataType<PrecioDataType> GetAll(int skup, int Take);
+        PaginationDataType<PrecioDataType> GetAll(int skup, int Take,Guid ProductId);
 
         PrecioDataType Create(CreatePrecioRequestDataType Data);
 

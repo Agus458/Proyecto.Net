@@ -10,7 +10,7 @@ namespace DataAccessLibrary.Stores
     
     public interface IProductsStore :IStore<Product>
     {
-        PaginationDataType<Product> GetAll(int Skip, int Take);
+       new PaginationDataType<Product> GetAll(int Skip, int Take);
     }
     
 }

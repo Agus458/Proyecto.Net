@@ -12,8 +12,6 @@ namespace BusinessLibrary.Services
     {
         PaginationDataType<BuildingDataType> GetAll(int Skip, int Take);
 
-        IEnumerable<BuildingDataType> Get();
-
         BuildingDataType GetById(Guid Id);
 
         BuildingDataType Create(CreateBuildingRequestDataType Data);

@@ -1,20 +1,21 @@
 ﻿using BusinessLibrary.Services;
-using ExcelDataReader;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using SharedLibrary.Configuration.FacePlusPlus;
 using SharedLibrary.DataTypes.Persons;
 using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin, Portero, Gestor")]
-    [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
     public class PersonsController : ControllerBase
     {
         private readonly IPersonsService Service;
@@ -51,71 +52,12 @@ namespace ControlApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm] CreatePersonRequestDataType Data)
+        public IActionResult Create(CreatePersonRequestDataType Data)
         {
-            var result = await this.Service.Create(Data);
+            var result = this.Service.Create(Data);
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
         }
 
-<<<<<<< HEAD
 
-=======
-        [HttpPost("Identify")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Portero")]
-        public async Task<IActionResult> Identify(IFormFile fileImage)
-        {
-            return Ok(await this.Service.Identify(fileImage));
-        }
-
-        [HttpPost("CSV")]
-        public IActionResult CSV()
-        {
-            var Persons = new List<CreatePersonRequestDataType>();
-            try
-            {
-                var file = Request.Form.Files[0];
-
-                using (var stream = file.OpenReadStream())
-                {
-                    using (var reader = ExcelReaderFactory.CreateReader(stream))
-                    {
-                        var conf = new ExcelDataSetConfiguration
-                        {
-                            ConfigureDataTable = _ => new ExcelDataTableConfiguration
-                            {
-                                UseHeaderRow = true
-                            }
-                        };
-
-                        var dataSet = reader.AsDataSet(conf);
-
-                        foreach (DataRow Row in dataSet.Tables[0].Rows)
-                        {
-                            Persons.Add(new CreatePersonRequestDataType()
-                            {
-                                Name = Row["Name"]?.ToString(),
-                                LastName = Row["LastName"]?.ToString(),
-                                Document = Row["Document"]?.ToString(),
-                                DocumentType = Row["DocumentType"]?.ToString(),
-                                Email = Row["Email"]?.ToString(),
-                                Phone = Row["Phone"]?.ToString()
-                            });
-                        }
-                    }
-                }
-
-                foreach (var item in Persons)
-                {
-                    this.Service.Create(item);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-            return Ok(Persons);
-        }
->>>>>>> Agustin
     }
 }

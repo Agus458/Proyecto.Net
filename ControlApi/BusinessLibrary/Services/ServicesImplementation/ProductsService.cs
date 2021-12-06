@@ -1,16 +1,18 @@
-﻿using AutoMapper;
-using DataAccessLibrary;
-using DataAccessLibrary.Entities;
+﻿using DataAccessLibrary.Entities;
 using DataAccessLibrary.Stores;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using SharedLibrary.Error;
 using SharedLibrary.DataTypes.Products;
 using System;
-using SharedLibrary.Error;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using AutoMapper;
+using SharedLibrary.DataTypes;
+using Microsoft.AspNetCore.Http;
+using SharedLibrary.Extensions;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -18,18 +20,24 @@ namespace BusinessLibrary.Services.ServicesImplementation
     {
         private readonly IProductsStore Store;
         private readonly IMapper Mapper;
-        private readonly HttpContext context;
-
-        public ProductsService(IProductsStore Store, IMapper Mapper,IHttpContextAccessor Context)
+        private readonly HttpContext Context;
+        private readonly ITenantsStore TenantsStore;
+        public ProductsService(IProductsStore Store, IMapper Mapper, ITenantsStore TenantsStore,IHttpContextAccessor Context)
         {
             this.Store = Store;
             this.Mapper = Mapper;
-            this.context = Context.HttpContext;
+            this.Context = Context.HttpContext;
+            this.TenantsStore = TenantsStore;
         }
         
         public ProductsDataType Create(CreateProductsRequestDataType Data)
         {
-   
+
+            var TenantId = this.Context.GetTenant();
+            if (TenantId == Guid.Empty) throw new ApiError("No se ingreso la institucion", (int)HttpStatusCode.BadRequest);
+
+            if (this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
+
             var NewProduct = new Product() { Id = Guid.NewGuid() };
             Mapper.Map(Data, NewProduct);
 
@@ -43,7 +51,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Products = this.Store.GetById(Id);
-            if (Products == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Products == null) throw new ApiError("Product Not Found", (int)HttpStatusCode.NotFound);
             this.Store.Delete(Products);
         }
 
@@ -53,7 +61,8 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
             return new PaginationDataType<ProductsDataType>()
             {
-                Collection = Result.Collection.Select(Product =>Mapper.Map<ProductsDataType>(Product))
+                Collection = Result.Collection.Select(Product =>Mapper.Map<ProductsDataType>(Product)),
+                Size = Result.Size
             };
         }
 
@@ -61,7 +70,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Product = this.Store.GetById(Id);
-            if (Product == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Product == null) throw new ApiError("Product Not Found", (int)HttpStatusCode.NotFound);
             return Mapper.Map<ProductsDataType>(Product);
         }
 
@@ -70,7 +79,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
 
             var Products = this.Store.GetById(Id);
-            if (Products == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Products == null) throw new ApiError("Product Not Found", (int)HttpStatusCode.NotFound);
 
             Mapper.Map(Data, Products);
             this.Store.Update(Products);

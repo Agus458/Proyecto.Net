@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,35 +14,35 @@ namespace SharedLibrary.DataTypes.Persons
         /// </summary>
         [Required]
         [MaxLength(200)]
-        public string Document { get; init; }
+        public string Document { get; set; }
 
         /// <summary>
         /// Type of the document of the person.
         /// </summary>
         [Required]
         [MaxLength(200)]
-        public string DocumentType { get; init; }
+        public string DocumentType { get; set; }
 
         /// <summary>
         /// Name of the person.
         /// </summary>
         [Required]
         [MaxLength(200)]
-        public string Name { get; init; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Last Name of the person.
         /// </summary>
         [Required]
         [MaxLength(200)]
-        public string LastName { get; init; }
+        public string LastName { get; set; }
 
         /// <summary>
         /// Phone of the person.
         /// </summary>
         [Required]
         [MaxLength(200)]
-        public string Phone { get; init; }
+        public string Phone { get; set; }
 
         /// <summary>
         /// Email of the person.
@@ -51,8 +50,6 @@ namespace SharedLibrary.DataTypes.Persons
         [Required]
         [EmailAddress]
         [MaxLength(200)]
-        public string Email { get; init; }
-
-        public IFormFile FileImage { get; init; }
+        public string Email { get; set; }
     }
 }

@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Stores
 {
-    public interface IPrecioStore : IStore<Precio>
+    /// <summary>
+    /// Store interface that implements basic CRUD operations for persons entities.
+    /// </summary>
+    public interface IPersonsStore : IStore<Person>
     {
-     PaginationDataType<Precio> GetAll(int Skip, int Take,Guid ProductId);
     }
 }

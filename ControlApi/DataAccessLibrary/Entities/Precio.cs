@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Entities
 {
-    public class Precio : MustHaveTenantEntity
+    public class Precio : BaseEntity
     {
         [MaxLength(200)]
         public float precio { get; set; }
 
-        public Guid PrecioId { get; set; }
+        public Guid ProductId { get; set; }
 
         public virtual Product Product { get; set; }
 

@@ -1,16 +1,17 @@
-﻿using AutoMapper;
-using DataAccessLibrary;
-using DataAccessLibrary.Entities;
+﻿using DataAccessLibrary.Entities;
 using DataAccessLibrary.Stores;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using SharedLibrary.Error;
 using SharedLibrary.DataTypes.Factura;
 using System;
-using SharedLibrary.Error;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using AutoMapper;
+using SharedLibrary.DataTypes;
+using Microsoft.AspNetCore.Http;
 using SharedLibrary.Extensions;
 
 namespace BusinessLibrary.Services.ServicesImplementation
@@ -20,21 +21,22 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly IFacturaStore Store;
         private readonly IMapper Mapper;
         private readonly HttpContext Context;
-        ///private readonly ITenantsStore TenantsStore;
+        private readonly ITenantsStore TenantsStore;
 
      
 
-        public FacturaService(IFacturaStore Store, IMapper Mapper, IHttpContextAccessor Context)
+        public FacturaService(IFacturaStore Store, IMapper Mapper, ITenantsStore TenantsStore, IHttpContextAccessor Context)
         {
             this.Store = Store;
             this.Mapper = Mapper;
             this.Context = Context.HttpContext;
-            //this.TenantsStore = TenantsStore;
+            this.TenantsStore = TenantsStore;
         }
 
 
         public void Delete(Guid Id)
         {
+            
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Factura = this.Store.GetById(Id);
             if (Factura == null) throw new ApiError("Factura Not Found", (int)HttpStatusCode.NotFound);
@@ -49,7 +51,8 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
             return new PaginationDataType<FacturaDataType>()
             {
-                Collection = Result.Collection.Select(Factura => Mapper.Map<FacturaDataType>(Factura))
+                Collection = Result.Collection.Select(Factura => Mapper.Map<FacturaDataType>(Factura)),
+                Size = Result.Size
             };
         }
 
@@ -57,7 +60,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Factura = this.Store.GetById(Id);
-            if (Factura == null) throw new ApiError("Door Not Found", (int)HttpStatusCode.NotFound);
+            if (Factura == null) throw new ApiError("Factura Not Found", (int)HttpStatusCode.NotFound);
             return Mapper.Map<FacturaDataType>(Factura);
         }
 
@@ -65,13 +68,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public FacturaDataType Create(CreateFacturaRequestDataType Data)
         {
-            /*
+            
             var TenantId = this.Context.GetTenant();
             if (TenantId == Guid.Empty) throw new ApiError("No se ingreso la institucion", (int)HttpStatusCode.BadRequest);
-            */
-            //if (this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
+            
+            if (this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
 
-            var NewFactura = new Factura() { Id = Guid.NewGuid() };
+            var NewFactura = new Factura() { Id = Guid.NewGuid(), TenantId=TenantId };
             Mapper.Map(Data, NewFactura);
 
             this.Store.Create(NewFactura);
@@ -84,8 +87,10 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (IdFactura == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
             var Factura = this.Store.GetById(IdFactura);
             if (Factura == null) throw new ApiError("Factura Not Found", (int)HttpStatusCode.NotFound);
-            Factura.Pago = new Pago() { Id = Guid.NewGuid(), Monto=Factura.Monto };
-            Factura.Pagada = true;
+            //Factura.Pago = new Pago() { Id = Guid.NewGuid(), Monto = Factura.Monto };
+           // var FacturaPago = new Pago() { Id = Guid.NewGuid(), Monto = Factura.Monto };
+           
+            //Factura.Pagada = true;
             this.Store.Update(Factura);
 
            

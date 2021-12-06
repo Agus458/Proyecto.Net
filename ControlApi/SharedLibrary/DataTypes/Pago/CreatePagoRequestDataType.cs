@@ -10,7 +10,6 @@ namespace SharedLibrary.DataTypes.Pago
     public record CreatePagoRequestDataType
     {
         [Required]
-    
         public float precio { set; get; }
 
         [Required]
@@ -19,6 +18,9 @@ namespace SharedLibrary.DataTypes.Pago
         [Required]
         public bool Pagada { set; get; }
 
-       
+        [Required]
+        public Guid FacturaId { get; init; }
+
+
     }
 }

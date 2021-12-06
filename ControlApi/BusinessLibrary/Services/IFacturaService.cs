@@ -1,13 +1,10 @@
 ﻿using System;
-using DataAccessLibrary;
+using SharedLibrary.DataTypes;
 using SharedLibrary.DataTypes.Factura;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLibrary.Entities;
-using SharedLibrary.DataTypes.Pago;
-
 namespace BusinessLibrary.Services
 {
     public interface IFacturaService

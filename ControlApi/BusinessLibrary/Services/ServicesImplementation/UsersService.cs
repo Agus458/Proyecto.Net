@@ -14,9 +14,6 @@ using SharedLibrary.Error;
 using System.Net;
 using System.Security.Claims;
 using DataAccessLibrary.Stores;
-using Microsoft.EntityFrameworkCore;
-using System.Text.Json;
-using DataAccessLibrary;
 
 namespace BusinessLibrary.Services.ServicesImplementation
 {
@@ -48,30 +45,21 @@ namespace BusinessLibrary.Services.ServicesImplementation
                     var TenantId = this.Context.GetTenant();
                     if (TenantId == Guid.Empty) throw new ApiError("No se ingreso la institucion", (int)HttpStatusCode.BadRequest);
 
-                    if (this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
+                    if(this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
 
                     if (Context.User.IsInRole("SuperAdmin") && Data.Role.ToLower() != "admin" || Context.User.IsInRole("Admin") && (Data.Role.ToLower() != "portero" && Data.Role.ToLower() != "gestor"))
                     {
                         throw new ApiError("Invalid user role", (int)HttpStatusCode.BadRequest);
                     }
 
-                    if (Data.Role.ToLower() == "portero")
-                    {
-                        if(Data.BuildingId == null || Data.BuildingId == Guid.Empty)
-                        {
-                            throw new ApiError("No se ingreso el edificio del portero", (int)HttpStatusCode.BadRequest);
-                        }
-                    }
-
                     if (await this.UserManager.FindByEmailAsync(Data.Email) != null) throw new ApiError("Email already in use", (int)HttpStatusCode.BadRequest);
 
                     var NewUser = new User()
                     {
+                        Email = Data.Email,
                         UserName = Data.Email,
                         TenantId = TenantId
                     };
-
-                    Mapper.Map(Data, NewUser);
 
                     var Result = await this.UserManager.CreateAsync(NewUser, Data.Password);
                     if (Result.Succeeded)
@@ -90,7 +78,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
                     return DataType;
 
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     Transaction.Rollback();
                     throw;
@@ -98,7 +86,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             }
         }
 
-        public PaginationDataType<UserDataType> GetAll()
+        public IEnumerable<UserDataType> GetAll()
         {
             var Users = this.UserManager.Users.ToList();
 
@@ -108,18 +96,14 @@ namespace BusinessLibrary.Services.ServicesImplementation
                 Users = Users.Where(ExistingUser => ExistingUser.TenantId == TenantId).ToList();
             }
 
-            return new PaginationDataType<UserDataType>()
+            return Users.Select(User =>
             {
-                Collection = Users.Select(User =>
-                {
-                    var Data = Mapper.Map<UserDataType>(User);
+                var Data = Mapper.Map<UserDataType>(User);
 
-                    Data.Roles = this.UserManager.GetRolesAsync(User).Result;
+                Data.Roles = this.UserManager.GetRolesAsync(User).Result;
 
-                    return Data;
-                }),
-                Size = Users.Count
-            };
+                return Data;
+            });
         }
 
         public async Task<UserDataType> GetById(string Id)
@@ -136,16 +120,6 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (this.Context.User.FindFirst(ClaimTypes.Email)?.Value == User.Email) throw new ApiError("You can not delete yourself", (int)HttpStatusCode.BadRequest);
 
             await this.UserManager.DeleteAsync(User);
-        }
-
-        public async Task Update(string Id, UpdateUserRequestDataType Data)
-        {
-            var User = await this.UserManager.FindByIdAsync(Id);
-            if (User == null) throw new ApiError("User not found", (int)HttpStatusCode.NotFound);
-
-            Mapper.Map(Data, User);
-
-            await this.UserManager.UpdateAsync(User);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using SharedLibrary.DataTypes.Buildings;
+﻿using SharedLibrary.DataTypes.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +13,8 @@ namespace SharedLibrary.DataTypes.Precio
         public float precio { set; get; }
 
         public DateTime Fecha{ set; get; }
+
+        public ProductsDataType Product { get; init; }
 
     }
 }

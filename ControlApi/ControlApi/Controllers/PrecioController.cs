@@ -13,7 +13,7 @@ namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
     public class PrecioController : ControllerBase
     {
         private readonly IPrecioService Service;
@@ -24,10 +24,10 @@ namespace ControlApi.Controllers
             this.Service = Service;
     }
 
-    [HttpGet]
-    public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take)
+    [HttpGet("Product/{ProductId}")]
+    public IActionResult GetAll([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take,Guid ProductId)
     {
-            return Ok(this.Service.GetAll(Skip, Take));
+            return Ok(this.Service.GetAll(Skip, Take,ProductId));
     }
 
     [HttpGet("{Id}")]

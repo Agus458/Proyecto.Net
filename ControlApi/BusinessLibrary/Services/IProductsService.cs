@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using DataAccessLibrary;
+using SharedLibrary.DataTypes;
 using SharedLibrary.DataTypes.Products;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

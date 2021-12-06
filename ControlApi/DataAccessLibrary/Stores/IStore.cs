@@ -46,8 +46,5 @@ namespace DataAccessLibrary.Stores
         /// <param name="Id">The entity to delete</param>
         /// <returns></returns>
         void Delete(Target Entity);
-
-        IEnumerable<Target> Get();
-
     }
 }

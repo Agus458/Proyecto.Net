@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLibrary.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20211127145250_notifications")]
-    partial class notifications
+    [Migration("20211205213407_sdadsad")]
+    partial class sdadsad
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,34 +20,6 @@ namespace DataAccessLibrary.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("DataAccessLibrary.Entities.Assignment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(36)
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<Guid>("DoorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("UpdatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoorId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Assignments");
-                });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Building", b =>
                 {
@@ -59,11 +31,13 @@ namespace DataAccessLibrary.Migrations
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<float>("Latitude")
-                        .HasColumnType("real");
+                    b.Property<string>("Latitude")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
-                    b.Property<float>("Longitude")
-                        .HasColumnType("real");
+                    b.Property<string>("Length")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Name")
                         .HasMaxLength(200)
@@ -99,75 +73,78 @@ namespace DataAccessLibrary.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTimeOffset>("UpdatedDate")
                         .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BuildingId");
+
+                    b.HasIndex("TenantId");
 
                     b.ToTable("Doors");
                 });
 
-            modelBuilder.Entity("DataAccessLibrary.Entities.Notification", b =>
+            modelBuilder.Entity("DataAccessLibrary.Entities.Factura", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(36)
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BuildingId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("Monto")
+                        .HasColumnType("real");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTimeOffset>("UpdatedDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<bool>("Viewed")
-                        .HasColumnType("bit");
+                    b.Property<DateTime>("fecha")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BuildingId");
+                    b.HasIndex("TenantId");
 
-                    b.ToTable("Notifications");
+                    b.ToTable("Facturas");
                 });
 
-            modelBuilder.Entity("DataAccessLibrary.Entities.Novelty", b =>
+            modelBuilder.Entity("DataAccessLibrary.Entities.Pago", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(36)
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BuildingId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("FacturaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float>("Monto")
+                        .HasColumnType("real");
 
                     b.Property<DateTimeOffset>("UpdatedDate")
                         .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BuildingId");
+                    b.HasIndex("FacturaId")
+                        .IsUnique();
 
-                    b.ToTable("Novelties");
+                    b.ToTable("Pagos");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Person", b =>
@@ -191,9 +168,6 @@ namespace DataAccessLibrary.Migrations
                     b.Property<string>("Email")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .HasMaxLength(200)
@@ -220,27 +194,58 @@ namespace DataAccessLibrary.Migrations
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("DataAccessLibrary.Entities.Room", b =>
+            modelBuilder.Entity("DataAccessLibrary.Entities.Precio", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(36)
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BuildingId")
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<float>("precio")
+                        .HasMaxLength(200)
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Precios");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTimeOffset>("UpdatedDate")
                         .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BuildingId");
+                    b.HasIndex("TenantId");
 
-                    b.ToTable("Rooms");
+                    b.ToTable("Productos");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Tenant", b =>
@@ -279,9 +284,6 @@ namespace DataAccessLibrary.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("BuildingId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -293,17 +295,11 @@ namespace DataAccessLibrary.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -336,8 +332,6 @@ namespace DataAccessLibrary.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BuildingId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -483,23 +477,6 @@ namespace DataAccessLibrary.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("DataAccessLibrary.Entities.Assignment", b =>
-                {
-                    b.HasOne("DataAccessLibrary.Entities.Door", "Door")
-                        .WithMany()
-                        .HasForeignKey("DoorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataAccessLibrary.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Door");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("DataAccessLibrary.Entities.Building", b =>
                 {
                     b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
@@ -519,29 +496,37 @@ namespace DataAccessLibrary.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Building");
-                });
-
-            modelBuilder.Entity("DataAccessLibrary.Entities.Notification", b =>
-                {
-                    b.HasOne("DataAccessLibrary.Entities.Building", "Building")
+                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
                         .WithMany()
-                        .HasForeignKey("BuildingId")
+                        .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Building");
+
+                    b.Navigation("Tenant");
                 });
 
-            modelBuilder.Entity("DataAccessLibrary.Entities.Novelty", b =>
+            modelBuilder.Entity("DataAccessLibrary.Entities.Factura", b =>
                 {
-                    b.HasOne("DataAccessLibrary.Entities.Building", "Building")
+                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
                         .WithMany()
-                        .HasForeignKey("BuildingId")
+                        .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Building");
+                    b.Navigation("Tenant");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Pago", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Factura", "Factura")
+                        .WithOne("PagoFactura")
+                        .HasForeignKey("DataAccessLibrary.Entities.Pago", "FacturaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Factura");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Person", b =>
@@ -555,28 +540,33 @@ namespace DataAccessLibrary.Migrations
                     b.Navigation("Tenant");
                 });
 
-            modelBuilder.Entity("DataAccessLibrary.Entities.Room", b =>
+            modelBuilder.Entity("DataAccessLibrary.Entities.Precio", b =>
                 {
-                    b.HasOne("DataAccessLibrary.Entities.Building", "Building")
+                    b.HasOne("DataAccessLibrary.Entities.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("BuildingId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Building");
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Product", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
+                        .WithMany()
+                        .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tenant");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.User", b =>
                 {
-                    b.HasOne("DataAccessLibrary.Entities.Building", "Building")
-                        .WithMany()
-                        .HasForeignKey("BuildingId");
-
                     b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
                         .WithMany()
                         .HasForeignKey("TenantId");
-
-                    b.Navigation("Building");
 
                     b.Navigation("Tenant");
                 });
@@ -630,6 +620,11 @@ namespace DataAccessLibrary.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Factura", b =>
+                {
+                    b.Navigation("PagoFactura");
                 });
 #pragma warning restore 612, 618
         }

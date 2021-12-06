@@ -17,14 +17,6 @@ namespace SharedLibrary.DataTypes.Users
         public string Password { get; init; }
 
         [Required]
-        public string Name { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
-
-        [Required]
         public string Role { get; init; }
-
-        public Guid? BuildingId { get; init; }
     }
 }
