@@ -32,10 +32,18 @@ export class ProductosComponent implements OnInit {
     private toastService:ToastService) { }
 
   ngOnInit(): void {
-  
+      /// this.getFacturas(0, 10);
+      this.ProductosForm = this.FormBuilder.group({
+      nombre:['']
+
+
+
+      })
   }
+  
 
 
+ 
   getProducts(skip: number, take: number) {
     this.ProductosService.getAll(skip, take).subscribe(
       ok => {
@@ -69,4 +77,12 @@ export class ProductosComponent implements OnInit {
   onPageChange(pageNum: number): void {
     this.getProducts((pageNum - 1) * 10, 10);
   }
+  submit()
+  {
+   this.ProductosService.create(this.ProductosForm.value).subscribe(
+     ok=>{console.log("Producto Creado")},
+     error=>console.log("Algo Salio Mal"));
+
+  }
+
 }

@@ -1,1 +1,26 @@
+<div class="container">
+    <div class="row">
+            <div class="con-sm-9 col-md-7 col-lg 5 mx-auto">
+                <div class="card border-0 shadow rounded-3 my-5">
+                    <div class="card-body p-4 p-sm-5">
+                        <h4 class="card-title text-center mb-5 fw-light fs-5">Precios Disponibles</h4>
+                            <hr class="my-4">
+                            <ul>
+                                <li *ngFor="let element of facturas">
+                                    {{element.fecha}}
+                                    {{element.monto}}
+                                    {{element.pago}}
 
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item" *ngIf="element.pago == null">
+                                        <a class="nav-link" routerLink="/pago-ventana" routerLinkActive="active">Pagar</a>
+                                    </ul>
+                                </li>
+                            </ul>
+                          
+                
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

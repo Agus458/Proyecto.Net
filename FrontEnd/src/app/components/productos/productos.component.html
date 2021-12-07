@@ -5,18 +5,19 @@
                 <div class="card-body p-4 p-sm-5">
                     <h4 class="card-title text-center mb-5 fw-light fs-5">Añadir Producto</h4>
                     <hr class="my-4">
-                    <!--<form [formGroup]="ProductForms" (ngSubmit)="submit()">
+                    <form [formGroup]="ProductosForm" (ngSubmit)="submit()">
                         <div class= "form-floating mb-3">
-                            <label>Nombre Productolabel></label>
-                            <input type="text" class="form-control" >
+                            <label>Nombre Producto</label>
+                            <input type="text" formControlName='nombre' class="form-control" >
                         </div>
+
 
                         <div class="d-grid">                  
                         <button class="btn btn-block btn-warning btn-login text-uppercase fw-bold"
                         type="submit">Publicar Producto</button>
                             
                         </div>
-                    </form>-->
+                    </form>
                         
                 </div>
 
