@@ -73,6 +73,11 @@ namespace DataAccessLibrary.Contexts
         public DbSet<Door> Doors { get; set; }
 
         /// <summary>
+        /// Represents all the Events saved in the DataBase.
+        /// </summary>
+        public DbSet<Event> Events { get; set; }
+
+        /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
         /// </summary>
         /// <returns></returns>

@@ -9,22 +9,18 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using SharedLibrary.Extensions;
 using SharedLibrary.Configuration.Tenancy;
 using SharedLibrary.Configuration.PayPal;
 using SharedLibrary.Configuration.FacePlusPlus;
+using BusinessLibrary.SignalR;
 
 namespace ControlApi
 {
@@ -134,9 +130,20 @@ namespace ControlApi
             services.AddMultitenancy();
 
             // Here we define all de dependency injection needed.
-            services.AddTransient<IAuthenticationService, AuthenticationService>();
+            // Buiseness library Services
+            services.AddTransient<BusinessLibrary.Services.IAuthenticationService, BusinessLibrary.Services.ServicesImplementation.AuthenticationService>();
+            services.AddTransient<BusinessLibrary.Services.IUsersService, BusinessLibrary.Services.ServicesImplementation.UsersService>();
+            services.AddTransient<BusinessLibrary.Services.ITenantsService, BusinessLibrary.Services.ServicesImplementation.TenantsService>();
+            services.AddTransient<BusinessLibrary.Services.IDoorsService, BusinessLibrary.Services.ServicesImplementation.DoorsService>();
+            services.AddTransient<BusinessLibrary.Services.IPersonsService, BusinessLibrary.Services.ServicesImplementation.PersonsService>();
+            services.AddTransient<BusinessLibrary.Services.IBuildingsService, BusinessLibrary.Services.ServicesImplementation.BuildingsService>();
+            services.AddTransient<BusinessLibrary.Services.INoveltyService, BusinessLibrary.Services.ServicesImplementation.NoveltyService>();
+            services.AddTransient<BusinessLibrary.Services.IAssignmentsService, BusinessLibrary.Services.ServicesImplementation.AssignmentsService>();
+            services.AddTransient<BusinessLibrary.Services.INotificationService, BusinessLibrary.Services.ServicesImplementation.NotificationService>();
 
-            services.AddTransient<IUsersService, UsersService>();
+            // DataAccesLibray Stores
+            services.AddTransient(typeof(DataAccessLibrary.Stores.IStore<>), typeof(DataAccessLibrary.Stores.StoresImplementations.Store<>));
+            services.AddTransient(typeof(DataAccessLibrary.Stores.IStoreByBuilding<>), typeof(DataAccessLibrary.Stores.StoresImplementations.StoreByBuilding<>));
 
             services.AddTransient<ITenantsService, TenantsService>();
 

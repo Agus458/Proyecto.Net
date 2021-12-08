@@ -2,6 +2,10 @@
 using DataAccessLibrary.Entities;
 using SharedLibrary.DataTypes.Buildings;
 using SharedLibrary.DataTypes.Doors;
+using SharedLibrary.DataTypes.Entries;
+using SharedLibrary.DataTypes.Events;
+using SharedLibrary.DataTypes.Notifications;
+using SharedLibrary.DataTypes.Novelties;
 using SharedLibrary.DataTypes.Persons;
 using SharedLibrary.DataTypes.Tenants;
 using SharedLibrary.DataTypes.Users;
@@ -45,21 +49,7 @@ namespace SharedLibrary.Configuration
             CreateMap<CreateFacturaRequestDataType, Factura>();
             CreateMap<UpdateFacturaRequestDataType, Factura>();
 
-
-            CreateMap<Product, ProductsDataType>();
-            CreateMap<CreateProductsRequestDataType, Product>();
-            CreateMap<UpdateProductsRequestDataType, Product>();
-
-            CreateMap<Pago, PagoDataType>();
-            CreateMap<CreatePagoRequestDataType, Pago>();
-            CreateMap<UpdatePagoRequestDateType, Pago>();
-
-            CreateMap<Precio, PrecioDataType>();
-            CreateMap<CreatePrecioRequestDataType, Precio>();
-            CreateMap<UpdatePreciosRequestDataType, Precio>();
-
-
-
+            CreateMap<Notification, NotificationDataType>();
         }
     }
 }
