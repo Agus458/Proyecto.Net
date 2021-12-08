@@ -39,6 +39,10 @@ export class ListarFacturasComponent implements OnInit {
     );
     
   }
+  open(content: any, facturas: FacturaDataType) {
+    this.selectFactura = facturas;
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  }
 
   onPageChange(pageNum: number): void {
     this.getFacturas((pageNum - 1) * 10, 10);

@@ -11,8 +11,7 @@ namespace SharedLibrary.DataTypes.Products
     public record CreateProductsRequestDataType
     {
     [Required]
-    [MaxLength(200)]
-    public string name { get;set; }
+    public string name { get; init; }
 
    
     }

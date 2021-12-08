@@ -19,7 +19,7 @@ export class PreciosComponent implements OnInit {
   PreciosForm: FormGroup;
 
   precios: PrecioDataType[]
-  producto: ProductosDataType[];
+  productos: ProductosDataType[];
   selectPrecio: PrecioDataType;
   factura: FacturaDataType;
   page=8;
@@ -36,9 +36,9 @@ export class PreciosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getPagos(0, 10);
-    this.PreciosForm = this.FormBuilder.group({
-      facturaId:[''],
+    
+   this.PreciosForm = this.FormBuilder.group({
+     product:[''],
       precio:['']
     })
   }
@@ -53,15 +53,12 @@ export class PreciosComponent implements OnInit {
       }
     );
   }
+
+  
+  
   submit()
   {
-    this.PreciosForm = this.FormBuilder.group({
-      productoId:[''],
-      precio:['']
-
-
-
-    })
+   
   }
   open(content: any, precios: PrecioDataType) {
     this.selectPrecio = precios;
@@ -82,5 +79,7 @@ export class PreciosComponent implements OnInit {
       }
     );
   }
+
+
   
 }

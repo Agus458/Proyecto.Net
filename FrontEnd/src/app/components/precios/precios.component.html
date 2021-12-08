@@ -9,7 +9,7 @@
                         <div class= "form-floating mb-3">
                             <label>Seleccionar Producto a colocarle Precio</label>
                         <ul class="Producto">
-                            <li *ngFor="let element of producto">
+                            <li *ngOnInit="let element of producto">
                                 
                                 
                                 <span class="badge">{{element.id}}</span>{{element.name}}

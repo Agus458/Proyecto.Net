@@ -11,7 +11,7 @@ namespace DataAccessLibrary.Entities
     public class Product : MustHaveTenantEntity
     {
         [MaxLength(200)]
-        public string name { get; set; }
+        public string name {  set; get; }
 
       
 
