@@ -34,7 +34,8 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {
       /// this.getFacturas(0, 10);
       this.ProductosForm = this.FormBuilder.group({
-      nombre:['']
+        tenant:[''],
+      name:['']
 
 
 

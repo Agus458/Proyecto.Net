@@ -27,11 +27,8 @@ export class FacturasComponent implements OnInit {
     ){ }
 
   ngOnInit(): void {
-    /// this.getFacturas(0, 10);
-    this.FacturaForm = this.FormBuilder.group({
-      fecha:['',Validators.required],
-      monto:['']
-    })
+     this.getFacturas(0, 10);
+    
     
     
   }

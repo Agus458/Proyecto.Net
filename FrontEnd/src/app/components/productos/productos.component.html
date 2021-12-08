@@ -8,13 +8,13 @@
                     <form [formGroup]="ProductosForm" (ngSubmit)="submit()">
                         <div class= "form-floating mb-3">
                             <label>Nombre Producto</label>
-                            <input type="text" formControlName='nombre' class="form-control" >
+                            <input type="text" formControlName='name' class="form-control" >
                         </div>
 
 
                         <div class="d-grid">                  
                         <button class="btn btn-block btn-warning btn-login text-uppercase fw-bold"
-                        type="submit">Publicar Producto</button>
+                        type="submit" routerLink="/precios">Publicar Producto</button>
                             
                         </div>
                     </form>

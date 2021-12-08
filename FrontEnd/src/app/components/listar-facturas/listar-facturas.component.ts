@@ -24,7 +24,7 @@ export class ListarFacturasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getFacturas(0,10);
+    this.getFacturas(0,50);
   }
 
   getFacturas(skip: number, take: number) {

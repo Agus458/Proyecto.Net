@@ -72,3 +72,15 @@ E:\Proyecto\Agustin\git\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccess
 E:\Proyecto\Agustin\git\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.dll
 E:\Proyecto\Agustin\git\ControlApi\DataAccessLibrary\obj\Debug\net5.0\ref\DataAccessLibrary.dll
 E:\Proyecto\Agustin\git\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.pdb
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.deps.json
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.dll
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\ref\DataAccessLibrary.dll
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.pdb
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.AssemblyReference.cache
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.AssemblyInfoInputs.cache
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.AssemblyInfo.cs
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.CoreCompileInputs.cache
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.dll
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\ref\DataAccessLibrary.dll
+E:\Proyecto\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.pdb

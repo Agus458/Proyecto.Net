@@ -9,8 +9,11 @@
                                 <li *ngFor="let element of facturas">                                  
                                     <ul class="card-body">
                                         <li class="card-body" *ngIf="element.pago == null">
-                                            
                                     </ul>
+                                    <div class="d-grid">
+                                        <button class="btn btn-block btn-warning btn-login text-uppercase fw-bold" 
+                                            type="submit" (ngSubmit)="Pagar()">Pagar</button>
+                                    </div>
                                 </li>
                             </ul>
                           

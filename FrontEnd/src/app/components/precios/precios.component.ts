@@ -7,6 +7,8 @@ import { PrecioDataType } from 'src/app/models/PrecioDatatype';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FacturasService } from 'src/app/services/facturas/facturas.service';
 import { FacturaDataType } from 'src/app/models/FacturaDataType';
+import { ProductosDataType } from 'src/app/models/ProductosDataType';
+import { ProductosService } from 'src/app/services/productos/productos.service';
 
 @Component({
   selector: 'app-precios',
@@ -17,6 +19,7 @@ export class PreciosComponent implements OnInit {
   PreciosForm: FormGroup;
 
   precios: PrecioDataType[]
+  producto: ProductosDataType[];
   selectPrecio: PrecioDataType;
   factura: FacturaDataType;
   page=8;
@@ -25,7 +28,7 @@ export class PreciosComponent implements OnInit {
 
     private FormBuilder:FormBuilder,
     private PreciosService: PreciosService,
-    private FacturaService:FacturasService,
+    private ProductosService:ProductosService,
     private modalService:  NgbModal,
     private router: Router,
     private toastService:ToastService
@@ -50,7 +53,16 @@ export class PreciosComponent implements OnInit {
       }
     );
   }
-  
+  submit()
+  {
+    this.PreciosForm = this.FormBuilder.group({
+      productoId:[''],
+      precio:['']
+
+
+
+    })
+  }
   open(content: any, precios: PrecioDataType) {
     this.selectPrecio = precios;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });

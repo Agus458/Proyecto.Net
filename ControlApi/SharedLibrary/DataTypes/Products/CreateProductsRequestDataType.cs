@@ -12,7 +12,7 @@ namespace SharedLibrary.DataTypes.Products
     {
     [Required]
     [MaxLength(200)]
-    public string Name { get;init; }
+    public string name { get;set; }
 
    
     }

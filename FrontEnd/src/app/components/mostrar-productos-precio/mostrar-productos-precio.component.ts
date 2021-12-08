@@ -24,7 +24,7 @@ export class MostrarProductosPrecioComponent implements OnInit {
     private tostService: ToastService,
   ) { }
   ngOnInit(): void {
-    this.getProductos(0,10);
+    this.getProductos(0,50);
   }
   getProductos(skip: number, take: number) {
     this.ProductosService.getAll(skip, take).subscribe(

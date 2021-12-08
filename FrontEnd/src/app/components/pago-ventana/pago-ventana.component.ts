@@ -3,7 +3,13 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FacturaDataType } from 'src/app/models/FacturaDataType';
 import { FacturasService } from 'src/app/services/facturas/facturas.service';
+import { PreciosService } from 'src/app/services/precios/precios.service';
+import { PrecioDataType } from 'src/app/models/PrecioDatatype';
+import { PagoDataType } from 'src/app/models/PagoDataType';
+import { PagosService } from 'src/app/services/pagos/pagos.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pago-ventana',
@@ -13,17 +19,29 @@ import { ToastService } from 'src/app/services/toast/toast.service';
 export class PagoVentanaComponent implements OnInit {
 
   facturas: FacturaDataType[];
-  selectFactura: FacturaDataType;
+  facturaselect: FacturaDataType;
+  FacturaForm: FormGroup;
+  
   page=11;
   size:number;
   constructor(
-    private FacturaService:FacturasService,
+    private FormBuilder: FormBuilder,
+    private PreciosService :PreciosService,
+    private FacturaService :FacturasService,
     private modalService: NgbModal,
     private tostService: ToastService,
   ) { }
 
   ngOnInit(): void {
+    
   }
+  Pagar()
+  {
+   this.FacturaService.Pagar(this.facturaselect.id).subscribe(
+     ok=>{console.log("Producto Creado")},
+     error=>console.log("Algo Salio Mal"));
+  }
+/*
   getFacturas(skip: number, take: number) {
     this.FacturaService.getAll(skip, take).subscribe(
       ok => {
@@ -35,5 +53,5 @@ export class PagoVentanaComponent implements OnInit {
       }
     );
     
-  }
+  }*/
 }

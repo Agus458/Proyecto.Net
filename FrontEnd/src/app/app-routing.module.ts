@@ -69,6 +69,7 @@ const routes: Routes = [
       {path:"mostrar-productos",component:MostrarProductosPrecioComponent},
 
       {path: "listar-facturas",component:ListarFacturasComponent}
+      
     ]
   },
   

@@ -10,7 +10,7 @@ namespace SharedLibrary.DataTypes.Products
     public record UpdateProductsRequestDataType
     {
     [MaxLength(40)]
-    public string Name { get; init; }
+    public string name { get; init; }
 
 
     }
