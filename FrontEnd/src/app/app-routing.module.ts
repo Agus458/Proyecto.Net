@@ -19,10 +19,14 @@ import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NuevapersonaComponent } from './components/personas/nuevapersona/nuevapersona.component';
 import { PersonasComponent } from './components/personas/personas.component';
+import { SinNovedadComponent } from './components/novedades/sin-novedad/sin-novedad.component';
 import { EditUsuarioComponent } from './components/usuarios/edit-usuario/edit-usuario.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { VistaNovedadComponent } from './components/novedades/vista-novedad/vista-novedad.component';
 import { IsLoggedInGuard } from './guards/is-logged-in/is-logged-in.guard';
 import { TieneRolGuard } from './guards/tiene-rol/tiene-rol.guard';
+import { ListNovedadesComponent } from './components/novedades/list-novedades/list-novedades.component';
+import { EditNovedadesComponent } from './components/novedades/edit-novedades/edit-novedades.component';
 
 
 const routes: Routes = [
@@ -30,7 +34,13 @@ const routes: Routes = [
     path: "",
     component: HomeComponent,
     children: [
-      { path: "", component: InicioComponent },
+      {
+        path: "", component: InicioComponent,
+        children: [
+          {path: "novedad/:Id", component: VistaNovedadComponent},
+          {path: "", component: SinNovedadComponent}
+        ]
+      },
 
       { path: "iniciarSesion", component: LoginComponent },
 
@@ -51,6 +61,9 @@ const routes: Routes = [
       { path: "puertas/edificio/:id", component: DoorsComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
       { path: "puertas/edificio/:id/editar/:doorId", component: EditDoorComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
       { path: "puertas/edificio/:id/agregarPuerta", component: EditDoorComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+
+      { path: "novedades", component: ListNovedadesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+      { path: "novedades/nuevo", component: EditNovedadesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
 
 
       { path: "eventos/edificio/:id", component: EventosComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
