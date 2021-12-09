@@ -1,0 +1,10 @@
+<div class="card border-0 shadow rounded-3 my-5">
+    <div class="card-body p-4 p-sm-5">
+        <h4 class="card-title fw-light fs-5">Eventos</h4>
+        <hr class="my-4">
+
+        <app-calendar *ngIf="events.length > 0" [addRoute]="'/eventos/edificio/' + buildingId + '/nuevo'"
+            [calendarEvents]="events" (eventEvent)="openEvent($event)">
+        </app-calendar>
+    </div>
+</div>

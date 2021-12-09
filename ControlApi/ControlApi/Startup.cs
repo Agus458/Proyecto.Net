@@ -2,22 +2,15 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using SharedLibrary.Extensions;
 using SharedLibrary.Configuration.Tenancy;
-using SharedLibrary.Configuration.PayPal;
-using SharedLibrary.Configuration.FacePlusPlus;
 using BusinessLibrary.SignalR;
 
 namespace ControlApi
@@ -138,10 +131,13 @@ namespace ControlApi
             services.AddTransient<BusinessLibrary.Services.INoveltyService, BusinessLibrary.Services.ServicesImplementation.NoveltyService>();
             services.AddTransient<BusinessLibrary.Services.IAssignmentsService, BusinessLibrary.Services.ServicesImplementation.AssignmentsService>();
             services.AddTransient<BusinessLibrary.Services.INotificationService, BusinessLibrary.Services.ServicesImplementation.NotificationService>();
+            services.AddTransient<BusinessLibrary.Services.IEventsService, BusinessLibrary.Services.ServicesImplementation.EventsService>();
+            services.AddTransient<BusinessLibrary.Services.IEntriesService, BusinessLibrary.Services.ServicesImplementation.EntriesService>();
 
             // DataAccesLibray Stores
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStore<>), typeof(DataAccessLibrary.Stores.StoresImplementations.Store<>));
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStoreByBuilding<>), typeof(DataAccessLibrary.Stores.StoresImplementations.StoreByBuilding<>));
+            services.AddTransient<DataAccessLibrary.Stores.IEventsStore, DataAccessLibrary.Stores.StoresImplementations.EventsStore>();
 
             services.AddSingleton<SharedLibrary.Configuration.FacePlusPlus.FacePlusPlus>();
 

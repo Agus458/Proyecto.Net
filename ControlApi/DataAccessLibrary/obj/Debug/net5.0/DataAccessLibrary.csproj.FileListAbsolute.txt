@@ -40,7 +40,6 @@ C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.dll
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\ref\DataAccessLibrary.dll
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.pdb
-C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.AssemblyReference.cache
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.AssemblyInfoInputs.cache
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.AssemblyInfo.cs
@@ -48,3 +47,15 @@ C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.dll
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\ref\DataAccessLibrary.dll
 C:\Users\HP\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.pdb
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.deps.json
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.dll
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\ref\DataAccessLibrary.dll
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\bin\Debug\net5.0\DataAccessLibrary.pdb
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.AssemblyReference.cache
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.AssemblyInfoInputs.cache
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.AssemblyInfo.cs
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.csproj.CoreCompileInputs.cache
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.dll
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\ref\DataAccessLibrary.dll
+C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\DataAccessLibrary\obj\Debug\net5.0\DataAccessLibrary.pdb

@@ -15,7 +15,7 @@
         <button type="button" class="btn btn-danger" (click)="delete(selectedBuilding.id)">Eliminar</button>
         <button type="button" class="btn btn-success" [routerLink]="'/edificios/editar/' + selectedBuilding.id"
             (click)="modal.close()">Editar</button>
-        <button class="btn btn-info" [routerLink]="'/puertas/edificio/' + selectedBuilding.id"><i
+        <button class="btn btn-info" [routerLink]="'/puertas/edificio/' + selectedBuilding.id" (click)="modal.close()"><i
                 class="fas fa-door-open"></i> Puertas</button>
         <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
     </div>
@@ -38,14 +38,13 @@
                     <tr *ngFor="let building of buildings; index as i" class="align-middle">
                         <th scope="row">{{i}}</th>
                         <td>{{building.name}}</td>
-                        <td>
-                            <button class="btn btn-warning" style="margin-right: 5px;" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" (click)="open(content, building)"><i
-                                    class="fas fa-bars"></i></button>
-
-                            <button class="btn btn-warning" [routerLink]="'/puertas/edificio/:id' + selectedBuilding.id"><i
-                                    class="fas fa-door-open"></i></button>
-
+                        <td class="text-right">
+                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                (click)="open(content, building)"><i class="fas fa-bars"></i></button>
+                            <button class="btn btn-info ml-2" [routerLink]="'/eventos/edificio/' + building.id"><i
+                                    class="fas fa-calendar-day"></i></button>
+                            <button class="btn btn-success ml-2" [routerLink]="'/ingresos/edificio/' + building.id"><i
+                                    class="fas fa-walking"></i></button>
                         </td>
 
                     </tr>

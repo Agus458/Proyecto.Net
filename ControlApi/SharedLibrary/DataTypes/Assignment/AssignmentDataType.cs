@@ -18,6 +18,6 @@ namespace SharedLibrary.DataTypes.Assignment
         public string UserId { get; init; }
         public UserDataType User { get; init; }
 
-        public DateTime CreatedDate { get; init; }
+        public DateTimeOffset CreatedDate { get; init; }
     }
 }
