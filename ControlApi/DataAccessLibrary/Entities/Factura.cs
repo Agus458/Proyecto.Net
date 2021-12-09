@@ -15,6 +15,11 @@ namespace DataAccessLibrary.Entities
         public float Monto { get; set; }
 
         public Pago PagoFactura { get; init; }
+
+        public static implicit operator Factura(Pago v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

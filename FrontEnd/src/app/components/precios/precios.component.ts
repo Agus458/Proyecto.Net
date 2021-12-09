@@ -1,6 +1,6 @@
 import { Component, NgModuleFactoryLoader, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PreciosService } from 'src/app/services/precios/precios.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { PrecioDataType } from 'src/app/models/PrecioDatatype';
@@ -24,6 +24,7 @@ export class PreciosComponent implements OnInit {
   factura: FacturaDataType;
   page=8;
   size: number;
+  Productoid:string;
   constructor(
 
     private FormBuilder:FormBuilder,
@@ -31,16 +32,16 @@ export class PreciosComponent implements OnInit {
     private ProductosService:ProductosService,
     private modalService:  NgbModal,
     private router: Router,
-    private toastService:ToastService
+    private activate: ActivatedRoute,
+    private toastService:ToastService,
 
   ) { }
 
   ngOnInit(): void {
     
    this.PreciosForm = this.FormBuilder.group({
-     product:[''],
       precio:['']
-    })
+    });
   }
   getPagos(skip: number, take: number) {
     this.PreciosService.getAll(skip, take).subscribe(
@@ -54,11 +55,13 @@ export class PreciosComponent implements OnInit {
     );
   }
 
-  
+
   
   submit()
   {
-   
+    this.PreciosService.create(this.PreciosForm.value).subscribe(
+      ok=>{console.log("Producto Creado")},
+      error=>console.log("Algo Salio Mal"));
   }
   open(content: any, precios: PrecioDataType) {
     this.selectPrecio = precios;

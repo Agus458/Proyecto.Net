@@ -24,7 +24,7 @@ export class ListarFacturasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getFacturas(0,50);
+    this.getFacturas(0,10);
   }
 
   getFacturas(skip: number, take: number) {
@@ -39,6 +39,7 @@ export class ListarFacturasComponent implements OnInit {
     );
     
   }
+  
   open(content: any, facturas: FacturaDataType) {
     this.selectFactura = facturas;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });

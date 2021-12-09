@@ -1,13 +1,10 @@
 import { PrecioDataType } from "./PrecioDatatype";
 
 export class ProductosDataType{
+    
     id: string;
 
-    name:String
-
-    description:Text;
-
-    fecha:Date;
+    nombre:String
 
     precio:PrecioDataType
 }

@@ -20,7 +20,7 @@ export class ProductosComponent implements OnInit {
   productos: ProductosDataType[]
   selectProductos: ProductosDataType;
   selectPrecio:PrecioDataType;
-
+ 
   page=9;
   size: number;
 
@@ -30,7 +30,7 @@ export class ProductosComponent implements OnInit {
     private modalService:  NgbModal,
     private router: Router,
     private toastService:ToastService) { }
-
+   
   ngOnInit(): void {
       /// this.getFacturas(0, 10);
       this.ProductosForm = this.FormBuilder.group({
@@ -41,10 +41,7 @@ export class ProductosComponent implements OnInit {
 
       })
   }
-  
 
-
- 
   getProducts(skip: number, take: number) {
     this.ProductosService.getAll(skip, take).subscribe(
       ok => {

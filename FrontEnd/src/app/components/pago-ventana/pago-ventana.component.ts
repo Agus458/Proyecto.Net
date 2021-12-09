@@ -18,6 +18,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class PagoVentanaComponent implements OnInit {
 
+  facturaId:string;
   facturas: FacturaDataType[];
   facturaselect: FacturaDataType;
   FacturaForm: FormGroup;

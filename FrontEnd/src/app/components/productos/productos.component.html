@@ -1,3 +1,45 @@
+
+
+   <!-- <div class="modal-body">
+        <agm-map [fecha]="selectProductos.fecha [fecha]="selectProductos.Fecha">
+            <agm-marker [fecha]="selectProductos.Fecha [echa]="selectProductos.Fecha"></agm-marker>
+        </agm-map>
+    </div>-->
+   
+<!--<div class="card border-0 shadow rounded-3 my-5">
+    <div class="card-body p-4 p-sm-5">
+        <h4 class="card-title fw-light fs-5">Edificios</h4>
+        <hr class="my-4">
+        <button type="button" class="btn btn-warning mb-4" [routerLink]="'nuevo'">Agregar</button>
+        <div class="table-responsive">
+            <table class="table table-borderless table-dark table-striped align-middle table-hover m-0">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of productos; index as i" class="align-middle">
+                        <th scope="row">{{i}}</th>
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.precio}}</td>
+                        <td class="text-right">
+                       
+                            <button class="btn btn-info ml-2" [routerLink]="'/producto/' + producto.id"><i
+                                    class="fas fa-calendar-day"></i></button>
+                        
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <ngb-pagination class="d-flex justify-content-end" [collectionSize]="size" [(page)]="page"
+                [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>-->
+
 <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -14,10 +56,11 @@
 
                         <div class="d-grid">                  
                         <button class="btn btn-block btn-warning btn-login text-uppercase fw-bold"
-                        type="submit" routerLink="/precios">Publicar Producto</button>
+                        type="submit"  selectProductos = "ProductosForm" [routerLink]="'/precios'" >Publicar Producto</button>
                             
                         </div>
                     </form>
+                    
                         
                 </div>
 

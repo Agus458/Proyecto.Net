@@ -38,12 +38,13 @@
                                         <tbody>
                                             <tr *ngFor="let factura of facturas; index as i" class="align-middle">
                                                 <th scope="row">{{i}}</th>
-                                                <td>{{factura.monto}}</td>
                                                 <td>{{factura.fecha}}</td>
-                                               <!-- <td>{{factura.pago}}</td>-->
-                                                <td>
-                                                    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                        (click)="open(content, factura)"><i class="fas fa-bars"></i></button>
+                                                <td>{{factura.monto}}</td>
+                                                <td>{{factura.pago}}</td>
+                                                <td class="text-right">
+
+                                                    <button class="btn btn-info ml-2" [routerLink]="'/pago/' + factura.id"><i
+                                                            class="fas fa-calendar-day"></i></button>
                                                 </td>
                                             </tr>
                                         </tbody>
