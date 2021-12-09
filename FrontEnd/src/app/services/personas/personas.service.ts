@@ -42,7 +42,7 @@ export class PersonasService {
     Object.keys(data).forEach(key => {
       form.append(key, data[key]);
     });
-
+    
     return this.Http.post(this.Url, form);
   }
 

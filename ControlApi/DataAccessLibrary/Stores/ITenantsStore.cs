@@ -49,5 +49,7 @@ namespace DataAccessLibrary.Stores
         Tenant GetByRut(string Rut);
 
         Tenant GetBySocialReason(string Rut);
+
+        IEnumerable<Tenant> Get();
     }
 }

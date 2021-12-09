@@ -12,7 +12,9 @@ namespace SharedLibrary.DataTypes.Rooms
     {
 
         public Guid Id { get; init; }
-  
+
+        public string Name { get; set; }
+
         public Guid BuildingId { get; init; }
 
         public BuildingDataType Building { get; init; }

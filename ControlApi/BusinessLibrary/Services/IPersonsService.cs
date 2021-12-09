@@ -22,7 +22,7 @@ namespace BusinessLibrary.Services
 
         void Delete(Guid Id);
 
-        void Update(Guid Id, UpdatePersonRequestDataType Data);
+        Task Update(Guid Id, UpdatePersonRequestDataType Data);
 
         Task<PersonDataType> Identify(IFormFile fileImage);
     }

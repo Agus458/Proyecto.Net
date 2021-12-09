@@ -54,7 +54,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             Guid Id = Guid.NewGuid();
             string Image = "";
 
-            if (Data.FileImage != null && Data.FileImage.Length > 0 && Data.FileImage.ContentType == "image/jpeg")
+            if (Data.FileImage != null && Data.FileImage.Length > 0 && Data.FileImage.ContentType.Contains("image"))
             {
                 await FaceApi.UploadImage(Data.FileImage, Id.ToString());
 
@@ -141,12 +141,19 @@ namespace BusinessLibrary.Services.ServicesImplementation
             return Mapper.Map<PersonDataType>(Building);
         }
 
-        public void Update(Guid Id, UpdatePersonRequestDataType Data)
+        public async Task Update(Guid Id, UpdatePersonRequestDataType Data)
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
 
             var Person = this.Store.GetById(Id);
             if (Person == null) throw new ApiError("Person Not Found", (int)HttpStatusCode.NotFound);
+
+            if (Data.FileImage != null && Data.FileImage.Length > 0 && Data.FileImage.ContentType.Contains("image"))
+            {
+                await FaceApi.UploadImage(Data.FileImage, Id.ToString());
+
+                Person.Image = FileHelper.Upload(Data.FileImage, this.Environment, Id.ToString());
+            }
 
             Mapper.Map(Data, Person);
 

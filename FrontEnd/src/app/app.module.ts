@@ -45,6 +45,7 @@ import { TimeAdapterService } from './services/time-adapter/time-adapter.service
 import { IngresosComponent } from './components/ingresos/ingresos.component';
 import { EditIngresoComponent } from './components/ingresos/edit-ingreso/edit-ingreso.component';
 import { EditDoorComponent } from './components/doors/edit-door/edit-door.component';
+import { AssignmentDialogComponent } from './components/assignments/assignment-dialog/assignment-dialog.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -81,6 +82,7 @@ registerLocaleData(localeES, "es");
     IngresosComponent,
     EditIngresoComponent,
     EditDoorComponent,
+    AssignmentDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -45,5 +46,7 @@ namespace SharedLibrary.DataTypes.Persons
         [EmailAddress]
         [MaxLength(200)]
         public string Email { get; set; }
+
+        public IFormFile FileImage { get; init; }
     }
 }

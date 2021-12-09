@@ -44,9 +44,9 @@ namespace ControlApi.Controllers
         }
 
         [HttpPut("{Id}")]
-        public IActionResult Update(Guid Id, UpdatePersonRequestDataType Data)
+        public async Task<IActionResult> Update(Guid Id, [FromForm] UpdatePersonRequestDataType Data)
         {
-            this.Service.Update(Id, Data);
+            await this.Service.Update(Id, Data);
             return NoContent();
         }
 

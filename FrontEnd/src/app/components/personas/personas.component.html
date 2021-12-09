@@ -9,19 +9,22 @@
     <div class="modal-body">
         <strong>Documento:</strong>
         <ul>
-            <li >{{selectedPerson.document}}</li>
+            <li>{{selectedPerson.document}}</li>
         </ul>
         <strong>Telefono:</strong>
-        <ul >
-            <li >{{selectedPerson.phone}}</li>
+        <ul>
+            <li>{{selectedPerson.phone}}</li>
         </ul>
         <strong>Email:</strong>
-        <ul >
-            <li >{{selectedPerson.email}}</li>
+        <ul>
+            <li>{{selectedPerson.email}}</li>
         </ul>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" *ngIf="AuthenticationService.hasRole('Admin')" (click)="delete(selectedPerson.id)">Eliminar</button>
+        <button type="button" class="btn btn-danger" *ngIf="AuthenticationService.hasRole('Admin')"
+            (click)="delete(selectedPerson.id)">Eliminar</button>
+        <button type="button" class="btn btn-warning"
+            [routerLink]="'/personas/editar/' + selectedPerson.id" (click)="modal.close()">Editar</button>
         <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
     </div>
 </ng-template>

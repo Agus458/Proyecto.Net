@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,14 +18,14 @@ namespace DataAccessLibrary.Stores
         /// Returns All the entities that corrispond with the target class.
         /// </summary>
         /// <returns>A collection of the target entity.</returns>
-        PaginationDataType<Target> GetAll(int Skip, int Take);
+        PaginationDataType<Target> GetAll(int Skip, int Take, [Optional] string[] Relations);
 
         /// <summary>
         /// Gets the target entity with the passed Id.
         /// </summary>
         /// <param name="Id">The Id of the target entity.</param>
         /// <returns>The entity with the passed Id.</returns>
-        Target GetById(Guid Id);
+        Target GetById(Guid Id, [Optional] string[] Relations);
 
         /// <summary>
         /// Creates the given entity.
@@ -47,7 +48,6 @@ namespace DataAccessLibrary.Stores
         /// <returns></returns>
         void Delete(Target Entity);
 
-        IEnumerable<Target> Get();
-
+        IEnumerable<Target> Get([Optional] string[] Relations);
     }
 }

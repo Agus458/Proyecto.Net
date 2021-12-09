@@ -36,20 +36,29 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.Context.SaveChanges();
         }
 
-        public IEnumerable<Target> Get()
+        public IEnumerable<Target> Get(string[] Relations)
         {
-            return this.Context.Set<Target>();
+            var RelationsArray = new List<string>() { };
+            if (Relations != null) RelationsArray = RelationsArray.Concat(Relations).ToList();
+
+            return this.Context.Set<Target>().GetAllIncluding(RelationsArray.ToArray());
         }
 
-        public PaginationDataType<Target> GetAll(int Skip, int Take)
+        public PaginationDataType<Target> GetAll(int Skip, int Take, string[] Relations)
         {
-            var Collection = this.Context.Set<Target>();
+            var RelationsArray = new List<string>() { };
+            if (Relations != null) RelationsArray = RelationsArray.Concat(Relations).ToList();
+
+            var Collection = this.Context.Set<Target>().GetAllIncluding(RelationsArray.ToArray());
             return new PaginationDataType<Target> { Collection = Collection.Skip(Skip).Take(Take > 0 ? Take : 10).AsEnumerable(), Size = Collection.Count() };
         }
 
-        public Target GetById(Guid Id)
+        public Target GetById(Guid Id, string[] Relations)
         {
-            return this.Context.Set<Target>().SingleOrDefault(Entity => Entity.Id == Id);
+            var RelationsArray = new List<string>() { };
+            if (Relations != null) RelationsArray = RelationsArray.Concat(Relations).ToList();
+
+            return this.Context.Set<Target>().GetAllIncluding(RelationsArray.ToArray()).SingleOrDefault(Entity => Entity.Id == Id);
         }
 
         public void Update(Target Entity)

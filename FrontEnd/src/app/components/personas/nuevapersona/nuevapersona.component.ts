@@ -32,7 +32,7 @@ export class NuevapersonaComponent implements OnInit {
       lastName: ["", [Validators.required]],
       phone: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
-      fileImage: [""]
+      fileImage: []
     });
 
     const routeParams = this.route.snapshot.paramMap;
@@ -49,6 +49,9 @@ export class NuevapersonaComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.personForm.value);
+    
+
     if (this.personForm.contains("id")) {
       const id = this.personForm.controls.id.value;
       this.PersonService.update(id, this.personForm.value).subscribe(
@@ -75,7 +78,7 @@ export class NuevapersonaComponent implements OnInit {
 
   public webcamImage: WebcamImage;
   async handleImage(webcamImage: WebcamImage) {
-    var image = await this.dataUrlToFile(webcamImage.imageAsDataUrl, "imagen")
+    var image = await this.dataUrlToFile(webcamImage.imageAsDataUrl, "imagen.jpg")
     
     this.personForm.get('fileImage')?.setValue(image);
     this.webcamImage = webcamImage;

@@ -10,6 +10,10 @@ namespace SharedLibrary.DataTypes.Rooms
     public record CreateRoomRequestDataType
     {
         [Required]
+        [MaxLength(200)]
+        public string Name { get; set; }
+
+        [Required]
         public Guid BuildingId { get; init; }
     }
 }

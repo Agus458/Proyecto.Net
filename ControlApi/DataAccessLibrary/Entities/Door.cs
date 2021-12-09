@@ -12,5 +12,9 @@ namespace DataAccessLibrary.Entities
     {
         [MaxLength(200)]
         public string Name { get; set; }
+
+        public string ActualUserId { get; set; }
+
+        public User ActualUser { get; set; }
     }
 }

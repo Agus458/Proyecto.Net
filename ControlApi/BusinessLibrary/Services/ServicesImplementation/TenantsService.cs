@@ -55,6 +55,12 @@ namespace BusinessLibrary.Services.ServicesImplementation
             }
         }
 
+        public IEnumerable<TenantDataType> Get()
+        {
+            var Result = this.Store.Get();
+            return Result.Select(Tenant => Mapper.Map<TenantDataType>(Tenant));
+        }
+
         public PaginationDataType<TenantDataType> GetAll(int Skip, int Take)
         {
             var Result = this.Store.GetAll(Skip, Take);

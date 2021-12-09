@@ -29,6 +29,10 @@ export class TenantsService {
     return this.Http.get<TenantDataType>(this.Url + "/" + id);
   }
 
+  get() {
+    return this.Http.get<TenantDataType[]>(this.Url + "/List");
+  }
+
   update(id: string, data: any) {
     return this.Http.put(this.Url + "/" + id, data);
   }

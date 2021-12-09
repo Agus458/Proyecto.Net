@@ -8541,19 +8541,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\agusp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
+      "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
       "projectName": "ControlApi",
-      "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\obj\\",
+      "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\ControlApi.csproj",
+      "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\ControlApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8567,14 +8567,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
-              "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj"
+            "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj": {
+              "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\BusinessLibrary\\BusinessLibrary.csproj"
             },
-            "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-              "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
+            "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+              "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj"
             },
-            "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
-              "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
+            "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj": {
+              "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\SharedLibrary\\SharedLibrary.csproj"
             }
           }
         }
@@ -8657,7 +8657,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

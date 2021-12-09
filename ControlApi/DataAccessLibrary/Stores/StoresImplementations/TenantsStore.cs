@@ -3,6 +3,7 @@ using DataAccessLibrary.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -92,6 +93,11 @@ namespace DataAccessLibrary.Stores.StoresImplementations
         public Tenant GetBySocialReason(string SocialReason)
         {
             return this.Context.Set<Tenant>().SingleOrDefault(Entity => Entity.SocialReason == SocialReason);
+        }
+
+        public IEnumerable<Tenant> Get()
+        {
+            return this.Context.Set<Tenant>();
         }
     }
 }

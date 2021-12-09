@@ -47,11 +47,11 @@ namespace ControlApi.Controllers
                 {
                     new Item()
                     {
-                      name = "Item Name",
-                      currency = "USD",
-                      price = "15",
-                      quantity = "5",
-                      sku = "sku"
+                         name = "Item Name",
+                         currency = "USD",
+                         price = "15",
+                         quantity = "5",
+                         sku = "sku"
                     }
                 }
             };

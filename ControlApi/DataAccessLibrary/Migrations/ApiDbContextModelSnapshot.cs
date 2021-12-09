@@ -87,6 +87,9 @@ namespace DataAccessLibrary.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("ActualUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<Guid>("BuildingId")
                         .HasColumnType("uniqueidentifier");
 
@@ -101,6 +104,8 @@ namespace DataAccessLibrary.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ActualUserId");
 
                     b.HasIndex("BuildingId");
 
@@ -320,6 +325,10 @@ namespace DataAccessLibrary.Migrations
 
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTimeOffset>("UpdatedDate")
                         .HasColumnType("datetimeoffset");
@@ -601,11 +610,17 @@ namespace DataAccessLibrary.Migrations
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Door", b =>
                 {
+                    b.HasOne("DataAccessLibrary.Entities.User", "ActualUser")
+                        .WithMany()
+                        .HasForeignKey("ActualUserId");
+
                     b.HasOne("DataAccessLibrary.Entities.Building", "Building")
                         .WithMany()
                         .HasForeignKey("BuildingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("ActualUser");
 
                     b.Navigation("Building");
                 });

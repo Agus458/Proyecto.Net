@@ -9,6 +9,8 @@ namespace SharedLibrary.DataTypes.Rooms
 {
     public record UpdateRoomRequestDataType
     {
+        public string Name { get; set; }
+
         public Guid? BuildingId { get; init; }
     }
 }

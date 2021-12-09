@@ -11,7 +11,9 @@ namespace BusinessLibrary.Services
     public interface ITenantsService
     {
         PaginationDataType<TenantDataType> GetAll(int Skip, int Take);
-        
+
+        IEnumerable<TenantDataType> Get();
+
         TenantDataType GetById(Guid Id);
 
         TenantDataType Create(CreateTenantRequestDataType Data);

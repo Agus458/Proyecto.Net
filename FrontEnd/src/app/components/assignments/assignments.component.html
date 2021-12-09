@@ -1,1 +1,37 @@
-<p>assignments works!</p>
+<!-- Modal -->
+<ng-template #content let-modal>
+    <app-assignment-dialog (closeEvent)="modal.dismiss()"></app-assignment-dialog>
+</ng-template>
+
+<div class="card border-0 shadow rounded-3 my-5">
+    <div class="card-body p-4 p-sm-5">
+        <h4 class="card-title fw-light fs-5">Asignaciones</h4>
+        <hr class="my-4">
+
+        <button type="button" class="btn btn-warning mb-4" (click)="open(content)">Seleccionar Puerta</button>
+        <div class="table-responsive">
+            <table class="table table-borderless table-dark table-striped align-middle table-hover m-0">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Puerta</th>
+                        <th scope="col">Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let assignment of assignments; index as i" class="align-middle">
+                        <th scope="row">{{i}}</th>
+                        <td>{{assignment.door?.name}}</td>
+                        <td>{{assignment.createdDate | date : 'short'}}</td>
+                        <td class="text-right">
+                            <button type="button" class="btn btn-danger" (click)="delete(assignment.id)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+
+            <ngb-pagination class="d-flex justify-content-end" [collectionSize]="size" [(page)]="page" [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
