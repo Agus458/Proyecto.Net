@@ -4,39 +4,25 @@
     <hr class="my-4">
     <ul class="nav flex-column">
       <li class="nav-item" *ngIf="AuthenticationService.hasRole('SuperAdmin')">
-        <a class="nav-link" routerLink="/instituciones"><i class="fas fa-university"></i> Instituciones</a>
+        <a class="nav-link" routerLink="/instituciones"><i class="fas fa-user-tie"></i> Instituciones</a>
       </li>
-
-      <ng-container *ngIf="AuthenticationService.hasRole('Portero')">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/asignaciones"><i
-              class="fas fa-toolbox"></i> Asignaciones</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/ingresar"><i
-              class="fas fa-camera-retro"></i> Ingreso</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/ingresos"><i
-              class="fas fa-walking"></i> Ingresos</a>
-        </li>
-      </ng-container>
-
-      <ng-container *ngIf="AuthenticationService.hasRole('Admin')">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/edificios"><i class="fas fa-building"></i> Edificios</a>
-        </li>
-        <li class="nav-item"
-          *ngIf="AuthenticationService.hasRole('SuperAdmin') || AuthenticationService.hasRole('Admin')">
-          <a class="nav-link" routerLink="/usuarios"><i class="fas fa-users"></i> Usuarios</a>
-        </li>
-      </ng-container>
-
       <li class="nav-item"
-        *ngIf="AuthenticationService.hasRole('Admin') || AuthenticationService.hasRole('Portero') || AuthenticationService.hasRole('Gestor')">
+        *ngIf="AuthenticationService.hasRole('SuperAdmin') || AuthenticationService.hasRole('Admin')">
+        <a class="nav-link" routerLink="/usuarios"><i class="fas fa-users"></i> Usuarios</a>
+      </li>
+      <li class="nav-item" *ngIf="AuthenticationService.hasRole('Admin') || AuthenticationService.hasRole('Portero') || AuthenticationService.hasRole('Gestor')">
         <a class="nav-link" routerLink="/personas"><i class="fas fa-address-card"></i> Personas</a>
       </li>
-
+      <li class="nav-item" *ngIf="AuthenticationService.hasRole('Portero')">
+        <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/asignaciones"><i
+            class="fas fa-toolbox"></i> Asignaciones</a>
+      </li>
+      <li class="nav-item" *ngIf="AuthenticationService.hasRole('Portero')">
+        <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/ingresar"><i class="fas fa-walking"></i> Ingreso</a>
+      </li>
+      <li class="nav-item" *ngIf="AuthenticationService.hasRole('Admin')">
+        <a class="nav-link" routerLink="/edificios"><i class="fas fa-building"></i> Edificios</a>
+      </li>
     </ul>
   </div>
 </div>

@@ -23,12 +23,9 @@
     "@microsoft/signalr": "^6.0.0",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@schematics/angular": "^13.0.1",
-    "angular-calendar": "^0.28.28",
     "bootstrap": "^4.5.0",
-    "moment": "^2.29.1",
-    "moment-timezone": "^0.5.34",
+    "mdb-ui-kit": "^3.10.1",
     "ngx-webcam": "^0.3.2",
-    "rrule": "^2.6.8",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

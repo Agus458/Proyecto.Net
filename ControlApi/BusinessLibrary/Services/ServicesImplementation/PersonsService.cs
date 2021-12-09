@@ -11,7 +11,6 @@ using SharedLibrary.Error;
 using SharedLibrary.Extensions;
 using SharedLibrary.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Security.Claims;

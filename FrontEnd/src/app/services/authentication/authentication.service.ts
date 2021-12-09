@@ -80,6 +80,5 @@ export class AuthenticationService {
 
   logOut() {
     localStorage.clear();
-    this.Router.navigateByUrl("/");
   }
 }

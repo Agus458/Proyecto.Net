@@ -135,68 +135,6 @@ namespace DataAccessLibrary.Migrations
                     b.ToTable("Entries");
                 });
 
-            modelBuilder.Entity("DataAccessLibrary.Entities.Event", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(36)
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("BuildingId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<TimeSpan>("EndTime")
-                        .HasColumnType("time");
-
-                    b.Property<bool>("Friday")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Monday")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RecurrencyType")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Saturday")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<TimeSpan>("StartTime")
-                        .HasColumnType("time");
-
-                    b.Property<bool>("Sunday")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Thursday")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Tuesday")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset>("UpdatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<bool>("Wednesday")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BuildingId");
-
-                    b.ToTable("Events");
-                });
-
             modelBuilder.Entity("DataAccessLibrary.Entities.Notification", b =>
                 {
                     b.Property<Guid>("Id")
@@ -627,17 +565,6 @@ namespace DataAccessLibrary.Migrations
                     b.Navigation("Building");
 
                     b.Navigation("Person");
-                });
-
-            modelBuilder.Entity("DataAccessLibrary.Entities.Event", b =>
-                {
-                    b.HasOne("DataAccessLibrary.Entities.Building", "Building")
-                        .WithMany()
-                        .HasForeignKey("BuildingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Building");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Notification", b =>
