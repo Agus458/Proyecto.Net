@@ -46,6 +46,10 @@ import { IngresosComponent } from './components/ingresos/ingresos.component';
 import { EditIngresoComponent } from './components/ingresos/edit-ingreso/edit-ingreso.component';
 import { EditDoorComponent } from './components/doors/edit-door/edit-door.component';
 import { AssignmentDialogComponent } from './components/assignments/assignment-dialog/assignment-dialog.component';
+import { VistaNovedadComponent } from './components/novedades/vista-novedad/vista-novedad.component';
+import { SinNovedadComponent } from './components/novedades/sin-novedad/sin-novedad.component';
+import { ListNovedadesComponent } from './components/novedades/list-novedades/list-novedades.component';
+import { EditNovedadesComponent } from './components/novedades/edit-novedades/edit-novedades.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -83,6 +87,10 @@ registerLocaleData(localeES, "es");
     EditIngresoComponent,
     EditDoorComponent,
     AssignmentDialogComponent,
+    VistaNovedadComponent,
+    SinNovedadComponent,
+    ListNovedadesComponent,
+    EditNovedadesComponent,
   ],
   imports: [
     BrowserModule,
