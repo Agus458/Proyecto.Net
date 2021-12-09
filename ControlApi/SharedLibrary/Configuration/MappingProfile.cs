@@ -41,8 +41,8 @@ namespace SharedLibrary.Configuration
             CreateMap<UpdateDoorRequestDataType, Door>();
 
             CreateMap<Novelty, NoveltyDataType>();
-            CreateMap<CreateRoomRequestDataType, Novelty>();
-            CreateMap<UpdateRoomRequestDataType, Novelty>();
+            CreateMap<CreateNoveltyRequestDataType, Novelty>();
+            CreateMap<UpdateNoveltyRequestDataType, Novelty>();
 
             CreateMap<Person, PersonDataType>();
             CreateMap<CreatePersonRequestDataType, Person>();

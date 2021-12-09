@@ -29,21 +29,21 @@ namespace ControlApi.Controllers
             return Ok(this.Service.GetAll(Skip, Take, BuildingId));
         }
 
-        [HttpGet("{Id}")]
-        public IActionResult GetById(Guid Id)
+        [HttpGet("Building/{BuildingId}/{Id}")]
+        public IActionResult GetById(Guid Id, Guid BuildingId)
         {
-            return Ok(this.Service.GetById(Id));
+            return Ok(this.Service.GetById(Id, BuildingId));
         }
 
-        [HttpDelete("{Id}")]
-        public IActionResult Delete(Guid Id)
+        [HttpDelete("Building/{BuildingId}/{Id}")]
+        public IActionResult Delete(Guid Id, Guid BuildingId)
         {
-            this.Service.Delete(Id);
+            this.Service.Delete(Id, BuildingId);
             return NoContent();
         }
 
         [HttpPut("{Id}")]
-        public IActionResult Update(Guid Id, UpdateNoveltyRequestDataType Data)
+        public IActionResult Update(Guid Id, [FromForm] UpdateNoveltyRequestDataType Data)
         {
             this.Service.Update(Id, Data);
             return NoContent();
@@ -53,7 +53,7 @@ namespace ControlApi.Controllers
         public IActionResult Create([FromForm] CreateNoveltyRequestDataType Data)
         {
             var result = this.Service.Create(Data);
-            return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
+            return CreatedAtAction(nameof(GetById), new { BuildingId = result.BuildingId, Id = result.Id }, result);
         }
     }
 }

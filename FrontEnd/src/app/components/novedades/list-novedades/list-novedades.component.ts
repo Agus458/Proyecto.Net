@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NoveltiesService } from 'src/app/services/novelties.service';
-import {NoveltiesDataType} from 'src/app/models/NoveltiesDataType';
+import { NoveltiesDataType } from 'src/app/models/NoveltiesDataType';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
@@ -21,22 +21,26 @@ export class ListNovedadesComponent implements OnInit {
   constructor(
     private NoveltiesService: NoveltiesService,
     private modalService: NgbModal,
-    private router: Router,
+    private route: ActivatedRoute,
     private toastService: ToastService,
   ) { }
 
   ngOnInit(): void {
-    this.getNovelties(0, 10);
+    const routeParams = this.route.snapshot.paramMap;
+    const IdFromRoute = routeParams.get('id');
+
+    if (IdFromRoute) {
+      this.buildingId = IdFromRoute;
+
+      this.getNovelties(0, 10);
+    }
   }
 
-  getNovelties(skip: number, take: number,) {
+  getNovelties(skip: number, take: number) {
     this.NoveltiesService.getAll(skip, take, this.buildingId).subscribe(
       ok => {
         this.Novelties = ok.collection;
         this.size = ok.size;
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -47,7 +51,7 @@ export class ListNovedadesComponent implements OnInit {
   }
 
   delete(id: string) {
-    this.NoveltiesService.delete(id).subscribe(
+    this.NoveltiesService.delete(id, this.buildingId).subscribe(
       ok => {
         this.toastService.show("Success", "Edificio eliminado");
         this.modalService.dismissAll();

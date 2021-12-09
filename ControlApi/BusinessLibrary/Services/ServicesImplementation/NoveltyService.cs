@@ -35,29 +35,39 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public NoveltyDataType Create(CreateNoveltyRequestDataType Data)
         {
-            var Building = this.BuildingsStore.GetById(Data.BuildingId);
-            if (Building == null) throw new ApiError("Edificio Invalido", (int)HttpStatusCode.BadRequest);
-
-            Guid Id = Guid.NewGuid();
-            string Image = "";
-            if (Data.FileImage != null && Data.FileImage.Length > 0 && Data.FileImage.ContentType == "image/jpeg")
+            try
             {
-                Image = FileHelper.Upload(Data.FileImage, this.Environment, Id.ToString());
+                var Building = this.BuildingsStore.GetById(Data.BuildingId);
+                if (Building == null) throw new ApiError("Edificio Invalido", (int)HttpStatusCode.BadRequest);
+
+                Guid Id = Guid.NewGuid();
+                string Image = "";
+                if (Data.FileImage != null && Data.FileImage.Length > 0 && Data.FileImage.ContentType.Contains("image"))
+                {
+                    Image = FileHelper.Upload(Data.FileImage, this.Environment, Id.ToString());
+                }
+
+                var NewNovelty = new Novelty() { Id = Id, Image = Image };
+                Mapper.Map(Data, NewNovelty);
+
+                this.Store.Create(NewNovelty);
+
+                return Mapper.Map<NoveltyDataType>(NewNovelty);
             }
+            catch (Exception)
+            {
 
-            var NewNovelty = new Novelty () { Id = Id, Image = Image };
-            Mapper.Map(Data, NewNovelty);
-
-            this.Store.Create(NewNovelty);
-
-            return Mapper.Map<NoveltyDataType>(NewNovelty);
+                throw;
+            }
         }
 
-        public void Delete(Guid Id)
+        public void Delete(Guid Id, Guid BuildingId)
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
+            var Building = this.BuildingsStore.GetById(BuildingId);
+            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
 
-            var Novelty = this.Store.GetById(Id);
+            var Novelty = this.Store.GetById(Id, BuildingId);
             if (Novelty == null) throw new ApiError("Novelty Not Found", (int)HttpStatusCode.NotFound);
 
             this.Store.Delete(Novelty);
@@ -77,11 +87,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
             };
         }
 
-        public NoveltyDataType GetById(Guid Id)
+        public NoveltyDataType GetById(Guid Id, Guid BuildingId)
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);
+            var Building = this.BuildingsStore.GetById(BuildingId);
+            if (Building == null) throw new ApiError("Edificio Invalida", (int)HttpStatusCode.BadRequest);
 
-            var Novelty = this.Store.GetById(Id);
+            var Novelty = this.Store.GetById(Id, BuildingId);
             if (Novelty == null) throw new ApiError("Novelty Not Found", (int)HttpStatusCode.NotFound);
 
             return Mapper.Map<NoveltyDataType>(Novelty);
@@ -93,6 +105,11 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
             var Novelty = this.Store.GetById(Id);
             if (Novelty == null) throw new ApiError("Novelty Not Found", (int)HttpStatusCode.NotFound);
+
+            if (Data.FileImage != null && Data.FileImage.Length > 0 && Data.FileImage.ContentType == "image/jpeg")
+            {
+                Novelty.Image = FileHelper.Upload(Data.FileImage, this.Environment, Id.ToString());
+            }
 
             Mapper.Map(Data, Novelty);
 

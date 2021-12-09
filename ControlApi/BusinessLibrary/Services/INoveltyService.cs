@@ -12,11 +12,11 @@ namespace BusinessLibrary.Services
     {
         PaginationDataType<NoveltyDataType> GetAll(int Skip, int Take, Guid BuildingId);
 
-        NoveltyDataType GetById(Guid Id);
+        NoveltyDataType GetById(Guid Id, Guid BuildingId);
 
         NoveltyDataType Create(CreateNoveltyRequestDataType Data);
 
-        void Delete(Guid Id);
+        void Delete(Guid Id, Guid BuildingId);
 
         void Update(Guid Id, UpdateNoveltyRequestDataType Data);
     }

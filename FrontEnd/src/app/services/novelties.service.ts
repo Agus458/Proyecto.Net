@@ -22,20 +22,32 @@ export class NoveltiesService {
     });
   }
 
-  getById(id: string) {
-    return this.Http.get<NoveltiesDataType>(this.Url + "/" + id);
+  getById(id: string, buildingId: string) {
+    return this.Http.get<NoveltiesDataType>(this.Url + "/Building/" + buildingId + "/" + id);
   }
 
-  update(id: string, data: any,) {
-    return this.Http.put(this.Url + "/" + id, data);
+  update(id: string, data: any) {
+    let form = new FormData();
+
+    Object.keys(data).forEach(key => {
+      form.append(key, data[key]);
+    });
+
+    return this.Http.put(this.Url + "/" + id, form);
   }
 
-  delete(id: string) {
-    return this.Http.delete(this.Url + "/" + id);
+  delete(id: string, buildingId: string) {
+    return this.Http.delete(this.Url + "/Building/" + buildingId + "/" + id);
   }
 
   create(data: any) {
-    return this.Http.post(this.Url, data);
+    let form = new FormData();
+
+    Object.keys(data).forEach(key => {
+      form.append(key, data[key]);
+    });
+
+    return this.Http.post(this.Url, form);
   }
   
 }

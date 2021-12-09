@@ -16,7 +16,6 @@ export class EditNovedadesComponent implements OnInit {
   NoveltyForm: FormGroup;
   buildingId: string;
 
-
   constructor(
     private NoveltiesService: NoveltiesService,
     private FormBuilder: FormBuilder,
@@ -27,7 +26,7 @@ export class EditNovedadesComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    
+
     const routeParams = this.route.snapshot.paramMap;
     let IdFromRoute = routeParams.get('id');
 
@@ -38,19 +37,21 @@ export class EditNovedadesComponent implements OnInit {
     this.NoveltyForm = this.FormBuilder.group({
       title: ["", [Validators.required]],
       content: ["", [Validators.required]],
+      fileImage: [],
       buildingId: [this.buildingId],
     });
 
     IdFromRoute = routeParams.get('noveltyId');
 
     if (IdFromRoute) {
-      this.NoveltiesService.getById(IdFromRoute).subscribe(
+      this.NoveltiesService.getById(IdFromRoute, this.buildingId).subscribe(
         ok => {
           this.NoveltyForm.addControl("id", new FormControl('', [Validators.required]));
+
+          this.NoveltyForm.patchValue(ok);
         }
       );
     }
-
 
   }
 
@@ -62,7 +63,7 @@ export class EditNovedadesComponent implements OnInit {
       this.NoveltiesService.update(id, this.NoveltyForm.value).subscribe(
         ok => {
           this.toastService.show("Success", "Novedad actualizada");
-          this.router.navigateByUrl("novedades");
+          this.router.navigateByUrl("novedades/edificio/" + this.buildingId);
         },
         err => this.toastService.show("Error", "Algo salio mal")
       );
@@ -70,7 +71,7 @@ export class EditNovedadesComponent implements OnInit {
       this.NoveltiesService.create(this.NoveltyForm.value).subscribe(
         ok => {
           this.toastService.show("Success", "Novedad creada");
-          this.router.navigateByUrl("novedades");
+          this.router.navigateByUrl("novedades/edificio/" + this.buildingId);
         },
         error => {
           console.log(error);
@@ -81,5 +82,12 @@ export class EditNovedadesComponent implements OnInit {
     }
   }
 
+  onFileSelect(event: any) {
+    const file: File = event.target.files[0];
+
+    if (file) {
+      this.NoveltyForm.get("fileImage")?.setValue(file);
+    }
+  }
 
 }

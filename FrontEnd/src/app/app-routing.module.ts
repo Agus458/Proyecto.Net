@@ -62,9 +62,9 @@ const routes: Routes = [
       { path: "puertas/edificio/:id/editar/:doorId", component: EditDoorComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
       { path: "puertas/edificio/:id/agregarPuerta", component: EditDoorComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
 
-      { path: "novedades", component: ListNovedadesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
-      { path: "novedades/nuevo", component: EditNovedadesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
-
+      { path: "novedades/edificio/:id", component: ListNovedadesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+      { path: "novedades/edificio/:id/nuevo", component: EditNovedadesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+      { path: "novedades/edificio/:id/editar/:noveltyId", component: EditNovedadesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
 
       { path: "eventos/edificio/:id", component: EventosComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
       { path: "eventos/edificio/:id/nuevo", component: EditEventoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
