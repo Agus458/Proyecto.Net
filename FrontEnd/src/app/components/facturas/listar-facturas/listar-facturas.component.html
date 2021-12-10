@@ -1,0 +1,59 @@
+<ng-template #content let-modal>
+   <!-- <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{selectFactura.fecha}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <agm-map [latitude]="selectFactura.fecha" [longitude]="selectedBuilding.longitude">
+            <agm-marker [latitude]="selectedBuilding.latitude" [longitude]="selectedBuilding.longitude"></agm-marker>
+        </agm-map>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="delete(selectFactura.id)">Eliminar</button>
+        <button type="button" class="btn btn-success" [routerLink]="'/edificios/editar/' + selectedBuilding.id"
+            (click)="modal.close()">Editar</button>
+        <button class="btn btn-info" [routerLink]="'/puertas/edificio/' + selectedBuilding.id"><i class="fas fa-door-open"></i> Puertas</button>
+        <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
+    </div>-->
+</ng-template>
+
+<div>
+    <div>
+                        <div class="card border-0 shadow rounded-3 my-5">
+                            <div class="card-body p-4 p-sm-5">
+                                <h4 class="card-title fw-light fs-5">Factura</h4>
+        
+                                <div class="table-responsive">
+                                    <table class="table table-borderless table-dark table-striped align-middle table-hover m-0">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Monto</th>
+                                                <th scope="col">Pagado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let factura of facturas; index as i" class="align-middle">
+                                                <th scope="row">{{i}}</th>
+                                                <td>{{factura.fecha}}</td>
+                                                <td>{{factura.monto}}</td>
+                                                <td>{{factura.pago}}</td>
+                                                <td class="text-right">
+
+                                                    <button class="btn btn-info ml-2" [routerLink]="'/pago/' + factura.id"><i
+                                                            class="fas fa-calendar-day"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                    <ngb-pagination class="d-flex justify-content-end" [collectionSize]="size" [(page)]="page"
+                                        [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
+                                </div>
+                </div>
+            </div>
+    </div>
+</div>

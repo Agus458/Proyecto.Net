@@ -27,6 +27,10 @@ import { IsLoggedInGuard } from './guards/is-logged-in/is-logged-in.guard';
 import { TieneRolGuard } from './guards/tiene-rol/tiene-rol.guard';
 import { ListNovedadesComponent } from './components/novedades/list-novedades/list-novedades.component';
 import { EditNovedadesComponent } from './components/novedades/edit-novedades/edit-novedades.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
+import { ListarFacturasComponent } from './components/facturas/listar-facturas/listar-facturas.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { PagoVentanaComponent } from './components/pagos/pago-ventana/pago-ventana.component';
 
 
 const routes: Routes = [
@@ -71,13 +75,22 @@ const routes: Routes = [
       { path: "eventos/edificio/:id/editar/:eventId", component: EditEventoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
 
       { path: "ingresos/edificio/:id", component: IngresosComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
-      { path: "ingresos", component: IngresosComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Portero'] } },
       { path: "ingresos/nuevo", component: EditIngresoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Portero'] } },
 
       { path: "personas", component: PersonasComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin', 'Portero', 'Gestor'] } },
       { path: "personas/nuevo", component: NuevapersonaComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin', 'Portero', 'Gestor'] } },
       { path: "personas/editar/:id", component: NuevapersonaComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin', 'Portero', 'Gestor'] } },
 
+      { path: "facturas", component: FacturasComponent},
+      { path: "listarfacturas", component: ListarFacturasComponent},
+
+      { path: "productos", component: ProductosComponent},
+
+      { path: "pago", component: PagoVentanaComponent},
+
+      { path: "precios", component: PagoVentanaComponent},
+
+      
       { path: "asignaciones", component: AssignmentsComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Portero'] } },
     ]
   },

@@ -6270,19 +6270,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\agusp\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
       "projectName": "DataAccessLibrary",
-      "projectPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
-      "packagesPath": "C:\\Users\\agusp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\agusp\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\obj\\",
+      "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\DataAccessLibrary.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\Documents\\GitHub\\Proyecto.Net\\ControlApi\\DataAccessLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\agusp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6348,7 +6348,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

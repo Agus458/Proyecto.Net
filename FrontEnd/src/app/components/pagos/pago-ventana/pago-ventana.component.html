@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="con-sm-9 col-md-7 col-lg 5 mx-auto">
+            <div class="card border-0 shadow rounded-3 my-5">
+                <div class="card-body p-4 p-sm-5">
+                    <h4 class="card-title fw-light fs-5">Precios Disponibles</h4>
+                    <hr class="my-4">
+                    <ul>
+                        <li *ngFor="let element of facturas">
+                            <ul class="card-body">
+                                <li class="card-body" *ngIf="element.pago == null">
+                            </ul>
+                            <div class="d-grid">
+                                <button class="btn btn-block btn-warning btn-login text-uppercase fw-bold" type="submit"
+                                    (ngSubmit)="Pagar()">Pagar</button>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

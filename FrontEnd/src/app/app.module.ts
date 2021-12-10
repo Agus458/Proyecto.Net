@@ -50,6 +50,11 @@ import { VistaNovedadComponent } from './components/novedades/vista-novedad/vist
 import { SinNovedadComponent } from './components/novedades/sin-novedad/sin-novedad.component';
 import { ListNovedadesComponent } from './components/novedades/list-novedades/list-novedades.component';
 import { EditNovedadesComponent } from './components/novedades/edit-novedades/edit-novedades.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
+import { ListarFacturasComponent } from './components/facturas/listar-facturas/listar-facturas.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { PagoVentanaComponent } from './components/pagos/pago-ventana/pago-ventana.component';
+import { PreciosComponent } from './components/precios/precios.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -91,6 +96,11 @@ registerLocaleData(localeES, "es");
     SinNovedadComponent,
     ListNovedadesComponent,
     EditNovedadesComponent,
+    FacturasComponent,
+    ListarFacturasComponent,
+    ProductosComponent,
+    PagoVentanaComponent,
+    PreciosComponent,
   ],
   imports: [
     BrowserModule,
