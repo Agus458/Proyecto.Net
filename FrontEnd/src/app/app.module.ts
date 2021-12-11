@@ -42,6 +42,8 @@ import { MostrarProductosPrecioComponent } from './components/mostrar-productos-
 import { PagoVentanaComponent } from './components/pago-ventana/pago-ventana.component';
 import { RealizarPagoComponent } from './components/realizar-pago/realizar-pago.component';
 import { GenerarFacturaComponent } from './components/generar-factura/generar-factura.component';
+import { PaydayComponent } from './components/payday/payday.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
 registerLocaleData(localeES, "es");
 
 @NgModule({
@@ -76,6 +78,8 @@ registerLocaleData(localeES, "es");
     PagoVentanaComponent,
     RealizarPagoComponent,
     GenerarFacturaComponent,
+    PaydayComponent,
+    PaypalComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,7 @@ import { MostrarProductosPrecioComponent } from './components/mostrar-productos-
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PagoVentanaComponent } from './components/pago-ventana/pago-ventana.component';
 import { PagosComponent } from './components/pagos/pagos.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
 import { NuevapersonaComponent } from './components/personas/nuevapersona/nuevapersona.component';
 import { PersonasComponent } from './components/personas/personas.component';
 import { PreciosComponent } from './components/precios/precios.component';
@@ -69,9 +70,9 @@ const routes: Routes = [
 
       {path:"mostrar-productos",component:MostrarProductosPrecioComponent},
 
-      {path: "listar-facturas",component:ListarFacturasComponent}
+      {path: "listar-facturas",component:ListarFacturasComponent},
 
-            
+      {path: "paypal", component:PaypalComponent}  
     ]
   },
   
