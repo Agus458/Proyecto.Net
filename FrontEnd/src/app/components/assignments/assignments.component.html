@@ -1,6 +1,6 @@
 <!-- Modal -->
 <ng-template #content let-modal>
-    <app-assignment-dialog (closeEvent)="modal.dismiss()"></app-assignment-dialog>
+    <app-assignment-dialog (closeEvent)="modal.dismiss()" (reloadEvent)="getIngresos(0, 10)"></app-assignment-dialog>
 </ng-template>
 
 <div class="card border-0 shadow rounded-3 my-5">

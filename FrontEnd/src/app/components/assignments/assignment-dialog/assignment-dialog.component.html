@@ -5,5 +5,31 @@
     </button>
 </div>
 <div class="modal-body">
-    
+    <div class="table-responsive">
+        <table class="table table-borderless table-dark table-striped align-middle table-hover m-0">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let door of doors; index as i" class="align-middle">
+                    <th scope="row">{{i}}</th>
+                    <td>{{door.name}}</td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-success" (click)="seleccionar(door.id)" *ngIf="!door.actualUser; else user">Seleccionar</button>
+                        <ng-template #user>
+                            <button type="button" class="btn btn-primary" *ngIf="door.actualUser.email == AuthenticationService.getUser(); else other">Actual</button>
+                        </ng-template>
+                        <ng-template #other>
+                            <button type="button" class="btn btn-info">Seleccionada</button>
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+
+        <ngb-pagination class="d-flex justify-content-end" [collectionSize]="size" [(page)]="page" [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
 </div>

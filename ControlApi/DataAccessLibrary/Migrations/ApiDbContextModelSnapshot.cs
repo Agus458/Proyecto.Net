@@ -87,9 +87,6 @@ namespace DataAccessLibrary.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ActualUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<Guid>("BuildingId")
                         .HasColumnType("uniqueidentifier");
 
@@ -104,8 +101,6 @@ namespace DataAccessLibrary.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ActualUserId");
 
                     b.HasIndex("BuildingId");
 
@@ -383,6 +378,9 @@ namespace DataAccessLibrary.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("DoorId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -435,6 +433,10 @@ namespace DataAccessLibrary.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BuildingId");
+
+                    b.HasIndex("DoorId")
+                        .IsUnique()
+                        .HasFilter("[DoorId] IS NOT NULL");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -610,17 +612,11 @@ namespace DataAccessLibrary.Migrations
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Door", b =>
                 {
-                    b.HasOne("DataAccessLibrary.Entities.User", "ActualUser")
-                        .WithMany()
-                        .HasForeignKey("ActualUserId");
-
                     b.HasOne("DataAccessLibrary.Entities.Building", "Building")
                         .WithMany()
                         .HasForeignKey("BuildingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ActualUser");
 
                     b.Navigation("Building");
                 });
@@ -705,11 +701,17 @@ namespace DataAccessLibrary.Migrations
                         .WithMany()
                         .HasForeignKey("BuildingId");
 
+                    b.HasOne("DataAccessLibrary.Entities.Door", "Door")
+                        .WithOne("ActualUser")
+                        .HasForeignKey("DataAccessLibrary.Entities.User", "DoorId");
+
                     b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
                         .WithMany()
                         .HasForeignKey("TenantId");
 
                     b.Navigation("Building");
+
+                    b.Navigation("Door");
 
                     b.Navigation("Tenant");
                 });
@@ -763,6 +765,11 @@ namespace DataAccessLibrary.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Door", b =>
+                {
+                    b.Navigation("ActualUser");
                 });
 #pragma warning restore 612, 618
         }

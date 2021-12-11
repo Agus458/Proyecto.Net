@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AssignmentDataType } from 'src/app/models/AssignmentDataType';
+import { DoorDataType } from 'src/app/models/DoorDataType';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -23,11 +24,24 @@ export class AsignacionesService {
     });
   }
 
+  getDoors(skip: number, take: number) {
+    return this.Http.get<{ collection: DoorDataType[], size: number }>(this.Url + "/Doors", {
+      params: {
+        skip,
+        take
+      }
+    });
+  }
+
   getById(id: string) {
     return this.Http.get<AssignmentDataType>(this.Url + "/" + id);
   }
-  
+
+  delete(id: string) {
+    return this.Http.delete(this.Url + "/" + id);
+  }
+
   create(door: string) {
-    return this.Http.post(this.Url, door);
+    return this.Http.post(this.Url, { doorId: door });
   }
 }

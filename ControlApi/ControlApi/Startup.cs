@@ -138,6 +138,7 @@ namespace ControlApi
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStore<>), typeof(DataAccessLibrary.Stores.StoresImplementations.Store<>));
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStoreByBuilding<>), typeof(DataAccessLibrary.Stores.StoresImplementations.StoreByBuilding<>));
             services.AddTransient<DataAccessLibrary.Stores.IEventsStore, DataAccessLibrary.Stores.StoresImplementations.EventsStore>();
+            services.AddTransient<DataAccessLibrary.Stores.IAssignmentsStore, DataAccessLibrary.Stores.StoresImplementations.AssignmentsStore>();
 
             services.AddSingleton<SharedLibrary.Configuration.FacePlusPlus.FacePlusPlus>();
 

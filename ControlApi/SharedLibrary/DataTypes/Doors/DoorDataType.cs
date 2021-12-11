@@ -1,4 +1,5 @@
 ﻿using SharedLibrary.DataTypes.Buildings;
+using SharedLibrary.DataTypes.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace SharedLibrary.DataTypes.Doors
         public Guid BuildingId { get; init; }
 
         public BuildingDataType Building { get; init; }
+
+        public UserDataType ActualUser { get; init; }
     }
 }

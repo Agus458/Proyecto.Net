@@ -1,5 +1,6 @@
 ﻿using DataAccessLibrary;
 using SharedLibrary.DataTypes.Assignment;
+using SharedLibrary.DataTypes.Doors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,14 @@ namespace BusinessLibrary.Services
 {
     public interface IAssignmentsService
     {
-        PaginationDataType<AssignmentDataType> GetAll(int Skip, int Take);
+        Task<PaginationDataType<AssignmentDataType>> GetAll(int Skip, int Take);
 
-        Task<AssignmentDataType> Create(Guid DoorId);
+        Task<AssignmentDataType> Create(CreateAssignmentRequestDataType Data);
 
-        AssignmentDataType GetById(Guid Id);
+        Task<AssignmentDataType> GetById(Guid Id);
+
+        Task<PaginationDataType<DoorDataType>> GetDoors(int Skip, int Take);
+
+        Task Delete(Guid Id);
     }
 }

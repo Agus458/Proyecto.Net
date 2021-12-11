@@ -20,5 +20,9 @@ namespace DataAccessLibrary.Entities
         public Guid? BuildingId { get; set; }
 
         public Building Building { get; set; }
+
+        public Guid? DoorId { get; set; }
+
+        public Door Door { get; set; }
     }
 }

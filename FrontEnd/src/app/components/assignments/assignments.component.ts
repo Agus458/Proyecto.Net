@@ -42,8 +42,11 @@ export class AssignmentsComponent implements OnInit {
   }
 
   delete(id: string){
-    // this.AsignacionesService.delete(id).subscribe();
-    window.location.reload();
+    this.AsignacionesService.delete(id).subscribe(
+      ok => {
+        this.getIngresos(0, 10);
+      }
+    );
   }
 
   open(content: any) {

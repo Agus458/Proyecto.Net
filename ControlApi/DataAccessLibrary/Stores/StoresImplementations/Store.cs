@@ -49,7 +49,7 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             var RelationsArray = new List<string>() { };
             if (Relations != null) RelationsArray = RelationsArray.Concat(Relations).ToList();
 
-            var Collection = this.Context.Set<Target>().GetAllIncluding(RelationsArray.ToArray());
+            var Collection = this.Context.Set<Target>().GetAllIncluding(RelationsArray.ToArray()).OrderByDescending(Entity => Entity.CreatedDate);
             return new PaginationDataType<Target> { Collection = Collection.Skip(Skip).Take(Take > 0 ? Take : 10).AsEnumerable(), Size = Collection.Count() };
         }
 
