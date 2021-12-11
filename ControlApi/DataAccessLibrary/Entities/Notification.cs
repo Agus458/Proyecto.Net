@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Entities
 {
-    public class Notification : MustHaveBuildingEntity
+    public class Notification : BaseEntity
     {
         public string Message { get; set; }
 
         public bool Viewed { get; set; }
+
+        public string UserId { get; set; }
+
+        public User User { get; set; }
     }
 }

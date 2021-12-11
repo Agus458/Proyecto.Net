@@ -115,9 +115,9 @@ namespace BusinessLibrary.Services.ServicesImplementation
                 }
             }
 
-            await this.NotificationService.SendNotification("Person Not Found", BuildingId.Value);
+            await this.NotificationService.SendNotification("Persona no encontrada", UserId);
 
-            throw new ApiError("Person Not Found", (int)HttpStatusCode.NotFound);
+            throw new ApiError("Persona no encontrada", (int)HttpStatusCode.NotFound);
         }
 
         public PaginationDataType<PersonDataType> GetAll(int Skip, int Take)

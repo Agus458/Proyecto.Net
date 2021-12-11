@@ -27,5 +27,19 @@ namespace ControlApi.Controllers
         {
             return Ok(await this.Service.GetAll(Skip, Take));
         }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete(Guid Id)
+        {
+            await this.Service.Delete(Id);
+            return NoContent();
+        }
+
+        [HttpDelete("Clear")]
+        public async Task<IActionResult> Clear()
+        {
+            await this.Service.Clear();
+            return NoContent();
+        }
     }
 }

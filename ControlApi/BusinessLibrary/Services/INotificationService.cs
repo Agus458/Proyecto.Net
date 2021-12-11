@@ -10,8 +10,12 @@ namespace BusinessLibrary.Services
 {
     public interface INotificationService
     {
-        Task SendNotification(string Message, Guid BuildingId);
+        Task SendNotification(string Message, string UserId);
 
         Task<PaginationDataType<NotificationDataType>> GetAll(int Skip, int Take);
+
+        Task Delete(Guid Id);
+
+        Task Clear();
     }
 }
