@@ -22,4 +22,12 @@ export class NotificationsService {
     });
   }
 
+  delete(id: number) {
+    return this.Http.delete(this.Url + "/" + id);
+  }
+
+  clear() {
+    return this.Http.delete(this.Url + "/Clear");
+  }
+
 }

@@ -14,7 +14,10 @@
                         <h5 class="mb-1">{{notification.message}}</h5>
                         <small>{{notification.createdDate | date:'medium' }}</small>
                     </div>
-                    <small class="card-link" routerLink="/personas/nuevo">Agregar Persona</small>
+                    <div class="d-flex w-100 justify-content-between">
+                        <small class="text-primary" routerLink="/personas/nuevo" (click)="delete(notification.id)">Agregar Persona</small>
+                        <small class="text-danger" (click)="delete(notification.id)">Eliminar</small>
+                    </div>
                 </li>
             </ul>
             <ngb-pagination class="d-flex justify-content-end" [collectionSize]="size" [(page)]="page"
@@ -27,6 +30,7 @@
         </ng-template>
     </div>
     <div class="modal-footer">
+        <button type="button" class="btn btn-dark" (click)="clear()">Limpiar</button>
         <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
     </div>
 </ng-template>

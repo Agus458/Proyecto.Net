@@ -19,13 +19,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
 {
     public class NotificationService : INotificationService
     {
-        private readonly IStore<Notification> Store;
+        private readonly INotificationStore Store;
         private readonly IHubContext<BroadcastHub, IHubClient> HubContext;
         private readonly UserManager<User> UserManager;
         private readonly HttpContext HttpContext;
         private readonly IMapper Mapper;
 
-        public NotificationService(IStore<Notification> Store, IHubContext<BroadcastHub, IHubClient> HubContext, UserManager<User> UserManager, IHttpContextAccessor HttpContextAccessor, IMapper Mapper)
+        public NotificationService(INotificationStore Store, IHubContext<BroadcastHub, IHubClient> HubContext, UserManager<User> UserManager, IHttpContextAccessor HttpContextAccessor, IMapper Mapper)
         {
             this.Store = Store;
             this.HubContext = HubContext;
@@ -42,7 +42,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var User = await this.UserManager.FindByIdAsync(Id);
             if (User == null) throw new ApiError("Usuario no encontrado");
 
-            var Result = this.Store.GetAll(Skip, Take);
+            var Result = this.Store.GetAll(Skip, Take, Id);
 
             return new PaginationDataType<NotificationDataType>()
             {
@@ -63,9 +63,15 @@ namespace BusinessLibrary.Services.ServicesImplementation
             await this.HubContext.Clients.All.BroadcastMessage();
         }
 
-        public Task Clear()
+        public async Task Clear()
         {
-            throw new NotImplementedException();
+            var UserId = this.HttpContext.User.FindFirst(c => c.Type.Equals(ClaimTypes.NameIdentifier))?.Value;
+            if (UserId == null) throw new ApiError("Usuario no ingresado");
+
+            var User = await this.UserManager.FindByIdAsync(UserId);
+            if (User == null) throw new ApiError("Usuario no encontrado");
+
+            this.Store.Clear(UserId);
         }
 
         public async Task Delete(Guid Id)
@@ -76,17 +82,12 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var User = await this.UserManager.FindByIdAsync(UserId);
             if (User == null) throw new ApiError("Usuario no encontrado");
 
-            if (User.BuildingId != null)
-            {
-                var Notification = this.Store.GetById(Id);
-                if (Notification == null) throw new ApiError("Notificacion no encontrado");
+            var Notification = this.Store.GetById(Id, UserId);
+            if (Notification == null) throw new ApiError("Notificacion no encontrado");
 
-                this.Store.Delete(Notification);
+            this.Store.Delete(Notification);
 
-                return;
-            }
-
-            throw new ApiError("Edificio no asignado");
+            return;
         }
     }
 }

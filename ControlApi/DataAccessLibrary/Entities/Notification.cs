@@ -10,8 +10,6 @@ namespace DataAccessLibrary.Entities
     {
         public string Message { get; set; }
 
-        public bool Viewed { get; set; }
-
         public string UserId { get; set; }
 
         public User User { get; set; }

@@ -13,7 +13,5 @@ namespace SharedLibrary.DataTypes.Notifications
         public string Message { get; init; }
 
         public DateTimeOffset CreatedDate { get; set; }
-
-        public bool Viewed { get; init; }
     }
 }

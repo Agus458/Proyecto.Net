@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 DataAccessLibrary/Migrations/*
+ControlApi/wwwroot/*

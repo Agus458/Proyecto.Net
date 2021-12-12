@@ -37,7 +37,6 @@ export class NotificationsComponent implements OnInit {
     });
 
     connection.on("BroadcastMessage", () => {
-      this.toastService.show("Info", "Nueva Notificacion");
       this.getNotifications(0, 10);
     });
   }
@@ -62,4 +61,15 @@ export class NotificationsComponent implements OnInit {
     this.getNotifications((pageNum - 1) * 10, 10);
   }
 
+  delete(id: number){
+    this.notificationsService.delete(id).subscribe(
+      ok => this.getNotifications(0, 10)
+    );
+  }
+
+  clear(){
+    this.notificationsService.clear().subscribe(
+      ok => this.getNotifications(0, 10)
+    );
+  }
 }

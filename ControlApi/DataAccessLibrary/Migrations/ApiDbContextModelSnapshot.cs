@@ -204,9 +204,6 @@ namespace DataAccessLibrary.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BuildingId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
@@ -216,12 +213,12 @@ namespace DataAccessLibrary.Migrations
                     b.Property<DateTimeOffset>("UpdatedDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<bool>("Viewed")
-                        .HasColumnType("bit");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BuildingId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Notifications");
                 });
@@ -653,13 +650,11 @@ namespace DataAccessLibrary.Migrations
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Notification", b =>
                 {
-                    b.HasOne("DataAccessLibrary.Entities.Building", "Building")
+                    b.HasOne("DataAccessLibrary.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("BuildingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
-                    b.Navigation("Building");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Novelty", b =>
