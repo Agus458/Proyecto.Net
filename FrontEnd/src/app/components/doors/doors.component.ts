@@ -57,7 +57,6 @@ export class DoorsComponent implements OnInit {
     );
   }
 
-
   delete(id: string) {
     this.DoorsService.delete(id).subscribe(
       ok => {

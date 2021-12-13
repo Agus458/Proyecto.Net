@@ -46,6 +46,7 @@ export class EditDoorComponent implements OnInit {
       this.DoorsService.getById(IdFromRoute).subscribe(
         ok => {
           this.DoorForm.addControl("id", new FormControl('', [Validators.required]));
+          this.DoorForm.patchValue(ok)
         }
       );
     }
