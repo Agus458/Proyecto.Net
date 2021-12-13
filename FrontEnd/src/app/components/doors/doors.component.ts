@@ -57,15 +57,11 @@ export class DoorsComponent implements OnInit {
     );
   }
 
-  open(content: any, building: DoorDataType) {
-    this.selectedDoor = building;
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
-  }
 
   delete(id: string) {
     this.DoorsService.delete(id).subscribe(
       ok => {
-        this.toastService.show("Success", "Edificio eliminado");
+        this.toastService.show("Success", "Puerta eliminada");
         this.modalService.dismissAll();
         this.getDoors(0, 10);
       },

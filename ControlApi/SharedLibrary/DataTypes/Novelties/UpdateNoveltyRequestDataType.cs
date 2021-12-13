@@ -13,6 +13,8 @@ namespace SharedLibrary.DataTypes.Novelties
         [MaxLength(200)]
         public string Title { get; init; }
 
+        public string Content { get; init; }
+
         public Guid? BuildingId { get; init; }
 
         public IFormFile FileImage { get; init; }

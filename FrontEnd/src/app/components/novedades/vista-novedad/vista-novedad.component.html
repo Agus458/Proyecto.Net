@@ -1,11 +1,9 @@
-<div class="justify-content-center">
+<div class="justify-content-center" style="margin: 20px">
 
     <div class="card-body">
-        <h3 class="link-dark card-title" ><strong>Card title</strong></h3>
+        <h3 class="link-dark card-title" ><strong>{{selectedNoveltie.title}}</strong></h3>
     </div>
-    <img src="https://static.guiainfantil.com/pictures/jugar-y-aprender/33000/33008-3-adivinanzas-con-mi-cara-tan-cuadrada-lisa-o-con-dibujitos.jpg"
+    <img [src]="backurl + selectedNoveltie.image"
         class="img-fluid rounded-start" alt="...">
-    <div class="card-text" style="padding-top: 20px;">
-        Lorem anashei Lorem anashei Lorem anashei Lorem anashei Lorem anashei Lorem anashei Lorem anashei Lorem anasheiLorem anashei Lorem anashei Lorem anasheiLorem anashei Lorem anashei Lorem anasheiLorem anashei Lorem anasheiLorem anasheiLorem anashei Lorem anashei 
-    </div>
+    <div class="card-text" style="padding-top: 20px;">{{selectedNoveltie.content}}</div>
 </div>
