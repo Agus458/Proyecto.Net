@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Stores.StoresImplementations
 {
-    public class EventsStore : StoreByBuilding<Event> , IEventsStore
+    public class EventsStore : Store<Event> , IEventsStore
     {
         private readonly ApiDbContext Context;
 
@@ -18,9 +18,9 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.Context = Context;
         }
 
-        public IEnumerable<Event> GetAll(Guid BuildingId)
+        public IEnumerable<Event> GetAll(Guid RoomId)
         {
-            return this.Context.Set<Event>().Include(Entity => Entity.Building).Where(Entity => Entity.BuildingId == BuildingId);
+            return this.Context.Set<Event>().Where(Entity => Entity.RoomId == RoomId);
         }
     }
 }

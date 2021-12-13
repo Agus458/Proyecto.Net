@@ -23,22 +23,22 @@ namespace ControlApi.Controllers
             this.Service = Service;
         }
 
-        [HttpGet("Building/{BuildingId}")]
-        public IActionResult GetAll(Guid BuildingId)
+        [HttpGet("Room/{RoomId}")]
+        public IActionResult GetAll(Guid RoomId)
         {
-            return Ok(this.Service.GetAll(BuildingId));
+            return Ok(this.Service.GetAll(RoomId));
         }
 
         [HttpGet("{Id}")]
-        public IActionResult GetById(Guid Id, Guid BuildingId)
+        public IActionResult GetById(Guid Id, Guid RoomId)
         {
-            return Ok(this.Service.GetById(Id, BuildingId));
+            return Ok(this.Service.GetById(Id, RoomId));
         }
 
         [HttpDelete("{Id}")]
-        public IActionResult Delete(Guid Id, Guid BuildingId)
+        public IActionResult Delete(Guid Id, Guid RoomId)
         {
-            this.Service.Delete(Id, BuildingId);
+            this.Service.Delete(Id, RoomId);
             return NoContent();
         }
 
@@ -49,10 +49,10 @@ namespace ControlApi.Controllers
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
         }
 
-        [HttpPut("Building/{BuildingId}/{Id}")]
-        public IActionResult Update(Guid Id, UpdateEventRequestDataType Data, Guid BuildingId)
+        [HttpPut("Room/{RoomId}/{Id}")]
+        public IActionResult Update(Guid Id, UpdateEventRequestDataType Data, Guid RoomId)
         {
-            this.Service.Update(Id, Data, BuildingId);
+            this.Service.Update(Id, Data, RoomId);
             return NoContent();
         }
     }

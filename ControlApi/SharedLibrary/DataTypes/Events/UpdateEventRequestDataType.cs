@@ -10,8 +10,6 @@ namespace SharedLibrary.DataTypes.Events
     {
         public string Name { get; init; }
 
-        public Guid BuildingId { get; init; }
-
         public string StartDate { get; init; }
 
         public string EndDate { get; init; }

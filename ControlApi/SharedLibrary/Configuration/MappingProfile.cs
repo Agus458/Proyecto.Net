@@ -56,6 +56,10 @@ namespace SharedLibrary.Configuration
             CreateMap<CreateEventRequestDataType, Event>();
             CreateMap<UpdateEventRequestDataType, Event>();
 
+            CreateMap<Room, RoomDataType>();
+            CreateMap<CreateRoomRequestDataType, Room>();
+            CreateMap<UpdateRoomRequestDataType, Room>();
+
             CreateMap<Entry, EntryDataType>();
             CreateMap<CreateEntryRequestDataType, Entry>();
         }

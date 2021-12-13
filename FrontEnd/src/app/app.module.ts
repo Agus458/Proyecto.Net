@@ -50,6 +50,8 @@ import { VistaNovedadComponent } from './components/novedades/vista-novedad/vist
 import { SinNovedadComponent } from './components/novedades/sin-novedad/sin-novedad.component';
 import { ListNovedadesComponent } from './components/novedades/list-novedades/list-novedades.component';
 import { EditNovedadesComponent } from './components/novedades/edit-novedades/edit-novedades.component';
+import { SalonesComponent } from './components/salones/salones.component';
+import { EditSalonComponent } from './components/salones/edit-salon/edit-salon.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -91,6 +93,8 @@ registerLocaleData(localeES, "es");
     SinNovedadComponent,
     ListNovedadesComponent,
     EditNovedadesComponent,
+    SalonesComponent,
+    EditSalonComponent,
   ],
   imports: [
     BrowserModule,

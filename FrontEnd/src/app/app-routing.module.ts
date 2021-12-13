@@ -27,6 +27,8 @@ import { IsLoggedInGuard } from './guards/is-logged-in/is-logged-in.guard';
 import { TieneRolGuard } from './guards/tiene-rol/tiene-rol.guard';
 import { ListNovedadesComponent } from './components/novedades/list-novedades/list-novedades.component';
 import { EditNovedadesComponent } from './components/novedades/edit-novedades/edit-novedades.component';
+import { SalonesComponent } from './components/salones/salones.component';
+import { EditSalonComponent } from './components/salones/edit-salon/edit-salon.component';
 
 
 const routes: Routes = [
@@ -62,13 +64,17 @@ const routes: Routes = [
       { path: "puertas/edificio/:id/editar/:doorId", component: EditDoorComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
       { path: "puertas/edificio/:id/agregarPuerta", component: EditDoorComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
 
+      { path: "salones/edificio/:id", component: SalonesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+      { path: "salones/edificio/:id/editar/:salonId", component: EditSalonComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+      { path: "salones/edificio/:id/nuevo", component: EditSalonComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+
       { path: "novedades/edificio/:id", component: ListNovedadesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
       { path: "novedades/edificio/:id/nuevo", component: EditNovedadesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
       { path: "novedades/edificio/:id/editar/:noveltyId", component: EditNovedadesComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
 
-      { path: "eventos/edificio/:id", component: EventosComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
-      { path: "eventos/edificio/:id/nuevo", component: EditEventoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
-      { path: "eventos/edificio/:id/editar/:eventId", component: EditEventoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+      { path: "eventos/salon/:id", component: EventosComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+      { path: "eventos/salon/:id/nuevo", component: EditEventoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
+      { path: "eventos/salon/:id/editar/:eventId", component: EditEventoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
 
       { path: "ingresos/edificio/:id", component: IngresosComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin'] } },
       { path: "ingresos", component: IngresosComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Portero'] } },

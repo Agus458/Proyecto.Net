@@ -14,23 +14,23 @@ export class EventosService {
     private Http: HttpClient
   ) { }
 
-  getAll(buildingId: string) {
-    return this.Http.get<EventDataType[]>(this.Url + "/Building/" + buildingId);
+  getAll(roomId: string) {
+    return this.Http.get<EventDataType[]>(this.Url + "/Room/" + roomId);
   }
 
-  getById(id: string, buildingId: string) {
-    return this.Http.get<EventDataType>(this.Url + "/" + id, { params: { buildingId } });
+  getById(id: string, roomId: string) {
+    return this.Http.get<EventDataType>(this.Url + "/" + id, { params: { roomId } });
   }
 
-  delete(id: string, buildingId: string) {
-    return this.Http.delete(this.Url + "/" + id, { params: { buildingId } });
+  delete(id: string, roomId: string) {
+    return this.Http.delete(this.Url + "/" + id, { params: { roomId } });
   }
 
   create(data: any) {
     return this.Http.post(this.Url, data);
   }
 
-  update(id: string, buildingId: string, data: any) {
-    return this.Http.put(this.Url + "/Building/" + buildingId + "/" + id, data);
+  update(id: string, roomId: string, data: any) {
+    return this.Http.put(this.Url + "/Room/" + roomId + "/" + id, data);
   }
 }

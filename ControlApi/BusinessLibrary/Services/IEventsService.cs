@@ -10,14 +10,14 @@ namespace BusinessLibrary.Services
 {
     public interface IEventsService
     {
-        IEnumerable<EventDataType> GetAll(Guid BuildingId);
+        IEnumerable<EventDataType> GetAll(Guid RoomId);
 
-        EventDataType GetById(Guid Id, Guid BuildingId);
+        EventDataType GetById(Guid Id, Guid RoomId);
 
         EventDataType Create(CreateEventRequestDataType Data);
 
-        void Delete(Guid Id, Guid BuildingId);
+        void Delete(Guid Id, Guid RoomId);
 
-        void Update(Guid Id, UpdateEventRequestDataType Data, Guid BuildingId);
+        void Update(Guid Id, UpdateEventRequestDataType Data, Guid RoomId);
     }
 }

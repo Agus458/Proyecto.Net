@@ -1,4 +1,6 @@
 ﻿using BusinessLibrary.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SharedLibrary.DataTypes.Novelties;
@@ -12,6 +14,7 @@ namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
     public class RoomsController : ControllerBase
     {
         private readonly IRoomsService Service;

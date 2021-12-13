@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Entities
 {
-    public class Event : MustHaveBuildingEntity
+    public class Event : BaseEntity
     {
         public string Name { get; set; }
 
@@ -33,6 +33,10 @@ namespace DataAccessLibrary.Entities
         public bool Sunday { get; set; }
 
         public RecurrencyType RecurrencyType { get; set; }
+
+        public Guid RoomId { get; set; }
+
+        public Room Room { get; set; }
     }
 
     public enum RecurrencyType

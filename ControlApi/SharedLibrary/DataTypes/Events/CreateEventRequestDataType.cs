@@ -13,7 +13,7 @@ namespace SharedLibrary.DataTypes.Events
         public string Name { get; init; }
 
         [Required]
-        public Guid BuildingId { get; init; }
+        public Guid RoomId { get; init; }
 
         [Required]
         public string StartDate { get; init; }

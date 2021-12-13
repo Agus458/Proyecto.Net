@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Stores
 {
-    public interface IEventsStore : IStoreByBuilding<Event>
+    public interface IEventsStore : IStore<Event>
     {
-        IEnumerable<Event> GetAll(Guid BuildingId);
+        IEnumerable<Event> GetAll(Guid RoomId);
     }
 }

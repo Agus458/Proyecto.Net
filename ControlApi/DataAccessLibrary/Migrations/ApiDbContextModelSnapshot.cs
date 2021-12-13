@@ -142,9 +142,6 @@ namespace DataAccessLibrary.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BuildingId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
@@ -165,6 +162,9 @@ namespace DataAccessLibrary.Migrations
 
                     b.Property<int>("RecurrencyType")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("RoomId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Saturday")
                         .HasColumnType("bit");
@@ -192,7 +192,7 @@ namespace DataAccessLibrary.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BuildingId");
+                    b.HasIndex("RoomId");
 
                     b.ToTable("Events");
                 });
@@ -639,13 +639,13 @@ namespace DataAccessLibrary.Migrations
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Event", b =>
                 {
-                    b.HasOne("DataAccessLibrary.Entities.Building", "Building")
+                    b.HasOne("DataAccessLibrary.Entities.Room", "Room")
                         .WithMany()
-                        .HasForeignKey("BuildingId")
+                        .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Building");
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Notification", b =>
