@@ -19,7 +19,7 @@ export class CalendarUtils {
         }
     }
 
-    public static GetDays(event: EventDataType): ByWeekday[] {
+    public static GetDays(event: EventDataType): ByWeekday[] | undefined {
         const days: ByWeekday[] = [];
 
         if (event.monday) days.push(RRule.MO);
@@ -29,6 +29,8 @@ export class CalendarUtils {
         if (event.friday) days.push(RRule.FR);
         if (event.saturday) days.push(RRule.SA);
         if (event.sunday) days.push(RRule.SU);
+
+        if(days.length == 0) return undefined;
 
         return days;
     }

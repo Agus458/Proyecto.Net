@@ -2,6 +2,7 @@
 using DataAccessLibrary.Entities;
 using DataAccessLibrary.Stores;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using SharedLibrary.DataTypes;
 using SharedLibrary.DataTypes.Events;
 using SharedLibrary.Error;
@@ -36,6 +37,8 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
             var NewEvent = new Event() { Id = Guid.NewGuid() };
             Mapper.Map(Data, NewEvent);
+
+            if(!this.Validate(this.Store.GetAll(Data.RoomId), NewEvent)) throw new ApiError("Evento Invalido", (int)HttpStatusCode.BadRequest);
 
             this.Store.Create(NewEvent);
 
@@ -82,6 +85,28 @@ namespace BusinessLibrary.Services.ServicesImplementation
             Mapper.Map(Data, Entity);
 
             this.Store.Update(Entity);
+        }
+
+        private bool Validate(IEnumerable<Event> eventos, Event nuevo)
+        {
+            foreach (Event evento in eventos)
+            {
+                if (evento.RoomId == nuevo.RoomId)
+                {
+                    if (evento.StartTime >= nuevo.StartTime && evento.EndTime >= nuevo.StartTime && evento.StartTime <= nuevo.EndTime && evento.EndTime <= nuevo.EndTime)
+                    {
+                        if ((evento.StartDate.Date >= nuevo.StartDate.Date && evento.EndDate.Date >= nuevo.StartDate.Date && evento.StartDate.Date <= nuevo.EndDate.Date && evento.EndDate.Date <= nuevo.EndDate.Date) || (evento.RecurrencyType != RecurrencyType.UNIQUE && nuevo.RecurrencyType != RecurrencyType.UNIQUE))
+                        {
+                            if ((evento.Sunday == nuevo.Sunday) || (evento.Monday == nuevo.Monday) || (evento.Tuesday == nuevo.Tuesday) || (evento.Wednesday == nuevo.Wednesday) || (evento.Thursday == nuevo.Thursday) || (evento.Friday == nuevo.Friday) || (evento.Saturday == nuevo.Saturday))
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }

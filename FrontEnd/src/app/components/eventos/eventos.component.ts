@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CalendarEvent } from 'calendar-utils';
 import moment from 'moment-timezone';
 import RRule from 'rrule';
-import { EventDataType } from 'src/app/models/EventDataType';
+import { EventDataType, RecurrencyType } from 'src/app/models/EventDataType';
 import { EventosService } from 'src/app/services/eventos/eventos.service';
 import { CalendarUtils } from 'src/app/utils/calendar.util';
 
@@ -14,7 +14,7 @@ import { CalendarUtils } from 'src/app/utils/calendar.util';
 })
 export class EventosComponent implements OnInit {
 
-  buildingId: string;
+  salonId: string;
   page = 1;
   size: number;
   events: CalendarEvent[] = [];
@@ -30,34 +30,43 @@ export class EventosComponent implements OnInit {
     const IdFromRoute = routeParams.get('id');
 
     if (IdFromRoute) {
-      this.buildingId = IdFromRoute;
+      this.salonId = IdFromRoute;
 
       this.getEvents();
     }
   }
 
   getEvents() {
-    this.EventosService.getAll(this.buildingId).subscribe(
+    this.EventosService.getAll(this.salonId).subscribe(
       ok => {
         console.log(ok);
 
         const events: CalendarEvent[] = [];
 
         ok.forEach(event => {
-          const rule = new RRule({
-            freq: CalendarUtils.ToFreq(event.recurrencyType),
-            dtstart: moment(event.startDate).toDate(),
-            until: moment(event.endDate).toDate(),
-            byweekday: CalendarUtils.GetDays(event)
-          });
-
-          rule.all().forEach(date => {
+          if (event.recurrencyType == RecurrencyType.UNIQUE) {
             events.push({
               title: event.name,
-              start: date,
+              start: moment(event.startDate).toDate(),
               id: event.id
             });
-          })
+          } else {
+            const rule = new RRule({
+              freq: CalendarUtils.ToFreq(event.recurrencyType),
+              dtstart: moment(event.startDate).toDate(),
+              until: moment(event.endDate).toDate(),
+              byweekday: CalendarUtils.GetDays(event),
+              interval: 1
+            });
+
+            rule.all().forEach(date => {
+              events.push({
+                title: event.name,
+                start: date,
+                id: event.id
+              });
+            })
+          }
         });
 
         this.events = events;
@@ -66,6 +75,6 @@ export class EventosComponent implements OnInit {
   }
 
   openEvent(event: CalendarEvent) {
-    this.router.navigateByUrl("/eventos/edificio/" + this.buildingId + "/editar/" + event.id);
+    this.router.navigateByUrl("/eventos/salon/" + this.salonId + "/editar/" + event.id);
   }
 }

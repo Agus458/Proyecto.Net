@@ -12,7 +12,7 @@ import { EventosService } from 'src/app/services/eventos/eventos.service';
 })
 export class EditEventoComponent implements OnInit {
 
-  buildingId: string;
+  roomId: string;
 
   event: EventDataType;
 
@@ -33,14 +33,14 @@ export class EditEventoComponent implements OnInit {
     let IdFromRoute = routeParams.get('id');
 
     if (IdFromRoute) {
-      this.buildingId = IdFromRoute;
+      this.roomId = IdFromRoute;
     }
 
     this.eventForm = this.FormBuilder.group({
-      buildingId: [this.buildingId, [Validators.required]],
+      roomId: [this.roomId, [Validators.required]],
       name: ["", [Validators.required]],
       startDate: ["", [Validators.required]],
-      endDate: ["", [Validators.required]],
+      endDate: [null],
       startTime: ["", [Validators.required]],
       endTime: ["", [Validators.required]],
       monday: [false, [Validators.required]],
@@ -56,7 +56,7 @@ export class EditEventoComponent implements OnInit {
     IdFromRoute = routeParams.get('eventId');
     if (IdFromRoute) {
       try {
-        this.event = await this.EventosService.getById(IdFromRoute, this.buildingId).toPromise();
+        this.event = await this.EventosService.getById(IdFromRoute, this.roomId).toPromise();
 
         this.event.startTime = this.getTime(this.event.startTime);
         this.event.endTime = this.getTime(this.event.endTime);
@@ -75,17 +75,17 @@ export class EditEventoComponent implements OnInit {
       this.EventosService.create(this.eventForm.value).subscribe(
         ok => {
           console.log(ok);
-          this.router.navigateByUrl("/eventos/edificio/" + this.buildingId);
+          this.router.navigateByUrl("/eventos/salon/" + this.roomId);
         },
         error => {
           console.log(error);
         }
       );
     } else {
-      this.EventosService.update(this.event.id, this.buildingId, this.eventForm.value).subscribe(
+      this.EventosService.update(this.event.id, this.roomId, this.eventForm.value).subscribe(
         ok => {
           console.log(ok);
-          this.router.navigateByUrl("/eventos/edificio/" + this.buildingId);
+          this.router.navigateByUrl("/eventos/salon/" + this.roomId);
         },
         error => {
           console.log(error);

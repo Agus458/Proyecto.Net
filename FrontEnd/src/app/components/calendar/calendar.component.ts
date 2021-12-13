@@ -35,8 +35,6 @@ export class CalendarComponent {
 
   @Output() eventEvent = new EventEmitter<CalendarEvent>();
 
-  @Input() addRoute: string;
-
   view: CalendarView = CalendarView.Month;
 
   viewDate = moment().toDate();

@@ -49,7 +49,7 @@ namespace SharedLibrary.Configuration.Error
             }
             else
             {
-                Console.WriteLine(Exeption);
+                Console.WriteLine(Exeption.StackTrace);
                 Context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 Message = new
                 {
