@@ -3,13 +3,15 @@
         <h4 class="card-title fw-light fs-5">Eventos</h4>
         <hr class="my-4">
 
-        <app-calendar *ngIf="events.length > 0; else elseBlock"
-            [calendarEvents]="events" (eventEvent)="openEvent($event)">
-            <button type="button" class="btn btn-warning mb-4" [routerLink]="'/eventos/salon/' + salonId + '/nuevo'">Agregar</button>
+        <app-calendar *ngIf="events.length > 0; else elseBlock" [calendarEvents]="events"
+            (eventEvent)="openEvent($event)">
+            <button type="button" class="btn btn-warning mb-4"
+                [routerLink]="'/eventos/salon/' + salonId + '/nuevo'">Agregar</button>
         </app-calendar>
 
         <ng-template #elseBlock>
-            <button type="button" class="btn btn-warning mb-4" [routerLink]="'/eventos/salon/' + salonId + '/nuevo'">Agregar</button>
+            <button type="button" class="btn btn-warning mb-4"
+                [routerLink]="'/eventos/salon/' + salonId + '/nuevo'">Agregar</button>
         </ng-template>
     </div>
 </div>

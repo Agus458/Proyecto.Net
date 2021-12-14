@@ -38,7 +38,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var NewEvent = new Event() { Id = Guid.NewGuid() };
             Mapper.Map(Data, NewEvent);
 
-            if(!this.Validate(this.Store.GetAll(Data.RoomId), NewEvent)) throw new ApiError("Evento Invalido", (int)HttpStatusCode.BadRequest);
+            if (!this.Validate(this.Store.GetAll(Data.RoomId), NewEvent)) throw new ApiError("Evento Invalido", (int)HttpStatusCode.BadRequest);
 
             this.Store.Create(NewEvent);
 
@@ -84,20 +84,27 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
             Mapper.Map(Data, Entity);
 
+            if (!this.Validate(this.Store.GetAll(RoomId), Entity)) throw new ApiError("Evento Invalido", (int)HttpStatusCode.BadRequest);
+
             this.Store.Update(Entity);
         }
 
         private bool Validate(IEnumerable<Event> eventos, Event nuevo)
         {
+            if (nuevo.StartDate > nuevo.EndDate) throw new ApiError("La fecha de inicio debe ser posterior a la fecha de finalizacion", (int)HttpStatusCode.BadRequest);
+            if (nuevo.StartTime > nuevo.EndTime) throw new ApiError("La hora de inicio debe ser posterior a la hora de finalizacion", (int)HttpStatusCode.BadRequest);
+
+            if (nuevo.RecurrencyType == RecurrencyType.UNIQUE) nuevo.EndDate = null;
+
             foreach (Event evento in eventos)
             {
                 if (evento.RoomId == nuevo.RoomId)
                 {
-                    if (evento.StartTime >= nuevo.StartTime && evento.EndTime >= nuevo.StartTime && evento.StartTime <= nuevo.EndTime && evento.EndTime <= nuevo.EndTime)
+                    if ((nuevo.StartTime >= evento.StartTime && nuevo.StartTime <= evento.EndTime) || (nuevo.EndTime >= evento.StartTime && nuevo.EndTime <= evento.StartTime) || (evento.StartTime >= nuevo.StartTime && evento.EndTime <= nuevo.EndTime))
                     {
-                        if ((evento.StartDate.Date >= nuevo.StartDate.Date && evento.EndDate.Date >= nuevo.StartDate.Date && evento.StartDate.Date <= nuevo.EndDate.Date && evento.EndDate.Date <= nuevo.EndDate.Date) || (evento.RecurrencyType != RecurrencyType.UNIQUE && nuevo.RecurrencyType != RecurrencyType.UNIQUE))
+                        if ((nuevo.StartDate >= evento.StartDate && nuevo.StartDate <= evento.EndDate) || (nuevo.EndDate >= evento.StartDate && nuevo.EndDate <= evento.StartDate) || (evento.StartDate >= nuevo.StartDate && evento.EndDate <= nuevo.EndDate) || (evento.RecurrencyType != RecurrencyType.UNIQUE && nuevo.RecurrencyType != RecurrencyType.UNIQUE))
                         {
-                            if ((evento.Sunday == nuevo.Sunday) || (evento.Monday == nuevo.Monday) || (evento.Tuesday == nuevo.Tuesday) || (evento.Wednesday == nuevo.Wednesday) || (evento.Thursday == nuevo.Thursday) || (evento.Friday == nuevo.Friday) || (evento.Saturday == nuevo.Saturday))
+                            if ((evento.Sunday && nuevo.Sunday) || (evento.Monday && nuevo.Monday) || (evento.Tuesday && nuevo.Tuesday) || (evento.Wednesday && nuevo.Wednesday) || (evento.Thursday && nuevo.Thursday) || (evento.Friday && nuevo.Friday) || (evento.Saturday && nuevo.Saturday))
                             {
                                 return false;
                             }

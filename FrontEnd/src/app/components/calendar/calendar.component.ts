@@ -9,21 +9,10 @@ import {
 import moment from 'moment-timezone';
 import {
   CalendarEvent,
+  CalendarEventAction,
   CalendarView,
 } from 'angular-calendar';
 import { ViewPeriod } from 'calendar-utils';
-
-export interface RecurringEvent {
-  title: string;
-  rrule?: {
-    freq: any;
-    bymonth?: number;
-    bymonthday?: number;
-    byweekday?: any;
-  };
-  dtstart: Date;
-  until: Date;
-}
 
 @Component({
   selector: 'app-calendar',
