@@ -8,7 +8,8 @@
                 <div class="card-body text-center">
                     <h2><i class="fa fa-door-open text-warning"></i></h2>
                     <h5 class="card-text text-warning ">{{puertas.name}}</h5>
-                    <!-- <button type="button" class="btn btn-warning">Ver</button> -->
+                    <button type="button" class="btn btn-light" style="zoom: 70%" [routerLink]="'/puertas/edificio/' + buildingId +'/editar/' + puertas.id"><i
+                        class="fas fa-pencil"></i></button>
                 </div>
             </div>
         </div>

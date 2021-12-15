@@ -1,3 +1,19 @@
+<!-- Modal -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <app-vista-novedad [selectedNoveltie]="selectedNoveltie"></app-vista-novedad>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="delete(selectedNoveltie.id)">Eliminar</button>
+        <button type="button" class="btn btn-success" [routerLink]="'/novedades/edificio/:id/editar/' + selectedNoveltie.id"
+            (click)="modal.close()">Editar</button>
+        <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
+    </div>
+</ng-template>
+
 <div class="card border-0 shadow rounded-3 my-5">
     <div class="card-body p-4 p-sm-5">
         <h4 class="card-title fw-light fs-5">Novedades</h4>
@@ -15,6 +31,8 @@
                     <tr *ngFor="let novelty of Novelties; index as i" class="align-middle">
                         <th scope="row">{{i}}</th>
                         <td>{{novelty.title}}</td>
+                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="open(content, novelty)"><i class="fas fa-bars"></i></button>
                     </tr>
                 </tbody>
             </table>

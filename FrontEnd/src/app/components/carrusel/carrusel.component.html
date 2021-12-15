@@ -3,14 +3,14 @@
         <h4>Ultimas Noticias</h4>
         <hr class="my-4">
         <div class="card mb-3" >
-            <div class="row g-0">
+            <div *ngFor="let novelty of Novelties; index as i" class="row g-0">
                 <div class="col-md-4" >
                     <img src="https://static.guiainfantil.com/pictures/jugar-y-aprender/33000/33008-3-adivinanzas-con-mi-cara-tan-cuadrada-lisa-o-con-dibujitos.jpg"
                         class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <a class="link-dark card-title" [routerLink]="'novedad/1'" style="font-size: large;"><strong>Card title</strong></a>
+                        <a class="link-dark card-title" [routerLink]="'novedad/1'" style="font-size: large;"><strong>{{novelty.title}}</strong></a>
                     </div>
                 </div>
             </div>
