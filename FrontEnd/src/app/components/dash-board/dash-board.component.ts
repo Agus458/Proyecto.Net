@@ -31,13 +31,12 @@ export class DashBoardComponent implements OnInit {
     }
   }
 
-  onChangeTenant(event: any) {
-    localStorage.setItem("tenant", JSON.stringify(event.target.value));
+  onChangeTenant(id: any) {
+    localStorage.setItem("tenant", JSON.stringify(id));
 
-    var Tenant = this.tenants.find(elem => elem.id == event.target.value);
-    if (Tenant) {
-      localStorage.setItem("socialReason", JSON.stringify(Tenant.socialReason));
-    }
+    var Tenant = this.tenants.find(elem => elem.id == id);
+
+    localStorage.setItem("socialReason", JSON.stringify(Tenant ? Tenant.socialReason : ""));
   }
 
 }

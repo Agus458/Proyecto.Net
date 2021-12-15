@@ -12,7 +12,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { InstitucionesComponent } from './components/instituciones/instituciones.component';
 import { NuevainstitucionComponent } from './components/instituciones/nuevainstitucion/nuevainstitucion.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 import { AuthInterceptor } from './middlewares/auth.interceptor';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
@@ -124,6 +124,7 @@ registerLocaleData(localeES, "es");
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCA22WX7c4qIzJRKwnbvG8_2gqlSrMfk1E'

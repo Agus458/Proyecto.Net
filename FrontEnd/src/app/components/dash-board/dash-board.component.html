@@ -5,8 +5,8 @@
         <h4 class="card-title fw-light fs-5">Dashboard</h4>
       </div>
       <div class="col-md-6" *ngIf="AuthenticationService.hasRole('SuperAdmin')">
-        <select class="form-control" (change)="onChangeTenant($event)">
-          <option>Seleccione una Institucion</option>
+        <select class="form-control" #select (change)="onChangeTenant(select.value)">
+          <option value="" selected>Seleccione una Institucion</option>
           <option *ngFor="let tenant of tenants" [value]="tenant.id">{{tenant.socialReason + " - " + tenant.rut}}
           </option>
         </select>
