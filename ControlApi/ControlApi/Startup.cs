@@ -135,12 +135,22 @@ namespace ControlApi
             services.AddTransient<BusinessLibrary.Services.IEntriesService, BusinessLibrary.Services.ServicesImplementation.EntriesService>();
             services.AddTransient<BusinessLibrary.Services.IRoomsService, BusinessLibrary.Services.ServicesImplementation.RoomsService>();
 
+            services.AddTransient<BusinessLibrary.Services.IFacturaService, BusinessLibrary.Services.ServicesImplementation.FacturaService>();
+            services.AddTransient<BusinessLibrary.Services.IPagoService, BusinessLibrary.Services.ServicesImplementation.PagoService>();
+            services.AddTransient<BusinessLibrary.Services.IPrecioService, BusinessLibrary.Services.ServicesImplementation.PrecioService>();
+            services.AddTransient<BusinessLibrary.Services.IProductsService, BusinessLibrary.Services.ServicesImplementation.ProductsService>();
+
             // DataAccesLibray Stores
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStore<>), typeof(DataAccessLibrary.Stores.StoresImplementations.Store<>));
             services.AddTransient(typeof(DataAccessLibrary.Stores.IStoreByBuilding<>), typeof(DataAccessLibrary.Stores.StoresImplementations.StoreByBuilding<>));
             services.AddTransient<DataAccessLibrary.Stores.IEventsStore, DataAccessLibrary.Stores.StoresImplementations.EventsStore>();
             services.AddTransient<DataAccessLibrary.Stores.IAssignmentsStore, DataAccessLibrary.Stores.StoresImplementations.AssignmentsStore>();
             services.AddTransient<DataAccessLibrary.Stores.INotificationStore, DataAccessLibrary.Stores.StoresImplementations.NotificationStore>();
+
+            services.AddTransient<DataAccessLibrary.Stores.IFacturaStore, DataAccessLibrary.Stores.StoresImplementations.FacturaStore>();
+            services.AddTransient<DataAccessLibrary.Stores.IPagoStore, DataAccessLibrary.Stores.StoresImplementations.PagoStore>();
+            services.AddTransient<DataAccessLibrary.Stores.IPrecioStore, DataAccessLibrary.Stores.StoresImplementations.PrecioStore>();
+            services.AddTransient<DataAccessLibrary.Stores.IProductsStore, DataAccessLibrary.Stores.StoresImplementations.ProductStore>();
 
             services.AddSingleton<SharedLibrary.Configuration.FacePlusPlus.FacePlusPlus>();
 

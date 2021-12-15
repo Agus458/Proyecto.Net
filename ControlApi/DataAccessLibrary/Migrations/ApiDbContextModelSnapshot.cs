@@ -145,7 +145,7 @@ namespace DataAccessLibrary.Migrations
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<TimeSpan>("EndTime")
@@ -195,6 +195,35 @@ namespace DataAccessLibrary.Migrations
                     b.HasIndex("RoomId");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Factura", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<float>("Monto")
+                        .HasColumnType("real");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("fecha")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId");
+
+                    b.ToTable("Facturas");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Notification", b =>
@@ -255,6 +284,33 @@ namespace DataAccessLibrary.Migrations
                     b.ToTable("Novelties");
                 });
 
+            modelBuilder.Entity("DataAccessLibrary.Entities.Pago", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<Guid>("FacturaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float>("Monto")
+                        .HasColumnType("real");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacturaId")
+                        .IsUnique();
+
+                    b.ToTable("Pagos");
+                });
+
             modelBuilder.Entity("DataAccessLibrary.Entities.Person", b =>
                 {
                     b.Property<Guid>("Id")
@@ -303,6 +359,60 @@ namespace DataAccessLibrary.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("Persons");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Precio", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<float>("precio")
+                        .HasMaxLength(200)
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Precios");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("name")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Room", b =>
@@ -648,6 +758,17 @@ namespace DataAccessLibrary.Migrations
                     b.Navigation("Room");
                 });
 
+            modelBuilder.Entity("DataAccessLibrary.Entities.Factura", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
+                        .WithMany()
+                        .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tenant");
+                });
+
             modelBuilder.Entity("DataAccessLibrary.Entities.Notification", b =>
                 {
                     b.HasOne("DataAccessLibrary.Entities.User", "User")
@@ -668,7 +789,40 @@ namespace DataAccessLibrary.Migrations
                     b.Navigation("Building");
                 });
 
+            modelBuilder.Entity("DataAccessLibrary.Entities.Pago", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Factura", "Factura")
+                        .WithOne("PagoFactura")
+                        .HasForeignKey("DataAccessLibrary.Entities.Pago", "FacturaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Factura");
+                });
+
             modelBuilder.Entity("DataAccessLibrary.Entities.Person", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
+                        .WithMany()
+                        .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tenant");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Precio", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Product", "Product")
+                        .WithMany("Precios")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Product", b =>
                 {
                     b.HasOne("DataAccessLibrary.Entities.Tenant", "Tenant")
                         .WithMany()
@@ -765,6 +919,16 @@ namespace DataAccessLibrary.Migrations
             modelBuilder.Entity("DataAccessLibrary.Entities.Door", b =>
                 {
                     b.Navigation("ActualUser");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Factura", b =>
+                {
+                    b.Navigation("PagoFactura");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Product", b =>
+                {
+                    b.Navigation("Precios");
                 });
 #pragma warning restore 612, 618
         }

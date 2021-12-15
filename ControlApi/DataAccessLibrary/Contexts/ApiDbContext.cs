@@ -94,6 +94,26 @@ namespace DataAccessLibrary.Contexts
         public DbSet<Event> Events { get; set; }
 
         /// <summary>
+        /// Represents all the Facturas saved in the DataBase.
+        /// </summary>
+        public DbSet<Factura> Facturas { get; set; }
+
+        /// <summary>
+        /// Represents all the Pagos saved in the DataBase.
+        /// </summary>
+        public DbSet<Pago> Pagos { get; set; }
+
+        /// <summary>
+        /// Represents all the Products saved in the DataBase.
+        /// </summary>
+        public DbSet<Product> Products { get; set; }
+
+        /// <summary>
+        /// Represents all the Precios saved in the DataBase.
+        /// </summary>
+        public DbSet<Precio> Precios { get; set; }
+
+        /// <summary>
         /// Saves the changes in the context into the database and adds the AddedDate or UpdatedDate if corresponds.
         /// </summary>
         /// <returns></returns>
