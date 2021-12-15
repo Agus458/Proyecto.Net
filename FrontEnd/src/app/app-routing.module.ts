@@ -29,6 +29,13 @@ import { ListNovedadesComponent } from './components/novedades/list-novedades/li
 import { EditNovedadesComponent } from './components/novedades/edit-novedades/edit-novedades.component';
 import { SalonesComponent } from './components/salones/salones.component';
 import { EditSalonComponent } from './components/salones/edit-salon/edit-salon.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { PreciosComponent } from './components/precios/precios.component';
+import { PagoVentanaComponent } from './components/pago-ventana/pago-ventana.component';
+import { ListarFacturasComponent } from './components/listar-facturas/listar-facturas.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
+import { MostrarProductosPrecioComponent } from './components/mostrar-productos-precio/mostrar-productos-precio.component';
 
 
 const routes: Routes = [
@@ -39,8 +46,8 @@ const routes: Routes = [
       {
         path: "", component: InicioComponent,
         children: [
-          {path: "novedad/:Id", component: VistaNovedadComponent},
-          {path: "", component: SinNovedadComponent}
+          { path: "novedad/:Id", component: VistaNovedadComponent },
+          { path: "", component: SinNovedadComponent }
         ]
       },
 
@@ -85,6 +92,20 @@ const routes: Routes = [
       { path: "personas/editar/:id", component: NuevapersonaComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Admin', 'Portero', 'Gestor'] } },
 
       { path: "asignaciones", component: AssignmentsComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['Portero'] } },
+
+      { path: "facturas", component: FacturasComponent },
+
+      { path: "productos", component: ProductosComponent },
+
+      { path: "precios", component: PreciosComponent },
+
+      { path: "pago-ventana/:id", component: PagoVentanaComponent },
+
+      { path: "mostrar-productos", component: MostrarProductosPrecioComponent },
+
+      { path: "listar-facturas", component: ListarFacturasComponent },
+
+      { path: "paypal", component: PaypalComponent }
     ]
   },
 
