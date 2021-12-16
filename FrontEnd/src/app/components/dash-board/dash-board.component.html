@@ -15,9 +15,15 @@
 
     <hr class="my-4">
     <ul class="nav flex-column">
-      <li class="nav-item" *ngIf="AuthenticationService.hasRole('SuperAdmin')">
-        <a class="nav-link" routerLink="/instituciones"><i class="fas fa-university"></i> Instituciones</a>
-      </li>
+      <ng-container *ngIf="AuthenticationService.hasRole('SuperAdmin')">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/instituciones"><i class="fas fa-university"></i> Instituciones</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/productos"><i class="fas fa-shopping-basket"></i> Productos</a>
+        </li>
+      </ng-container>
 
       <ng-container *ngIf="AuthenticationService.hasRole('Portero')">
         <li class="nav-item">

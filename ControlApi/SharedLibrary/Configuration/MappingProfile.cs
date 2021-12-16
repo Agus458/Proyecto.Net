@@ -5,9 +5,13 @@ using SharedLibrary.DataTypes.Buildings;
 using SharedLibrary.DataTypes.Doors;
 using SharedLibrary.DataTypes.Entries;
 using SharedLibrary.DataTypes.Events;
+using SharedLibrary.DataTypes.Factura;
 using SharedLibrary.DataTypes.Notifications;
 using SharedLibrary.DataTypes.Novelties;
+using SharedLibrary.DataTypes.Pago;
 using SharedLibrary.DataTypes.Persons;
+using SharedLibrary.DataTypes.Precio;
+using SharedLibrary.DataTypes.Products;
 using SharedLibrary.DataTypes.Rooms;
 using SharedLibrary.DataTypes.Tenants;
 using SharedLibrary.DataTypes.Users;
@@ -62,6 +66,23 @@ namespace SharedLibrary.Configuration
 
             CreateMap<Entry, EntryDataType>();
             CreateMap<CreateEntryRequestDataType, Entry>();
+
+            CreateMap<Factura, FacturaDataType>();
+            CreateMap<CreateFacturaRequestDataType, Factura>();
+            CreateMap<UpdateFacturaRequestDataType, Factura>();
+
+
+            CreateMap<Product, ProductsDataType>();
+            CreateMap<CreateProductsRequestDataType, Product>();
+            CreateMap<UpdateProductsRequestDataType, Product>();
+
+            CreateMap<Pago, PagoDataType>();
+            CreateMap<CreatePagoRequestDataType, Pago>();
+            CreateMap<UpdatePagoRequestDateType, Pago>();
+
+            CreateMap<Precio, PrecioDataType>();
+            CreateMap<CreatePrecioRequestDataType, Precio>();
+            CreateMap<UpdatePreciosRequestDataType, Precio>();
         }
     }
 }

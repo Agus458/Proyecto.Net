@@ -10,9 +10,11 @@ namespace SharedLibrary.DataTypes.Products
 {
     public record CreateProductsRequestDataType
     {
-    [Required]
-    public string name { get; init; }
+        [Required]
+        [MaxLength(200)]
+        public string Name { get; init; }
 
-   
+        [Required]
+        public int CantBuildings { get; init; }
     }
 }

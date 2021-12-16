@@ -1,14 +1,6 @@
-
-
-   <!-- <div class="modal-body">
-        <agm-map [fecha]="selectProductos.fecha [fecha]="selectProductos.Fecha">
-            <agm-marker [fecha]="selectProductos.Fecha [echa]="selectProductos.Fecha"></agm-marker>
-        </agm-map>
-    </div>-->
-   
-<!--<div class="card border-0 shadow rounded-3 my-5">
+<div class="card border-0 shadow rounded-3 my-5">
     <div class="card-body p-4 p-sm-5">
-        <h4 class="card-title fw-light fs-5">Edificios</h4>
+        <h4 class="card-title fw-light fs-5">Productos</h4>
         <hr class="my-4">
         <button type="button" class="btn btn-warning mb-4" [routerLink]="'nuevo'">Agregar</button>
         <div class="table-responsive">
@@ -17,18 +9,21 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Cantidad de Edificios</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let producto of productos; index as i" class="align-middle">
                         <th scope="row">{{i}}</th>
-                        <td>{{producto.nombre}}</td>
-                        <td>{{producto.precio}}</td>
-                        <td class="text-right">
-                       
-                            <button class="btn btn-info ml-2" [routerLink]="'/producto/' + producto.id"><i
-                                    class="fas fa-calendar-day"></i></button>
-                        
+                        <td>{{producto.name}}</td>
+                        <td>{{producto.cantBuildings}}</td>
+                        <td>
+                            <button class="btn btn-warning ml-2" [routerLink]="'editar/' + producto.id"><i
+                                    class="fas fa-pencil"></i></button>
+                            <button class="btn btn-danger ml-2"><i class="fas fa-trash"
+                                    (click)="delete(producto.id)"></i></button>
+                            <button class="btn btn-success ml-2" [routerLink]="'/precios/producto/' + producto.id"><i
+                                    class="fas fa-search-dollar"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -38,35 +33,4 @@
                 [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
         </div>
     </div>
-</div>-->
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card border-0 shadow rounded-3 my-5">
-                <div class="card-body p-4 p-sm-5">
-                    <h4 class="card-title text-center mb-5 fw-light fs-5">Añadir Producto</h4>
-                    <hr class="my-4">
-                    <form [formGroup]="ProductosForm" (ngSubmit)="submit()">
-                        <div class= "form-floating mb-3">
-                            <label>Nombre Producto</label>
-                            <input type="text" formControlName='name' class="form-control" >
-                        </div>
-
-
-                        <div class="d-grid">                  
-                        <button class="btn btn-block btn-warning btn-login text-uppercase fw-bold"
-                        type="submit"  selectProductos = "ProductosForm" [routerLink]="'/precios'" >Publicar Producto</button>
-                            
-                        </div>
-                    </form>
-                    
-                        
-                </div>
-
-            </div>
-        </div>
-
-
-
 </div>

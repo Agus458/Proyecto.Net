@@ -10,11 +10,11 @@ namespace SharedLibrary.DataTypes.Products
     public record ProductsDataType
     {
         public Guid Id { get; init; }
-        public string nombre { set; get; }
 
-        //    public float precio { set; get; }
-        public PrecioDataType Precio {get; init;}
-        //Agregar una coleccion de precios
-        // public List<DataPrecio>
+        public string Name { get; init; }
+
+        public int CantBuildings { get; init; }
+
+        public List<PrecioDataType> Precios { get; init; }
     }
 }

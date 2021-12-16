@@ -23,7 +23,7 @@ export class ProductosService {
     });
   }
 
-  getList(){
+  getList() {
     return this.Http.get<ProductosDataType[]>(this.Url + "/List");
   }
 

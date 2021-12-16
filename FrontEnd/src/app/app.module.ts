@@ -57,12 +57,12 @@ import { PreciosComponent } from './components/precios/precios.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
 import { PagosComponent } from './components/pagos/pagos.component';
 import { ListarFacturasComponent } from './components/listar-facturas/listar-facturas.component';
-import { MostrarProductosPrecioComponent } from './components/mostrar-productos-precio/mostrar-productos-precio.component';
 import { PagoVentanaComponent } from './components/pago-ventana/pago-ventana.component';
 import { RealizarPagoComponent } from './components/realizar-pago/realizar-pago.component';
 import { GenerarFacturaComponent } from './components/generar-factura/generar-factura.component';
 import { PaydayComponent } from './components/payday/payday.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
+import { EditProductoComponent } from './components/productos/edit-producto/edit-producto.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -111,12 +111,12 @@ registerLocaleData(localeES, "es");
     FacturasComponent,
     PagosComponent,
     ListarFacturasComponent,
-    MostrarProductosPrecioComponent,
     PagoVentanaComponent,
     RealizarPagoComponent,
     GenerarFacturaComponent,
     PaydayComponent,
     PaypalComponent,
+    EditProductoComponent,
   ],
   imports: [
     BrowserModule,

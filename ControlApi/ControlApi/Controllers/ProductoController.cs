@@ -15,11 +15,9 @@ namespace ControlApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
-    public class ProductoController :ControllerBase
+    public class ProductoController : ControllerBase
     {
-
         private readonly IProductsService Service;
-
 
         public ProductoController(IProductsService Service)
         {
@@ -32,14 +30,14 @@ namespace ControlApi.Controllers
             return Ok(this.Service.GetAll(Skip, Take));
         }
 
-
         [HttpGet("{Id}")]
         public IActionResult GetById(Guid Id)
         {
             return Ok(this.Service.GetById(Id));
         }
+
         [HttpDelete("{Id}")]
-       public IActionResult Delete(Guid Id)
+        public IActionResult Delete(Guid Id)
         {
             this.Service.Delete(Id);
             return NoContent();
@@ -60,5 +58,5 @@ namespace ControlApi.Controllers
         }
 
     }
-   
+
 }

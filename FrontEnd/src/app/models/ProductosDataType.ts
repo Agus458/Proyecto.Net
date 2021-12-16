@@ -1,10 +1,10 @@
 import { PrecioDataType } from "./PrecioDatatype";
 
-export class ProductosDataType{
-    
+export class ProductosDataType {
+
     id: string;
 
-    nombre:String
+    name: string;
 
-    precio:PrecioDataType
+    cantBuildings: number;
 }
