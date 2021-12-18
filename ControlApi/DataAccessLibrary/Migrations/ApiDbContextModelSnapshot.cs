@@ -398,6 +398,9 @@ namespace DataAccessLibrary.Migrations
                     b.Property<int>("CantBuildings")
                         .HasColumnType("int");
 
+                    b.Property<int>("CantRooms")
+                        .HasColumnType("int");
+
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
@@ -450,6 +453,9 @@ namespace DataAccessLibrary.Migrations
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Rut")
                         .IsRequired()
                         .HasMaxLength(12)
@@ -464,6 +470,8 @@ namespace DataAccessLibrary.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Tenants");
                 });
@@ -829,6 +837,17 @@ namespace DataAccessLibrary.Migrations
                         .IsRequired();
 
                     b.Navigation("Building");
+                });
+
+            modelBuilder.Entity("DataAccessLibrary.Entities.Tenant", b =>
+                {
+                    b.HasOne("DataAccessLibrary.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.User", b =>

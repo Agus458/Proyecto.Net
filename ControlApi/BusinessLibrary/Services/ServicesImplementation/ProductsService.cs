@@ -61,6 +61,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
             };
         }
 
+        public IEnumerable<ProductsDataType> Get()
+        {
+            var Result = this.Store.Get();
+
+            return Result.Select(Product => Mapper.Map<ProductsDataType>(Product));
+        }
+
         public ProductsDataType GetById(Guid Id)
         {
             if (Id == Guid.Empty) throw new ApiError("Invalido Id", (int)HttpStatusCode.BadRequest);

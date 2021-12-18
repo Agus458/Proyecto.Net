@@ -20,5 +20,6 @@ namespace BusinessLibrary.Services
 
         void Update(Guid Id, UpdateProductsRequestDataType Data);
 
+        IEnumerable<ProductsDataType> Get();
     }
 }

@@ -27,6 +27,7 @@ export class EditProductoComponent implements OnInit {
     this.ProductForm = this.FormBuilder.group({
       name: ["", [Validators.required]],
       cantBuildings: ["", [Validators.required]],
+      cantRooms: ["", [Validators.required]],
     });
 
     const routeParams = this.route.snapshot.paramMap;

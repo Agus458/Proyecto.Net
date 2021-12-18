@@ -3,13 +3,14 @@
         <h4 class="card-title fw-light fs-5">Productos</h4>
         <hr class="my-4">
         <button type="button" class="btn btn-warning mb-4" [routerLink]="'nuevo'">Agregar</button>
-        <div class="table-responsive">
-            <table class="table table-borderless table-dark table-striped align-middle table-hover m-0">
+        <div>
+            <table class="table table-borderless table-responsive table-dark table-striped align-middle table-hover m-0">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Cantidad de Edificios</th>
+                        <th scope="col">Cantidad de Salones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -17,6 +18,7 @@
                         <th scope="row">{{i}}</th>
                         <td>{{producto.name}}</td>
                         <td>{{producto.cantBuildings}}</td>
+                        <td>{{producto.cantRooms}}</td>
                         <td>
                             <button class="btn btn-warning ml-2" [routerLink]="'editar/' + producto.id"><i
                                     class="fas fa-pencil"></i></button>

@@ -14,5 +14,7 @@ namespace SharedLibrary.DataTypes.Tenants
 
         [MaxLength(200)]
         public string SocialReason { get; init; }
+
+        public Guid ProductId { get; set; }
     }
 }

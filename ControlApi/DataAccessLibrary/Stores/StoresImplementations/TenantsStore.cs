@@ -65,15 +65,21 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             }
         }
 
-        public PaginationDataType<Tenant> GetAll(int Skip, int Take)
+        public PaginationDataType<Tenant> GetAll(string[] Relations, int Skip, int Take)
         {
-            var Tenants = this.Context.Set<Tenant>();
+            var RelationsArray = new List<string>() { };
+            if (Relations != null) RelationsArray = RelationsArray.Concat(Relations).ToList();
+
+            var Tenants = this.Context.Set<Tenant>().GetAllIncluding(RelationsArray.ToArray());
             return new PaginationDataType<Tenant> { Collection = Tenants.Skip(Skip).Take(Take > 0 ? Take : 10).AsEnumerable(), Size = Tenants.Count() };
         }
 
-        public Tenant GetById(Guid Id)
+        public Tenant GetById(Guid Id, string[] Relations)
         {
-            return this.Context.Set<Tenant>().SingleOrDefault(Entity => Entity.Id == Id);
+            var RelationsArray = new List<string>() { };
+            if (Relations != null) RelationsArray = RelationsArray.Concat(Relations).ToList();
+
+            return this.Context.Set<Tenant>().GetAllIncluding(RelationsArray.ToArray()).SingleOrDefault(Entity => Entity.Id == Id);
         }
 
         public void Update(Tenant Entity)

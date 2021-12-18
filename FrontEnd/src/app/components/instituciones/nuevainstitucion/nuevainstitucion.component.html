@@ -11,9 +11,19 @@
                 <label>RUT</label>
                 <input type="text" class="form-control" formControlName="rut">
             </div>
+            <div class="form-group">
+                <label>Producto</label>
+                <select class="form-control" formControlName="productId">
+                    <option value="">Seleccione un Producto</option>
+                    <option *ngFor="let product of products" [value]="product.id">{{product.name}}
+                    </option>
+                </select>
+            </div>
+
             <hr class="my-4">
             <div class="row">
-                <div class="col"><button class="btn btn-dark btn-block" (click)="location.back()" type="button">Cancelar</button></div>
+                <div class="col"><button class="btn btn-dark btn-block" (click)="location.back()"
+                        type="button">Cancelar</button></div>
                 <div class="col"><button class="btn btn-warning btn-block" type="submit">Confirmar</button></div>
             </div>
         </form>

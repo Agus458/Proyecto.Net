@@ -18,20 +18,26 @@ namespace BusinessLibrary.Services.ServicesImplementation
     {
         private readonly ITenantsStore Store;
 
+        private readonly IProductsStore ProductStore;
+
         private readonly UserManager<User> UserManager;
 
         private readonly IMapper Mapper;
 
-        public TenantsService(ITenantsStore Store, UserManager<User> UserManager, IMapper Mapper)
+        public TenantsService(ITenantsStore Store, UserManager<User> UserManager, IMapper Mapper, IProductsStore ProductStore)
         {
             this.Store = Store;
             this.UserManager = UserManager;
             this.Mapper = Mapper;
+            this.ProductStore = ProductStore;
         }
 
         public TenantDataType Create(CreateTenantRequestDataType Data)
         {
             if (Data == null) throw new ArgumentNullException();
+
+            var Product = this.ProductStore.GetById(Data.ProductId);
+            if (Product == null) throw new ApiError("Producto Invalido", (int)HttpStatusCode.BadRequest);
 
             if (this.Store.GetBySocialReason(Data.SocialReason) == null && this.Store.GetByRut(Data.Rut) == null)
             {
@@ -39,7 +45,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
                 Mapper.Map(Data, NewTenant);
 
                 var Result = this.Store.Create(NewTenant);
-                
+
                 return Mapper.Map<TenantDataType>(Result);
             }
 
@@ -63,9 +69,10 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public PaginationDataType<TenantDataType> GetAll(int Skip, int Take)
         {
-            var Result = this.Store.GetAll(Skip, Take);
+            var Result = this.Store.GetAll(new string[] { "Product" }, Skip, Take);
 
-            return new PaginationDataType<TenantDataType>() {
+            return new PaginationDataType<TenantDataType>()
+            {
                 Collection = Result.Collection.Select(Tenant => Mapper.Map<TenantDataType>(Tenant)),
                 Size = Result.Size
             };
@@ -73,7 +80,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public TenantDataType GetById(Guid Id)
         {
-            var Tenant = this.Store.GetById(Id);
+            var Tenant = this.Store.GetById(Id, new string[] { "Product" });
 
             if (Tenant != null) return Mapper.Map<TenantDataType>(Tenant);
 
@@ -85,6 +92,12 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var Tenant = this.Store.GetById(Id);
             if (Tenant != null)
             {
+                if (Data.ProductId != Guid.Empty)
+                {
+                    var Product = this.ProductStore.GetById(Data.ProductId);
+                    if (Product == null) throw new ApiError("Producto Invalido", (int)HttpStatusCode.BadRequest);
+                }
+
                 Mapper.Map(Data, Tenant);
                 this.Store.Update(Tenant);
             }

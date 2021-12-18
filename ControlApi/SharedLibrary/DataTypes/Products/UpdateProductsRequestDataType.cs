@@ -13,5 +13,7 @@ namespace SharedLibrary.DataTypes.Products
         public string Name { get; init; }
 
         public int CantBuildings { get; init; }
+
+        public int CantRooms { get; init; }
     }
 }

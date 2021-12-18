@@ -16,5 +16,8 @@ namespace SharedLibrary.DataTypes.Products
 
         [Required]
         public int CantBuildings { get; init; }
+
+        [Required]
+        public int CantRooms { get; init; }
     }
 }

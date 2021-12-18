@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharedLibrary.DataTypes.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,9 @@ namespace SharedLibrary.DataTypes.Tenants
         public string Rut { get; init; }
 
         public string SocialReason { get; init; }
+
+        public Guid ProductId { get; init; }
+
+        public ProductsDataType Product { get; init; }
     }
 }

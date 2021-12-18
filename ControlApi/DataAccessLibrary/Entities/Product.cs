@@ -16,6 +16,8 @@ namespace DataAccessLibrary.Entities
         public List<Precio> Precios { get; set; }
 
         public int CantBuildings { get; set; }
+
+        public int CantRooms { get; set; }
     }
     
 }

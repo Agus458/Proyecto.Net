@@ -15,6 +15,8 @@ namespace SharedLibrary.DataTypes.Products
 
         public int CantBuildings { get; init; }
 
+        public int CantRooms { get; init; }
+
         public List<PrecioDataType> Precios { get; init; }
     }
 }

@@ -7,4 +7,6 @@ export class ProductosDataType {
     name: string;
 
     cantBuildings: number;
+
+    cantRooms: number;
 }
