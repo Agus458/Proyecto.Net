@@ -42,13 +42,7 @@ const routes: Routes = [
     path: "",
     component: HomeComponent,
     children: [
-      {
-        path: "", component: InicioComponent,
-        children: [
-          { path: "novedad/:Id", component: VistaNovedadComponent },
-          { path: "", component: SinNovedadComponent }
-        ]
-      },
+      { path: "", component: InicioComponent },
 
       { path: "iniciarSesion", component: LoginComponent },
 

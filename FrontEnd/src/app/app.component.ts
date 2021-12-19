@@ -7,7 +7,7 @@ import { ToastService } from './services/toast/toast.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'FrontEnd';
+  title = 'AccessApp';
 
   constructor(
     public toastService: ToastService

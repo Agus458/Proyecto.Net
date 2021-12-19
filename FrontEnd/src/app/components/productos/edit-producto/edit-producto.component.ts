@@ -51,7 +51,7 @@ export class EditProductoComponent implements OnInit {
           this.toastService.show("Success", "Producto actualizado");
           this.router.navigateByUrl("/productos");
         },
-        err => this.toastService.show("Error", "Algo salio mal")
+        error => this.toastService.show("Error", error.error?.Message ?? "Algo salió mal")
       );
     } else {
       this.ProductosService.create(this.ProductForm.value).subscribe(
@@ -62,7 +62,7 @@ export class EditProductoComponent implements OnInit {
         error => {
           console.log(error);
 
-          this.toastService.show("Error", "Algo salio mal");
+          this.toastService.show("Error", error.error?.Message ?? "Algo salió mal");
         }
       );
     }

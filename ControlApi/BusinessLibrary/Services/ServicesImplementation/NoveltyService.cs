@@ -18,13 +18,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
 {
     public class NoveltyService : INoveltyService
     {
-        private readonly IStoreByBuilding<Novelty> Store;
+        private readonly INoveltyStore Store;
         private readonly IMapper Mapper;
         private readonly HttpContext Context;
         private readonly IStore<Building> BuildingsStore;
         private readonly IWebHostEnvironment Environment;
 
-        public NoveltyService(IStoreByBuilding<Novelty> Store, IMapper Mapper, IHttpContextAccessor Context, IStore<Building> BuildingsStore, IWebHostEnvironment Environment)
+        public NoveltyService(INoveltyStore Store, IMapper Mapper, IHttpContextAccessor Context, IStore<Building> BuildingsStore, IWebHostEnvironment Environment)
         {
             this.Store = Store;
             this.Mapper = Mapper;
@@ -97,6 +97,17 @@ namespace BusinessLibrary.Services.ServicesImplementation
             if (Novelty == null) throw new ApiError("Novelty Not Found", (int)HttpStatusCode.NotFound);
 
             return Mapper.Map<NoveltyDataType>(Novelty);
+        }
+
+        public PaginationDataType<NoveltyDataType> GetByTenant(int Skip, int Take, Guid TenantId)
+        {
+            var Result = this.Store.GetByTenant(Skip, Take, TenantId);
+
+            return new PaginationDataType<NoveltyDataType>()
+            {
+                Collection = Result.Collection.Select(Door => Mapper.Map<NoveltyDataType>(Door)),
+                Size = Result.Size
+            };
         }
 
         public void Update(Guid Id, UpdateNoveltyRequestDataType Data)

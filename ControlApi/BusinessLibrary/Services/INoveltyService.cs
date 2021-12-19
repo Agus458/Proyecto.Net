@@ -12,6 +12,8 @@ namespace BusinessLibrary.Services
     {
         PaginationDataType<NoveltyDataType> GetAll(int Skip, int Take, Guid BuildingId);
 
+        PaginationDataType<NoveltyDataType> GetByTenant(int Skip, int Take, Guid TenantId);
+
         NoveltyDataType GetById(Guid Id, Guid BuildingId);
 
         NoveltyDataType Create(CreateNoveltyRequestDataType Data);

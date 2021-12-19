@@ -27,7 +27,7 @@ export class IngresarComponent implements OnInit {
       error => {
         console.log(error);
 
-        this.toastService.show("Error", "Algo salio mal");
+        this.toastService.show("Error", error.error?.Message ?? "Algo salió mal");
       }
     );
   }

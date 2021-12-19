@@ -21,10 +21,9 @@
         </ul>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" *ngIf="AuthenticationService.hasRole('Admin')"
-            (click)="delete(selectedPerson.id)">Eliminar</button>
-        <button type="button" class="btn btn-warning"
-            [routerLink]="'/personas/editar/' + selectedPerson.id" (click)="modal.close()">Editar</button>
+        <button type="button" class="btn btn-danger" (click)="delete(selectedPerson.id)">Eliminar</button>
+        <button type="button" class="btn btn-warning" [routerLink]="'/personas/editar/' + selectedPerson.id"
+            (click)="modal.close()">Editar</button>
         <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
     </div>
 </ng-template>
@@ -33,9 +32,23 @@
     <div class="card-body p-4 p-sm-5">
         <h4 class="card-title fw-light fs-5">Personas</h4>
         <hr class="my-4">
-        <button type="button" class="btn btn-warning mb-4" [routerLink]="'nuevo'">Agregar</button>
-        <div class="">
-            <table class="table table-borderless table-responsive table-dark table-striped align-middle table-hover m-0">
+
+        <div class="row">
+            <div class="col-md-3">
+                <button type="button" class="btn btn-warning btn-block mb-4" [routerLink]="'nuevo'">Agregar</button>
+            </div>
+            <div class="col">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                        (change)="fileSelect($event)">
+                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table
+                class="table table-borderless table-responsive table-dark table-striped align-middle table-hover m-0">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

@@ -12,7 +12,7 @@ import { PersonasService } from 'src/app/services/personas/personas.service';
   styleUrls: ['./personas.component.css']
 })
 export class PersonasComponent implements OnInit {
-  
+
   page = 1;
   size: number;
   personas: PersonDataType[];
@@ -32,11 +32,6 @@ export class PersonasComponent implements OnInit {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 
-  delete(id: string){
-    this.PersonasService.delete(id).subscribe();
-    window.location.reload();
-  }
-
   getPersons(skip: number, take: number) {
     this.PersonasService.getAll(skip, take).subscribe(
       ok => {
@@ -53,5 +48,25 @@ export class PersonasComponent implements OnInit {
     this.getPersons((pageNum - 1) * 10, 10);
   }
 
+  delete(id: string) {
+    this.PersonasService.delete(id).subscribe(
+      ok => {
+        this.getPersons(0, 10);
+        this.modalService.dismissAll();
+      }
+    );
+  }
+
+  fileSelect(event: any) {
+    const file: File = event.target.files[0];
+
+    if (file) {
+      this.PersonasService.csv(file).subscribe(
+        ok => {
+          this.getPersons(0, 10);
+        }
+      );
+    }
+  }
 }
 

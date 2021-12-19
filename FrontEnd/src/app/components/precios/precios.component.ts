@@ -61,7 +61,7 @@ export class PreciosComponent implements OnInit {
   {
     this.PreciosService.create(this.PreciosForm.value).subscribe(
       ok=>{console.log("Producto Creado")},
-      error=>console.log("Algo Salio Mal"));
+      error=>console.log(error.error?.Message ?? "Algo salió mal"));
   }
   open(content: any, precios: PrecioDataType) {
     this.selectPrecio = precios;
@@ -78,7 +78,7 @@ export class PreciosComponent implements OnInit {
       error => {
         console.log(error);
 
-        this.toastService.show("Error", "Algo salio mal");
+        this.toastService.show("Error", error.error?.Message ?? "Algo salió mal");
       }
     );
   }

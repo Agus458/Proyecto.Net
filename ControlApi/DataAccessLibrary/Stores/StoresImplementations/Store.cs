@@ -18,6 +18,11 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.Context = Context;
         }
 
+        public int Count()
+        {
+            return this.Context.Set<Target>().Count();
+        }
+
         public void Create(Target Entity)
         {
             if (Entity == null) throw new ArgumentNullException();

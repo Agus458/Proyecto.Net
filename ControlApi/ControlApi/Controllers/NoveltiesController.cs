@@ -29,6 +29,13 @@ namespace ControlApi.Controllers
             return Ok(this.Service.GetAll(Skip, Take, BuildingId));
         }
 
+        [HttpGet("Tenant/{TenantId}")]
+        [AllowAnonymous]
+        public IActionResult GetByTenant([FromQuery(Name = "skip")] int Skip, [FromQuery(Name = "take")] int Take, Guid TenantId)
+        {
+            return Ok(this.Service.GetByTenant(Skip, Take, TenantId));
+        }
+
         [HttpGet("Building/{BuildingId}/{Id}")]
         public IActionResult GetById(Guid Id, Guid BuildingId)
         {

@@ -1,3 +1,5 @@
+import { BuildingDataType } from "./BuildingDataType";
+
 export class NoveltiesDataType {
     id: string;
 
@@ -6,4 +8,6 @@ export class NoveltiesDataType {
     content: string;
 
     image: string;
+
+    building: BuildingDataType
 }

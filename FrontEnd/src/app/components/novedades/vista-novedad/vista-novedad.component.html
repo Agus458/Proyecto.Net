@@ -1,4 +1,4 @@
-<div class="justify-content-center" style="margin: 20px">
+<div class="justify-content-center" style="margin: 20px" *ngIf="selectedNoveltie; else elseBlock">
 
     <div class="card-body">
         <h3 class="link-dark card-title" ><strong>{{selectedNoveltie.title}}</strong></h3>
@@ -7,3 +7,7 @@
         class="img-fluid rounded-start" alt="...">
     <div class="card-text" style="padding-top: 20px;">{{selectedNoveltie.content}}</div>
 </div>
+
+<ng-template #elseBlock>
+    <app-sin-novedad></app-sin-novedad>
+</ng-template>

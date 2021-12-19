@@ -68,7 +68,7 @@ export class EditUsuarioComponent implements OnInit {
           this.router.navigateByUrl("/usuarios");
         },
         error => {
-          this.toastService.show("Error", "Algo salio mal");
+          this.toastService.show("Error", error.error?.Message ?? "Algo salió mal");
         }
       );
     } else {
@@ -78,7 +78,7 @@ export class EditUsuarioComponent implements OnInit {
           this.router.navigateByUrl("/usuarios");
         },
         error => {
-          this.toastService.show("Error", "Algo salio mal");
+          this.toastService.show("Error", error.error?.Message ?? "Algo salió mal");
         }
       );
     }

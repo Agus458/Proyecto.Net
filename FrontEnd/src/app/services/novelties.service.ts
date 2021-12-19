@@ -22,8 +22,21 @@ export class NoveltiesService {
     });
   }
 
+  getByTenant(skip: number, take: number, tenantId: string) {
+    return this.Http.get<{ collection: NoveltiesDataType[], size: number }>(this.Url + "/Tenant/" + tenantId , {
+      params: {
+        skip,
+        take,
+      }
+    });
+  }
+
   getById(id: string, buildingId: string) {
     return this.Http.get<NoveltiesDataType>(this.Url + "/Building/" + buildingId + "/" + id);
+  }
+
+  getOnlyById(id: string) {
+    return this.Http.get<NoveltiesDataType>(this.Url + "/" + id);
   }
 
   update(id: string, data: any) {

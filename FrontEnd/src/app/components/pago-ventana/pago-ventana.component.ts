@@ -40,7 +40,7 @@ export class PagoVentanaComponent implements OnInit {
   {
    this.FacturaService.Pagar(this.facturaselect.id).subscribe(
      ok=>{console.log("Producto Creado")},
-     error=>console.log("Algo Salio Mal"));
+     error=>console.log(error.error?.Message ?? "Algo salió mal"));
   }
 /*
   getFacturas(skip: number, take: number) {

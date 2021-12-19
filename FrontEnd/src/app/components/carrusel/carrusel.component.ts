@@ -13,42 +13,19 @@ import { environment } from 'src/environments/environment';
 })
 export class CarruselComponent implements OnInit {
 
-  Novelties: NoveltiesDataType[];
-  size: number;
-  buildingId: string;
-  @Input()selectedNoveltie: NoveltiesDataType;
+  selectedNoveltie: NoveltiesDataType;
+  @Input() novelties: NoveltiesDataType[];
   private lenght = environment.controlApiUrl.length;
-  backurl = environment.controlApiUrl.substring(0,this.lenght-1);
+  backurl = environment.controlApiUrl.substring(0, this.lenght - 1);
 
-  constructor(
-    private NoveltiesService: NoveltiesService,
-    private modalService: NgbModal,
-    private route: ActivatedRoute,
-    private toastService: ToastService,
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    const routeParams = this.route.snapshot.paramMap;
-    const IdFromRoute = routeParams.get('id');
 
-    if (IdFromRoute) {
-      this.buildingId = IdFromRoute;
-
-      this.getNovelties(0, 10);
-    }
   }
 
-  getNovelties(skip: number, take: number) {
-    this.NoveltiesService.getAll(skip, take, this.buildingId).subscribe(
-      ok => {
-        this.Novelties = ok.collection;
-        this.size = ok.size;
-      }
-    );
-  }
-
-  onPageChange(pageNum: number): void {
-    this.getNovelties((pageNum - 1) * 10, 10);
+  select(novelty: NoveltiesDataType){
+    this.selectedNoveltie = novelty;
   }
 }
 

@@ -146,6 +146,7 @@ namespace ControlApi
             services.AddTransient<DataAccessLibrary.Stores.IEventsStore, DataAccessLibrary.Stores.StoresImplementations.EventsStore>();
             services.AddTransient<DataAccessLibrary.Stores.IAssignmentsStore, DataAccessLibrary.Stores.StoresImplementations.AssignmentsStore>();
             services.AddTransient<DataAccessLibrary.Stores.INotificationStore, DataAccessLibrary.Stores.StoresImplementations.NotificationStore>();
+            services.AddTransient<DataAccessLibrary.Stores.INoveltyStore, DataAccessLibrary.Stores.StoresImplementations.NoveltyStore>();
 
             services.AddTransient<DataAccessLibrary.Stores.IFacturaStore, DataAccessLibrary.Stores.StoresImplementations.FacturaStore>();
             services.AddTransient<DataAccessLibrary.Stores.IPagoStore, DataAccessLibrary.Stores.StoresImplementations.PagoStore>();

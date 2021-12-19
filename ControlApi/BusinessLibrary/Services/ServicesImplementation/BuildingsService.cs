@@ -35,7 +35,10 @@ namespace BusinessLibrary.Services.ServicesImplementation
             var TenantId = this.Context.GetTenant();
             if (TenantId == Guid.Empty) throw new ApiError("No se ingreso la institucion", (int)HttpStatusCode.BadRequest);
 
-            if (this.TenantsStore.GetById(TenantId) == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
+            var Tenant = this.TenantsStore.GetById(TenantId, new string[] { "Product" });
+            if (Tenant == null) throw new ApiError("Institucion Invalida", (int)HttpStatusCode.BadRequest);
+
+            if (this.Store.Count() >= Tenant.Product.CantBuildings) throw new ApiError("Cantidad de edificios alcanzada", (int)HttpStatusCode.BadRequest);
 
             var NewBuilding = new Building() { Id = Guid.NewGuid() };
             Mapper.Map(Data, NewBuilding);

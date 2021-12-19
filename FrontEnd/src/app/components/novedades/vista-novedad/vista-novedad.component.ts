@@ -22,8 +22,6 @@ export class VistaNovedadComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.selectedNoveltie);
-    
   }
 }
 

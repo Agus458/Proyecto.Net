@@ -49,5 +49,7 @@ namespace DataAccessLibrary.Stores
         void Delete(Target Entity);
 
         IEnumerable<Target> Get([Optional] string[] Relations);
+
+        int Count();
     }
 }

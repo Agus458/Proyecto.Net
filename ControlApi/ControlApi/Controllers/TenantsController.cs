@@ -30,6 +30,7 @@ namespace ControlApi.Controllers
         }
 
         [HttpGet("List")]
+        [AllowAnonymous]
         public IActionResult Get()
         {
             return Ok(this.Service.Get());

@@ -65,7 +65,7 @@ export class EditNovedadesComponent implements OnInit {
           this.toastService.show("Success", "Novedad actualizada");
           this.router.navigateByUrl("novedades/edificio/" + this.buildingId);
         },
-        err => this.toastService.show("Error", "Algo salio mal")
+        error => this.toastService.show("Error", error.error?.Message ?? "Algo salió mal")
       );
     } else {
       this.NoveltiesService.create(this.NoveltyForm.value).subscribe(
@@ -76,7 +76,7 @@ export class EditNovedadesComponent implements OnInit {
         error => {
           console.log(error);
 
-          this.toastService.show("Error", "Algo salio mal");
+          this.toastService.show("Error", error.error?.Message ?? "Algo salió mal");
         }
       );
     }

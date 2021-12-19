@@ -65,13 +65,11 @@ namespace ControlApi.Controllers
         }
 
         [HttpPost("CSV")]
-        public IActionResult CSV()
+        public IActionResult CSV([FromForm] IFormFile file)
         {
             var Persons = new List<CreatePersonRequestDataType>();
             try
             {
-                var file = Request.Form.Files[0];
-
                 using (var stream = file.OpenReadStream())
                 {
                     using (var reader = ExcelReaderFactory.CreateReader(stream))

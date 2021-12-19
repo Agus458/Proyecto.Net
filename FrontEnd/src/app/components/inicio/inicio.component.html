@@ -3,12 +3,20 @@
     alt="">
     <h1>Bienvenid@ a AccessApp</h1>
 </div>
+
 <div class="row justify-content-center">
 
-    <div class="card border-0 shadow rounded-3 my-5" style="width: 70%;">
-        <div class="card-body p-4 p-sm-5">
-            <app-carrusel></app-carrusel>
-        </div>
+    <div class="card border-0 shadow rounded-3 my-5">
+        <div class="card-body">
+            <div>
+                <select class="form-control mb-3" #select (change)="onChangeTenant(select.value)">
+                    <option value="" selected>Seleccione una Institucion</option>
+                    <option *ngFor="let tenant of tenants" [value]="tenant.id">{{tenant.socialReason}}
+                    </option>
+                </select>
+            </div>
 
+            <app-carrusel [novelties]="novelties"></app-carrusel>
+        </div>
     </div>
 </div>

@@ -64,7 +64,7 @@ export class EditDoorComponent implements OnInit {
           this.toastService.show("Success", "Puerta actualizada");
           this.router.navigateByUrl("/puertas/edificio/" + this.buildingId);
         },
-        err => this.toastService.show("Error", "Algo salio mal")
+        error => this.toastService.show("Error", error.error?.Message ?? "Algo salió mal")
       );
     } else {
       this.DoorsService.create(this.DoorForm.value).subscribe(
@@ -75,7 +75,7 @@ export class EditDoorComponent implements OnInit {
         error => {
           console.log(error);
 
-          this.toastService.show("Error", "Algo salio mal");
+          this.toastService.show("Error", error.error?.Message ?? "Algo salió mal");
         }
       );
     }

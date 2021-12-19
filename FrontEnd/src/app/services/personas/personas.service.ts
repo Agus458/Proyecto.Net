@@ -32,6 +32,14 @@ export class PersonasService {
     return this.Http.put(this.Url + "/" + id, form);
   }
 
+  csv(file: File) {
+    const formData = new FormData();
+
+    formData.append("file", file);
+
+    return this.Http.post(this.Url + "/CSV", formData);
+  }
+
   delete(id: string) {
     return this.Http.delete(this.Url + "/" + id);
   }
@@ -42,11 +50,11 @@ export class PersonasService {
     Object.keys(data).forEach(key => {
       form.append(key, data[key]);
     });
-    
+
     return this.Http.post(this.Url, form);
   }
 
-  identify(image: File){
+  identify(image: File) {
     let form = new FormData();
     form.append("fileImage", image);
 

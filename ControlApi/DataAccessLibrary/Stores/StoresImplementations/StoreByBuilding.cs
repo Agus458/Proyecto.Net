@@ -19,6 +19,11 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.Context = Context;
         }
 
+        public int Count(Guid BuildingId)
+        {
+            return this.Context.Set<Target>().Where(Entity => Entity.BuildingId == BuildingId).Count();
+        }
+
         public PaginationDataType<Target> GetAll(int Skip, int Take, Guid BuildingId, string[] Relations)
         {
             var RelationsArray = new List<string>() { "Building" };

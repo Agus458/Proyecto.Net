@@ -13,5 +13,7 @@ namespace DataAccessLibrary.Stores
         PaginationDataType<Target> GetAll(int Skip, int Take, Guid BuildingId, [Optional] string[] Relations);
 
         Target GetById(Guid Id, Guid BuildingId, [Optional] string[] Relations);
+
+        int Count(Guid BuildingId);
     }
 }
