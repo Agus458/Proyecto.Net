@@ -1,14 +1,7 @@
-import { Component, NgModuleFactoryLoader, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PreciosService } from 'src/app/services/precios/precios.service';
-import { ToastService } from 'src/app/services/toast/toast.service';
-import { PrecioDataType } from 'src/app/models/PrecioDatatype';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { FacturasService } from 'src/app/services/facturas/facturas.service';
-import { FacturaDataType } from 'src/app/models/FacturaDataType';
-import { ProductosDataType } from 'src/app/models/ProductosDataType';
-import { ProductosService } from 'src/app/services/productos/productos.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { PrecioDataType } from "src/app/models/PrecioDatatype";
+import { PreciosService } from "src/app/services/precios/precios.service";
 
 @Component({
   selector: 'app-precios',
@@ -16,35 +9,29 @@ import { ProductosService } from 'src/app/services/productos/productos.service';
   styleUrls: ['./precios.component.css']
 })
 export class PreciosComponent implements OnInit {
-  PreciosForm: FormGroup;
 
   precios: PrecioDataType[]
-  productos: ProductosDataType[];
-  selectPrecio: PrecioDataType;
-  factura: FacturaDataType;
-  page=8;
+  page=1;
   size: number;
-  Productoid:string;
+  productId:string;
+
   constructor(
-
-    private FormBuilder:FormBuilder,
     private PreciosService: PreciosService,
-    private ProductosService:ProductosService,
-    private modalService:  NgbModal,
-    private router: Router,
-    private activate: ActivatedRoute,
-    private toastService:ToastService,
-
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    
-   this.PreciosForm = this.FormBuilder.group({
-      precio:['']
-    });
+    const routeParams = this.route.snapshot.paramMap;
+    const IdFromRoute = routeParams.get('id');
+
+    if (IdFromRoute) {
+      this.productId = IdFromRoute;
+      this.getPrecios(0, 10);
+    }
   }
-  getPagos(skip: number, take: number) {
-    this.PreciosService.getAll(skip, take).subscribe(
+  
+  getPrecios(skip: number, take: number) {
+    this.PreciosService.getAll(skip, take, this.productId).subscribe(
       ok => {
         this.precios= ok.collection;
         this.size = ok.size;
@@ -55,34 +42,16 @@ export class PreciosComponent implements OnInit {
     );
   }
 
-
-  
-  submit()
-  {
-    this.PreciosService.create(this.PreciosForm.value).subscribe(
-      ok=>{console.log("Producto Creado")},
-      error=>console.log(error.error?.Message ?? "Algo salió mal"));
-  }
-  open(content: any, precios: PrecioDataType) {
-    this.selectPrecio = precios;
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  onPageChange(pageNum: number): void {
+    this.getPrecios((pageNum - 1) * 10, 10);
   }
 
   delete(id: string) {
     this.PreciosService.delete(id).subscribe(
       ok => {
-        this.toastService.show("Success", "Edificio eliminado");
-        this.modalService.dismissAll();
-        this.getPagos(0, 10);
-      },
-      error => {
-        console.log(error);
-
-        this.toastService.show("Error", error.error?.Message ?? "Algo salió mal");
+        this.getPrecios(0, 10);
       }
     );
   }
-
-
   
 }

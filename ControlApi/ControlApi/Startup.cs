@@ -12,6 +12,7 @@ using System;
 using SharedLibrary.Extensions;
 using SharedLibrary.Configuration.Tenancy;
 using BusinessLibrary.SignalR;
+using System.Text.Json.Serialization;
 
 namespace ControlApi
 {

@@ -27,6 +27,8 @@ namespace SharedLibrary.Configuration.Error
             }
             catch (Exception Exeption)
             {
+                Console.Write(Exeption.Message);
+
                 await HandleExceptionAsync(HttpContext, Exeption);
             }
         }

@@ -368,6 +368,9 @@ namespace DataAccessLibrary.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<float>("Amount")
+                        .HasColumnType("real");
+
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
@@ -377,9 +380,8 @@ namespace DataAccessLibrary.Migrations
                     b.Property<DateTimeOffset>("UpdatedDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<float>("precio")
-                        .HasMaxLength(200)
-                        .HasColumnType("real");
+                    b.Property<DateTime>("ValidDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

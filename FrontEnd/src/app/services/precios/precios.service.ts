@@ -15,8 +15,8 @@ export class PreciosService {
   ) 
   { }
 
-  getAll(skip: number, take: number) {
-    return this.Http.get<{ collection: PrecioDataType[], size: number }>(this.Url, {
+  getAll(skip: number, take: number, productId: string) {
+    return this.Http.get<{ collection: PrecioDataType[], size: number }>(this.Url + "/Product/" + productId, {
       params: {
         skip,
         take

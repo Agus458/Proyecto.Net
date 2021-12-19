@@ -10,11 +10,9 @@ namespace SharedLibrary.DataTypes.Precio
     public record PrecioDataType
     {
         public Guid Id { get; init; }
-        public float precio { set; get; }
 
-        public DateTime Fecha{ set; get; }
+        public float Amount { get; init; }
 
-        public ProductsDataType Product { get; init; }
-
+        public DateTime ValidDate { get; init; }
     }
 }

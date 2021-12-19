@@ -12,12 +12,13 @@ namespace SharedLibrary.DataTypes.Precio
     public record CreatePrecioRequestDataType
     {
         [Required]
-        public float Precio { get; init; }
+        public float Amount { get; init; }
+
+        [Required]
+        public DateTime ValidDate { get; init; }
 
         [Required]
         public Guid ProductId { get; init; }
-
-
     }
        
 }

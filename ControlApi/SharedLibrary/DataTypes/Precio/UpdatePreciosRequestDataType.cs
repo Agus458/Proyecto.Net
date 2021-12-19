@@ -8,7 +8,8 @@ namespace SharedLibrary.DataTypes.Precio
 {
     public record UpdatePreciosRequestDataType
     {
-        public float Precio { get; init; }
-        public DateTime fecha { get; init; }
+        public float Amount { get; init; }
+
+        public DateTime ValidDate { get; init; }
     }
 }

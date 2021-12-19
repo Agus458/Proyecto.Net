@@ -10,8 +10,9 @@ namespace DataAccessLibrary.Entities
 {
     public class Precio : BaseEntity
     {
-        [MaxLength(200)]
-        public float precio { get; set; }
+        public float Amount { get; set; }
+
+        public DateTime ValidDate { get; set; }
 
         public Guid ProductId { get; set; }
 

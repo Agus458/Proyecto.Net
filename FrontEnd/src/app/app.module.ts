@@ -64,6 +64,7 @@ import { PaydayComponent } from './components/payday/payday.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { EditProductoComponent } from './components/productos/edit-producto/edit-producto.component';
 import { EventosInstitucionComponent } from './components/eventos/eventos-institucion/eventos-institucion.component';
+import { EditPrecioComponent } from './components/precios/edit-precio/edit-precio.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -119,6 +120,7 @@ registerLocaleData(localeES, "es");
     PaypalComponent,
     EditProductoComponent,
     EventosInstitucionComponent,
+    EditPrecioComponent,
   ],
   imports: [
     BrowserModule,

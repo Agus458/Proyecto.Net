@@ -1,31 +1,34 @@
-<div class="container">
-    
-           
-            <div class="card border-0 shadow rounded-3 my-5">
-                <div class="card-body p-4 p-sm-5">
-                    <h4 class="card-title text-center mb-5 fw-light fs-5">Añadir Precio</h4>
-                    <hr class="my-4">
-                    <form [formGroup]="PreciosForm" (ngSubmit)="submit()">
-                        <div class= "form-floating mb-3">
-                            <label>Seleccionar Producto a colocarle Precio</label>
-                            </div>
-                        <div class= "form-floating mb-3">
-                            <label>Ponerle precio</label>
-                            <input type="text" formControlName='precio' class="form-control" >
-                        </div>
-
-
-                        <div class="d-grid">                  
-                        <button class="btn btn-block btn-warning btn-login text-uppercase fw-bold"
-                        type="submit">Establecer Precio</button>
-                            
-                        </div>
-                    </form>
-                        
-                </div>
-
-            </div>
+<div class="card border-0 shadow rounded-3 my-5">
+    <div class="card-body p-4 p-sm-5">
+        <h4 class="card-title fw-light fs-5">Precios</h4>
+        <hr class="my-4">
+        <button type="button" class="btn btn-warning mb-4" [routerLink]="'nuevo'">Agregar</button>
+        <div>
+            <table class="table table-borderless table-responsive table-dark table-striped align-middle table-hover m-0">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha Validez</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let precio of precios; index as i" class="align-middle">
+                        <th scope="row">{{i}}</th>
+                        <td>{{precio.amount}}</td>
+                        <td>{{precio.validDate}}</td>
+                        <td>
+                            <button class="btn btn-warning ml-2" [routerLink]="'editar/' + precio.id"><i
+                                class="fas fa-pencil"></i></button>
+                            <button class="btn btn-danger ml-2"><i class="fas fa-trash"
+                                    (click)="delete(precio.id)"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <ngb-pagination class="d-flex justify-content-end" [collectionSize]="size" [(page)]="page"
+                [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
         </div>
-
-
-
+    </div>
+</div>
