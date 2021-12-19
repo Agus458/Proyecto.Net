@@ -1,3 +1,5 @@
+import { SalonDataType } from "./SalonDataType";
+
 export class Time {
     hours: number;
     minutes: number;
@@ -33,4 +35,5 @@ export class EventDataType {
     saturday: boolean;
     sunday: boolean;
     recurrencyType: RecurrencyType;
+    room: SalonDataType;
 }

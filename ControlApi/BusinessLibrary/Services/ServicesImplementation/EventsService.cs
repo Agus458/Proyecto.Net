@@ -75,6 +75,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
             return Mapper.Map<EventDataType>(Entity);
         }
 
+        public IEnumerable<EventDataType> GetByTenant(Guid TenantId)
+        {
+            var Result = this.Store.GetByTenant(TenantId);
+
+            return Result.Select(Entity => Mapper.Map<EventDataType>(Entity));
+        }
+
         public void Update(Guid Id, UpdateEventRequestDataType Data, Guid RoomId)
         {
             if (Id == Guid.Empty) throw new ApiError("Id Invalido", (int)HttpStatusCode.BadRequest);

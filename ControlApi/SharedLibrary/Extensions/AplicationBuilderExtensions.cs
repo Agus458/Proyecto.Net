@@ -21,7 +21,7 @@ namespace SharedLibrary.Extensions
             app.UseMiddleware<TenantMiddleware>();
 
             app.UseWhen(
-                context => !context.Request.Path.StartsWithSegments("/api/Authentication/Login") && !context.Request.Path.StartsWithSegments("/Uploads") && !context.Request.Path.StartsWithSegments("/Notify") && !context.Request.Path.StartsWithSegments("/api/Tenants/List") && !context.Request.Path.StartsWithSegments("/api/Novelties/Tenant"),
+                context => !context.Request.Path.StartsWithSegments("/api/Authentication/Login") && !context.Request.Path.StartsWithSegments("/Uploads") && !context.Request.Path.StartsWithSegments("/Notify") && !context.Request.Path.StartsWithSegments("/api/Tenants/List") && !context.Request.Path.StartsWithSegments("/api/Novelties/Tenant") && !context.Request.Path.StartsWithSegments("/api/Events/Tenant"),
                 appBuilder =>
                 {
                     appBuilder.UseMiddleware<VerifyTenantMiddleware>();

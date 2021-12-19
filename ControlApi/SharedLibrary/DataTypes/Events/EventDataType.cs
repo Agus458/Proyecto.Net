@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary.Entities;
+using SharedLibrary.DataTypes.Rooms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,5 +37,7 @@ namespace SharedLibrary.DataTypes.Events
         public bool Sunday { get; init; }
 
         public RecurrencyType RecurrencyType { get; init; }
+
+        public RoomDataType Room { get; init; }
     }
 }

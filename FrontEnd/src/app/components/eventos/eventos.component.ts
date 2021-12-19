@@ -16,8 +16,6 @@ import { CalendarUtils } from 'src/app/utils/calendar.util';
 export class EventosComponent implements OnInit {
 
   salonId: string;
-  page = 1;
-  size: number;
   events: CalendarEvent[] = [];
 
   actions: CalendarEventAction[] = [

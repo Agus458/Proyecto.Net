@@ -63,6 +63,7 @@ import { GenerarFacturaComponent } from './components/generar-factura/generar-fa
 import { PaydayComponent } from './components/payday/payday.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { EditProductoComponent } from './components/productos/edit-producto/edit-producto.component';
+import { EventosInstitucionComponent } from './components/eventos/eventos-institucion/eventos-institucion.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -117,6 +118,7 @@ registerLocaleData(localeES, "es");
     PaydayComponent,
     PaypalComponent,
     EditProductoComponent,
+    EventosInstitucionComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,10 @@ export class EventosService {
     return this.Http.get<EventDataType[]>(this.Url + "/Room/" + roomId);
   }
 
+  getByTenant(tenantId: string) {
+    return this.Http.get<EventDataType[]>(this.Url + "/Tenant/" + tenantId);
+  }
+
   getById(id: string, roomId: string) {
     return this.Http.get<EventDataType>(this.Url + "/" + id, { params: { roomId } });
   }

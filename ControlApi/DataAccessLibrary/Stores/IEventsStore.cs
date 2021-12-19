@@ -10,5 +10,7 @@ namespace DataAccessLibrary.Stores
     public interface IEventsStore : IStore<Event>
     {
         IEnumerable<Event> GetAll(Guid RoomId);
+
+        IEnumerable<Event> GetByTenant(Guid TenantId);
     }
 }

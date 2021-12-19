@@ -29,6 +29,13 @@ namespace ControlApi.Controllers
             return Ok(this.Service.GetAll(RoomId));
         }
 
+        [HttpGet("Tenant/{TenantId}")]
+        [AllowAnonymous]
+        public IActionResult GetByTenant(Guid TenantId)
+        {
+            return Ok(this.Service.GetByTenant(TenantId));
+        }
+
         [HttpGet("{Id}")]
         public IActionResult GetById(Guid Id, Guid RoomId)
         {

@@ -12,6 +12,8 @@ namespace BusinessLibrary.Services
     {
         IEnumerable<EventDataType> GetAll(Guid RoomId);
 
+        IEnumerable<EventDataType> GetByTenant(Guid TenantId);
+
         EventDataType GetById(Guid Id, Guid RoomId);
 
         EventDataType Create(CreateEventRequestDataType Data);

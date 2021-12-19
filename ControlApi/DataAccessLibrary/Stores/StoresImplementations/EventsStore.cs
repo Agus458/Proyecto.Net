@@ -22,5 +22,10 @@ namespace DataAccessLibrary.Stores.StoresImplementations
         {
             return this.Context.Set<Event>().Where(Entity => Entity.RoomId == RoomId);
         }
+
+        public IEnumerable<Event> GetByTenant(Guid TenantId)
+        {
+            return this.Context.Set<Event>().GetAllIncluding("Room", "Room.Building").Where(Entity => Entity.Room.Building.TenantId == TenantId);
+        }
     }
 }
