@@ -50,7 +50,6 @@ namespace ControlApi.Controllers
             return NoContent();
         }
 
-
         [HttpPost]
         public IActionResult Create(CreatePrecioRequestDataType Data)
         {

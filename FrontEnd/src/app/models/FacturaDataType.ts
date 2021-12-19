@@ -1,12 +1,13 @@
 import { PagoDataType } from "./PagoDataType";
 
 export class FacturaDataType {
-    id:string;
-    
-    fecha:Date;
-    
-    monto:number;
+    id: string;
 
-    pago:PagoDataType;
-    
+    createdDate: Date;
+
+    monto: number;
+
+    pago: PagoDataType;
+
+    descripcion: string;
 }

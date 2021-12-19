@@ -9,8 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
-
 namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
@@ -19,7 +17,6 @@ namespace ControlApi.Controllers
     public class FacturaController : ControllerBase
     {
         private readonly IFacturaService Service;
-
 
         public FacturaController(IFacturaService Service)
         {
@@ -31,6 +28,7 @@ namespace ControlApi.Controllers
         {
             return Ok(this.Service.GetAll(Skip, Take));
         }
+
         [HttpGet("{Id}")]
         public IActionResult GetById(Guid Id)
         {
@@ -58,10 +56,16 @@ namespace ControlApi.Controllers
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
         }
 
+        [HttpPost("Generate")]
+        public void Generate()
+        {
+            this.Service.GenerateBills();
+        }
+
         [HttpPost("Pagar")]
         public void Pagar(Guid IdFactura)
         {
             this.Service.Pagar(IdFactura);
         }
-       }
+    }
 }

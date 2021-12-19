@@ -207,6 +207,9 @@ namespace DataAccessLibrary.Migrations
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<float>("Monto")
                         .HasColumnType("real");
 
@@ -215,9 +218,6 @@ namespace DataAccessLibrary.Migrations
 
                     b.Property<DateTimeOffset>("UpdatedDate")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTime>("fecha")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -800,7 +800,7 @@ namespace DataAccessLibrary.Migrations
             modelBuilder.Entity("DataAccessLibrary.Entities.Pago", b =>
                 {
                     b.HasOne("DataAccessLibrary.Entities.Factura", "Factura")
-                        .WithOne("PagoFactura")
+                        .WithOne("Pago")
                         .HasForeignKey("DataAccessLibrary.Entities.Pago", "FacturaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -931,7 +931,7 @@ namespace DataAccessLibrary.Migrations
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Factura", b =>
                 {
-                    b.Navigation("PagoFactura");
+                    b.Navigation("Pago");
                 });
 
             modelBuilder.Entity("DataAccessLibrary.Entities.Product", b =>

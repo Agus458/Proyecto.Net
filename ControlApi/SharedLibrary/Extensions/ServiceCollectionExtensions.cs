@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Quartz;
 using SharedLibrary.Configuration;
 using SharedLibrary.Configuration.FacePlusPlus;
 using SharedLibrary.Configuration.PayPal;

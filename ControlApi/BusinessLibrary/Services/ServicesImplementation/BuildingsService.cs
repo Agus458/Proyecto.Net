@@ -40,7 +40,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
             if (this.Store.Count() >= Tenant.Product.CantBuildings) throw new ApiError("Cantidad de edificios alcanzada", (int)HttpStatusCode.BadRequest);
 
-            var NewBuilding = new Building() { Id = Guid.NewGuid() };
+            var NewBuilding = new Building() { Id = Guid.NewGuid(), TenantId = TenantId };
             Mapper.Map(Data, NewBuilding);
 
             this.Store.Create(NewBuilding);

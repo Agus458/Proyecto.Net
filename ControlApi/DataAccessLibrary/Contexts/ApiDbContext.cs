@@ -132,20 +132,6 @@ namespace DataAccessLibrary.Contexts
                 }
             }
 
-            foreach (var Entry in ChangeTracker.Entries<MustHaveTenantEntity>())
-            {
-                switch (Entry.State)
-                {
-                    case EntityState.Added:
-                        Entry.Entity.TenantId = this.TenantId;
-                        Entry.Entity.CreatedDate = DateTime.UtcNow;
-                        break;
-                    case EntityState.Modified:
-                        Entry.Entity.UpdatedDate = DateTime.UtcNow;
-                        break;
-                }
-            }
-
             foreach (var Entry in ChangeTracker.Entries<BaseEntity>())
             {
                 switch (Entry.State)
@@ -166,7 +152,7 @@ namespace DataAccessLibrary.Contexts
                     var Data = new
                     {
                         Entry.Entity,
-                        User = HttpContext.User.FindFirst(c => c.Type.Equals(ClaimTypes.NameIdentifier))?.Value,
+                        User = HttpContext != null ? HttpContext.User.FindFirst(c => c.Type.Equals(ClaimTypes.NameIdentifier))?.Value : "No user",
                         Method = Entry.State
                     };
                     Logger.LogInformation(JsonConvert.SerializeObject(Data));

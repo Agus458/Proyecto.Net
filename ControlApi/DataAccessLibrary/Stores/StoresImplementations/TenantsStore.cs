@@ -101,9 +101,12 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             return this.Context.Set<Tenant>().SingleOrDefault(Entity => Entity.SocialReason == SocialReason);
         }
 
-        public IEnumerable<Tenant> Get()
+        public IEnumerable<Tenant> Get(string[] Relations)
         {
-            return this.Context.Set<Tenant>();
+            var RelationsArray = new List<string>() { };
+            if (Relations != null) RelationsArray = RelationsArray.Concat(Relations).ToList();
+
+            return this.Context.Set<Tenant>().GetAllIncluding(RelationsArray.ToArray());
         }
     }
 }

@@ -12,13 +12,9 @@ namespace SharedLibrary.DataTypes.Factura
     public record CreateFacturaRequestDataType
     {
         [Required]
-        public DateTime fecha { get; init; }
+        public float Monto { get; init; }
+
         [Required]
-        public float monto { get; init; }
-
-
-
-
-        
+        public string Descripcion { get; init; }
     }
 }

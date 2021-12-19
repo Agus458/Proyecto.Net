@@ -10,6 +10,6 @@ namespace SharedLibrary.DataTypes.Precio
     {
         public float Amount { get; init; }
 
-        public DateTime ValidDate { get; init; }
+        public string ValidDate { get; init; }
     }
 }

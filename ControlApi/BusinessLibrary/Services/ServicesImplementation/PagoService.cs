@@ -21,8 +21,8 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly IPagoStore Store;
         private readonly IMapper Mapper;
         private readonly HttpContext Context;
-        private readonly IFacturaStore FacturaStore;
-        public PagoService(IPagoStore Store, IMapper Mapper,IFacturaStore FacturaStore ,IHttpContextAccessor Context)
+        private readonly IStore<Factura> FacturaStore;
+        public PagoService(IPagoStore Store, IMapper Mapper, IStore<Factura> FacturaStore ,IHttpContextAccessor Context)
         {
             this.Store = Store;
             this.Mapper = Mapper;

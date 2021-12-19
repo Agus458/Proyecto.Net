@@ -18,6 +18,11 @@ namespace DataAccessLibrary.Stores.StoresImplementations
             this.Context = Context;
         }
 
+        public Precio GetActual(Guid ProductId)
+        {
+            return this.Context.Set<Precio>().Where(Precio => Precio.ProductId == ProductId && Precio.ValidDate >= new DateTime()).OrderBy(Precio => Precio.ValidDate).FirstOrDefault();
+        }
+
         public PaginationDataType<Precio> GetAll(int Skip, int Take, Guid ProductId)
         {
             var Collection = this.Context.Set<Precio>().Include(Precio => Precio.Product).Where(Precio => Precio.ProductId == ProductId);

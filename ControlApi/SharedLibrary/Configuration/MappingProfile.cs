@@ -71,7 +71,6 @@ namespace SharedLibrary.Configuration
             CreateMap<CreateFacturaRequestDataType, Factura>();
             CreateMap<UpdateFacturaRequestDataType, Factura>();
 
-
             CreateMap<Product, ProductsDataType>();
             CreateMap<CreateProductsRequestDataType, Product>();
             CreateMap<UpdateProductsRequestDataType, Product>();

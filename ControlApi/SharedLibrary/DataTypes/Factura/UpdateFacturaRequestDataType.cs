@@ -8,7 +8,8 @@ namespace SharedLibrary.DataTypes.Factura
 {
     public record UpdateFacturaRequestDataType
     {
-        public DateTime fecha { get; init; }
-        public float monto { get; init; }           
+        public float Monto { get; init; }
+
+        public string Descripcion { get; init; }
     }
 }

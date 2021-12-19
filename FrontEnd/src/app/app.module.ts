@@ -54,17 +54,15 @@ import { SalonesComponent } from './components/salones/salones.component';
 import { EditSalonComponent } from './components/salones/edit-salon/edit-salon.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { PreciosComponent } from './components/precios/precios.component';
-import { FacturasComponent } from './components/facturas/facturas.component';
 import { PagosComponent } from './components/pagos/pagos.component';
-import { ListarFacturasComponent } from './components/listar-facturas/listar-facturas.component';
 import { PagoVentanaComponent } from './components/pago-ventana/pago-ventana.component';
 import { RealizarPagoComponent } from './components/realizar-pago/realizar-pago.component';
-import { GenerarFacturaComponent } from './components/generar-factura/generar-factura.component';
 import { PaydayComponent } from './components/payday/payday.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { EditProductoComponent } from './components/productos/edit-producto/edit-producto.component';
 import { EventosInstitucionComponent } from './components/eventos/eventos-institucion/eventos-institucion.component';
 import { EditPrecioComponent } from './components/precios/edit-precio/edit-precio.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -112,10 +110,8 @@ registerLocaleData(localeES, "es");
     PreciosComponent,
     FacturasComponent,
     PagosComponent,
-    ListarFacturasComponent,
     PagoVentanaComponent,
     RealizarPagoComponent,
-    GenerarFacturaComponent,
     PaydayComponent,
     PaypalComponent,
     EditProductoComponent,

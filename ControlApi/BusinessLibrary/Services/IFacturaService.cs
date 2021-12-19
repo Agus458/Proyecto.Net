@@ -11,7 +11,6 @@ namespace BusinessLibrary.Services
     {
         PaginationDataType<FacturaDataType> GetAll(int skip, int Take);
 
-
         FacturaDataType GetBuId(Guid Id);
 
         FacturaDataType Create(CreateFacturaRequestDataType Data);
@@ -20,8 +19,8 @@ namespace BusinessLibrary.Services
 
         void Update(Guid Id, UpdateFacturaRequestDataType Data);
 
+        void GenerateBills();
+
         void Pagar(Guid Id);
-       // void Update(Guid id, UpdatePagoRequestDateType data);
-       // FacturaDataType Update(Guid id, UpdateFacturaRequestDataType Data);
     }
 }

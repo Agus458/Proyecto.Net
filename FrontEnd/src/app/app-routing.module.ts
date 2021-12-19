@@ -19,24 +19,19 @@ import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NuevapersonaComponent } from './components/personas/nuevapersona/nuevapersona.component';
 import { PersonasComponent } from './components/personas/personas.component';
-import { SinNovedadComponent } from './components/novedades/sin-novedad/sin-novedad.component';
 import { EditUsuarioComponent } from './components/usuarios/edit-usuario/edit-usuario.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
-import { VistaNovedadComponent } from './components/novedades/vista-novedad/vista-novedad.component';
 import { IsLoggedInGuard } from './guards/is-logged-in/is-logged-in.guard';
 import { TieneRolGuard } from './guards/tiene-rol/tiene-rol.guard';
 import { ListNovedadesComponent } from './components/novedades/list-novedades/list-novedades.component';
 import { EditNovedadesComponent } from './components/novedades/edit-novedades/edit-novedades.component';
 import { SalonesComponent } from './components/salones/salones.component';
 import { EditSalonComponent } from './components/salones/edit-salon/edit-salon.component';
-import { FacturasComponent } from './components/facturas/facturas.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { PreciosComponent } from './components/precios/precios.component';
-import { PagoVentanaComponent } from './components/pago-ventana/pago-ventana.component';
-import { ListarFacturasComponent } from './components/listar-facturas/listar-facturas.component';
-import { PaypalComponent } from './components/paypal/paypal.component';
 import { EditProductoComponent } from './components/productos/edit-producto/edit-producto.component';
 import { EditPrecioComponent } from './components/precios/edit-precio/edit-precio.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
 
 const routes: Routes = [
   {
@@ -96,12 +91,6 @@ const routes: Routes = [
       { path: "precios/producto/:id", component: PreciosComponent },
       { path: "precios/producto/:id/nuevo", component: EditPrecioComponent },
       { path: "precios/producto/:id/editar/:precioId", component: EditPrecioComponent },
-
-      { path: "pago-ventana/:id", component: PagoVentanaComponent },
-
-      { path: "listar-facturas", component: ListarFacturasComponent },
-
-      { path: "paypal", component: PaypalComponent }
     ]
   },
 

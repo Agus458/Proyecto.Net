@@ -369,6 +369,12 @@ C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ref\ControlApi.dll
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.pdb
 C:\Users\agusp\Documents\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.genruntimeconfig.cache
+C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.AssemblyReference.cache
+C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.AssemblyInfoInputs.cache
+C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.AssemblyInfo.cs
+C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.CoreCompileInputs.cache
+C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\appsettings.json
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\ControlApi.exe
@@ -413,6 +419,9 @@ C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\Control
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\PayPal.dll
+C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Quartz.dll
+C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Quartz.Extensions.DependencyInjection.dll
+C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Quartz.Extensions.Hosting.dll
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Serilog.dll
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Serilog.AspNetCore.dll
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
@@ -461,13 +470,6 @@ C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\Control
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\BusinessLibrary.pdb
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\DataAccessLibrary.pdb
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\bin\Debug\net5.0\SharedLibrary.pdb
-C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.AssemblyReference.cache
-C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.AssemblyInfoInputs.cache
-C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.AssemblyInfo.cs
-C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.csproj.CoreCompileInputs.cache
-C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\ControlApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\staticwebassets\ControlApi.StaticWebAssets.Manifest.cache
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\staticwebassets\ControlApi.StaticWebAssets.xml
 C:\Users\aschl\OneDrive\Documents\Agustin\GitHub\Proyecto.Net\ControlApi\ControlApi\obj\Debug\net5.0\scopedcss\bundle\ControlApi.styles.css

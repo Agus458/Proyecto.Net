@@ -11,9 +11,13 @@ namespace SharedLibrary.DataTypes.Factura
     public record FacturaDataType
     {
         public Guid Id { get; init; }
-        public DateTime fecha { set; get; }
-        public float monto { set; get; }
 
-        public PagoDataType PagoFactura { init; get; }
+        public DateTimeOffset CreatedDate { get; init; }
+
+        public float Monto { get; init; }
+
+        public string Descripcion { get; init; }
+
+        public PagoDataType Pago { get; init; }
     }
 }

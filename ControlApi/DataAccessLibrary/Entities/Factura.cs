@@ -7,19 +7,12 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Entities
 {
-
     public class Factura : MustHaveTenantEntity
     {
-        public DateTime fecha { get; set; }
-
         public float Monto { get; set; }
 
-        public Pago PagoFactura { get; init; }
+        public string Descripcion { get; set; }
 
-        public static implicit operator Factura(Pago v)
-        {
-            throw new NotImplementedException();
-        }
+        public Pago Pago { get; set; }
     }
-
 }

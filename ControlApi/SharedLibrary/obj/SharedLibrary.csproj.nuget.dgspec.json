@@ -144,6 +144,10 @@
               "target": "Package",
               "version": "[6.13.1, )"
             },
+            "Quartz.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[3.3.3, )"
+            },
             "Swashbuckle.AspNetCore.SwaggerGen": {
               "target": "Package",
               "version": "[6.2.3, )"

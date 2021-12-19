@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FacturasService {
 
-  Url: string = environment.controlApiUrl + "api/Facturas";
+  Url: string = environment.controlApiUrl + "api/Factura";
 
   constructor(
     private Http: HttpClient

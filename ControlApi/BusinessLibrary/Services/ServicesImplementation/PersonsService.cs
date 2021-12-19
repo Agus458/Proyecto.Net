@@ -61,7 +61,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
                 Image = FileHelper.Upload(Data.FileImage, this.Environment, Id.ToString());
             }
 
-            var NewPerson = new Person() { Id = Id, Image = Image };
+            var NewPerson = new Person() { Id = Id, Image = Image, TenantId = TenantId };
             Mapper.Map(Data, NewPerson);
 
             this.Store.Create(NewPerson);

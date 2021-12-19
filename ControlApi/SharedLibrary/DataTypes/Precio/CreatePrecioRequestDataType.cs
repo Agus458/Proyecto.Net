@@ -15,7 +15,7 @@ namespace SharedLibrary.DataTypes.Precio
         public float Amount { get; init; }
 
         [Required]
-        public DateTime ValidDate { get; init; }
+        public string ValidDate { get; init; }
 
         [Required]
         public Guid ProductId { get; init; }
