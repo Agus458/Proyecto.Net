@@ -160,27 +160,27 @@ namespace ControlApi
             services.AddSignalR();
 
             // Add the required Quartz.NET services
-            /*services.AddQuartz(q =>
+            services.AddQuartz(q =>
             {
-            // Use a Scoped container to create jobs. I'll touch on this later
-            q.UseMicrosoftDependencyInjectionScopedJobFactory();
+                // Use a Scoped container to create jobs. I'll touch on this later
+                q.UseMicrosoftDependencyInjectionScopedJobFactory();
 
-            // Create a "key" for the job
-            var jobKey = new JobKey("MonthlyBillsJob");
+                // Create a "key" for the job
+                var jobKey = new JobKey("MonthlyBillsJob");
 
-            // Register the job with the DI container
-            q.AddJob<MonthlyBillsJob>(opts => opts.WithIdentity(jobKey));
+                // Register the job with the DI container
+                q.AddJob<MonthlyBillsJob>(opts => opts.WithIdentity(jobKey));
 
-            // Create a trigger for the job
-            q.AddTrigger(opts => opts
-                .ForJob(jobKey) // link to the HelloWorldJob
-                .WithIdentity("MonthlyBillsJob-trigger") // give the trigger a unique name
-                .WithCronSchedule("0 0/1 * * * ?")); // run every minute
-                *//*.WithCronSchedule("0 0 0 1 * ?")); // run every first of month*//*
+                // Create a trigger for the job
+                q.AddTrigger(opts => opts
+                    .ForJob(jobKey) // link to the HelloWorldJob
+                    .WithIdentity("MonthlyBillsJob-trigger") // give the trigger a unique name
+                                                             //.WithCronSchedule("0 0/1 * * * ?")); // run every minute
+                    .WithCronSchedule("0 0 0 1 * ?")); // run every first of month
             });
 
             // Add the Quartz.NET hosted service
-            services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);*/
+            services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

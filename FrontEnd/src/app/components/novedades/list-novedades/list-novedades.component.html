@@ -8,7 +8,7 @@
     <app-vista-novedad [selectedNoveltie]="selectedNoveltie"></app-vista-novedad>
     <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="delete(selectedNoveltie.id)">Eliminar</button>
-        <button type="button" class="btn btn-success" [routerLink]="'/novedades/edificio/:id/editar/' + selectedNoveltie.id"
+        <button type="button" class="btn btn-success" [routerLink]="'/novedades/edificio/' + buildingId + '/editar/' + selectedNoveltie.id"
             (click)="modal.close()">Editar</button>
         <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
     </div>
