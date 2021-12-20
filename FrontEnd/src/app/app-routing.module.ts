@@ -34,7 +34,6 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { PreciosComponent } from './components/precios/precios.component';
 import { PagoVentanaComponent } from './components/pago-ventana/pago-ventana.component';
 import { ListarFacturasComponent } from './components/listar-facturas/listar-facturas.component';
-import { PaypalComponent } from './components/paypal/paypal.component';
 import { EditProductoComponent } from './components/productos/edit-producto/edit-producto.component';
 
 const routes: Routes = [
@@ -98,13 +97,13 @@ const routes: Routes = [
       { path: "productos/nuevo", component: EditProductoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['SuperAdmin'] } },
       { path: "productos/editar/:id", component: EditProductoComponent, canActivate: [IsLoggedInGuard, TieneRolGuard], data: { roles: ['SuperAdmin'] } },
 
-      { path: "precios", component: PreciosComponent },
+      { path: "precios/producto/:id", component: PreciosComponent },
 
       { path: "pago-ventana/:id", component: PagoVentanaComponent },
 
       { path: "listar-facturas", component: ListarFacturasComponent },
 
-      { path: "paypal", component: PaypalComponent }
+      
     ]
   },
 

@@ -61,7 +61,6 @@ import { PagoVentanaComponent } from './components/pago-ventana/pago-ventana.com
 import { RealizarPagoComponent } from './components/realizar-pago/realizar-pago.component';
 import { GenerarFacturaComponent } from './components/generar-factura/generar-factura.component';
 import { PaydayComponent } from './components/payday/payday.component';
-import { PaypalComponent } from './components/paypal/paypal.component';
 import { EditProductoComponent } from './components/productos/edit-producto/edit-producto.component';
 
 export function momentAdapterFactory() {
@@ -115,7 +114,6 @@ registerLocaleData(localeES, "es");
     RealizarPagoComponent,
     GenerarFacturaComponent,
     PaydayComponent,
-    PaypalComponent,
     EditProductoComponent,
   ],
   imports: [

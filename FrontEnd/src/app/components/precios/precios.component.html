@@ -1,31 +1,38 @@
 <div class="container">
-    
-           
-            <div class="card border-0 shadow rounded-3 my-5">
-                <div class="card-body p-4 p-sm-5">
-                    <h4 class="card-title text-center mb-5 fw-light fs-5">Añadir Precio</h4>
-                    <hr class="my-4">
-                    <form [formGroup]="PreciosForm" (ngSubmit)="submit()">
-                        <div class= "form-floating mb-3">
-                            <label>Seleccionar Producto a colocarle Precio</label>
+
+
+    <div class="card border-0 shadow rounded-3 my-5">
+        <div class="card-body p-4 p-sm-5">
+            <h4 class="card-title text-center mb-5 fw-light fs-5">Añadir Precio</h4>
+            <hr class="my-4">
+            <form [formGroup]="PreciosForm" (ngSubmit)="submit()">
+                <div class="col-mb-3">
+                    <div class="form-group">
+                        <label>Fecha Limite</label>
+                        <div class="input-group">
+                            <input class="form-control" placeholder="DD / MM / YYYY" name="startDate"
+                                formControlName="startDate" ngbDatepicker #startDate="ngbDatepicker" readonly>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" (click)="startDate.toggle()" type="button"><i
+                                        class="fas fa-calendar-day"></i></button>
                             </div>
-                        <div class= "form-floating mb-3">
-                            <label>Ponerle precio</label>
-                            <input type="text" formControlName='precio' class="form-control" >
                         </div>
-
-
-                        <div class="d-grid">                  
-                        <button class="btn btn-block btn-warning btn-login text-uppercase fw-bold"
-                        type="submit">Establecer Precio</button>
-                            
-                        </div>
-                    </form>
-                        
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <label>Nuevo Precio</label>
+                    <input type="text" formControlName='precio' class="form-control">
                 </div>
 
-            </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-block btn-warning btn-login text-uppercase fw-bold" type="submit">Establecer
+                        Precio</button>
+
+                </div>
+            </form>
+
         </div>
 
-
-
+    </div>
+</div>
