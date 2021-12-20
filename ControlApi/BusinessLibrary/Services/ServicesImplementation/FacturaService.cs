@@ -43,7 +43,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public PaginationDataType<FacturaDataType> GetAll(int Skip, int Take)
         {
-            var Result = this.Store.GetAll(Skip, Take);
+            var Result = this.Store.GetAll(Skip, Take, new string[] { "Pago" });
 
             return new PaginationDataType<FacturaDataType>()
             {
@@ -54,7 +54,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public FacturaDataType GetBuId(Guid Id)
         {
-            var Factura = this.Store.GetById(Id);
+            var Factura = this.Store.GetById(Id, new string[] { "Pago" });
             if (Factura == null) throw new ApiError("Factura Not Found", (int)HttpStatusCode.NotFound);
 
             return Mapper.Map<FacturaDataType>(Factura);

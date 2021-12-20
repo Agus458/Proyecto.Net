@@ -39,7 +39,7 @@ export class PagosService {
   //   return this.Http.post(this.Url, data);
   // }
 
-  pay(facturaId: string){
-    return this.Http.post<string>(environment.controlApiUrl + "api/Payment/Factura/" + facturaId, {});
+  pay(facturaId: string) {
+    return this.Http.post<{ url: string }>(environment.controlApiUrl + "api/Payment/Factura/" + facturaId, {});
   }
 }

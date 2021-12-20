@@ -15,6 +15,14 @@
         <ng-template #elseBlock>
             <div class="text-danger">Pendiente</div>
         </ng-template>
+
+        <ng-container *ngIf="selectedBill.pago">
+            <p>Datos del Pago:</p>
+            <div class="p-3">    
+                <p><strong>Monto: </strong>{{selectedBill.pago.monto}}</p>
+                <p><strong>Fecha: </strong>{{selectedBill.pago.createdDate}}</p>
+            </div>
+        </ng-container>
     </div>
     <div class="modal-footer">
         <button *ngIf="AuthenticationService.hasRole('Admin') && !selectedBill.pago" type="button" class="btn btn-warning" (click)="pay(selectedBill.id)"><i class="fab fa-paypal"></i> Pagar con

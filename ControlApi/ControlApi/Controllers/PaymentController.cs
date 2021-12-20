@@ -8,31 +8,39 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using PayPal.Api;
 using SharedLibrary.Configuration.PayPal;
+using SharedLibrary.DataTypes.Pago;
+using SharedLibrary.Error;
+using SharedLibrary.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
     public class PaymentController : ControllerBase
     {
         private readonly PayPalApiConfiguration Configuration;
-        private readonly IFacturaService FacturaService;
+        private readonly IStore<Factura> FacturaStore;
+        private readonly IPagoStore Store;
 
-        public PaymentController(IOptions<PayPalApiConfiguration> Configuration, IFacturaService FacturaService)
+        public PaymentController(IOptions<PayPalApiConfiguration> Configuration, IStore<Factura> FacturaStore, IPagoStore Store)
         {
             this.Configuration = Configuration.Value;
-            this.FacturaService = FacturaService;
+            this.FacturaStore = FacturaStore;
+            this.Store = Store;
         }
 
         [HttpPost("Factura/{FacturaId}")]
-        public string Pay(Guid FacturaId)
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
+        public IActionResult Pay(Guid FacturaId)
         {
-            var Factura = this.FacturaService.GetBuId(FacturaId);
+            var Factura = this.FacturaStore.GetById(FacturaId, new string[] { "Pago" });
+            if (Factura == null) throw new ApiError("Factura no encontrada", (int)HttpStatusCode.NotFound);
+            if (Factura.Pago != null) throw new ApiError("Factura pagada", (int)HttpStatusCode.BadRequest);
 
             // Authenticate with PayPal
             var config = new Dictionary<string, string>();
@@ -78,7 +86,7 @@ namespace ControlApi.Controllers
                 custom = Factura.Id.ToString(),
                 description = "Pago Subscripcion " + Factura.Descripcion,
                 amount = amount,
-                item_list = itemList
+                item_list = itemList,
             });
 
             var payment = new Payment()
@@ -103,11 +111,11 @@ namespace ControlApi.Controllers
                 }
             }
 
-            return ret;
+            return Ok(new { Url = ret });
         }
 
         [HttpGet("success")]
-        public dynamic Success(string paymentId, string PayerID, string token)
+        public void Success(string paymentId, string PayerID, string token)
         {
             // Authenticate with PayPal
             var config = new Dictionary<string, string>();
@@ -125,7 +133,27 @@ namespace ControlApi.Controllers
             // Execute the payment.
             var executedPayment = payment.Execute(apiContext, paymentExecution);
 
-            return Ok(executedPayment);
+            if (executedPayment.state != "approved") throw new ApiError("Pago no aprobado", (int)HttpStatusCode.BadRequest);
+
+            foreach (var transaction in executedPayment.transactions)
+            {
+                if (Guid.TryParse(transaction.custom, out var FacturaId))
+                {
+                    try
+                    {
+                        var NewPago = new Pago() { Id = Guid.NewGuid(), FacturaId = FacturaId, Monto = float.Parse(transaction.amount.total) };
+
+                        this.Store.Create(NewPago);
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            }
+
+            Response.Redirect("http://localhost:4200/pago-exitoso");
         }
     }
 }

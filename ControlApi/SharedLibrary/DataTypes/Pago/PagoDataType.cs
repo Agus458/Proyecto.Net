@@ -12,14 +12,10 @@ namespace SharedLibrary.DataTypes.Pago
    
         public Guid Id { get; init; }
        
-        public DateTime fecha { set; get; }
+        public DateTimeOffset CreatedDate { set; get; }
         
-        public float monto { set; get; }
+        public float Monto { set; get; }
 
         public Guid FacturaId { get; init; }
-
-        public FacturaDataType Factura { set; get; }
-
-
     }
 }

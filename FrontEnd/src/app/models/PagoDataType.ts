@@ -3,6 +3,5 @@ export class PagoDataType {
 
     monto:number;
 
-    fecha:Date;
-
+    createdDate: Date;
 }

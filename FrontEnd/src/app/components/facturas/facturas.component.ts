@@ -31,6 +31,8 @@ export class FacturasComponent implements OnInit {
   getFacturas(skip: number, take: number) {
     this.FacturasService.getAll(skip, take).subscribe(
       ok => {
+        console.log(ok);
+        
         this.facturas = ok.collection;
         this.size = ok.size;
       },
@@ -52,7 +54,7 @@ export class FacturasComponent implements OnInit {
   pay(facturaId: string){
     this.PagosService.pay(facturaId).subscribe(
       ok => {
-        console.log(ok);
+        window.open(ok.url);
         this.modalService.dismissAll();
       }
     )

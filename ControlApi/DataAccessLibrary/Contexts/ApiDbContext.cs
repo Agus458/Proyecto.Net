@@ -19,7 +19,7 @@ namespace DataAccessLibrary.Contexts
     /// </summary>
     public class ApiDbContext : IdentityDbContext<User>
     {
-        private readonly Guid TenantId;
+        public Guid TenantId;
         private readonly HttpContext HttpContext;
         private readonly ILogger<ApiDbContext> Logger;
 

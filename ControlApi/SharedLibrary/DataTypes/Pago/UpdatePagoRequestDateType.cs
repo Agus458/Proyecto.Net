@@ -8,9 +8,6 @@ namespace SharedLibrary.DataTypes.Pago
 {
     public record UpdatePagoRequestDateType
     {
-        public float monto { set; get; }
-        
-        public bool pagada { set; get; }
-        public DateTime fecha { set; get; }
+        public float Monto { set; get; }
     }
 }

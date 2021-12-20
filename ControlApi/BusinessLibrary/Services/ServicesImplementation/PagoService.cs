@@ -22,13 +22,13 @@ namespace BusinessLibrary.Services.ServicesImplementation
         private readonly IMapper Mapper;
         private readonly HttpContext Context;
         private readonly IStore<Factura> FacturaStore;
-        public PagoService(IPagoStore Store, IMapper Mapper, IStore<Factura> FacturaStore ,IHttpContextAccessor Context)
+        public PagoService(IPagoStore Store, IMapper Mapper, IStore<Factura> FacturaStore, IHttpContextAccessor Context)
         {
             this.Store = Store;
             this.Mapper = Mapper;
             this.Context = Context.HttpContext;
             this.FacturaStore = FacturaStore;
-           
+
         }
         public void Delete(Guid Id)
         {
@@ -40,7 +40,7 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public PaginationDataType<PagoDataType> GetAll(int Skip, int Take)
         {
-           
+
 
             var Result = this.Store.GetAll(Skip, Take);
 
@@ -64,18 +64,15 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public PagoDataType Create(CreatePagoRequestDataType Data)
         {
-
             var Factura = this.FacturaStore.GetById(Data.FacturaId);
             if (Factura == null) throw new ApiError("Factura Invalida", (int)HttpStatusCode.BadRequest);
 
-            // if (this.Store.GetBySocialReason(Data.SocialReason) == null && this.Store.GetByRut(Data.Rut) == null)
-            // {
             var NewPago = new Pago() { Id = Guid.NewGuid() };
-                Mapper.Map(Data, NewPago);
+            Mapper.Map(Data, NewPago);
 
-                this.Store.Create(NewPago);
+            this.Store.Create(NewPago);
 
-                return Mapper.Map<PagoDataType>(NewPago);
+            return Mapper.Map<PagoDataType>(NewPago);
         }
 
         public PagoDataType GutById(Guid Id)
@@ -86,6 +83,6 @@ namespace BusinessLibrary.Services.ServicesImplementation
             return Mapper.Map<PagoDataType>(Pago);
         }
 
-      
+
     }
 }
