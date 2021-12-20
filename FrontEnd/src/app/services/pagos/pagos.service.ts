@@ -7,40 +7,39 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class PagosService {
-  
+
   Url: string = environment.controlApiUrl + "api/Pago";
 
   constructor(
     private Http: HttpClient
   ) { }
 
+  getAll(skip: number, take: number) {
+    return this.Http.get<{ collection: PagoDataType[], size: number }>(this.Url, {
+      params: {
+        skip,
+        take
+      }
+    });
+  }
 
-getAll(skip: number, take: number) {
-  return this.Http.get<{ collection: PagoDataType[], size: number }>(this.Url, {
-    params: {
-      skip,
-      take
-    }
-  });
-}
+  getById(id: string) {
+    return this.Http.get<PagoDataType>(this.Url + "/" + id);
+  }
 
-getList(){
-  return this.Http.get<PagoDataType[]>(this.Url + "/List");
-}
+  // update(id: string, data: any) {
+  //   return this.Http.put(this.Url + "/" + id, data);
+  // }
 
-getById(id: string) {
-  return this.Http.get<PagoDataType>(this.Url + "/" + id);
-}
+  // delete(id: string) {
+  //   return this.Http.delete(this.Url + "/" + id);
+  // }
 
-update(id: string, data: any) {
-  return this.Http.put(this.Url + "/" + id, data);
-}
+  // create(data: any) {
+  //   return this.Http.post(this.Url, data);
+  // }
 
-delete(id: string) {
-  return this.Http.delete(this.Url + "/" + id);
-}
-
-create(data: any) {
-  return this.Http.post(this.Url, data);
-}
+  pay(facturaId: string){
+    return this.Http.post<string>(environment.controlApiUrl + "api/Payment/Factura/" + facturaId, {});
+  }
 }

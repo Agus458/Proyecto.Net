@@ -55,7 +55,6 @@ import { EditSalonComponent } from './components/salones/edit-salon/edit-salon.c
 import { ProductosComponent } from './components/productos/productos.component';
 import { PreciosComponent } from './components/precios/precios.component';
 import { PagosComponent } from './components/pagos/pagos.component';
-import { PagoVentanaComponent } from './components/pago-ventana/pago-ventana.component';
 import { RealizarPagoComponent } from './components/realizar-pago/realizar-pago.component';
 import { PaydayComponent } from './components/payday/payday.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
@@ -110,7 +109,6 @@ registerLocaleData(localeES, "es");
     PreciosComponent,
     FacturasComponent,
     PagosComponent,
-    PagoVentanaComponent,
     RealizarPagoComponent,
     PaydayComponent,
     PaypalComponent,

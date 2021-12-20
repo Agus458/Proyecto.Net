@@ -1,3 +1,28 @@
+<!-- Modal -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Factura</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p><strong>Id: </strong>{{selectedBill.id}}</p>
+        <p><strong>Monto: </strong>{{selectedBill.monto}}</p>
+        <p><strong>Descripcion: </strong>{{selectedBill.descripcion}}</p>
+        <p><strong>Estado: </strong></p>
+        <div *ngIf="selectedBill.pago; else elseBlock" class="text-success">Pagada</div>
+        <ng-template #elseBlock>
+            <div class="text-danger">Pendiente</div>
+        </ng-template>
+    </div>
+    <div class="modal-footer">
+        <button *ngIf="AuthenticationService.hasRole('Admin') && !selectedBill.pago" type="button" class="btn btn-warning" (click)="pay(selectedBill.id)"><i class="fab fa-paypal"></i> Pagar con
+            PayPal</button>
+        <button type="button" class="btn btn-dark" (click)="modal.close()">Cerrar</button>
+    </div>
+</ng-template>
+
 <div class="card border-0 shadow rounded-3 my-5">
     <div class="card-body p-4 p-sm-5">
         <h4 class="card-title fw-light fs-5">Factura</h4>
@@ -20,7 +45,8 @@
                         <td>{{factura.monto}}</td>
                         <td>{{factura.descripcion}}</td>
                         <td class="text-right">
-                            
+                            <button class="btn btn-dark ml-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                (click)="open(content, factura)"><i class="fas fa-bars"></i></button>
                         </td>
                     </tr>
                 </tbody>

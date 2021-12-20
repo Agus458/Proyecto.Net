@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BusinessLibrary.Services;
+using DataAccessLibrary.Entities;
+using DataAccessLibrary.Stores;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using PayPal.Api;
@@ -12,19 +17,23 @@ namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
     public class PaymentController : ControllerBase
     {
-
         private readonly PayPalApiConfiguration Configuration;
+        private readonly IFacturaService FacturaService;
 
-        public PaymentController(IOptions<PayPalApiConfiguration> Configuration)
+        public PaymentController(IOptions<PayPalApiConfiguration> Configuration, IFacturaService FacturaService)
         {
             this.Configuration = Configuration.Value;
+            this.FacturaService = FacturaService;
         }
 
-        [HttpGet]
-        public void Pay()
+        [HttpPost("Factura/{FacturaId}")]
+        public string Pay(Guid FacturaId)
         {
+            var Factura = this.FacturaService.GetBuId(FacturaId);
+
             // Authenticate with PayPal
             var config = new Dictionary<string, string>();
             config.Add("mode", "sandbox");
@@ -47,34 +56,27 @@ namespace ControlApi.Controllers
                 {
                     new Item()
                     {
-                         name = "Item Name",
+                         name = Factura.Descripcion,
                          currency = "USD",
-                         price = "15",
-                         quantity = "5",
+                         price = Factura.Monto.ToString(),
+                         quantity = "1",
                          sku = "sku"
                     }
                 }
             };
 
-            var details = new Details()
-            {
-                tax = "15",
-                shipping = "10",
-                subtotal = "75"
-            };
-
             var amount = new Amount()
             {
                 currency = "USD",
-                total = "100.00", // Total must be equal to sum of shipping, tax and subtotal.
-                details = details
+                total = Factura.Monto.ToString(), // Total must be equal to sum of shipping, tax and subtotal.
             };
 
             var transactionList = new List<Transaction>();
 
             transactionList.Add(new Transaction()
             {
-                description = "Transaction description.",
+                custom = Factura.Id.ToString(),
+                description = "Pago Subscripcion " + Factura.Descripcion,
                 amount = amount,
                 item_list = itemList
             });
@@ -89,16 +91,19 @@ namespace ControlApi.Controllers
 
             var createdPayment = payment.Create(apiContext);
 
+            var ret = "";
+
             var links = createdPayment.links.GetEnumerator();
             while (links.MoveNext())
             {
                 var link = links.Current;
                 if (link.rel.ToLower().Trim().Equals("approval_url"))
                 {
-                    // Redirect the customer to link.href
-                    Response.Redirect(link.href);
+                    ret = link.href;
                 }
             }
+
+            return ret;
         }
 
         [HttpGet("success")]

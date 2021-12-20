@@ -39,9 +39,4 @@ export class FacturasService {
   // create(data: any) {
   //   return this.Http.post(this.Url, data);
   // }
-
-  Pagar(data: any)
-  {
-    return this.Http.post(this.Url,data);
-  }
 }

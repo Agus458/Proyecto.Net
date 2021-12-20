@@ -44,20 +44,6 @@ export class PagosComponent implements OnInit {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 
-  delete(id: string) {
-    this.PagoService.delete(id).subscribe(
-      ok => {
-        this.toastService.show("Success", "Edificio eliminado");
-        this.modalService.dismissAll();
-        this.getPagos(0, 10);
-      },
-      error => {
-        console.log(error);
-
-        this.toastService.show("Error", error.error?.Message ?? "Algo salió mal");
-      }
-    );
-  }
   onPageChange(pageNum: number): void {
     this.getPagos((pageNum - 1) * 10, 10);
   }
