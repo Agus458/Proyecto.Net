@@ -41,11 +41,10 @@ namespace BusinessLibrary.Services.ServicesImplementation
 
         public PaginationDataType<PrecioDataType> GetAll(int Skip, int Take,Guid ProductId)
         {
-
             var product = this.ProductStore.GetById(ProductId);
-            if (product == null) throw new ApiError("Prouct Invalid", (int)HttpStatusCode.BadRequest);
+            if (product == null) throw new ApiError("Proucto Invalido", (int)HttpStatusCode.BadRequest);
 
-            var Result = this.Store.GetAll(Skip, Take);
+            var Result = this.Store.GetAll(Skip, Take, ProductId);
 
             return new PaginationDataType<PrecioDataType>()
             {

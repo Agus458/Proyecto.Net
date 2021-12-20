@@ -13,7 +13,7 @@ namespace ControlApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin, Admin")]
     public class FacturaController : ControllerBase
     {
         private readonly IFacturaService Service;
@@ -35,7 +35,7 @@ namespace ControlApi.Controllers
             return Ok(this.Service.GetBuId(Id));
         }
 
-        [HttpDelete("{Id}")]
+        /*[HttpDelete("{Id}")]
         public IActionResult Delete(Guid Id)
         {
             this.Service.Delete(Id);
@@ -54,7 +54,7 @@ namespace ControlApi.Controllers
         {
             var result = this.Service.Create(Data);
             return CreatedAtAction(nameof(GetById), new { Id = result.Id }, result);
-        }
+        }*/
 
         [HttpPost("Generate")]
         public void Generate()
